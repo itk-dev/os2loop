@@ -122,3 +122,8 @@ composer coding-standards-check
 docker run --volume ${PWD}:/app --workdir /app node:latest yarn install
 docker run --volume ${PWD}:/app --workdir /app node:latest yarn encore dev
  ```
+
+## Automated UI tests
+
+See
+[web/profiles/custom/os2loop/modules/os2loop_post/README.md#automated-ui-tests](web/profiles/custom/os2loop/modules/os2loop_post/README.md#automated-ui-tests).

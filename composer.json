@@ -152,7 +152,14 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "drupal/coder": "^8.3",
         "drupal/core-dev": "^9.1",
+        "drupal/cypress": "^2.2",
         "friendsoftwig/twigcs": "^5.0",
-        "os2loop/os2loop_fixtures": "*"
+        "os2loop/os2loop_fixtures": "*",
+        "phpspec/prophecy": "^1.12",
+        "phpunit/php-code-coverage": "^9.2",
+        "phpunit/phpunit": "^9.5",
+        "sebastian/environment": "^5.1",
+        "sebastian/global-state": "^5.0",
+        "symfony/phpunit-bridge": "^5.2"
     }
 }
