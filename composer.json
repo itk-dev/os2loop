@@ -34,6 +34,10 @@
                     "reference": "origin/2929394-drupal-8-port"
                 }
             }
+        },
+        "os2loop/os2loop_migrate": {
+            "type": "path",
+            "url": "web/profiles/custom/os2loop/modules/os2loop_migrate"
         }
     },
     "require": {
@@ -182,6 +186,7 @@
         "friendsoftwig/twigcs": "^5.0",
         "mglaman/drupal-check": "^1.1",
         "os2loop/os2loop_fixtures": "*",
+        "os2loop/os2loop_migrate": "*",
         "phpspec/prophecy-phpunit": "^2.0"
     }
 }
