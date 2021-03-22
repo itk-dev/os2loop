@@ -24,6 +24,17 @@ process:
       source: name
     -
       plugin: user_update_8002
+    -
+      plugin: static_map
+      bypass: true
+      map:
+        administrator: os2loop_user_administrator
+        document_author: os2loop_user_document_author
+        document_collection_editor: os2loop_user_document_collection_editor
+        documentation_coordinator: os2loop_user_documentation_coordinator
+        external_sources_editor: os2loop_user_external_sources_editor
+        manager: os2loop_user_manager
+        read_only: os2loop_user_read_only
   label:
     -
       plugin: get
