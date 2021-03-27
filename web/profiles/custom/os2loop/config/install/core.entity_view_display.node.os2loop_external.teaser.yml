@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.os2loop_external.os2loop_external_descripti
+    - field.field.node.os2loop_external.os2loop_external_url
+    - field.field.node.os2loop_external.os2loop_shared_profession
+    - field.field.node.os2loop_external.os2loop_shared_rev_date
+    - field.field.node.os2loop_external.os2loop_shared_subject
+    - field.field.node.os2loop_external.os2loop_shared_tags
+    - node.type.os2loop_external
+  module:
+    - user
+id: node.os2loop_external.teaser
+targetEntityType: node
+bundle: os2loop_external
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  os2loop_external_descripti: true
+  os2loop_external_url: true
+  os2loop_shared_profession: true
+  os2loop_shared_rev_date: true
+  os2loop_shared_subject: true
+  os2loop_shared_tags: true
+  search_api_excerpt: true

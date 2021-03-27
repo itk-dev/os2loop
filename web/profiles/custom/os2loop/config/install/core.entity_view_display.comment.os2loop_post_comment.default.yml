@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.os2loop_post_comment
+    - field.field.comment.os2loop_post_comment.os2loop_post_comment
+  module:
+    - text
+id: comment.os2loop_post_comment.default
+targetEntityType: comment
+bundle: os2loop_post_comment
+mode: default
+content:
+  flag_os2loop_upvote_correct_answer:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  flag_os2loop_upvote_upvote_button:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  os2loop_post_comment:
+    weight: 101
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  search_api_excerpt: true

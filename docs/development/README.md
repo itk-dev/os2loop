@@ -49,6 +49,8 @@ and `os2loop_shared_profession`) and one for revision date
 
 ## Configuration
 
+<https://www.drupal.org/docs/distributions/creating-distributions/how-to-write-a-drupal-installation-profile#config>
+
 As mentioned above all configuration for a content type must be stored in the
 content type’s module (in the `config/install` folder). The configuration must
 be installed when installing the module and must be removed when uninstalling

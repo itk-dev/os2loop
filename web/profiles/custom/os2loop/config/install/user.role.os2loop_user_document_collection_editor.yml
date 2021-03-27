@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_user_document_collection_editor
+label: 'Document collection editor'
+weight: 8
+is_admin: null
+permissions:
+  - 'access ckeditor link'
+  - 'access content overview'
+  - 'access media browser'
+  - 'access path admin'
+  - 'access path admin/content'
+  - 'administer menu'
+  - 'create files'
+  - 'create os2loop_documents_collection content'
+  - 'create os2loop_documents_document content'
+  - 'delete any image files'
+  - 'delete any os2loop_documents_collection content'
+  - 'delete any os2loop_documents_document content'
+  - 'download any image files'
+  - 'edit any image files'
+  - 'edit any os2loop_documents_collection content'
+  - 'edit any os2loop_documents_document content'
+  - 'edit own os2loop_documents_document content'
+  - 'menu view unpublished'
+  - 'publish any os2loop_documents_collection content'
+  - 'publish any os2loop_documents_document content'
+  - 'set revision date for content'
+  - 'unpublish any os2loop_documents_collection content'
+  - 'unpublish any os2loop_documents_document content'
+  - 'use media wysiwyg'
+  - 'use text format os2loop_documents_rich_text'
+  - 'view admin path'
+  - 'view any unpublished os2loop_documents_collection content'
+  - 'view any unpublished os2loop_documents_document content'
+  - 'view document admin menu'
+  - 'view the administration theme'

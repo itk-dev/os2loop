@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_user_external_sources_editor
+label: 'External sources editor'
+weight: 6
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access path admin'
+  - 'access path admin/content'
+  - 'create os2loop_external content'
+  - 'delete any os2loop_external content'
+  - 'delete own os2loop_external content'
+  - 'edit any os2loop_external content'
+  - 'edit own os2loop_external content'
+  - 'view admin path'
+  - 'view the administration theme'

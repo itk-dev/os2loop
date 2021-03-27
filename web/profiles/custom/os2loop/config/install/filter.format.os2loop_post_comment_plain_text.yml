@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Comment (plain text)'
+format: os2loop_post_comment_plain_text
+weight: 0
+filters: {  }

@@ -25,7 +25,7 @@ EOF
 
 ```sh
 composer install --no-dev --optimize-autoloader
-vendor/bin/drush --yes site:install os2loop --existing-config
+vendor/bin/drush --yes site:install os2loop
 ```
 
 ### Development
@@ -35,7 +35,7 @@ See [docs/development](docs/development/README.md) for details on development.
 ```sh
 docker-compose up --detach
 docker-compose exec phpfpm composer install
-docker-compose exec phpfpm vendor/bin/drush --yes site:install os2loop --existing-config
+docker-compose exec phpfpm vendor/bin/drush --yes site:install os2loop
 # Get the site url
 echo "http://$(docker-compose port nginx 80)"
 # Get admin sign in url
@@ -48,7 +48,7 @@ docker-compose exec phpfpm vendor/bin/drush --yes \
 ```sh
 docker-compose up --detach
 symfony composer install
-symfony php vendor/bin/drush --yes site:install os2loop --existing-config
+symfony php vendor/bin/drush --yes site:install os2loop
 # Start the server
 symfony local:server:start --port=8000 --daemon
 # Get the site url

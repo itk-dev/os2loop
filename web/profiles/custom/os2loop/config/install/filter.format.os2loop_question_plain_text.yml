@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Question (plain text)'
+format: os2loop_question_plain_text
+weight: 0
+filters: {  }

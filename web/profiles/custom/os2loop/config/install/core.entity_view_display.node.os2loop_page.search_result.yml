@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.os2loop_page.os2loop_page_content
+    - field.field.node.os2loop_page.os2loop_page_image
+    - node.type.os2loop_page
+  module:
+    - user
+id: node.os2loop_page.search_result
+targetEntityType: node
+bundle: os2loop_page
+mode: search_result
+content:
+  search_api_excerpt:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  links: true
+  os2loop_page_content: true
+  os2loop_page_image: true

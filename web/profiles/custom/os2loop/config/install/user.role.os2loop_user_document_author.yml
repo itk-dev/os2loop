@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_user_document_author
+label: 'Document author'
+weight: 7
+is_admin: null
+permissions:
+  - 'access ckeditor link'
+  - 'access content overview'
+  - 'access media browser'
+  - 'access path admin'
+  - 'access path admin/content'
+  - 'create files'
+  - 'create os2loop_documents_document content'
+  - 'download any image files'
+  - 'edit own os2loop_documents_document content'
+  - 'use media wysiwyg'
+  - 'use text format os2loop_documents_rich_text'
+  - 'view admin path'
+  - 'view any unpublished os2loop_documents_document content'
+  - 'view the administration theme'

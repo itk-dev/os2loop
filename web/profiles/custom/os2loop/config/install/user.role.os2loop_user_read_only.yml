@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_user_read_only
+label: Read-only
+weight: 5
+is_admin: null
+permissions: {  }

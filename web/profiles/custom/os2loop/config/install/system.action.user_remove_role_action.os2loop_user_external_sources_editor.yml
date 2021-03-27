@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.os2loop_user_external_sources_editor
+  module:
+    - user
+id: user_remove_role_action.os2loop_user_external_sources_editor
+label: 'Remove the external sources editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: os2loop_user_external_sources_editor

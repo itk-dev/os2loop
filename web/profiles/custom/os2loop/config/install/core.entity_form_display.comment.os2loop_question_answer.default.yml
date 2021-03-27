@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.os2loop_question_answer
+    - field.field.comment.os2loop_question_answer.os2loop_question_answer
+  module:
+    - text
+id: comment.os2loop_question_answer.default
+targetEntityType: comment
+bundle: os2loop_question_answer
+mode: default
+content:
+  author:
+    weight: -2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  os2loop_question_answer:
+    weight: 12
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  subject: true

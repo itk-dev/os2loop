@@ -1,9 +1,0 @@
-uuid: 5c99d0ac-087e-497a-942a-6e7c39fada47
-langcode: en
-status: true
-dependencies: {  }
-id: os2loop_user_read_only
-label: Read-only
-weight: 5
-is_admin: null
-permissions: {  }

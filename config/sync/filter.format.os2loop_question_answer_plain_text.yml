@@ -1,8 +1,0 @@
-uuid: 6c7b1587-3dfb-4501-a853-630dddff29aa
-langcode: en
-status: true
-dependencies: {  }
-name: 'Answer (plain text)'
-format: os2loop_question_answer_plain_text
-weight: 0
-filters: {  }

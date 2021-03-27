@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.os2loop_user_read_only
+  module:
+    - user
+id: user_add_role_action.os2loop_user_read_only
+label: 'Add the read only role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: os2loop_user_read_only

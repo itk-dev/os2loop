@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.os2loop_search_db_profession
+  module:
+    - facets
+  theme:
+    - os2loop_theme
+id: os2loop_search_db_profession
+theme: os2loop_theme
+region: content
+weight: -1
+provider: null
+plugin: 'facet_block:os2loop_search_db_profession'
+settings:
+  id: 'facet_block:os2loop_search_db_profession'
+  label: Profession
+  provider: facets
+  label_display: visible
+  block_id: os2loop_search_db_profession
+visibility: {  }

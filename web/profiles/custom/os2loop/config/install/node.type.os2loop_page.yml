@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'OS2Loop Page'
+type: os2loop_page
+description: 'A page'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

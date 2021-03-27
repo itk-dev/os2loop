@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.os2loop_question.os2loop_question_answers
+    - field.field.node.os2loop_question.os2loop_question_content
+    - field.field.node.os2loop_question.os2loop_question_file
+    - field.field.node.os2loop_question.os2loop_shared_profession
+    - field.field.node.os2loop_question.os2loop_shared_rev_date
+    - field.field.node.os2loop_question.os2loop_shared_subject
+    - field.field.node.os2loop_question.os2loop_shared_tags
+    - node.type.os2loop_question
+  module:
+    - user
+id: node.os2loop_question.search_result
+targetEntityType: node
+bundle: os2loop_question
+mode: search_result
+content:
+  os2loop_shared_subject:
+    label: visually_hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+    weight: 1
+  search_api_excerpt:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  links: true
+  os2loop_question_answers: true
+  os2loop_question_content: true
+  os2loop_question_file: true
+  os2loop_shared_profession: true
+  os2loop_shared_rev_date: true
+  os2loop_shared_tags: true

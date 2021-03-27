@@ -1,0 +1,208 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+    - search_api
+  config:
+    - field.storage.node.os2loop_documents_dc_content
+    - field.storage.node.os2loop_post_content
+    - field.storage.node.os2loop_question_content
+    - field.storage.node.os2loop_documents_document_conte
+    - field.storage.paragraph.os2loop_documents_hc_content
+    - field.storage.paragraph.os2loop_documents_description
+    - field.storage.paragraph.os2loop_documents_step_text
+    - field.storage.paragraph.os2loop_documents_tai_text
+    - field.storage.paragraph.os2loop_documents_hc_title
+    - field.storage.node.os2loop_external_descripti
+    - field.storage.node.os2loop_shared_profession
+    - field.storage.node.os2loop_shared_subject
+    - field.storage.node.os2loop_shared_tags
+    - search_api.server.os2loop_search_db_server
+id: os2loop_search_db_index
+name: Index
+description: ''
+read_only: false
+field_settings:
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  os2loop_documents_dc_content:
+    label: Content
+    datasource_id: 'entity:node'
+    property_path: os2loop_documents_dc_content
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_documents_dc_content
+  os2loop_documents_description:
+    label: 'Content » Paragraph » Description'
+    datasource_id: 'entity:node'
+    property_path: 'os2loop_documents_document_conte:entity:os2loop_documents_description'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_documents_document_conte
+        - field.storage.paragraph.os2loop_documents_description
+      module:
+        - paragraphs
+  os2loop_documents_hc_content:
+    label: 'Content » Paragraph » Content'
+    datasource_id: 'entity:node'
+    property_path: 'os2loop_documents_document_conte:entity:os2loop_documents_hc_content'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_documents_document_conte
+        - field.storage.paragraph.os2loop_documents_hc_content
+      module:
+        - paragraphs
+  os2loop_documents_hc_title:
+    label: 'Content » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'os2loop_documents_document_conte:entity:os2loop_documents_hc_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_documents_document_conte
+        - field.storage.paragraph.os2loop_documents_hc_title
+      module:
+        - paragraphs
+  os2loop_documents_step_text:
+    label: 'Content » Paragraph » Text'
+    datasource_id: 'entity:node'
+    property_path: 'os2loop_documents_document_conte:entity:os2loop_documents_step_text'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_documents_document_conte
+        - field.storage.paragraph.os2loop_documents_step_text
+      module:
+        - paragraphs
+  os2loop_documents_tai_text:
+    label: 'Content » Paragraph » Text'
+    datasource_id: 'entity:node'
+    property_path: 'os2loop_documents_document_conte:entity:os2loop_documents_tai_text'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_documents_document_conte
+        - field.storage.paragraph.os2loop_documents_tai_text
+      module:
+        - paragraphs
+  os2loop_external_descripti:
+    label: Description
+    datasource_id: 'entity:node'
+    property_path: os2loop_external_descripti
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_external_descripti
+  os2loop_post_content:
+    label: Content
+    datasource_id: 'entity:node'
+    property_path: os2loop_post_content
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_post_content
+  os2loop_question_content:
+    label: Content
+    datasource_id: 'entity:node'
+    property_path: os2loop_question_content
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.os2loop_question_content
+  os2loop_shared_profession:
+    label: Profession
+    datasource_id: 'entity:node'
+    property_path: os2loop_shared_profession
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.os2loop_shared_profession
+  os2loop_shared_subject:
+    label: Subject
+    datasource_id: 'entity:node'
+    property_path: os2loop_shared_subject
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.os2loop_shared_subject
+  os2loop_shared_tags:
+    label: Tags
+    datasource_id: 'entity:node'
+    property_path: os2loop_shared_tags
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.os2loop_shared_tags
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 2
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected:
+        - os2loop_page
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  highlight:
+    highlight: always
+    highlight_partial: true
+    excerpt: true
+    excerpt_length: 256
+    exclude_fields: {  }
+    prefix: '<strong>'
+    suffix: '</strong>'
+    weights:
+      postprocess_query: 0
+  language_with_fallback: {  }
+  rendered_item: {  }
+  type_boost:
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 1
+    weights:
+      preprocess_index: 0
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: os2loop_search_db_server

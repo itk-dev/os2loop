@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_user_post_author
+label: 'Post author'
+weight: 9
+is_admin: null
+permissions:
+  - 'create os2loop_post content'
+  - 'delete any os2loop_post content'
+  - 'delete os2loop_post revisions'
+  - 'delete own os2loop_post content'
+  - 'edit any os2loop_post content'
+  - 'edit own os2loop_post content'
+  - 'revert os2loop_post revisions'
+  - 'view os2loop_post revisions'

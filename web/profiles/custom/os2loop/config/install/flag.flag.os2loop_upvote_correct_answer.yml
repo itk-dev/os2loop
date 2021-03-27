@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+id: os2loop_upvote_correct_answer
+label: 'os2loop upvote correct answer'
+bundles:
+  - os2loop_post_comment
+  - os2loop_question_answer
+entity_type: comment
+global: true
+weight: 0
+flag_short: 'Marker dette som det rigtige svar'
+flag_long: ''
+flag_message: ''
+unflag_short: 'Fjern markering af dette som det rigtige svar'
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+flag_type: 'entity:comment'
+link_type: reload
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+    parent_owner: '0'
+linkTypeConfig: {  }

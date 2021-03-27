@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_user_user_administrator
+label: 'User administrator'
+weight: 10
+is_admin: null
+permissions:
+  - 'administer users'

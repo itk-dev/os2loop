@@ -26,37 +26,80 @@ distribution:
   langcode: en
 
 # # Modules to install to support the profile.
-install:
-  - history
-  - block_content
-  - breakpoint
-  - color
-  - config
-  - comment
-  - contextual
-  - contact
-  - help
-  - image
-  - options
-  - path
-  - taxonomy
-  - search
-  - shortcut
-  - toolbar
-  - file
-  - rdf
-  - views
-  - editor
-  - ckeditor
+# install:
+#   - history
+#   - block_content
+#   - breakpoint
+#   - color
+#   - config
+#   - comment
+#   - contextual
+#   - contact
+#   - help
+#   - image
+#   - options
+#   - path
+#   - taxonomy
+#   - search
+#   - shortcut
+#   - toolbar
+#   - file
+#   - rdf
+#   - views
+#   - editor
+#   - ckeditor
 
 # # Required modules
 # # Note that any dependencies of the modules listed here will be installed automatically.
 dependencies:
-  - node
+  - better_formats
   - block
+  - breakpoint
+  - ckeditor
+  - comment
+  - datetime
+  - dblog
+  - dynamic_page_cache
+  - editor
+  - entity_reference_revisions
+  - facets
+  - field
+  - file
+  - filter
+  - flag
+  - image
+  - link
+  - menu_link_content
+  - menu_ui
+  - node
+  - os2loop_documents
+  - os2loop_external
+  - os2loop_page
+  - os2loop_post
+  - os2loop_question
+  - os2loop_search_db
+  - os2loop_shared
+  - os2loop_taxonomy
+  - os2loop_upvote
+  - os2loop_user
+  - page_cache
+  - paragraphs
+  - path_alias
+  - search_api
+  - search_api_autocomplete
+  - search_api_db
+  - snowball_stemmer
+  - system
+  - taxonomy
+  - text
+  - theme_switcher
+  - toolbar
+  - update
+  - user
   - views
 
 # # List any themes that should be installed as part of the profile installation.
 # # Note that this will not set any theme as the default theme.
 themes:
-  - claro
+  - os2loop_theme
+  - adminimal_theme

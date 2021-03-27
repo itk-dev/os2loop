@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.os2loop_search_db_search_autocomplete
+label: 'Search autocomplete'
+targetEntityType: node
+cache: true

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: os2loop_question_answer
+label: Answer
+target_entity_type_id: node
+description: 'An answer to a question'
