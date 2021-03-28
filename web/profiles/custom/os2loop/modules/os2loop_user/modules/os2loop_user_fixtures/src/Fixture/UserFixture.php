@@ -25,7 +25,7 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface {
       // Active.
       'status' => 1,
       'roles' => [
-        'os2loop_administrator',
+        'os2loop_user_administrator',
       ],
     ]);
     $user->save();

@@ -3,5 +3,7 @@
   <h2><a href="{{ url }}">{{ label }}</a></h2>
   <span class="badge bg-light text-dark node-bundle node-bundle-{{ node.bundle }}">{{ node.bundle|t }}</span>
   <span class="search_api_excerpt">{{ elements['#search_api_excerpt']|raw }}</span>
-  <span class="subject">{{ elements['os2loop_shared_subject'] }}</span>
+  {% if elements['os2loop_shared_subject'] is defined %}
+    <span class="subject">{{ elements['os2loop_shared_subject'] }}</span>
+  {% endif %}
 </div>

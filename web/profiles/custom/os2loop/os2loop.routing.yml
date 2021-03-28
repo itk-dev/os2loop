@@ -1,0 +1,9 @@
+os2loop.admin:
+  path: '/admin/os2loop/settings'
+  defaults:
+    _form: 'Drupal\os2loop\Form\SettingsForm'
+    _title: 'OS2Loop settings'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer os2loop settings'
