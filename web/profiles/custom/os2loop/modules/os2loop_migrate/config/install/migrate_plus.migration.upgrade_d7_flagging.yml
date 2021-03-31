@@ -43,7 +43,8 @@ process:
       source: timestamp
 destination:
   plugin: 'entity:flagging'
-migration_dependencies:
-  required:
-    - upgrade_d7_flag
-  optional: {  }
+# Flags are defined in config
+# migration_dependencies:
+#   required:
+#     - upgrade_d7_flag
+#   optional: {  }
