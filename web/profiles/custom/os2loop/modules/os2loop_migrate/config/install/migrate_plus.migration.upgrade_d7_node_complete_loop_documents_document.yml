@@ -118,11 +118,15 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: os2loop_documents_document
-# migration_dependencies:
-#   required:
-#     - upgrade_d7_user
-#     - upgrade_d7_node_type
-#     - upgrade_language
-#   optional:
-#     - upgrade_d7_field_instance
-#     - upgrade_d7_comment_field_instance
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    # Node types are defined in config.
+    # - upgrade_d7_node_type
+    # - upgrade_language
+    - upgrade_d7_taxonomy_term_subject
+    - upgrade_d7_taxonomy_term_keyword
+    - upgrade_d7_taxonomy_term_profession
+  # optional:
+  #   - upgrade_d7_field_instance
+  #   - upgrade_d7_comment_field_instance

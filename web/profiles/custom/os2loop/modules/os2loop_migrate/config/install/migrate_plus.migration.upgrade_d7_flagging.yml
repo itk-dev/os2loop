@@ -43,8 +43,17 @@ process:
       source: timestamp
 destination:
   plugin: 'entity:flagging'
-# Flags are defined in config
-# migration_dependencies:
-#   required:
-#     - upgrade_d7_flag
+migration_dependencies:
+  required:
+    # Flags are defined in config
+    # - upgrade_d7_flag
+    # Users can subcribe to (i.e. flag) content
+    - upgrade_d7_node_complete_page
+    - upgrade_d7_node_complete_external_sources
+    - upgrade_d7_node_complete_post
+    - upgrade_d7_node_complete_loop_documents_document
+    - upgrade_d7_node_complete_loop_documents_collection
+    # Users can upvote comments.
+    - upgrade_d7_comment
+    - upgrade_d7_message
 #   optional: {  }

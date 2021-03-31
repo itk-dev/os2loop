@@ -96,6 +96,17 @@ vendor/bin/drush migrate:import upgrade_d7_message
 
 ## Flags
 
+Clean up source database:
+
+```sql
+-- Delete non-existing comments with upvotes.
+delete from flagging where fid = 1 and entity_id not in (select cid from comment);
+-- Delete flagging of non-existing messages;
+delete from flagging where fid = 2 and entity_id not in (select mid from message);
+-- Delete subscriptions on non-existing nodes.
+delete from flagging where fid = 3 and entity_id not in (select nid from node);
+```
+
 ```sh
 # Flags are define in config.
 # vendor/bin/drush migrate:import upgrade_d7_flag

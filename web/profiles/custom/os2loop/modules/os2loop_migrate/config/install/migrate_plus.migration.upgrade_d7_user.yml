@@ -74,10 +74,21 @@ process:
       plugin: get
       source: init
   roles:
+    # -
+    #   plugin: migration_lookup
+    #   migration: upgrade_d7_user_role
+    #   source: roles
     -
-      plugin: migration_lookup
-      migration: upgrade_d7_user_role
-      source: roles
+      plugin: static_map
+      bypass: true
+      map:
+        administrator: os2loop_user_administrator
+        document_author: os2loop_user_document_author
+        document_collection_editor: os2loop_user_document_collection_editor
+        documentation_coordinator: os2loop_user_documentation_coordinator
+        external_sources_editor: os2loop_user_external_sources_editor
+        manager: os2loop_user_manager
+        read_only: os2loop_user_read_only
   user_picture:
     -
       plugin: default_value
@@ -160,7 +171,8 @@ destination:
   plugin: 'entity:user'
 migration_dependencies:
   required:
-    - upgrade_d7_user_role
+    # Defined in config
+    # - upgrade_d7_user_role
     - upgrade_d7_file
     - upgrade_d7_taxonomy_term_subject
     - upgrade_d7_taxonomy_term_profession

@@ -145,24 +145,25 @@ process:
         description: description
 destination:
   plugin: 'entity:comment'
-# migration_dependencies:
-#   required:
-#     - upgrade_d7_node_complete_external_sources
-#     - upgrade_d7_node_complete_loop_documents_collection
-#     - upgrade_d7_node_complete_loop_documents_document
-#     - upgrade_d7_node_complete_page
-#     - upgrade_d7_node_complete_post
-#     - upgrade_d7_comment_type
-#   optional:
-#     - upgrade_d7_node_complete_external_sources
-#     - upgrade_d7_node_complete_loop_documents_collection
-#     - upgrade_d7_node_complete_loop_documents_document
-#     - upgrade_d7_node_complete_page
-#     - upgrade_d7_node_complete_post
-#     - upgrade_d7_comment
-#     - upgrade_d7_comment_type
-#     - upgrade_d7_node_complete_external_sources
-#     - upgrade_d7_node_complete_loop_documents_collection
-#     - upgrade_d7_node_complete_loop_documents_document
-#     - upgrade_d7_node_complete_page
-#     - upgrade_d7_node_complete_post
+migration_dependencies:
+  required:
+    - upgrade_d7_node_complete_external_sources
+    - upgrade_d7_node_complete_loop_documents_collection
+    - upgrade_d7_node_complete_loop_documents_document
+    - upgrade_d7_node_complete_page
+    - upgrade_d7_node_complete_post
+    # Comment types are defined in config;.
+    # - upgrade_d7_comment_type
+  # optional:
+  #   - upgrade_d7_node_complete_external_sources
+  #   - upgrade_d7_node_complete_loop_documents_collection
+  #   - upgrade_d7_node_complete_loop_documents_document
+  #   - upgrade_d7_node_complete_page
+  #   - upgrade_d7_node_complete_post
+  #   - upgrade_d7_comment
+  #   - upgrade_d7_comment_type
+  #   - upgrade_d7_node_complete_external_sources
+  #   - upgrade_d7_node_complete_loop_documents_collection
+  #   - upgrade_d7_node_complete_loop_documents_document
+  #   - upgrade_d7_node_complete_page
+  #   - upgrade_d7_node_complete_post
