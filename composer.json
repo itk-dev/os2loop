@@ -156,6 +156,7 @@
         "friendsoftwig/twigcs": "^5.0",
         "os2loop/os2loop_fixtures": "*",
         "phpspec/prophecy": "^1.12",
+        "phpspec/prophecy-phpunit": "^2",
         "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.5",
         "sebastian/environment": "^5.1",
