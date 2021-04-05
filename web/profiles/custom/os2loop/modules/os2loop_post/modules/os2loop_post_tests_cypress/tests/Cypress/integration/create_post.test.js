@@ -46,7 +46,7 @@ describe('Create post', () => {
     // .scrollIntoView({offset: { top: 100, left: 0 }})
       .type('My first post', {force: true})
 
-     cy.type_ckeditor('edit-field-os2loop-post-content-0-value', `
+    cy.type_ckeditor('edit-os2loop-post-content-0-value', `
 <p>Read all about it here:</p>
 
 <ol>
@@ -56,10 +56,10 @@ describe('Create post', () => {
 </ol>
 `)
 
-    cy.get('[name="field_os2loop_shared_subject[0][target_id]"]').type('dok', {force: true})
+    cy.get('[name="os2loop_shared_subject[0][target_id]"]').type('dok', {force: true})
     cy.contains('Dokumentation').click({force: true})
 
-    cy.get('[name="field_os2loop_shared_profession[0][target_id]"]').type('teknisk', {force: true})
+    cy.get('[name="os2loop_shared_profession[0][target_id]"]').type('teknisk', {force: true})
     cy.contains('Teknisk servicemedarbejder/pedel/håndværker').click({force: true})
 
     cy.contains('Save').click()
