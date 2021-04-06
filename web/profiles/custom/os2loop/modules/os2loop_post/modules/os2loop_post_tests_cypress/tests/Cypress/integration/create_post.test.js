@@ -63,5 +63,32 @@ describe('Create post', () => {
     cy.contains('Teknisk servicemedarbejder/pedel/håndværker').click({force: true})
 
     cy.contains('Save').click()
-   })
+  })
+
+  it('Can edit content of type post', () => {
+    cy.drupalSession({user: 'os2loop_post_author'});
+
+    cy.visit('/admin/content')
+
+    cy.contains('My first post').click()
+    cy.contains(/^Edit$/).click({force: true})
+
+    // cy.scrollTo('top')
+    // cy.get('[id="edit-title-0-value"]')
+    // // .scrollIntoView({offset: { top: 100, left: 0 }})
+    //   .type('My first post', {force: true})
+
+    cy.type_ckeditor('edit-os2loop-post-content-0-value', `
+<p><strong>Updated</strong> Read all about it here:</p>
+
+<ol>
+<li>one</li>
+<li>two</li>
+<li>three</li>
+<li>four</li>
+</ol>
+`)
+
+    cy.contains('Save').click()
+  })
 })
