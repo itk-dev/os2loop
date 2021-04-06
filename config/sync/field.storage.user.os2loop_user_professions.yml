@@ -1,13 +1,13 @@
-uuid: 98ada347-c359-4095-833d-c8d21dc15cbc
-langcode: en
+uuid: 69dab652-14d7-4fc1-bacc-03331b68de36
+langcode: und
 status: true
 dependencies:
   module:
-    - node
     - taxonomy
-id: node.os2loop_shared_profession
-field_name: os2loop_shared_profession
-entity_type: node
+    - user
+id: user.os2loop_user_professions
+field_name: os2loop_user_professions
+entity_type: user
 type: entity_reference
 settings:
   target_type: taxonomy_term
