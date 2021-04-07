@@ -28,9 +28,11 @@ settings:
     page: 0
     feed: 0
   preselect_views:
-    newest_content: os2loop_section_page_newest_content
+    os2loop_section_page_most_viewed: os2loop_section_page_most_viewed
+    os2loop_section_page_newest_content: os2loop_section_page_newest_content
     comment: 0
     comments_recent: 0
+    message: 0
     os2loop_search_db: 0
     taxonomy_term: 0
   enabled_settings:
