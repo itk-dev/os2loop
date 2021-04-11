@@ -18,7 +18,6 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface {
    */
   public function load() {
     $user = User::create([
-      'uid' => 2,
       'name' => 'administrator',
       'mail' => 'administrator@example.com',
       'pass' => 'administrator-password',
@@ -31,7 +30,6 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface {
     $user->save();
 
     $user = User::create([
-      'uid' => 3,
       'name' => 'user',
       'mail' => 'user@example.com',
       'pass' => 'user-password',
