@@ -18,25 +18,13 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface {
    */
   public function load() {
     $user = User::create([
-      'name' => 'os2loop_post_editor',
-      'mail' => 'os2loop_post_editor@example.com',
-      'pass' => 'os2loop_post_editor-password',
+      'name' => 'os2loop_post_user',
+      'mail' => 'os2loop_post_user@example.com',
+      'pass' => 'os2loop_post_user-password',
       // Active.
       'status' => 1,
       'roles' => [
-        'os2loop_post_editor',
-      ],
-    ]);
-    $user->save();
-
-    $user = User::create([
-      'name' => 'os2loop_post_author',
-      'mail' => 'os2loop_post_author@example.com',
-      'pass' => 'os2loop_post_author-password',
-      // Active.
-      'status' => 1,
-      'roles' => [
-        'os2loop_post_author',
+        'os2loop_user_administrator',
       ],
     ]);
     $user->save();

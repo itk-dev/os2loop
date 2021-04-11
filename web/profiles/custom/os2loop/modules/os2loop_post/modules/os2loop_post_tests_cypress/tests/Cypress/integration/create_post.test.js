@@ -13,7 +13,8 @@ Cypress.Commands.add("type_ckeditor", (element, content) => {
 });
 
 describe('Create post', () => {
-  beforeEach(() => {
+  // Install OS2Loop before running tests.
+  before(() => {
     cy.drupalInstall({
       profile: 'os2loop',
       config: '../config/sync'
@@ -22,19 +23,28 @@ describe('Create post', () => {
     cy.drush('--yes content-fixtures:load')
   })
 
-  it('Can sign in as os2loop_post_author', () => {
+  it('Can sign in as os2loop_post_user', () => {
     cy.visit('/user')
 
-    cy.get('[name=name]').type('os2loop_post_author')
-    cy.get('[name=pass]').type('os2loop_post_author-password')
+    cy.get('[name=name]').type('os2loop_post_user')
+    cy.get('[name=pass]').type('os2loop_post_user-password')
     cy.get('[value="Log in"]').click()
+
+    cy.contains('Member for')
+  })
+
+  it('Can check user profile', () => {
+    cy.drupalSession({user: 'os2loop_post_user'});
+    // cy.drupalSession({toolbar: true});
+
+    cy.visit('/user')
+
+    cy.contains('Member for')
   })
 
   it('Can create content of type post', () => {
-    cy.drupalSession({user: 'os2loop_post_author'});
+    cy.drupalSession({user: 'os2loop_post_user'});
     // cy.drupalSession({toolbar: true});
-
-    // cy.visit('/user')
 
     cy.visit('/admin/content')
 
@@ -66,7 +76,7 @@ describe('Create post', () => {
   })
 
   it('Can edit content of type post', () => {
-    cy.drupalSession({user: 'os2loop_post_author'});
+    cy.drupalSession({user: 'os2loop_post_user'});
 
     cy.visit('/admin/content')
 
