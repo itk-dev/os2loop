@@ -11,14 +11,3 @@
 function os2loop_theme_preprocess(&$variables) {
   $variables['logopath'] = file_url_transform_relative(file_create_url(theme_get_setting('logo.url')));
 };
-
-/**
- * Implements hook_preprocess_node().
- *
- * Add edit and deline links.
- */
-function os2loop_preprocess_menu_local_task(&$variables) {
-  $link_class = str_replace(' ', '-', $variables['element']['#link']['title']);
-  $variables['attributes']['class'][] = strtolower($link_class);
-  $variables['attributes']['aria-label'][] = strtolower($variables['element']['#link']['title']);
-}
