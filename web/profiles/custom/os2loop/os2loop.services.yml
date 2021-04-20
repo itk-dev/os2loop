@@ -3,3 +3,10 @@ services:
     class: Drupal\os2loop\Helper\Helper
     arguments:
       - '@config.factory'
+
+  Drupal\os2loop\TwigExtension\TwigExtension:
+    class: Drupal\os2loop\TwigExtension\TwigExtension
+    arguments:
+      - '@current_user'
+    tags:
+      - { name: twig.extension }
