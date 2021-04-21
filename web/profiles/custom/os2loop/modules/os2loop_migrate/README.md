@@ -4,6 +4,9 @@
 
 <https://www.drupal.org/docs/upgrading-drupal/customize-migrations-when-upgrading-to-drupal-8-or-later>
 
+<https://drupal.stackexchange.com/questions/278097/can-i-safely-delete-the-migrate-tables-after-migration?rq=1>
+<https://www.drupal.org/project/drupal/issues/2713327>
+
 Define the source database with key `migrate` (cf.
 <https://www.drupal.org/docs/upgrading-drupal/upgrade-using-drush#s-define-the-source-database>):
 
@@ -48,6 +51,20 @@ Import the migration configuration:
 vendor/bin/drush --yes pm:enable config
 vendor/bin/drush --yes config:import --partial --source=profiles/custom/os2loop/modules/os2loop_migrate/config/install
 vendor/bin/drush --yes pm:uninstall config
+```
+
+After completing the migration, you should uninstall the modules used for the
+migration (this will also remove the migrations configuration):
+
+```sh
+vendor/bin/drush --yes pm:uninstall migrate
+```
+
+Finally, i.e. when you're completely done with the migration, you can remove the
+migrations tables (prefixed with `migrate_`) from the database:
+
+```sh
+for t in $(vendor/bin/drush sql:query "SHOW TABLES LIKE 'migrate\_%'"); do vendor/bin/drush sql:query "DROP TABLE $t"; done
 ```
 
 ## Files
