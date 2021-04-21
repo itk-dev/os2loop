@@ -119,16 +119,11 @@ class ConfigCommands extends DrushCommands {
    *
    * @option remove-uuid
    *   Remove uuid and _core from config.
-   * @option config-name-pattern
-   *   The config name pattern (regex) to match.
    *
    * @command os2loop:config:add-module-config-dependencies
    * @usage os2loop:config:add-module-config-dependencies module another_module
    */
-  public function addModuleConfigDependencies(array $modules, array $options = [
-    'remove-uuid' => FALSE,
-    'config-name-pattern' => NULL,
-  ]) {
+  public function addModuleConfigDependencies(array $modules, array $options = ['remove-uuid' => FALSE]) {
     foreach ($modules as $module) {
       if (!$this->moduleHandler->moduleExists($module)) {
         throw new RuntimeException(sprintf('Invalid module: %s', $module));
@@ -136,9 +131,8 @@ class ConfigCommands extends DrushCommands {
 
       $this->output()->writeln($module);
 
-      $configNamePattern = $options['config-name-pattern'] ?? '/[._]' . preg_quote($module, '/') . '/';
-      $names = array_values(array_filter($this->configFactory->listAll(), static function ($name) use ($configNamePattern) {
-        return preg_match($configNamePattern, $name);
+      $names = array_values(array_filter($this->configFactory->listAll(), static function ($name) use ($module) {
+        return preg_match('/[._]' . preg_quote($module, '/') . '/', $name);
       }));
 
       foreach ($names as $name) {
@@ -177,12 +171,6 @@ class ConfigCommands extends DrushCommands {
         $config->save();
       }
     }
-
-    $this->output()->writeln(<<<'EOF'
-
-Config updated. Run drush config:export to export the new config.
-
-EOF);
   }
 
   /**
@@ -195,17 +183,12 @@ EOF);
    *
    * @option source
    *   Config source directory.
-   * @option config-name-pattern
-   *   The config name pattern (regex) to match.
    *
    * @command os2loop:config:move-module-config
    * @usage os2loop:config:move-module-config module another_module
    * @usage os2loop:config:move-module-config --source=sites/all/config module another_module
    */
-  public function moveModuleConfig(array $modules, array $options = [
-    'source' => NULL,
-    'config-name-pattern' => NULL,
-  ]) {
+  public function moveModuleConfig(array $modules, array $options = ['source' => NULL]) {
     foreach ($modules as $module) {
       if (!$this->moduleHandler->moduleExists($module)) {
         throw new RuntimeException(sprintf('Invalid module: %s', $module));
@@ -213,9 +196,8 @@ EOF);
 
       $this->output()->writeln($module);
 
-      $configNamePattern = $options['config-name-pattern'] ?? '/[._]' . preg_quote($module, '/') . '/';
-      $names = array_values(array_filter($this->configFactory->listAll(), static function ($name) use ($configNamePattern) {
-        return preg_match($configNamePattern, $name);
+      $names = array_values(array_filter($this->configFactory->listAll(), static function ($name) use ($module) {
+        return preg_match('/[._]' . preg_quote($module, '/') . '/', $name);
       }));
 
       $source = $options['source'] ?? Settings::get('config_sync_directory');
