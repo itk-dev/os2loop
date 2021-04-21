@@ -30,11 +30,19 @@ $databases['migrate']['default'] = [
 ];
 ```
 
+Check that you can connect to your `migrate` database.
+
+```sh
+vendor/bin/drush sql:query --database=migrate 'SHOW TABLES'
+```
+
 Install the OS2Loop Migrate module:
 
 ```sh
 vendor/bin/drush pm:enable os2loop_migrate
 ```
+
+Import the migration configuration:
 
 ```sh
 vendor/bin/drush --yes pm:enable config
