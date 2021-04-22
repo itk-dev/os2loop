@@ -98,7 +98,7 @@ process:
         value: value
         format:
           plugin: default_value
-          default_value: os2loop_documents_rich_text
+          default_value: os2loop_documents_body
 
   # field_keyword:
   os2loop_shared_tags:
