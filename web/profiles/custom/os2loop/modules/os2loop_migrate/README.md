@@ -102,6 +102,19 @@ vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_collecti
 vendor/bin/drush os2loop:migrate:collection-documents
 ```
 
+#### Empty question titles
+
+Migrated questions use (part of) their body as title. To set empty titles, run
+the following commands:
+
+```sql
+vendor/bin/drush sql:query "UPDATE node_field_data AS node JOIN node_field_revision AS revision ON node.nid = revision.nid and node.vid = revision.vid SET node.title = '', revision.title = '' WHERE node.type = 'os2loop_question'"
+vendor/bin/drush cache:rebuild
+vendor/bin/drush search-api:status os2loop_search_db_index
+vendor/bin/drush search-api:reset-tracker os2loop_search_db_index
+vendor/bin/drush search-api:index os2loop_search_db_index
+```
+
 ### 5. Comments
 
 ```sh
