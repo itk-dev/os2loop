@@ -28,6 +28,17 @@ Check that you can connect to your `migrate` database.
 vendor/bin/drush sql:query --database=migrate 'SHOW TABLES'
 ```
 
+Clean up source database:
+
+```sh
+# Delete non-existing comments with upvotes.
+vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 1 AND entity_id NOT IN (SELECT cid FROM comment)"
+# Delete flagging of non-existing messages;
+vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 2 AND entity_id NOT IN (SELECT mid FROM message)"
+# Delete subscriptions on non-existing nodes.
+vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 3 AND entity_id NOT IN (SELECT nid FROM node)"
+```
+
 ### Enabling migration modules and configuration
 
 Install the OS2Loop Migrate module:
@@ -73,6 +84,12 @@ for t in $(vendor/bin/drush sql:query "SHOW TABLES LIKE 'migrate\_%'"); do vendo
 
 ## Migrating content
 
+Migrate all Loop content:
+
+```sh
+vendor/bin/drush migrate:import --tag=os2loop
+```
+
 The actual migration of content should be performed in the following order.
 
 ### 1. Files
@@ -86,8 +103,6 @@ vendor/bin/drush migrate:import upgrade_d7_file
 ### 2. Taxonomies
 
 ```sh
-# We import terms into existing vocabularies
-# vendor/bin/drush migrate:import upgrade_d7_taxonomy_vocabulary
 vendor/bin/drush migrate:import upgrade_d7_taxonomy_term_subject
 vendor/bin/drush migrate:import upgrade_d7_taxonomy_term_keyword
 vendor/bin/drush migrate:import upgrade_d7_taxonomy_term_profession
@@ -96,8 +111,6 @@ vendor/bin/drush migrate:import upgrade_d7_taxonomy_term_profession
 ### 3. Users
 
 ```sh
-# Roles are defined in config.
-# vendor/bin/drush migrate:import upgrade_d7_user_role
 vendor/bin/drush migrate:import upgrade_d7_user
 ```
 
@@ -128,22 +141,9 @@ vendor/bin/drush sql:query "UPDATE node_field_data AS node JOIN node_field_revis
 vendor/bin/drush migrate:import upgrade_d7_comment
 ```
 
-### 6. Flags
-
-Clean up source database:
-
-```sql
--- Delete non-existing comments with upvotes.
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 1 AND entity_id NOT IN (SELECT cid FROM comment)"
--- Delete flagging of non-existing messages;
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 2 AND entity_id NOT IN (SELECT mid FROM message)"
--- Delete subscriptions on non-existing nodes.
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 3 AND entity_id NOT IN (SELECT nid FROM node)"
-```
+### 6. Flagging
 
 ```sh
-# Flags are define in config.
-# vendor/bin/drush migrate:import upgrade_d7_flag
 vendor/bin/drush migrate:import upgrade_d7_flagging
 ```
 

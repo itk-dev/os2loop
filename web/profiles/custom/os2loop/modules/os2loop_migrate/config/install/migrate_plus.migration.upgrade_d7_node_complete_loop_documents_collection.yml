@@ -13,6 +13,7 @@ cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
   - Content
+  - os2loop
 migration_group: migrate_drupal_7
 label: 'Node complete (Dokumentsamling)'
 source:
