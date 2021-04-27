@@ -36,6 +36,7 @@ Install the OS2Loop Migrate module:
 vendor/bin/drush --yes pm:enable os2loop_migrate
 ```
 
+<!--
 Import the migration configuration:
 
 ```sh
@@ -43,6 +44,7 @@ vendor/bin/drush --yes pm:enable config
 vendor/bin/drush --yes config:import --partial --source=profiles/custom/os2loop/modules/os2loop_migrate/config/install
 vendor/bin/drush --yes pm:uninstall config
 ```
+-->
 
 ## Clean up after migration
 
@@ -51,6 +53,15 @@ migration (this will also remove the migrations configuration):
 
 ```sh
 vendor/bin/drush --yes pm:uninstall migrate
+```
+
+## Reindex content
+
+```sh
+vendor/bin/drush cache:rebuild
+vendor/bin/drush search-api:status os2loop_search_db_index
+vendor/bin/drush search-api:reset-tracker os2loop_search_db_index
+vendor/bin/drush search-api:index os2loop_search_db_index
 ```
 
 Finally, i.e. when you're completely done with the migration, you can remove the
@@ -109,10 +120,6 @@ the following commands:
 
 ```sql
 vendor/bin/drush sql:query "UPDATE node_field_data AS node JOIN node_field_revision AS revision ON node.nid = revision.nid and node.vid = revision.vid SET node.title = '', revision.title = '' WHERE node.type = 'os2loop_question'"
-vendor/bin/drush cache:rebuild
-vendor/bin/drush search-api:status os2loop_search_db_index
-vendor/bin/drush search-api:reset-tracker os2loop_search_db_index
-vendor/bin/drush search-api:index os2loop_search_db_index
 ```
 
 ### 5. Comments

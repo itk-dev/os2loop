@@ -55,5 +55,5 @@ migration_dependencies:
     - upgrade_d7_node_complete_loop_documents_collection
     # Users can upvote comments.
     - upgrade_d7_comment
-    - upgrade_d7_message
+    # - upgrade_d7_message
 #   optional: {  }
