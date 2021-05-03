@@ -33,6 +33,12 @@ process:
       plugin: default_value
       source: language
       default_value: und
+    -
+      # Map undefined language to Danish.
+      plugin: static_map
+      bypass: true
+      map:
+        und: da
   title:
     -
       plugin: get
