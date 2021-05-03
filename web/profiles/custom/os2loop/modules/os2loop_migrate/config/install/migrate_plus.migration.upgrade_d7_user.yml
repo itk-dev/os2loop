@@ -80,16 +80,23 @@ process:
     #   migration: upgrade_d7_user_role
     #   source: roles
     -
+      # Load role map (rid => name) from migrate database
+      plugin: os2loop_lookup_map
+      source: roles
+      table: role
+      from: rid
+      to: name
+    -
       plugin: static_map
-      bypass: true
       map:
-        administrator: os2loop_user_administrator
-        document_author: os2loop_user_document_author
-        document_collection_editor: os2loop_user_document_collection_editor
-        documentation_coordinator: os2loop_user_documentation_coordinator
-        external_sources_editor: os2loop_user_external_sources_editor
-        manager: os2loop_user_manager
-        read_only: os2loop_user_read_only
+        'administrator': os2loop_user_administrator
+        'documentation coordinator': os2loop_user_documentation_coordinator
+        'manager': os2loop_user_manager
+        'read only': os2loop_user_read_only
+        'external sources editor': os2loop_user_external_sources_editor
+        'document author': os2loop_user_document_author
+        'document collection editor': os2loop_user_document_collection_editor
+      bypass: true
   user_picture:
     -
       plugin: default_value

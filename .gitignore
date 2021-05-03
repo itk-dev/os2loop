@@ -197,4 +197,6 @@ private-files/
 .vscode
 node_modules/
 yarn-error.log
-migrate/
+
+# Ignore migrate files.
+/migrate/
