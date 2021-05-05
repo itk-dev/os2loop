@@ -70,7 +70,6 @@ vendor/bin/drush --yes pm:uninstall migrate
 
 ```sh
 vendor/bin/drush cache:rebuild
-vendor/bin/drush search-api:status os2loop_search_db_index
 vendor/bin/drush search-api:reset-tracker os2loop_search_db_index
 vendor/bin/drush search-api:index os2loop_search_db_index
 ```
@@ -89,6 +88,10 @@ Migrate all Loop content:
 ```sh
 vendor/bin/drush migrate:import --tag=os2loop
 ```
+
+After running all migrations, complete the steps in [Document
+collections](#document-collections) and, optionally, [Empty question
+titles](#empty-question-titles).
 
 The actual migration of content should be performed in the following order.
 
@@ -122,17 +125,26 @@ vendor/bin/drush migrate:import upgrade_d7_node_complete_external_sources
 vendor/bin/drush migrate:import upgrade_d7_node_complete_post
 vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_document
 vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_collection
-# Custom drush command to migrate documents in collections.
+```
+
+#### Document collections
+
+Run
+
+```sh
 vendor/bin/drush os2loop:migrate:collection-documents
 ```
+
+to migrate documents in collections.
 
 #### Empty question titles
 
 Migrated questions use (part of) their body as title. To set empty titles, run
 the following commands:
 
-```sql
+```sh
 vendor/bin/drush sql:query "UPDATE node_field_data AS node JOIN node_field_revision AS revision ON node.nid = revision.nid and node.vid = revision.vid SET node.title = '', revision.title = '' WHERE node.type = 'os2loop_question'"
+vendor/bin/drush cache:rebuild
 ```
 
 ### 5. Comments
