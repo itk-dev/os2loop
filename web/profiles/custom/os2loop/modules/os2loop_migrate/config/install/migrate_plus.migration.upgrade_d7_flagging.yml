@@ -20,6 +20,13 @@ process:
       source: flagging_id
   flag_id:
     -
+      # Skip the message_read flagging.
+      plugin: skip_on_value
+      method: row
+      source: name
+      value:
+        - message_read
+    -
       plugin: get
       source: name
   entity_type:
