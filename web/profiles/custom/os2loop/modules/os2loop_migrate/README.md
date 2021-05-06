@@ -37,6 +37,8 @@ vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 
 vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 2 AND entity_id NOT IN (SELECT mid FROM message)"
 # Delete subscriptions on non-existing nodes.
 vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 3 AND entity_id NOT IN (SELECT nid FROM node)"
+# Delete subscriptions on non-existing taxonomies.
+vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 4 AND entity_id NOT IN (SELECT tid FROM taxonomy_term_data)"
 ```
 
 ### Enabling migration modules and configuration
