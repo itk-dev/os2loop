@@ -19,7 +19,7 @@
     }
 
     &.print {
-      @include link-icon("\f501");
+      @include link-icon("\f501", $text-color: $white);
     }
 
     &.fav {
@@ -43,15 +43,19 @@
     }
 
     &.share {
-      @include link-icon("\f52e");
+      @include link-icon("\f52e", $text-color: $white);
     }
 
     &.flag {
-      @include link-icon("\f3cc");
+      @include link-icon("\f3cc", $text-color: $white);
     }
 
     &.reply {
-      @include link-icon("\f51f");
+      @include link-icon("\f51f", $text-color: $white);
+    }
+
+    &.bell {
+      @include link-icon("\f18a", $subscribe, $dark-subscribe);
     }
 
     &.delete {
