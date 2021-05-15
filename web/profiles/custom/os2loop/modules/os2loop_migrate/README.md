@@ -91,7 +91,8 @@ Migrate all Loop content:
 vendor/bin/drush migrate:import --tag=os2loop
 ```
 
-After running all migrations, complete the steps in [Document
+After running all migrations, complete the steps in [Legacy media files in text
+fields](#legacy-media-files-in-text-fields), [Document
 collections](#document-collections) and, optionally, [Empty question
 titles](#empty-question-titles).
 
@@ -127,6 +128,17 @@ vendor/bin/drush migrate:import upgrade_d7_node_complete_external_sources
 vendor/bin/drush migrate:import upgrade_d7_node_complete_post
 vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_document
 vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_collection
+```
+
+#### Legacy media files in text fields
+
+To convert legacy media inserted in text fields, run
+
+```sh
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_collection', FALSE)"
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_document', FALSE)"
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
 ```
 
 #### Document collections
