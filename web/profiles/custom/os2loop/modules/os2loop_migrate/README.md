@@ -91,7 +91,8 @@ Migrate all Loop content:
 vendor/bin/drush migrate:import --tag=os2loop
 ```
 
-After running all migrations, complete the steps in [Legacy media files in text
+After running all migrations, complete the steps in [Rich text in
+questions](#rich-text-in-questions), [Legacy media files in text
 fields](#legacy-media-files-in-text-fields), [Document
 collections](#document-collections) and, optionally, [Empty question
 titles](#empty-question-titles).
@@ -130,6 +131,18 @@ vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_document
 vendor/bin/drush migrate:import upgrade_d7_node_complete_loop_documents_collection
 ```
 
+#### Rich text in questions
+
+If the
+[loop_post_wysiwyg](https://github.com/os2loop/profile/tree/main/modules/loop_post_wysiwyg)
+module is enabled in the migration source site, all questions must be updated to
+use rich text:
+
+```sh
+vendor/bin/drush sql:query "UPDATE node__os2loop_question_content SET os2loop_question_content_format ='os2loop_question_rich_text'"
+vendor/bin/drush cache:rebuild
+```
+
 #### Legacy media files in text fields
 
 To convert legacy media inserted in text fields, run
@@ -146,7 +159,7 @@ vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTags
 Run
 
 ```sh
-vendor/bin/drush os2loop:migrate:collection-documents
+vendor/bin/drush --yes os2loop:migrate:collection-documents
 ```
 
 to migrate documents in collections.
