@@ -13,6 +13,7 @@ use Drupal\user\Entity\User;
  * OS2Loop Mail notifications helper.
  */
 class Helper {
+  public const MODULE = 'os2loop_mail_notifications';
 
   /**
    * Message template names.
@@ -55,11 +56,19 @@ class Helper {
   private $database;
 
   /**
+   * The mail helper.
+   *
+   * @var MailHelper
+   */
+  private $mailHelper;
+
+  /**
    * Helper constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, Connection $database) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, Connection $database, MailHelper $mailHelper) {
     $this->entityTypeManager = $entityTypeManager;
     $this->database = $database;
+    $this->mailHelper = $mailHelper;
   }
 
   /**
@@ -82,17 +91,7 @@ class Helper {
         // Send mail to user.
         $groupedMessages = $this->groupMessages($userMessages);
 
-        var_export([
-          $user->getEmail(),
-        ]);
-        foreach ($groupedMessages as $type => $msgs) {
-          var_export([
-            $type,
-            array_map(static function (Message $message) {
-              return $message->getText();
-            }, $msgs),
-          ]);
-        }
+        $this->mailHelper->sendNotification($user, $groupedMessages);
       }
     }
   }
