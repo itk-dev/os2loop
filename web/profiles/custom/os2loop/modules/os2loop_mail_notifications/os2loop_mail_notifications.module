@@ -11,3 +11,10 @@
 function os2loop_mail_notifications_cron() {
   Drupal::service('os2loop_mail_notifications.helper')->cron();
 }
+
+/**
+ * Implements hook_mail().
+ */
+function os2loop_mail_notifications_mail($key, &$message, $params) {
+  Drupal::service('os2loop_mail_notifications.mail_helper')->mail($key, $message, $params);
+}
