@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Hooks for OS2Loop Mail notifications.
+ */
+
+use Drupal\os2loop_mail_notifications\Helper\Helper;
+
+/**
+ * Implements hook_cron().
+ */
+function os2loop_mail_notifications_cron() {
+  Drupal::service(Helper::class)->cron();
+}

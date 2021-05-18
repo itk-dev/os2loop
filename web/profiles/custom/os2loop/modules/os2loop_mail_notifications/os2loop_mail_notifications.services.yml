@@ -1,0 +1,3 @@
+services:
+  os2loop_mail_notifications.helper:
+    class: Drupal\os2loop_mail_notifications\Helper\Helper
