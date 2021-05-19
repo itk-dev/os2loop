@@ -86,6 +86,9 @@ class MailHelper {
 
   /**
    * Send notification.
+   *
+   * @return bool
+   *   True if mail is sent.
    */
   public function sendNotification(User $user, array $groupedMessages) {
     $lang_code = $user->getPreferredLangcode();
