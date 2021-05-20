@@ -2,12 +2,22 @@ $content-types: "os2loop_documents_collection", "os2loop_documents_document",
   "os2loop_external", "os2loop_page", "os2loop_post", "os2loop_question",
   "os2loop_section_page";
 
+// Run
+// `grep «icon name» ../node_modules/bootstrap-icons/font/bootstrap-icons.css`,
+// e.g. `grep question-square ../node_modules/bootstrap-icons/font/bootstrap-icons.css`,
+// to get the font index for an icon.
 $icons-content-types: (
+  // https://icons.getbootstrap.com/icons/files/
   "os2loop_documents_collection": "\f3c2",
+  // https://icons.getbootstrap.com/icons/file-text/
   "os2loop_documents_document": "\f3b9",
+  // https://icons.getbootstrap.com/icons/link/
   "os2loop_external": "\f471",
-  "os2loop_page": "\f112",
+  // https://icons.getbootstrap.com/icons/globe/
+  "os2loop_page": "\f3ee",
+  // https://icons.getbootstrap.com/icons/file-earmark-richtext/
   "os2loop_post": "\f383",
+  // https://icons.getbootstrap.com/icons/question-square/
   "os2loop_question": "\f50b",
   // "os2loop_section_page": "",
 );
@@ -15,10 +25,11 @@ $icons-content-types: (
 $comment-types: "os2loop_post_comment", "os2loop_question_answer";
 
 $icons-comment-types: (
-  // Chat bubble.
+  // https://icons.getbootstrap.com/icons/chat/
   "os2loop_post_comment": "\f268",
-  // Friendly exclamation.
-  "os2loop_question_answer": "\f4b8"
+  // https://icons.getbootstrap.com/icons/exclamation-square/ (to match sqare
+  // question icon).
+  "os2loop_question_answer": "\f339"
 );
 
 // svg content from node_modules/bootstrap-icons/icons/search.svg.
