@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div class="card member-card bg-light">
+  <div class="card-body">
+    <h2 class="card-title h5">
+      <a href="{{ url('entity.user.canonical', {'user': user.id}) }}">
+        {{ user.os2loop_user_given_name.value }} {{ user.os2loop_user_family_name.value }}
+      </a>
+    </h2>
+    <div class="card-text">
+      <div class="row">
+        <div class="col-md-3">
+          {% if user.os2loop_user_image.value is not empty %}
+            {{ content.os2loop_user_image }}
+          {% else %}
+            <i class="bi bi-file-person display-2"></i>
+          {% endif %}
+        </div>
+        <div class="col-md-9 pl-4">
+          {{ content.os2loop_user_job_title }}
+          <div class="row mb-3">{{ user.email }}</div>
+          {{ content.os2loop_user_phone_number }}
+          {{ content|without(
+            'os2loop_user_image',
+            'os2loop_user_areas_of_expertise',
+            'os2loop_user_address',
+            'os2loop_user_city',
+            'os2loop_user_given_name',
+            'os2loop_user_job_title',
+            'os2loop_user_family_name',
+            'os2loop_user_phone_number',
+            'os2loop_user_place',
+            'os2loop_user_postal_code',
+            'os2loop_user_professions',
+            'os2loop_user_biography'
+          ) }}
+        </div>
+      </div>
+      <div class="container mt-2">
+        {{ content.os2loop_user_place }}
+        {{ content.os2loop_user_address }}
+        <div class="row mb-3">{{ user.os2loop_user_postal_code.value }} {{ user.os2loop_user_city.value }}</div>
+      </div>
+    </div>
+  </div>
+</div>
