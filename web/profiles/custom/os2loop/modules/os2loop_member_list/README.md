@@ -16,7 +16,6 @@ If enabled, you can add a link to the member list, `/contacts`, in the main
 navigation menu (Structure > Menus > Main navigation
 [`/admin/structure/menu/manage/main`]) or put a link on a section page, say.
 
-
 ## Development
 
 ### Alter query function
