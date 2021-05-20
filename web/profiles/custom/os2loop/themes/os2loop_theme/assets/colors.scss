@@ -3,44 +3,48 @@
  * Os2loop colors. for now.
  */
 
-$primary-color: #41ab51;
-$secondary-color: #488cd4;
-$dark-secondary-color: darken($secondary-color, 5%);
-$primary: $primary-color;
+// Bootstrap colors
+$primary: #41ab51;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+
+// Black and white
 $black: #000;
 $white: #fff;
 
-// Colors
-$light-grey: #f2f2f2;
-$grey: #e4e4ec;
-$dark-grey: #2c3c44;
-$red: #c8545c;
+@import "contrast-function";
 
-$light-background: $light-grey;
-$dark-background: $grey;
-$field-title-color: $dark-grey;
-$text-color: $dark-grey;
+$light-background: $light;
+$dark-background: darken($light-background, 10%);
+$field-title-color: $dark;
+
+// Text color
+$text-color: $dark;
+$text-on-primary: contrast-color($primary);
 
 // Icon buttons
-$icon-base-color: $dark-grey;
-$delete: $red;
-$upvote: $primary-color;
-$follow-content: $primary-color;
-$edit: $secondary-color;
-$subscribe: $primary-color;
-$favourite: $primary-color;
+$icon-base-color: $secondary;
+$delete: $danger;
+$upvote: $primary;
+$follow-content: $primary;
+$edit: $secondary;
+$subscribe: $primary;
+$favourite: $primary;
 
-$dark-icon-base-color: darken($dark-grey, 10%);
-$dark-delete: darken($red, 10%);
-$dark-upvote: darken($primary-color, 10%);
-$dark-follow-content: darken($primary-color, 10%);
-$dark-edit: darken($secondary-color, 10%);
+$dark-icon-base-color: darken($icon-base-color, 10%);
+$dark-delete: darken($delete, 10%);
+$dark-upvote: darken($upvote, 10%);
+$dark-follow-content: darken($follow-content, 10%);
+$dark-edit: darken($edit, 10%);
 $dark-subscribe: darken($subscribe, 10%);
 $dark-favourite: darken($favourite, 10%);
 
-// Link color
-$link-color: #0056b3;
-
 // Attributes
-$highlighted: lighten($primary-color, 40%);
-$highlighted-border: $primary-color;
+$highlighted: lighten($primary, 40%);
+$highlighted-border: $primary;
+$link-color: #0056b3;

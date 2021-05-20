@@ -11,4 +11,11 @@
     max-width: 100%;
     object-fit: contain;
   }
+
+  &.image-position-right {
+    img {
+      float: right;
+      padding-left: $spacer;
+    }
+  }
 }
