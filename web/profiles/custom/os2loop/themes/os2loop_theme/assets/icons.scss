@@ -66,19 +66,6 @@ $search-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
       @include link-icon("\f37c", $follow-content, $dark-follow-content);
     }
 
-    &.subscribe {
-      background-color: $subscribe;
-      &:hover {
-        background-color: $dark-subscribe;
-      }
-    }
-    &.unsubscribe {
-      background-color: $subscribe;
-      &:hover {
-        background-color: $dark-subscribe;
-      }
-    }
-
     &.comment-share,
     &.share {
       @include link-icon("\f52e");
@@ -92,6 +79,14 @@ $search-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
     &.comment-reply,
     &.reply {
       @include link-icon("\f51f");
+    }
+
+    &.subscribe {
+      @include link-icon("\f18a", $subscribe, $dark-subscribe);
+    }
+
+    &.unsubscribe {
+      @include link-icon("\f189", $subscribe, $dark-subscribe);
     }
 
     &.comment-delete,
