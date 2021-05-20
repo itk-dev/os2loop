@@ -16,6 +16,10 @@
       padding: 4px;
       text-align: center;
 
+      &:hover {
+        text-decoration: none;
+      }
+
       &::before {
         color: contrast-color($color);
         font-size: 1.2em;

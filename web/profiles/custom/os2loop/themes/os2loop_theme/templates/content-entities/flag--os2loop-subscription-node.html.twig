@@ -24,7 +24,6 @@
 {# Set the remaining Flag CSS classes. #}
 {% set classes = [
     'icon',
-    'bell',
     'flag-' ~ flag.id()|clean_class,
     'js-flag-' ~ flag.id()|clean_class ~ '-' ~ flaggable.id(),
     action_class,
