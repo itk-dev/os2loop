@@ -1,5 +1,5 @@
 services:
-  Drupal\os2loop_media\Helper\Helper:
+  os2loop_media.helper:
     class: Drupal\os2loop_media\Helper\Helper
     arguments:
       - '@current_user'

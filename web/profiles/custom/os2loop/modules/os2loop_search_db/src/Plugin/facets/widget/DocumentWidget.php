@@ -42,7 +42,7 @@ class DocumentWidget extends CheckboxWidget implements ContainerFactoryPluginInt
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get(Helper::class)
+      $container->get('os2loop_documents.helper')
     );
   }
 

@@ -60,7 +60,7 @@ class Os2loopListsExpertBlock extends BlockBase implements ContainerFactoryPlugi
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get(Helper::class)
+      $container->get('os2loop_lists.helper')
     );
   }
 

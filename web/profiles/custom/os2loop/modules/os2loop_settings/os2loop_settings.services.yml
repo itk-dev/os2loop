@@ -1,17 +1,17 @@
 services:
-  Drupal\os2loop_settings\Settings:
+  os2loop_settings.settings:
     class: Drupal\os2loop_settings\Settings
     arguments:
       - '@config.factory'
       - '@entity_type.manager'
 
-  Drupal\os2loop_settings\Helper\Helper:
+  os2loop_settings.helper:
     class: Drupal\os2loop_settings\Helper\Helper
     arguments:
-      - '@Drupal\os2loop_settings\Settings'
+      - '@os2loop_settings.settings'
       - '@messenger'
 
-  Drupal\os2loop_settings\TwigExtension\TwigExtension:
+  os2loop_settings.twig_extension:
     class: Drupal\os2loop_settings\TwigExtension\TwigExtension
     arguments:
       - '@current_user'

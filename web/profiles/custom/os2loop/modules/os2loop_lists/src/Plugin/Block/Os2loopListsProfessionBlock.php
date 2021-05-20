@@ -60,7 +60,7 @@ class Os2loopListsProfessionBlock extends BlockBase implements ContainerFactoryP
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get(Helper::class)
+      $container->get('os2loop_lists.helper')
     );
   }
 

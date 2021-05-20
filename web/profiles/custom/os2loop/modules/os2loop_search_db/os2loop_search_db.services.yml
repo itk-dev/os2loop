@@ -1,5 +1,5 @@
 services:
-  Drupal\os2loop_search_db\Helper\Helper:
+  os2loop_search_db.helper:
     class: Drupal\os2loop_search_db\Helper\Helper
     arguments:
-      - '@Drupal\os2loop_settings\Settings'
+      - '@os2loop_settings.settings'
