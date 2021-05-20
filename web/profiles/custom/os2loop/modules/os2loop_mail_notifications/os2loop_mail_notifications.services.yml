@@ -11,6 +11,6 @@ services:
   os2loop_mail_notifications.mail_helper:
     class: Drupal\os2loop_mail_notifications\Helper\MailHelper
     arguments:
-      - '@config.factory'
-      - '@renderer'
+      - '@Drupal\os2loop_settings\Settings'
+      - '@token'
       - '@plugin.manager.mail'

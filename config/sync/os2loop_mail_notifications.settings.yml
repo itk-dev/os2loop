@@ -1,0 +1,2 @@
+template_subject: 'Notifications from [site:name]'
+template_body: "Hi [user:field_name]\r\n\r\nHere are your notifications from [site:name]:\r\n\r\n[os2loop_mail_notifications:notifications]\r\n\r\nBest regards,\r\nThe [site_name] Team\r\n"

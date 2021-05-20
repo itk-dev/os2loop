@@ -2,23 +2,20 @@
 
 namespace Drupal\os2loop_mail_notifications\Helper;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Mail\MailManagerInterface;
-use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\os2loop_mail_notifications\Form\SettingsForm;
+use Drupal\os2loop_settings\Settings;
+use Drupal\token\TokenInterface;
 use Drupal\user\Entity\User;
 
 /**
  * OS2Loop Mail notifications mail helper.
  */
 class MailHelper {
-  private const NOTIFICATION_MAIL = 'os2loop_mail_notifications_notification';
+  use StringTranslationTrait;
 
-  /**
-   * The site config.
-   *
-   * @var \Drupal\Core\Config\ImmutableConfig
-   */
-  private $siteConfig;
+  private const NOTIFICATION_MAIL = 'os2loop_mail_notifications_notification';
 
   /**
    * The module config.
@@ -28,11 +25,11 @@ class MailHelper {
   private $config;
 
   /**
-   * The renderer.
+   * The token.
    *
-   * @var \Drupal\Core\Render\RendererInterface
+   * @var \Drupal\token\TokenInterface
    */
-  private $renderer;
+  private $token;
 
   /**
    * The mail manager.
@@ -44,10 +41,9 @@ class MailHelper {
   /**
    * Helper constructor.
    */
-  public function __construct(ConfigFactoryInterface $configFactory, RendererInterface $renderer, MailManagerInterface $mailer) {
-    $this->siteConfig = $configFactory->get('system.site');
-    $this->config = $configFactory->get(Helper::MODULE . '.settings');
-    $this->renderer = $renderer;
+  public function __construct(Settings $settings, TokenInterface $token, MailManagerInterface $mailer) {
+    $this->config = $settings->getConfig(SettingsForm::SETTINGS_NAME);
+    $this->token = $token;
     $this->mailer = $mailer;
   }
 
@@ -55,33 +51,21 @@ class MailHelper {
    * Implements hook_mail().
    */
   public function mail($key, &$message, $params) {
-    $siteName = $this->siteConfig->get('name');
-    $siteMail = $this->siteConfig->get('mail');
-
     switch ($key) {
       case static::NOTIFICATION_MAIL:
-        $message['headers']['Reply-To'] = $siteMail;
-        // $message['headers']['Content-Type'] = 'text/html';
-        $message['headers']['From'] = sprintf('%s <%s>', $siteName, $siteMail);
-        $message['subject'] = $params['subject'];
-        $message['body'][] = $params['body'];
+        $body_template = $this->config->get('template_body');
+        $subject_template = $this->config->get('template_subject');
+        $data = [
+          'user' => $params['user'],
+          'os2loop_mail_notifications' => [
+            'notifications' => $params['notifications'],
+          ],
+        ];
+        $message['subject'] = $this->renderTemplate($subject_template, $data);
+        $message['body'][] = $this->renderTemplate($body_template, $data);
+
         break;
     }
-  }
-
-  /**
-   * Implements hook_theme().
-   */
-  public function theme($existing, $type, $theme, $path) {
-    return [
-      'os2loop_mail_notifications_notification' => [
-        'variables' => [
-          'site' => NULL,
-          'user' => NULL,
-          'grouped_messages' => NULL,
-        ],
-      ],
-    ];
   }
 
   /**
@@ -93,19 +77,9 @@ class MailHelper {
   public function sendNotification(User $user, array $groupedMessages) {
     $lang_code = $user->getPreferredLangcode();
 
-    $elements = [
-      [
-        '#theme' => 'os2loop_mail_notifications_notification',
-        '#user' => $user,
-        '#site' => $this->siteConfig->get(),
-        '#grouped_messages' => $groupedMessages,
-      ],
-    ];
-    $content = (string) $this->renderer->renderPlain($elements);
-
-    $parts = $this->getParts($content);
-    $params['subject'] = $parts['subject'];
-    $params['body'] = $parts['text/plain'];
+    $notifications = array_merge(...$groupedMessages);
+    $params['notifications'] = $notifications;
+    $params['user'] = $user;
 
     $result = $this->mailer->mail(Helper::MODULE, static::NOTIFICATION_MAIL, $user->getEmail(), $lang_code, $params, NULL, TRUE);
 
@@ -113,33 +87,49 @@ class MailHelper {
   }
 
   /**
-   * Get parts from rendered content.
-   *
-   * Blocks are separated by lines starting with 4 dashes followed by
-   * the mime type and some more dashes.
-   *
-   * The first block is the subject.
-   *
-   * @param string $content
-   *   The content.
-   *
-   * @return array
-   *   The parts.
+   * Renders content of a mail.
    */
-  private function getParts(string $content): array {
-    $blocks = array_map('trim',
-      preg_split('/-{4}([^-]+)-+/', $content, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)
-    );
-    array_unshift($blocks, 'subject');
+  public function renderTemplate($template, array $data) {
+    return $this->token->replace($template, $data, []);
+  }
 
-    $parts = [];
-    for ($i = 0, $iMax = count($blocks); $i < $iMax; $i += 2) {
-      $parts[$blocks[$i]] = $blocks[$i + 1];
+  /**
+   * Implements hook_tokens().
+   */
+  public function tokens($type, $tokens, array $data) {
+    $replacements = [];
+    if ('os2loop_mail_notifications' === $type && isset($data[$type])) {
+      foreach ($tokens as $name => $original) {
+        if (isset($data[$type][$name])) {
+          $replacements[$original] = $data[$type][$name];
+        }
+      }
     }
 
-    $parts['subject'] = trim(strip_tags($parts['subject']));
+    return $replacements;
+  }
 
-    return $parts;
+  /**
+   * Implements hook_token_info().
+   */
+  public function tokenInfo() {
+    return [
+      'types' => [
+        'os2loop_mail_notifications' => [
+          'name' => $this->t('Mail notifications'),
+          'description' => $this->t('Tokens related to mail notifications.'),
+          'needs-data' => 'os2loop_mail_notifications',
+        ],
+      ],
+      'tokens' => [
+        'os2loop_mail_notifications' => [
+          'notifications' => [
+            'name' => $this->t('The notifications'),
+            'description' => $this->t('The notifications.'),
+          ],
+        ],
+      ],
+    ];
   }
 
 }
