@@ -8,11 +8,25 @@
 use Drupal\user\Entity\User;
 
 /**
+ * Implements hook_preprocess().
+ *
  * Site logo for menu.
  */
 function os2loop_theme_preprocess(&$variables) {
   $variables['logopath'] = file_url_transform_relative(file_create_url(theme_get_setting('logo.url')));
 };
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function os2loop_theme_preprocess_html(&$variables) {
+  // Set page head title.
+  $path = \Drupal::routeMatch()->getRouteObject()->getPath();
+  if ('/user/{user}' === $path) {
+    $user = \Drupal::routeMatch()->getParameter('user');
+    $variables['head_title']['title'] = $user->os2loop_user_given_name->value . ' ' . $user->os2loop_user_family_name->value;
+  }
+}
 
 /**
  * Implements hook_preprocess_node().
@@ -27,6 +41,20 @@ function os2loop_theme_preprocess_node(&$variables) {
     }
     if ($variables['node']->getType() === 'os2loop_post') {
       $variables['comment_count'] = $variables['node']->get('os2loop_post_comments')->comment_count;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function os2loop_theme_preprocess_block(&$variables) {
+  // Set page title for user/[uid] pages.
+  if ('page_title_block' == $variables['plugin_id']) {
+    $path = \Drupal::routeMatch()->getRouteObject()->getPath();
+    if ('/user/{user}' === $path) {
+      $user = \Drupal::routeMatch()->getParameter('user');
+      $variables['content']['#title'] = $user->os2loop_user_given_name->value . ' ' . $user->os2loop_user_family_name->value;
     }
   }
 }
