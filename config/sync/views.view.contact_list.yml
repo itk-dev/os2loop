@@ -871,7 +871,20 @@ display:
           label: 'List display'
           plugin_id: display_link
       footer: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: 'No users.'
+            format: os2loop_question_answer_plain_text
+          plugin_id: text
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
