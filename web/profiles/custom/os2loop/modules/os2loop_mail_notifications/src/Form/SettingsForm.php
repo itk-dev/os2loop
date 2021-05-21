@@ -85,7 +85,7 @@ class SettingsForm extends ConfigFormBase {
       '#type' => 'textarea',
       '#rows' => 20,
       '#title' => $this->t('Body template for mail notifications'),
-      '#description' => $this->t('Use [os2loop_mail_notifications:notifications] to insert the actual list of notifications.'),
+      '#description' => $this->t('Use [os2loop_mail_notifications:messages] to insert the actual list of notification messages.'),
       '#required' => TRUE,
       '#default_value' => $config->get('template_body'),
       '#token_insert' => TRUE,
@@ -104,8 +104,8 @@ class SettingsForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $template = $form_state->getValue('template_body');
-    if (FALSE === strpos($template, '[os2loop_mail_notifications:notifications]')) {
-      $form_state->setErrorByName('template_body', $this->t('Please insert [os2loop_mail_notifications:notifications] in body template.'));
+    if (FALSE === strpos($template, '[os2loop_mail_notifications:messages]')) {
+      $form_state->setErrorByName('template_body', $this->t('Please insert [os2loop_mail_notifications:messages] in body template.'));
     }
   }
 

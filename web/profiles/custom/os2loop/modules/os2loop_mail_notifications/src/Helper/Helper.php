@@ -3,6 +3,7 @@
 namespace Drupal\os2loop_mail_notifications\Helper;
 
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -10,6 +11,8 @@ use Drupal\Core\State\StateInterface;
 use Drupal\message\Entity\Message;
 use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
+use Drupal\user\UserDataInterface;
+use Drupal\user\UserInterface;
 
 /**
  * OS2Loop Mail notifications helper.
@@ -21,6 +24,10 @@ class Helper {
    * How often to run our cron task in seconds.
    */
   private const CRON_INTERVAL = 24 * 60 * 60;
+
+  private const STATE_LAST_RUN_AT = 'last_run_at';
+  private const USER_NOTIFICATION_INTERVAL_FIELD_NAME = 'os2loop_mail_notifications_intvl';
+  private const USER_LAST_NOTIFIED_AT = 'last_notified_at';
 
   /**
    * Message template names.
@@ -56,6 +63,13 @@ class Helper {
   private $state;
 
   /**
+   * The user data.
+   *
+   * @var \Drupal\user\UserDataInterface
+   */
+  private $userData;
+
+  /**
    * The entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
@@ -86,8 +100,9 @@ class Helper {
   /**
    * Helper constructor.
    */
-  public function __construct(StateInterface $state, EntityTypeManagerInterface $entityTypeManager, Connection $database, MailHelper $mailHelper, LoggerChannelFactoryInterface $loggerFactory) {
+  public function __construct(StateInterface $state, UserDataInterface $userData, EntityTypeManagerInterface $entityTypeManager, Connection $database, MailHelper $mailHelper, LoggerChannelFactoryInterface $loggerFactory) {
     $this->state = $state;
+    $this->userData = $userData;
     $this->entityTypeManager = $entityTypeManager;
     $this->database = $database;
     $this->mailHelper = $mailHelper;
@@ -98,14 +113,15 @@ class Helper {
    * Implements hook_cron().
    */
   public function cron() {
-    $now = new \DateTimeImmutable();
+    $now = new DrupalDateTime('now', 'UTC');
     $lastRunAt = $this->getLastRunAt();
 
     if ($now->getTimestamp() - $lastRunAt->getTimestamp() < static::CRON_INTERVAL) {
       return;
     }
 
-    $this->sendNotifications();
+    $this->userData->delete(static::MODULE);
+    $this->sendNotifications($now);
 
     $this->setLastRunAt($now);
   }
@@ -113,27 +129,72 @@ class Helper {
   /**
    * Send notifications.
    */
-  public function sendNotifications() {
-    $messages = $this->getMessages();
-    $users = $this->getUsers();
+  public function sendNotifications(DrupalDateTime $now) {
+    $notificationUsers = $this->getNotificationUsers();
 
-    foreach ($users as $user) {
-      if (0 === $this->getNotificationInterval($user)) {
-        continue;
-      }
+    foreach ($notificationUsers as $interval => $users) {
+      $startTime = DrupalDateTime::createFromTimestamp($now->getTimestamp() - $interval);
 
-      $userMessages = $this->getUserMessages($user, $messages);
-      if (!empty($userMessages)) {
-        $groupedMessages = $this->groupMessages($userMessages);
-        $success = $this->mailHelper->sendNotification($user, $groupedMessages);
-        if ($success) {
-          $this->logger->info(sprintf('Notification mail sent to %s', $user->getEmail()));
+      // The messages generated between "now" and "interval seconds ago". Defer
+      // loading until actually needed.
+      $messages = NULL;
+      foreach ($users as $user) {
+        if ($this->getUserLastNotifiedAt($user) > $startTime) {
+          continue;
         }
-        else {
-          $this->logger->error(sprintf('Error sending motification mail to %s', $user->getEmail()));
+        if (NULL === $messages) {
+          $messages = $this->getMessages($startTime, $now);
+        }
+        $userMessages = $this->getUserMessages($user, $messages);
+        if (!empty($userMessages)) {
+          $groupedMessages = $this->groupMessages($userMessages);
+          $success = $this->mailHelper->sendNotification($user, $groupedMessages);
+          if ($success) {
+            $this->logger->info(sprintf('Notification mail sent to %s', $user->getEmail()));
+            $this->setUserLastNotifiedAt($user, $now);
+          }
+          else {
+            $this->logger->error(sprintf('Error sending notification mail to %s', $user->getEmail()));
+          }
         }
       }
     }
+  }
+
+  /**
+   * Map from user id to user's last notification time.
+   *
+   * @var array
+   */
+  private $userLastNotifiedAt;
+
+  /**
+   * Get user last notified at.
+   *
+   * @param \Drupal\user\UserInterface $user
+   *   The user.
+   *
+   * @return \Drupal\Core\Datetime\DrupalDateTime
+   *   The last notification time.
+   */
+  private function getUserLastNotifiedAt(UserInterface $user) {
+    if (NULL === $this->userLastNotifiedAt) {
+      $this->userLastNotifiedAt = $this->userData->get(static::MODULE, NULL, static::USER_LAST_NOTIFIED_AT);
+    }
+
+    return $this->userLastNotifiedAt[$user->id()] ?? new DrupalDateTime('@0');
+  }
+
+  /**
+   * Set user last notified at.
+   *
+   * @param \Drupal\user\UserInterface $user
+   *   The user.
+   * @param \Drupal\Core\Datetime\DrupalDateTime $notifiedAt
+   *   The notification time.
+   */
+  private function setUserLastNotifiedAt(UserInterface $user, DrupalDateTime $notifiedAt) {
+    $this->userData->set(static::MODULE, $user->id(), static::USER_LAST_NOTIFIED_AT, $notifiedAt);
   }
 
   /**
@@ -170,12 +231,13 @@ class Helper {
    * @return \Drupal\message\MessageInterface[]
    *   The messages.
    */
-  private function getMessages() {
+  private function getMessages(DrupalDateTime $from, DrupalDateTime $to) {
     $storage = $this->entityTypeManager
       ->getStorage('message');
     $ids = $storage
       ->getQuery()
       ->condition('template', static::$messageTemplateNames, 'IN')
+      ->condition('created', [$from->getTimestamp(), $to->getTimestamp()], 'BETWEEN')
       ->sort('created', 'DESC')
       ->execute();
 
@@ -184,21 +246,37 @@ class Helper {
   }
 
   /**
-   * Get users that subscribe to content or taxonomy terms.
+   * Get users that may receive notifications.
    *
-   * @return \Drupal\user\Entity\User[]
-   *   The users.
+   * Get users that subscribe to content or taxonomy terms and have set a
+   * notification interval.
+   *
+   * @return array
+   *   The users grouped by notification interval.
    */
-  private function getUsers() {
-    $ids = $this->database
+  private function getNotificationUsers() {
+    $subscriptionUserIds = $this->database
       ->select('flagging', 'f')
       ->fields('f', ['uid'])
       ->condition('flag_id', static::$subscriptionFlagNames, 'IN')
       ->execute()
       ->fetchAllKeyed(0, 0);
 
+    $notificationUserIds = $this->entityTypeManager
+      ->getStorage('user')
+      ->getQuery()
+      ->condition(static::USER_NOTIFICATION_INTERVAL_FIELD_NAME, 0, '>')
+      ->execute();
+
+    // Group users by notification interval.
+    $groups = [];
     // @phpstan-ignore-next-line
-    return $this->entityTypeManager->getStorage('user')->loadMultiple($ids);
+    $users = $this->entityTypeManager->getStorage('user')->loadMultiple(array_intersect($subscriptionUserIds, $notificationUserIds));
+    foreach ($users as $user) {
+      $groups[$this->getNotificationInterval($user)][] = $user;
+    }
+
+    return $groups;
   }
 
   /**
@@ -329,33 +407,27 @@ class Helper {
    *   The user.
    */
   private function getNotificationInterval(User $user): int {
-    return (int) ($user->get('os2loop_mail_notifications_intvl')->getValue()[0]['value'] ?: 0);
+    return (int) ($user->get(static::USER_NOTIFICATION_INTERVAL_FIELD_NAME)->getValue()[0]['value'] ?: 0);
   }
 
   /**
    * Get last run at from state.
    *
-   * @return \DateTimeInterface
+   * @return \Drupal\Core\Datetime\DrupalDateTime
    *   The time.
    */
-  private function getLastRunAt(): \DateTimeInterface {
-    $value = $this->getStateValue('last_run_at');
-    try {
-      return new \DateTimeImmutable($value ?: '1970-01-01T00:00:00');
-    }
-    catch (\Exception $exception) {
-      return new \DateTimeImmutable('1970-01-01T00:00:00');
-    }
+  private function getLastRunAt(): DrupalDateTime {
+    return $this->getStateValue(static::STATE_LAST_RUN_AT, new DrupalDateTime('@0'));
   }
 
   /**
    * Set last run at in state.
    *
-   * @param \DateTimeInterface $time
+   * @param \Drupal\Core\Datetime\DrupalDateTime $time
    *   The time.
    */
-  private function setLastRunAt(\DateTimeInterface $time) {
-    $this->setStateValue('last_run_at', $time->format($time::ATOM));
+  private function setLastRunAt(DrupalDateTime $time) {
+    $this->setStateValue(static::STATE_LAST_RUN_AT, $time);
   }
 
   /**

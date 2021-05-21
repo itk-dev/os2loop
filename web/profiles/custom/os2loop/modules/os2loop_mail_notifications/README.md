@@ -8,7 +8,6 @@ A cron task is run daily to send out notifications.
 ## Force run
 
 ```php
-vendor/bin/drush php-eval "Drupal::state()->set('os2loop_mail_notifications', ['last_run_at' => '1970-01-01'] + Drupal::state()->get('os2loop_mail_notifications', []))"
-vendor/bin/drush php-eval "var_export(Drupal::state()->get('os2loop_mail_notifications'))"
-vendor/bin/drush php-eval "Drupal::service('os2loop_mail_notifications.helper')->cron()"
+# Reset state and user data and run cron.
+vendor/bin/drush php-eval "Drupal::state()->set('os2loop_mail_notifications', []); Drupal::service('user.data')->delete('os2loop_mail_notifications'); Drupal::service('os2loop_mail_notifications.helper')->cron()"
 ```
