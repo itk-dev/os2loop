@@ -101,10 +101,22 @@ The actual migration of content should be performed in the following order.
 
 ### 1. Files
 
+Copy source files :
+
 ```sh
 mkdir -p migrate/sites/default
 rsync --archive --compress --delete «old site root»/sites/default/files migrate/sites/default
+
+Migrate files:
+
+```sh
 vendor/bin/drush migrate:import upgrade_d7_file
+```
+
+Create media entities and connect to content:
+
+```sh
+vendor/bin/drush os2loop:migrate:files-to-media
 ```
 
 ### 2. Taxonomies
