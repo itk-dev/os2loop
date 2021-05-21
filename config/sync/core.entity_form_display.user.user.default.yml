@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.os2loop_mail_notifications_intvl
     - field.field.user.user.os2loop_user_address
     - field.field.user.user.os2loop_user_areas_of_expertise
     - field.field.user.user.os2loop_user_biography
@@ -132,6 +133,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  os2loop_mail_notifications_intvl:
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   os2loop_user_address:
     type: string_textfield
     weight: 1

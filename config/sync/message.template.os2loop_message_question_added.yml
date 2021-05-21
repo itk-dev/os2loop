@@ -9,7 +9,7 @@ label: 'New question added'
 description: message_type
 text:
   -
-    value: 'There is a new question to a subject you follow <a href="/node/[message:os2loop_message_node_refer:entity:nid]">[message:os2loop_message_node_refer:entity:title]</a>'
+    value: 'There is a new question to a subject you follow: <a href="/node/[message:os2loop_message_node_refer:entity:nid]">[message:os2loop_message_node_refer:entity:title]</a>'
     format: os2loop_message_message
 settings:
   'token options':
