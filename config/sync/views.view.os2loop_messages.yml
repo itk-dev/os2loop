@@ -367,7 +367,20 @@ display:
       title: Messages
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: 'You have no messages.'
+            format: os2loop_question_answer_plain_text
+          plugin_id: text
       relationships:
         flag_relationship:
           id: flag_relationship
@@ -482,6 +495,7 @@ display:
         filter_groups: false
         title: false
         sorts: false
+        header: false
       row:
         type: 'entity:message'
       pager:
@@ -673,6 +687,7 @@ display:
             label: ''
           granularity: second
           plugin_id: date
+      header: {  }
     cache_metadata:
       max-age: -1
       contexts:
