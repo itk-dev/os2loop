@@ -6,6 +6,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\node\Entity\NodeType;
 use Drupal\os2loop_settings\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -71,7 +72,7 @@ class SettingsForm extends ConfigFormBase {
 
     $form['subject_template'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Subject template for share with a friend subject'),
+      '#title' => $this->t('Subject template'),
       '#required' => TRUE,
       '#default_value' => $config->get('template_subject'),
     ];
@@ -83,7 +84,7 @@ class SettingsForm extends ConfigFormBase {
 
     $form['email_template'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('Email template for share with a friend body'),
+      '#title' => $this->t('Email template'),
       '#required' => TRUE,
       '#default_value' => $config->get('template_body'),
       '#token_insert' => TRUE,
@@ -92,6 +93,19 @@ class SettingsForm extends ConfigFormBase {
     $form['email_template_tokens'] = [
       '#theme' => 'token_tree_link',
       '#token_types' => ['user', 'node', 'os2loop_share_with_a_friend'],
+    ];
+
+    $nodeTypes = $this->settings->getContentTypes();
+    $options = array_map(static function (NodeType $nodeType) {
+      return $nodeType->label();
+    }, $nodeTypes);
+
+    $form['node_types'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Enable on content types'),
+      '#description' => $this->t('Enable share with a friend on these content types'),
+      '#options' => $options,
+      '#default_value' => $config->get('node_types') ?: [],
     ];
 
     return parent::buildForm($form, $form_state);
@@ -104,6 +118,7 @@ class SettingsForm extends ConfigFormBase {
     $this->configFactory->getEditable(static::SETTINGS_NAME)
       ->set('template_subject', $form_state->getValue('subject_template'))
       ->set('template_body', $form_state->getValue('email_template'))
+      ->set('node_types', $form_state->getValue('node_types'))
       ->save();
 
     parent::submitForm($form, $form_state);
