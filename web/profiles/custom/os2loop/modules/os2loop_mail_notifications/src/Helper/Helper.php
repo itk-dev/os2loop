@@ -120,7 +120,6 @@ class Helper {
       return;
     }
 
-    $this->userData->delete(static::MODULE);
     $this->sendNotifications($now);
 
     $this->setLastRunAt($now);
