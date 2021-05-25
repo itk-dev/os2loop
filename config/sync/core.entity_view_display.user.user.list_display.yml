@@ -147,6 +147,7 @@ hidden:
   entity_print_view_word_docx: true
   langcode: true
   member_for: true
+  os2loop_mail_notifications_intvl: true
   os2loop_user_external_list: true
   os2loop_user_internal_list: true
   search_api_excerpt: true
