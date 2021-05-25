@@ -1,0 +1,8 @@
+services:
+  os2loop_migrate.commands:
+    class: Drupal\os2loop_migrate\Commands\MigrateCommands
+    arguments:
+      - '@entity_type.manager'
+      - '@os2loop_documents.collection_helper'
+    tags:
+      - { name: drush.command }
