@@ -11,3 +11,10 @@
 function os2loop_share_with_a_friend_mail($key, &$message, $params) {
   Drupal::service('os2loop_share_with_a_friend.mail_helper')->mail($key, $message, $params);
 }
+
+/**
+ * Implements hook_os2loop_settings_is_granted().
+ */
+function os2loop_share_with_a_friend_os2loop_settings_is_granted(string $attribute, $object = NULL) {
+  return Drupal::service('os2loop_share_with_a_friend.helper')->isGranted($attribute, $object);
+}

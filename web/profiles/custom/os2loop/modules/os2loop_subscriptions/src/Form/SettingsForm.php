@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\os2loop_share_with_a_friend\Form;
+namespace Drupal\os2loop_subscriptions\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
@@ -11,7 +11,7 @@ use Drupal\os2loop_settings\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Configure share with a friend admin settings for this site.
+ * Settings for os2loop_subscriptions.
  */
 class SettingsForm extends ConfigFormBase {
   use StringTranslationTrait;
@@ -21,7 +21,7 @@ class SettingsForm extends ConfigFormBase {
    *
    * @var string
    */
-  public const SETTINGS_NAME = 'os2loop_share_with_a_friend.settings';
+  public const SETTINGS_NAME = 'os2loop_subscriptions.settings';
 
   /**
    * The settings.
@@ -70,42 +70,25 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->settings->getConfig(static::SETTINGS_NAME);
 
-    $form['subject_template'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Subject template'),
-      '#required' => TRUE,
-      '#default_value' => $config->get('template_subject'),
-    ];
-
-    $form['subject_template_tokens'] = [
-      '#theme' => 'token_tree_link',
-      '#token_types' => ['user', 'node', 'os2loop_share_with_a_friend'],
-    ];
-
-    $form['email_template'] = [
-      '#type' => 'textarea',
-      '#title' => $this->t('Email template'),
-      '#required' => TRUE,
-      '#default_value' => $config->get('template_body'),
-      '#token_insert' => TRUE,
-    ];
-
-    $form['email_template_tokens'] = [
-      '#theme' => 'token_tree_link',
-      '#token_types' => ['user', 'node', 'os2loop_share_with_a_friend'],
-    ];
-
     $nodeTypes = $this->settings->getContentTypes();
     $options = array_map(static function (NodeType $nodeType) {
       return $nodeType->label();
     }, $nodeTypes);
 
-    $form['node_types'] = [
+    $form['subscribe_node_types'] = [
       '#type' => 'checkboxes',
-      '#title' => $this->t('Enable on content types'),
-      '#description' => $this->t('Enable share with a friend on these content types'),
+      '#title' => $this->t('Enable subscribe on content types'),
+      '#description' => $this->t('Enable subscribe on these content types'),
       '#options' => $options,
-      '#default_value' => $config->get('node_types') ?: [],
+      '#default_value' => $config->get('subscribe_node_types') ?: [],
+    ];
+
+    $form['favourite_node_types'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Enable favourite on content types'),
+      '#description' => $this->t('Enable favourite on these content types'),
+      '#options' => $options,
+      '#default_value' => $config->get('favourite_node_types') ?: [],
     ];
 
     return parent::buildForm($form, $form_state);
@@ -116,9 +99,8 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable(static::SETTINGS_NAME)
-      ->set('template_subject', $form_state->getValue('subject_template'))
-      ->set('template_body', $form_state->getValue('email_template'))
-      ->set('node_types', $form_state->getValue('node_types'))
+      ->set('subscribe_node_types', $form_state->getValue('subscribe_node_types'))
+      ->set('favourite_node_types', $form_state->getValue('favourite_node_types'))
       ->save();
 
     parent::submitForm($form, $form_state);

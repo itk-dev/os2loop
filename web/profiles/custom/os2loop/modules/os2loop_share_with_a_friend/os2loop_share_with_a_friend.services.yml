@@ -4,3 +4,8 @@ services:
     arguments:
       - '@token'
       - '@Drupal\os2loop_settings\Settings'
+
+  os2loop_share_with_a_friend.helper:
+    class: Drupal\os2loop_share_with_a_friend\Helper\Helper
+    arguments:
+      - '@Drupal\os2loop_settings\Settings'

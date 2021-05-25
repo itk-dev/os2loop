@@ -2,8 +2,12 @@
 
 namespace Drupal\os2loop_flag_content\Form;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\NodeType;
+use Drupal\os2loop_settings\Settings;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configure flag content admin settings for this site.
@@ -16,6 +20,31 @@ class SettingsForm extends ConfigFormBase {
    * @var string
    */
   const SETTINGS_NAME = 'os2loop_flag_content.settings';
+
+  /**
+   * The settings.
+   *
+   * @var \Drupal\os2loop_settings\Settings
+   */
+  private $settings;
+
+  /**
+   * Constructor.
+   */
+  public function __construct(ConfigFactoryInterface $config_factory, Settings $settings) {
+    parent::__construct($config_factory);
+    $this->settings = $settings;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('config.factory'),
+      $container->get(Settings::class)
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -41,6 +70,7 @@ class SettingsForm extends ConfigFormBase {
 
     $form['reasons'] = [
       '#type' => 'textarea',
+      '#required' => TRUE,
       '#title' => $this->t('Reasons'),
       '#description' => $this->t('Write the possible reasons, separated by a newline'),
       '#default_value' => $config->get('reasons'),
@@ -48,14 +78,27 @@ class SettingsForm extends ConfigFormBase {
 
     $form['to_email'] = [
       '#type' => 'email',
+      '#required' => TRUE,
       '#title' => $this->t('Email address of recipient'),
       '#default_value' => $config->get('to_email'),
+    ];
+
+    $form['subject_template'] = [
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#title' => $this->t('Subject template'),
+      '#default_value' => $config->get('template_subject'),
+    ];
+
+    $form['subject_template_tokens'] = [
+      '#theme' => 'token_tree_link',
+      '#token_types' => ['user', 'node', 'os2loop_flag_content'],
     ];
 
     $form['email_template'] = [
       '#type' => 'textarea',
       '#required' => TRUE,
-      '#title' => $this->t('Email template for flag content body'),
+      '#title' => $this->t('Email template'),
       '#default_value' => $config->get('template_body'),
     ];
 
@@ -64,16 +107,17 @@ class SettingsForm extends ConfigFormBase {
       '#token_types' => ['user', 'node', 'os2loop_flag_content'],
     ];
 
-    $form['subject_template'] = [
-      '#type' => 'textarea',
-      '#required' => TRUE,
-      '#title' => $this->t('Subject template for flag content subject'),
-      '#default_value' => $config->get('template_subject'),
-    ];
+    $nodeTypes = $this->settings->getContentTypes();
+    $options = array_map(static function (NodeType $nodeType) {
+      return $nodeType->label();
+    }, $nodeTypes);
 
-    $form['subject_template_tokens'] = [
-      '#theme' => 'token_tree_link',
-      '#token_types' => ['user', 'node', 'os2loop_flag_content'],
+    $form['node_types'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Enable on content types'),
+      '#description' => $this->t('Enable flagging on these content types'),
+      '#options' => $options,
+      '#default_value' => $config->get('node_types') ?: [],
     ];
 
     return parent::buildForm($form, $form_state);
@@ -90,6 +134,7 @@ class SettingsForm extends ConfigFormBase {
       ->set('to_email', $form_state->getValue('to_email'))
       ->set('template_subject', $form_state->getValue('subject_template'))
       ->set('template_body', $form_state->getValue('email_template'))
+      ->set('node_types', $form_state->getValue('node_types'))
       ->save();
 
     parent::submitForm($form, $form_state);

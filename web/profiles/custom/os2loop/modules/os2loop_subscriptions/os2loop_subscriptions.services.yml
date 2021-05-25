@@ -1,0 +1,5 @@
+services:
+  os2loop_subscriptions.helper:
+    class: Drupal\os2loop_subscriptions\Helper\Helper
+    arguments:
+      - '@Drupal\os2loop_settings\Settings'

@@ -114,7 +114,7 @@ class FlagContentForm extends FormBase implements ContainerInjectionInterface {
 
     $form['reason'] = [
       '#type' => 'select',
-      '#title' => $this->t('Reasons'),
+      '#title' => $this->t('Reason'),
       '#required' => TRUE,
       '#options' => $reasons,
       '#empty_option' => $this->t('Pick a reason'),
