@@ -72,6 +72,7 @@ class SettingsForm extends ConfigFormBase {
     $form['enable_rich_text'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable rich text in questions'),
+      '#description' => $this->t('<strong>Note</strong>: This has effect for new questions only. Existing questions will keep their current text format.'),
       '#default_value' => $config->get('enable_rich_text'),
     ];
 

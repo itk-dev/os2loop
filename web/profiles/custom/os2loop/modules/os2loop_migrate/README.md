@@ -62,7 +62,7 @@ vendor/bin/drush --yes pm:uninstall config
 ## Clean up after migration
 
 After completing the migration, you should uninstall the modules used for the
-migration (this will also remove the migrations configuration):
+migration (this will also remove the migration configuration):
 
 ```sh
 vendor/bin/drush --yes pm:uninstall migrate
@@ -85,38 +85,46 @@ for t in $(vendor/bin/drush sql:query "SHOW TABLES LIKE 'migrate\_%'"); do vendo
 
 ## Migrating content
 
+The migration assumes that all media files are available in the `migrate` folder:
+
+```sh
+mkdir -p migrate/sites/default
+rsync --archive --compress --delete «old site root»/sites/default/files migrate/sites/default
+```
+
 Migrate all Loop content:
 
 ```sh
 vendor/bin/drush migrate:import --tag=os2loop
 ```
 
-After running all migrations, complete the steps in [Rich text in
-questions](#rich-text-in-questions), [Legacy media files in text
+After running all migrations, complete the steps in [Legacy media files in text
 fields](#legacy-media-files-in-text-fields), [Document
-collections](#document-collections) and, optionally, [Empty question
+collections](#document-collections) and [Create media entities and connect to
+content](#create-media-entities-and-connect-to-content):
+
+```sh
+# Legacy media files in text fields
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_collection', FALSE)"
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_document', FALSE)"
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
+vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
+# Document collections
+vendor/bin/drush --yes os2loop:migrate:collection-documents
+# Create media entities and connect to content
+vendor/bin/drush os2loop:migrate:files-to-media
+```
+
+Optionally, complete the steps in [Rich text in
+questions](#rich-text-in-questions) and [Empty question
 titles](#empty-question-titles).
 
 The actual migration of content should be performed in the following order.
 
 ### 1. Files
 
-Copy source files :
-
-```sh
-mkdir -p migrate/sites/default
-rsync --archive --compress --delete «old site root»/sites/default/files migrate/sites/default
-
-Migrate files:
-
 ```sh
 vendor/bin/drush migrate:import upgrade_d7_file
-```
-
-Create media entities and connect to content:
-
-```sh
-vendor/bin/drush os2loop:migrate:files-to-media
 ```
 
 ### 2. Taxonomies
@@ -155,6 +163,14 @@ vendor/bin/drush sql:query "UPDATE node__os2loop_question_content SET os2loop_qu
 vendor/bin/drush cache:rebuild
 ```
 
+If rich text should be enabled for *new* questions, go to
+`/admin/config/os2loop/os2loop_question/settings` and check “Enable rich text in
+questions” or run
+
+```sh
+vendor/bin/drush --yes config:set os2loop_question.settings enable_rich_text 1
+```
+
 #### Legacy media files in text fields
 
 To convert legacy media inserted in text fields, run
@@ -175,6 +191,12 @@ vendor/bin/drush --yes os2loop:migrate:collection-documents
 ```
 
 to migrate documents in collections.
+
+#### Create media entities and connect to content
+
+```sh
+vendor/bin/drush os2loop:migrate:files-to-media
+```
 
 #### Empty question titles
 
