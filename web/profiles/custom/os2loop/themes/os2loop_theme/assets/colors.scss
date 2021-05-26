@@ -4,47 +4,47 @@
  */
 
 // Bootstrap colors
-$primary: #41ab51;
-$secondary: #6c757d;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
-$light: #f8f9fa;
-$dark: #343a40;
+$primary: #41ab51 !default;
+$secondary: #6c757d !default;
+$success: #28a745 !default;
+$info: #17a2b8 !default;
+$warning: #ffc107 !default;
+$danger: #dc3545 !default;
+$light: #f8f9fa !default;
+$dark: #343a40 !default;
 
 // Black and white
-$black: #000;
-$white: #fff;
+$black: #000 !default;
+$white: #fff !default;
 
 @import "contrast-function";
 
-$light-background: $light;
-$dark-background: darken($light-background, 10%);
-$field-title-color: $dark;
+$light-background: $light !default;
+$dark-background: darken($light-background, 10%) !default;
+$field-title-color: $dark !default;
 
 // Text color
-$text-color: $dark;
-$text-on-primary: contrast-color($primary);
+$text-color: $dark !default;
+$text-on-primary: contrast-color($primary) !default;
 
 // Icon buttons
-$icon-base-color: $secondary;
-$delete: $danger;
-$upvote: $primary;
-$follow-content: $primary;
-$edit: $secondary;
-$subscribe: $primary;
-$favourite: $primary;
+$icon-base-color: $secondary !default;
+$delete: $danger !default;
+$upvote: $primary !default;
+$follow-content: $primary !default;
+$edit: $secondary !default;
+$subscribe: $primary !default;
+$favourite: $primary !default;
 
-$dark-icon-base-color: darken($icon-base-color, 10%);
-$dark-delete: darken($delete, 10%);
-$dark-upvote: darken($upvote, 10%);
-$dark-follow-content: darken($follow-content, 10%);
-$dark-edit: darken($edit, 10%);
-$dark-subscribe: darken($subscribe, 10%);
-$dark-favourite: darken($favourite, 10%);
+$dark-icon-base-color: darken($icon-base-color, 10%) !default;
+$dark-delete: darken($delete, 10%) !default;
+$dark-upvote: darken($upvote, 10%) !default;
+$dark-follow-content: darken($follow-content, 10%) !default;
+$dark-edit: darken($edit, 10%) !default;
+$dark-subscribe: darken($subscribe, 10%) !default;
+$dark-favourite: darken($favourite, 10%) !default;
 
 // Attributes
-$highlighted: lighten($primary, 40%);
-$highlighted-border: $primary;
-$link-color: #0056b3;
+$highlighted: lighten($primary, 40%) !default;
+$highlighted-border: $primary !default;
+$link-color: #0056b3 !default;
