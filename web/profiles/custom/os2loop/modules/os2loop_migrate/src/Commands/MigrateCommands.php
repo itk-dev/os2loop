@@ -191,6 +191,20 @@ class MigrateCommands extends DrushCommands {
             'media_field_name' => 'os2loop_question_file',
           ],
         ],
+
+        'page' => [
+          'media' => [
+            'bundle' => 'os2loop_media_file',
+            'field_name' => 'field_media_file',
+            'fields' => [
+              'target_id' => 'field_file_upload_fid',
+            ],
+          ],
+          'entity' => [
+            'bundle' => 'node',
+            'media_field_name' => 'os2loop_page_image',
+          ],
+        ],
       ],
 
       'Comment files' => [
@@ -220,6 +234,10 @@ class MigrateCommands extends DrushCommands {
         ['return' => Database::RETURN_STATEMENT]
       )->fetchAll();
       foreach ($items as $item) {
+        if (!isset($migration[$item->bundle])) {
+          $this->output()->writeln(sprintf('Unhandled bundle: %s', $item->bundle));
+          continue;
+        }
         $data = [
           'bundle' => $migration[$item->bundle]['media']['bundle'],
         ];
