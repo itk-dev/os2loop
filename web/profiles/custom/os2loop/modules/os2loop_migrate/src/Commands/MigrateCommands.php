@@ -53,9 +53,10 @@ class MigrateCommands extends DrushCommands {
    * @usage os2loop:migrate:collections-documents
    */
   public function migrateCollectionDocuments() {
-    if (!$this->confirm('Migrate documents in collections?')) {
+    if (!$this->confirm('Migrate documents in collections?', TRUE)) {
       return;
     }
+
     // Remove all existing items.
     $this->output()->writeln('Removing all document collection items');
     $items = $this->documentCollectionItemStorage->loadMultiple();
