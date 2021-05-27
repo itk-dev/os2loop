@@ -23,9 +23,9 @@ process:
       # Skip the message_read flagging.
       plugin: skip_on_value
       method: row
-      source: name
+      source: fid
       value:
-        - message_read
+        - 2
     -
       plugin: get
       source: name
