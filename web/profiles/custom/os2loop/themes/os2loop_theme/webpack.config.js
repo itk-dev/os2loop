@@ -27,6 +27,13 @@ Encore
   .addEntry("app", "./assets/app.js")
   .addEntry("pdf", "./assets/pdf/pdf.scss")
 
+  // Color templates
+  .addEntry("default", "./assets/color-templates/default.scss")
+  .addEntry("blue", "./assets/color-templates/blue.scss")
+  .addEntry("green", "./assets/color-templates/green.scss")
+  .addEntry("red", "./assets/color-templates/red.scss")
+  .addEntry("yellow", "./assets/color-templates/yellow.scss")
+
   // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
   //.splitEntryChunks()
 

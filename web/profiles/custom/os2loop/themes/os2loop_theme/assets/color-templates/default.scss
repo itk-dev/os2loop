@@ -1,6 +1,8 @@
-$primary: #41ab51 !default;
-$secondary: #6c757d !default;
-$success: #28a745 !default;
-$info: #17a2b8 !default;
-$warning: #ffc107 !default;
-$danger: #dc3545 !default;
+$primary: #41ab51;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+
+@import "../app.scss";
