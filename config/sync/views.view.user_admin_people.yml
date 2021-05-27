@@ -923,7 +923,7 @@ display:
       store_in_public_file_directory: null
       redirect_to_display: page_1
       custom_redirect_path: false
-      include_query_params: false
+      include_query_params: true
       displays:
         page_1: page_1
         default: '0'
@@ -1307,7 +1307,7 @@ display:
       store_in_public_file_directory: null
       redirect_to_display: page_1
       custom_redirect_path: false
-      include_query_params: false
+      include_query_params: true
       displays:
         page_1: page_1
         default: '0'
