@@ -61,7 +61,8 @@
       <span>
     {% endif %}
     {% for item in items %}
-      <span{{ item.attributes.addClass(item.content['#options'].entity.os2loop_taxonomy_color_picker.value, 'shared-subject') }}>{{ item.content }}</span>
+      {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value %}
+      <span{{ item.attributes.addClass(color_picker_value, 'shared-subject') }}>{{ item.content }}</span>
     {% endfor %}
     {% if multiple %}
       </span>
