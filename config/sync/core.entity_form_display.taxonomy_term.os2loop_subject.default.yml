@@ -1,33 +1,30 @@
-uuid: d1fbabf1-df1e-4d39-8f00-3ac13c42a421
+uuid: 50ff6759-a634-44e9-b43b-3c5a32404757
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.taxonomy_term.os2loop_subject.os2loop_taxonomy_color_picker
     - taxonomy.vocabulary.os2loop_subject
-  module:
-    - options
 id: taxonomy_term.os2loop_subject.default
 targetEntityType: taxonomy_term
 bundle: os2loop_subject
 mode: default
 content:
-  flag_os2loop_subscription_term:
+  name:
+    type: string_textfield
     weight: 0
     region: content
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   os2loop_taxonomy_color_picker:
     weight: 1
-    label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: options_select
     region: content
 hidden:
   description: true
-  entity_print_view_epub: true
-  entity_print_view_pdf: true
-  entity_print_view_word_docx: true
   langcode: true
-  search_api_excerpt: true
+  status: true
