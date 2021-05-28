@@ -43,7 +43,8 @@
     'os2loop-highlighted-container',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    drupal_field('os2loop_shared_subject', 'node', paragraph.parent_id.value)['0']['#options'].entity.os2loop_taxonomy_color_picker.value
   ]
 %}
 {% block paragraph %}
@@ -52,3 +53,4 @@
     {{ content.os2loop_documents_hc_content }}
   </div>
 {% endblock paragraph %}
+
