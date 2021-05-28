@@ -94,7 +94,7 @@ class FormHelper {
       case 'node_os2loop_documents_document_edit_form':
         $node = $this->getNode($formState);
         if (NULL !== $node && !$this->isLegacyDocument($node)) {
-          unset($form['os2loop_documents_document_body']);
+          unset($form['os2loop_documents_info_box'], $form['os2loop_documents_document_body']);
         }
     }
 

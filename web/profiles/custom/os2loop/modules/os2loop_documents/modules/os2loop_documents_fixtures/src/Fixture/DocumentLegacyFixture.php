@@ -47,8 +47,38 @@ BODY,
         'target_id' => $this->getReference('os2loop_profession:Andet')->id(),
       ],
     ]);
-
     $document->save();
+    $this->setReference($document->getType() . ':' . 'legacy-body', $document);
+
+    $document = Node::create([
+      'type' => 'os2loop_documents_document',
+      'title' => 'A legacy document (with info box)',
+      'os2loop_documents_info_box' => [
+        'value' => <<<'BODY'
+<p>Note: This is <strong>important</strong>!</p>
+BODY,
+        'format' => 'os2loop_documents_body',
+      ],
+      'os2loop_documents_document_body' => [
+        'value' => <<<'BODY'
+<p>This is the legacy content. Check out the info box.</p>
+BODY,
+        'format' => 'os2loop_documents_body',
+      ],
+      'os2loop_documents_document_autho' => 'Legacy Document author',
+      'os2loop_shared_subject' => [
+        'target_id' => $this->getReference('os2loop_subject:Diverse')->id(),
+      ],
+      'os2loop_shared_tags' => [
+        ['target_id' => $this->getReference('os2loop_tag:test')->id()],
+        ['target_id' => $this->getReference('os2loop_tag:Udredning')->id()],
+      ],
+      'os2loop_shared_profession' => [
+        'target_id' => $this->getReference('os2loop_profession:Andet')->id(),
+      ],
+    ]);
+    $document->save();
+    $this->setReference($document->getType() . ':' . 'legacy-info', $document);
   }
 
   /**
