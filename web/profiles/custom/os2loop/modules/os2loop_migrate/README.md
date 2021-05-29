@@ -73,6 +73,7 @@ vendor/bin/drush --yes pm:uninstall migrate
 ```sh
 vendor/bin/drush cache:rebuild
 vendor/bin/drush search-api:reset-tracker os2loop_search_db_index
+vendor/bin/drush search-api:rebuild-tracker os2loop_search_db_index
 vendor/bin/drush search-api:index os2loop_search_db_index
 ```
 
