@@ -179,6 +179,16 @@ process:
     -
       plugin: os2loop_mail_notifications_interval
       source: uid
+  os2loop_user_internal_list:
+    -
+      plugin: os2loop_member_list
+      source: uid
+      type: internal
+  os2loop_user_external_list:
+    -
+      plugin: os2loop_member_list
+      source: uid
+      type: external
 destination:
   plugin: 'entity:user'
 migration_dependencies:
