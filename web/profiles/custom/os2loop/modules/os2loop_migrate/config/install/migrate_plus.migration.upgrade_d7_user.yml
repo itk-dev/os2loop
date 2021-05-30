@@ -175,6 +175,10 @@ process:
         title: title
         width: width
         height: height
+  os2loop_mail_notifications_intvl:
+    -
+      plugin: os2loop_mail_notifications_interval
+      source: uid
 destination:
   plugin: 'entity:user'
 migration_dependencies:
