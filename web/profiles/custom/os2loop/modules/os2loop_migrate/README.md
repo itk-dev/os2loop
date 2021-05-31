@@ -99,16 +99,10 @@ Migrate all Loop content:
 vendor/bin/drush migrate:import --tag=os2loop
 ```
 
-After running all migrations, complete the steps in [Legacy media files in text
-fields](#legacy-media-files-in-text-fields) and [Create media entities and
+After running all migrations, complete the steps [Create media entities and
 connect to content](#create-media-entities-and-connect-to-content):
 
 ```sh
-# Legacy media files in text fields
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_collection', FALSE)"
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_document', FALSE)"
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
 # Create media entities and connect to content
 vendor/bin/drush os2loop:migrate:files-to-media
 ```
@@ -118,6 +112,19 @@ questions](#rich-text-in-questions) and [Empty question
 titles](#empty-question-titles).
 
 The actual migration of content should be performed in the following order.
+
+## After deployment
+
+After deploying migrated content (database and files) to the final site, you
+should run these `drush` commands on the deployed database (cf.
+<https://www.drupal.org/project/convert_media_tags_to_markup>):
+
+```sh
+drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_collection', FALSE)"
+drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_document', FALSE)"
+drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
+drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
+```
 
 ### 1. Files
 
@@ -167,17 +174,6 @@ questions” or run
 
 ```sh
 vendor/bin/drush --yes config:set os2loop_question.settings enable_rich_text 1
-```
-
-#### Legacy media files in text fields
-
-To convert legacy media inserted in text fields, run
-
-```sh
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_collection', FALSE)"
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_document', FALSE)"
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
-vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
 ```
 
 #### Create media entities and connect to content
