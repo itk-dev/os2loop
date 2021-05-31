@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.os2loop_section_page.os2loop_section_page_paragraph
+    - field.field.node.os2loop_section_page.os2loop_shared_rev_date
     - node.type.os2loop_section_page
   module:
+    - datetime
     - paragraphs
 id: node.os2loop_section_page.default
 targetEntityType: node
@@ -29,6 +31,12 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
+    region: content
+  os2loop_shared_rev_date:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   status:
     type: boolean_checkbox
