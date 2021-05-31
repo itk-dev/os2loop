@@ -100,9 +100,8 @@ vendor/bin/drush migrate:import --tag=os2loop
 ```
 
 After running all migrations, complete the steps in [Legacy media files in text
-fields](#legacy-media-files-in-text-fields), [Document
-collections](#document-collections) and [Create media entities and connect to
-content](#create-media-entities-and-connect-to-content):
+fields](#legacy-media-files-in-text-fields) and [Create media entities and
+connect to content](#create-media-entities-and-connect-to-content):
 
 ```sh
 # Legacy media files in text fields
@@ -110,8 +109,6 @@ vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTags
 vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_documents_document', FALSE)"
 vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
 vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
-# Document collections
-vendor/bin/drush --yes os2loop:migrate:collection-documents
 # Create media entities and connect to content
 vendor/bin/drush os2loop:migrate:files-to-media
 ```
@@ -182,16 +179,6 @@ vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTags
 vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_page', FALSE)"
 vendor/bin/drush php:eval "\Drupal\convert_media_tags_to_markup\ConvertMediaTagsToMarkup\DbReplacer::instance()->replaceAll('node', 'os2loop_question', FALSE)"
 ```
-
-#### Document collections
-
-Run
-
-```sh
-vendor/bin/drush --yes os2loop:migrate:collection-documents
-```
-
-to migrate documents in collections.
 
 #### Create media entities and connect to content
 
