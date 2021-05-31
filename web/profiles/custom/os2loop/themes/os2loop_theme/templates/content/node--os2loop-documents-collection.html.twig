@@ -100,6 +100,7 @@
     <div class="tab-pane show active" id="collection" role="tabpanel" aria-labelledby="collection-tab">
       {{ macros.title(label, "collection", node, content) }}
       <div{{ content_attributes }}>
+        {{ content.os2loop_documents_info_box }}
         {{ content.os2loop_documents_dc_content }}
         {% if os2loop_documents_collection_tree|default(false) %}
           <div>

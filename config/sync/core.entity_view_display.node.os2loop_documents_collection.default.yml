@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.os2loop_documents_collection.os2loop_documents_dc_content
+    - field.field.node.os2loop_documents_collection.os2loop_documents_info_box
     - field.field.node.os2loop_documents_collection.os2loop_shared_profession
     - field.field.node.os2loop_documents_collection.os2loop_shared_subject
     - field.field.node.os2loop_documents_collection.os2loop_shared_tags
@@ -17,22 +18,29 @@ bundle: os2loop_documents_collection
 mode: default
 content:
   flag_os2loop_favourite:
-    weight: 10
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   flag_os2loop_subscription_node:
-    weight: 10
+    weight: 7
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   links:
-    weight: 1
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
   os2loop_documents_dc_content:
     weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  os2loop_documents_info_box:
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }

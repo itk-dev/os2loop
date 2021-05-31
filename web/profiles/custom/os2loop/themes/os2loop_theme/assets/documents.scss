@@ -21,3 +21,10 @@
     }
   }
 }
+
+.os2loop-documents-info-box {
+  margin-bottom: $spacer;
+  padding: $spacer;
+  background-color: $info-box-background;
+  color: color-yiq($info-box-background);
+}
