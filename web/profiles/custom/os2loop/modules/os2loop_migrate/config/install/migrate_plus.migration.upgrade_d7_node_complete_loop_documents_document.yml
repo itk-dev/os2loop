@@ -94,9 +94,6 @@ process:
       source: field_loop_documents_author
   # body:
   os2loop_documents_document_body:
-    # -
-    #   plugin: get
-    #   source: body
     -
       # Set text format.
       plugin: sub_process
@@ -106,7 +103,16 @@ process:
         format:
           plugin: default_value
           default_value: os2loop_documents_body
-
+  os2loop_documents_info_box:
+    -
+      # Set text format.
+      plugin: sub_process
+      source: field_quickbox
+      process:
+        value: value
+        format:
+          plugin: default_value
+          default_value: os2loop_documents_body
   # field_keyword:
   os2loop_shared_tags:
     -

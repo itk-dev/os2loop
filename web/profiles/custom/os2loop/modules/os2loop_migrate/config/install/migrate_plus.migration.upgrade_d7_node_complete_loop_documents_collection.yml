@@ -151,6 +151,16 @@ process:
         format:
           plugin: default_value
           default_value: os2loop_documents_rich_text
+  os2loop_documents_info_box:
+    -
+      # Set text format.
+      plugin: sub_process
+      source: field_quickbox
+      process:
+        value: value
+        format:
+          plugin: default_value
+          default_value: os2loop_documents_body
   field_revision_date:
     -
       plugin: sub_process
