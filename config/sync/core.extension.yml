@@ -61,6 +61,7 @@ module:
   page_cache: 0
   path_alias: 0
   rest: 0
+  samlauth: 0
   search_api: 0
   search_api_autocomplete: 0
   search_api_db: 0
@@ -82,6 +83,7 @@ module:
   views_flag_refresh: 0
   viewsreference: 0
   xls_serialization: 0
+  externalauth: 10
   paragraphs: 11
   better_formats: 100
   os2loop: 1000
