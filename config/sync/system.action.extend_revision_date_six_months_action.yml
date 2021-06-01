@@ -11,4 +11,4 @@ label: 'Set next revision date to 6 months from now'
 type: node
 plugin: os2loop_revision_date_set_action
 configuration:
-  time_span: six_months
+  time_span: '+6 months'

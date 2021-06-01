@@ -2,11 +2,9 @@
 
 namespace Drupal\os2loop_revision_date\Plugin\Action;
 
-use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Action\ActionBase;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Session\AccountInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Sets revision date on content.
@@ -17,34 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   type = "node"
  * )
  */
-class SetRevisionDate extends ActionBase implements ContainerFactoryPluginInterface {
-
-  /**
-   * Date time service.
-   *
-   * @var \Drupal\Component\Datetime\TimeInterface
-   */
-  protected $timeService;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, TimeInterface $time_service) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->timeService = $time_service;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('datetime.time')
-    );
-  }
+class SetRevisionDate extends ActionBase {
 
   /**
    * {@inheritdoc}
@@ -65,19 +36,20 @@ class SetRevisionDate extends ActionBase implements ContainerFactoryPluginInterf
       if (!$node->hasField('os2loop_shared_rev_date')) {
         throw new \RuntimeException("Revisioning date field not found on node.");
       }
-      $node->set('os2loop_shared_rev_date', date('Y-m-d', $this->timeService->getCurrentTime() + $this->getTimeSpan()));
+      $node->set('os2loop_shared_rev_date', $this->getNextRevisionDate()->format('Y-m-d'));
       $node->save();
     }
   }
 
   /**
-   * Get timespan from action configuration yml.
+   * Get datetime from action configuration yml.
    *
-   * @return int
-   *   A timespan in seconds.
+   * @return \Drupal\Core\Datetime\DrupalDateTime
+   *   The next time the node should be revisioned.
    */
-  private function getTimeSpan() : int {
-    return isset($this->configuration['time_span']) ? $this->configuration['time_span'] : 0;
+  private function getNextRevisionDate(): DrupalDateTime {
+    $extend = isset($this->configuration['time_span']) ? $this->configuration['time_span'] : 'now';
+    return new DrupalDateTime($extend, date_default_timezone_get());
   }
 
 }
