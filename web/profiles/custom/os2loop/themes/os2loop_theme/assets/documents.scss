@@ -30,24 +30,7 @@
 }
 
 table.loop-documents-table {
-  width: 100%;
-
-  th {
-    background-color: gray("200");
-    text-align: center;
-  }
-
-  td {
-    text-align: left;
-  }
-
-  th,
-  td {
-    vertical-align: top;
-
-    padding: 0.5 * $spacer;
-    border: 1px solid gray("300");
-  }
+  @extend .table, .table-hover, .table-bordered;
 
   p {
     margin-top: 0;
