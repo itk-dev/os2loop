@@ -24,6 +24,7 @@ module:
   filter: 0
   flag: 0
   image: 0
+  itkdev_openid_connect_drupal: 0
   language: 0
   link: 0
   locale: 0
@@ -33,6 +34,7 @@ module:
   menu_ui: 0
   message: 0
   node: 0
+  openid_connect: 0
   options: 0
   os2loop_documents: 0
   os2loop_external: 0

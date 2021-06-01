@@ -57,6 +57,7 @@
         "drupal/flag": "^4.0@beta",
         "drupal/masquerade": "^2.0@beta",
         "drupal/message": "^1.2",
+        "drupal/openid_connect": "^1.0",
         "drupal/paragraphs": "^1.12",
         "drupal/search_api": "^1.19",
         "drupal/search_api_autocomplete": "^1.4",
@@ -71,6 +72,7 @@
         "drupal/viewsreference": "^2.0",
         "drupal/xls_serialization": "^1.2",
         "drush/drush": "^10.4",
+        "itk-dev/itkdev_openid_connect_drupal": "dev-develop",
         "mikehaertl/phpwkhtmltopdf": "^2.5"
     },
     "scripts": {
