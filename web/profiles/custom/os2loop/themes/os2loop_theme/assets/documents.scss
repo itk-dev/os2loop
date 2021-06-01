@@ -28,3 +28,39 @@
   background-color: $info-box-background;
   color: color-yiq($info-box-background);
 }
+
+table.loop-documents-table {
+  width: 100%;
+
+  th {
+    background-color: gray("200");
+    text-align: center;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  th,
+  td {
+    vertical-align: top;
+
+    padding: 0.5 * $spacer;
+    border: 1px solid gray("300");
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  &-steps {
+    td:first-child {
+      width: 10%;
+      text-align: center;
+    }
+  }
+  img {
+    height: auto !important;
+    max-width: inherit !important;
+  }
+}
