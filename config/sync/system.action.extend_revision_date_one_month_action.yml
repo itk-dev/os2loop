@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: mdPuzz90da3sgu50F-EGk7eArwz9hP2hJmaxKttjug4
 id: extend_revision_date_one_month_action
-label: 'Extend revision date with one month'
+label: 'Set next revision date to 1 month from now'
 type: node
 plugin: os2loop_revision_date_set_action
 configuration:

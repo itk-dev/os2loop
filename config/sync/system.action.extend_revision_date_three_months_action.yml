@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: U5PfDTS42RKqbYCR30JF8XSIP2kAFizgQp5zCjpD4Mg
 id: extend_revision_date_three_months_action
-label: 'Extend revision date with three months'
+label: 'Set next revision date to 3 months from now'
 type: node
 plugin: os2loop_revision_date_set_action
 configuration:
