@@ -1,0 +1,21 @@
+always_save_userinfo: false
+connect_existing_users: false
+override_registration_settings: false
+userinfo_mappings:
+  timezone: zoneinfo
+  os2loop_mail_notifications_intvl: 0
+  os2loop_user_address: 0
+  os2loop_user_areas_of_expertise: 0
+  os2loop_user_biography: 0
+  os2loop_user_city: 0
+  os2loop_user_external_list: 0
+  os2loop_user_family_name: family_name
+  os2loop_user_given_name: given_name
+  os2loop_user_image: 0
+  os2loop_user_internal_list: 0
+  os2loop_user_job_title: 0
+  os2loop_user_phone_number: 0
+  os2loop_user_place: 0
+  os2loop_user_postal_code: 0
+  os2loop_user_professions: 0
+user_login_display: above
