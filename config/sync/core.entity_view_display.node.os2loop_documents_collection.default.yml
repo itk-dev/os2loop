@@ -54,7 +54,7 @@ content:
     region: content
   os2loop_shared_approval_date:
     weight: 9
-    label: above
+    label: inline
     settings:
       format_type: medium
       timezone_override: ''
@@ -63,7 +63,7 @@ content:
     region: content
   os2loop_shared_approver:
     weight: 10
-    label: above
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -71,7 +71,7 @@ content:
     region: content
   os2loop_shared_owner:
     weight: 11
-    label: above
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -87,7 +87,7 @@ content:
     region: content
   os2loop_shared_rev_date:
     weight: 8
-    label: above
+    label: inline
     settings:
       format_type: medium
       timezone_override: ''
@@ -112,7 +112,7 @@ content:
     region: content
   os2loop_shared_version:
     weight: 12
-    label: above
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
