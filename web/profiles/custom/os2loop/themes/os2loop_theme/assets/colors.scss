@@ -32,6 +32,11 @@ $field-title-color: $dark !default;
 // Text color
 $text-color: $dark !default;
 $text-on-primary: contrast-color($primary) !default;
+$text-on-secondary: contrast-color($secondary) !default;
+$text-on-success: contrast-color($success) !default;
+$text-on-info: contrast-color($info) !default;
+$text-on-warning: contrast-color($warning) !default;
+$text-on-danger: contrast-color($danger) !default;
 
 // Icon buttons
 $icon-base-color: $secondary !default;

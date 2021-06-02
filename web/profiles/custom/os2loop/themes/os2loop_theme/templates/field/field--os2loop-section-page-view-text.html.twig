@@ -46,14 +46,12 @@
 %}
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass("os2loop-title") }}>
-      {% for item in items %}
-        <div{{ item.attributes.addClass('section mb-3 mb-md-5') }}>{{ item.content }}</div>
-      {% endfor %}
-    </div>
+    {% for item in items %}
+      <div{{ item.attributes }}>{{ item.content }}</div>
+    {% endfor %}
   {% else %}
     {% for item in items %}
-      <div{{ attributes.addClass("os2loop-title") }}>{{ item.content }}</div>
+      <div class="my-2">{{ item.content }}</div>
     {% endfor %}
   {% endif %}
 {% elseif label_display == 'inline' %}

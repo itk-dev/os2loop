@@ -79,13 +79,13 @@
   {% endif %}
 
   {{ title_prefix }}
-      <h1{{ title_attributes }}>
+      <h1{{ title_attributes.addClass('my-3') }}>
       {{ label }}
     </h1>
   {{ title_suffix }}
 
   <div{{ content_attributes }}>
-    {{ content|without('flag_os2loop_subscription_node', 'links') }}
+    {{ content|without('flag_os2loop_subscription_node', 'os2loop_shared_rev_date', 'links') }}
   </div>
 
   {% if display_submitted %}
