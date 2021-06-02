@@ -49,6 +49,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-project-message": "^9.1",
         "drupal/core-recommended": "^9.1",
+        "drupal/date_popup": "^1.1",
         "drupal/diff": "^1.0",
         "drupal/entity_print": "^2.2",
         "drupal/facets": "^1.7",

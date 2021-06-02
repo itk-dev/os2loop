@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.os2loop_documents_collection.os2loop_documents_dc_content
     - field.field.node.os2loop_documents_collection.os2loop_documents_info_box
     - field.field.node.os2loop_documents_collection.os2loop_shared_profession
+    - field.field.node.os2loop_documents_collection.os2loop_shared_rev_date
     - field.field.node.os2loop_documents_collection.os2loop_shared_subject
     - field.field.node.os2loop_documents_collection.os2loop_shared_tags
     - node.type.os2loop_documents_collection
   module:
     - autocomplete_deluxe
+    - datetime
     - text
 id: node.os2loop_documents_collection.default
 targetEntityType: node
@@ -55,6 +57,12 @@ content:
       no_empty_message: 'No terms could be found. Please type in order to add a new term.'
     third_party_settings: {  }
     type: autocomplete_deluxe
+    region: content
+  os2loop_shared_rev_date:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   os2loop_shared_subject:
     weight: 6
