@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.os2loop_documents_collection.os2loop_documents_dc_content
     - field.field.node.os2loop_documents_collection.os2loop_documents_info_box
     - field.field.node.os2loop_documents_collection.os2loop_shared_profession
+    - field.field.node.os2loop_documents_collection.os2loop_shared_rev_date
     - field.field.node.os2loop_documents_collection.os2loop_shared_subject
     - field.field.node.os2loop_documents_collection.os2loop_shared_tags
     - node.type.os2loop_documents_collection
   module:
+    - datetime
     - text
     - user
 id: node.os2loop_documents_collection.default
@@ -53,6 +55,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  os2loop_shared_rev_date:
+    weight: 8
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   os2loop_shared_subject:
     weight: 3

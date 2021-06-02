@@ -10,6 +10,7 @@ module:
   config_translation: 0
   convert_media_tags_to_markup: 0
   csv_serialization: 0
+  date_popup: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
@@ -45,6 +46,7 @@ module:
   os2loop_page: 0
   os2loop_post: 0
   os2loop_question: 0
+  os2loop_revision_date: 0
   os2loop_search_db: 0
   os2loop_section_page: 0
   os2loop_settings: 0
