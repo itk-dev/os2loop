@@ -1,0 +1,24 @@
+$node-list-icon-size: 2em;
+$node-list-icon-margin: 0;
+
+.list-group-item {
+  .icon {
+    text-align: center;
+
+    &.os2loop_external {
+      @include icon("\f471", $node-list-icon-size, $node-list-icon-margin);
+    }
+    &.os2loop_post {
+      @include icon("\f383", $node-list-icon-size, $node-list-icon-margin);
+    }
+    &.os2loop_question {
+      @include icon("\f50b", $node-list-icon-size, $node-list-icon-margin);
+    }
+    &.os2loop_documents_collection {
+      @include icon("\f3c2", $node-list-icon-size, $node-list-icon-margin);
+    }
+    &.os2loop_documents_document {
+      @include icon("\f3b9", $node-list-icon-size, $node-list-icon-margin);
+    }
+  }
+}
