@@ -1,6 +1,6 @@
 always_save_userinfo: false
-connect_existing_users: false
-override_registration_settings: false
+connect_existing_users: true
+override_registration_settings: true
 userinfo_mappings:
   timezone: zoneinfo
   os2loop_mail_notifications_intvl: 0

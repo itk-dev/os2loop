@@ -178,6 +178,10 @@
             "drupal/flag": {
                 "Implement Migration Paths for Flag 7.x (https://www.drupal.org/project/flag/issues/2409901#comment-13082245)": "https://www.drupal.org/files/issues/2019-04-25/2409901_flag_migration_paths_52.patch",
                 "Implement Migration Paths for Flag 7.x (https://www.drupal.org/project/flag/issues/2409901#comment-13281955)": "https://www.drupal.org/files/issues/2019-10-02/2409901-60.patch"
+            },
+            "drupal/openid_connect_windows_aad": {
+                "https://www.drupal.org/project/openid_connect_windows_aad/issues/3021812#comment-13945473": "https://www.drupal.org/files/issues/2020-12-21/openid_conect_windows_aad_version2_0_2.patch",
+                "patches/openid_connect_windows_aad-configurable-user-name-attribute.patch": "patches/openid_connect_windows_aad-configurable-user-name-attribute.patch"
             }
         }
     },

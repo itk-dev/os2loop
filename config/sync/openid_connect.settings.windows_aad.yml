@@ -1,1 +1,20 @@
 enabled: false
+settings:
+  redirect_url: ''
+  client_id: '$config[''openid_connect.settings.windows_aad''][''settings''][''client_id''] in settings.local.php'
+  client_secret: '$config[''openid_connect.settings.windows_aad''][''settings''][''client_id''] in settings.local.php'
+  enable_single_sign_out: 0
+  authorization_endpoint_wa: '$config[''openid_connect.settings.windows_aad''][''settings''][''authorization_endpoint_wa''] settings.local.php'
+  token_endpoint_wa: '$config[''openid_connect.settings.windows_aad''][''settings''][''token_endpoint_wa''] in settings.local.php'
+  map_ad_groups_to_roles: 0
+  group_mapping:
+    method: '0'
+    mappings: ''
+    strict: 0
+  userinfo_graph_api_wa: '0'
+  userinfo_endpoint_wa: 'fake://not-used-when-use_v2-is-enabled'
+  userinfo_graph_api_use_other_mails: 0
+  userinfo_update_email: 0
+  hide_email_address_warning: 0
+  use_v2: 1
+  user_name_attribute: upn

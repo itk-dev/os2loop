@@ -1,0 +1,26 @@
+diff --git a/src/Plugin/OpenIDConnectClient/WindowsAad.php b/src/Plugin/OpenIDConnectClient/WindowsAad.php
+index 04adaba..6fbe885 100644
+--- a/src/Plugin/OpenIDConnectClient/WindowsAad.php
++++ b/src/Plugin/OpenIDConnectClient/WindowsAad.php
+@@ -141,6 +141,12 @@ class WindowsAad extends OpenIDConnectClientBase {
+       '#type' => 'checkbox',
+       '#default_value' => !empty($this->configuration['use_v2']) ? $this->configuration['use_v2'] : 0,
+     ];
++    $form['user_name_attribute'] = [
++      '#title' => $this->t('User name attribute'),
++      '#type' => 'textfield',
++      '#default_value' => $this->configuration['user_name_attribute'] ?? 'name',
++      '#description' => $this->t('The user attribute (claim) to use as Drupal user name'),
++    ];
+ 
+     return $form;
+   }
+@@ -259,7 +265,7 @@ class WindowsAad extends OpenIDConnectClientBase {
+       default:
+         $endpoints = $this->getEndpoints();
+         if ($endpoints['userinfo']) {
+-          $userinfo = $this->buildUserinfo($access_token, $endpoints['userinfo'], 'upn', 'name');
++          $userinfo = $this->buildUserinfo($access_token, $endpoints['userinfo'], 'upn', $this->configuration['user_name_attribute'] ?? 'name');
+         }
+         else {
+           $userinfo = array();
