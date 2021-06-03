@@ -4,7 +4,7 @@ os2loop_flag_content.settings:
     _form: '\Drupal\os2loop_flag_content\Form\SettingsForm'
     _title: 'os2loop_flag_content'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer os2loop settings'
 
 os2loop_flag_content.flag_content:
   path: '/node/{node}/flag_content'

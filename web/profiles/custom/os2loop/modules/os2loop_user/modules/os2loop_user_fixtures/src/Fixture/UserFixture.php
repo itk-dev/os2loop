@@ -21,7 +21,6 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface, 
    */
   public function load() {
     $user = User::create([
-      'uid' => 2,
       'name' => 'administrator',
       'mail' => 'administrator@example.com',
       'pass' => 'administrator-password',
@@ -39,7 +38,6 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface, 
     $this->setReference('user:administrator', $user);
 
     $user = User::create([
-      'uid' => 3,
       'name' => 'user',
       'mail' => 'user@example.com',
       'pass' => 'user-password',
@@ -65,6 +63,31 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface, 
     ]);
     $user->save();
     $this->setReference('user:user', $user);
+
+    // Create a user for each role in the system.
+    foreach ([
+      'os2loop_user_document_author',
+      'os2loop_user_document_collection_editor',
+      'os2loop_user_documentation_coordinator',
+      'os2loop_user_external_sources_editor',
+      'os2loop_user_manager',
+      'os2loop_user_post_author',
+      'os2loop_user_read_only',
+      'os2loop_user_user_administrator',
+    ] as $role) {
+      $userName = str_replace('os2loop_user_', '', $role);
+      $user = User::create([
+        'name' => $userName,
+        'mail' => $userName . '@example.com',
+        'pass' => $userName . '-password',
+        // Active.
+        'status' => 1,
+        'roles' => [
+          $role,
+        ],
+      ]);
+      $user->save();
+    }
   }
 
   /**
