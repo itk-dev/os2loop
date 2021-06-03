@@ -60,7 +60,7 @@ map_users_roles:
 create_users: true
 sync_name: false
 sync_mail: false
-user_name_attribute: upn
+user_name_attribute: name
 user_mail_attribute: mail
 security_assertions_encrypt: false
 security_assertions_signed: false
