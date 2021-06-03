@@ -2,6 +2,9 @@
 
 Log in via OpenID Connect and SAML.
 
+@todo Assumptions on user info returned from IdP: `name` used as Drupal user
+name, `groups` with a list of group names mapped to Drupal roles.
+
 ## OpenID Connect
 
 ```php
@@ -18,6 +21,8 @@ $config['openid_connect.settings.windows_aad']['settings']['userinfo_endpoint_wa
 // Use `upn` as Drupal user name.
 $config['openid_connect.settings.windows_aad']['settings']['user_name_attribute'] = 'upn';
 ```
+
+@todo Document default role mapping
 
 ## SAML
 

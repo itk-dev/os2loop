@@ -6,11 +6,11 @@ settings:
   enable_single_sign_out: 0
   authorization_endpoint_wa: '$config[''openid_connect.settings.windows_aad''][''settings''][''authorization_endpoint_wa''] settings.local.php'
   token_endpoint_wa: '$config[''openid_connect.settings.windows_aad''][''settings''][''token_endpoint_wa''] in settings.local.php'
-  map_ad_groups_to_roles: 0
+  map_ad_groups_to_roles: 1
   group_mapping:
-    method: '0'
-    mappings: ''
-    strict: 0
+    method: '1'
+    mappings: "os2loop_user_administrator|administrator\r\nos2loop_user_document_author|document_author\r\nos2loop_user_document_collection_editor|document_collection_editor\r\nos2loop_user_documentation_coordinator|documentation_coordinator\r\nos2loop_user_external_sources_editor|external_sources_editor\r\nos2loop_user_manager|manager\r\nos2loop_user_post_author|post_author\r\nos2loop_user_read_only|read_only\r\nos2loop_user_user_administrator|user_administrator"
+    strict: 1
   userinfo_graph_api_wa: '0'
   userinfo_endpoint_wa: 'fake://not-used-when-use_v2-is-enabled'
   userinfo_graph_api_use_other_mails: 0
