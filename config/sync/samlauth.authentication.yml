@@ -31,17 +31,17 @@ drupal_login_roles:
   os2loop_user_user_administrator: '0'
 error_redirect_url: ''
 error_throw: false
-sp_entity_id: '$config[''samlauth.authentication''][''sp_entity_id''] in settings.local.php'
+sp_entity_id: 'file://settings.local.php/$config[''samlauth.authentication''][''sp_entity_id'']'
 sp_name_id_format: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
-sp_x509_certificate: '$config[''samlauth.authentication''][''sp_x509_certificate''] in settings.local.php'
-sp_private_key: ''
+sp_x509_certificate: 'file://settings.local.php/$config[''samlauth.authentication''][''sp_x509_certificate'']'
+sp_private_key: 'file://settings.local.php/$config[''samlauth.authentication''][''sp_private_key'']'
 sp_cert_folder: ''
-idp_entity_id: '$config[''samlauth.authentication''][''idp_entity_id''] in settings.local.php'
-idp_single_sign_on_service: '$config[''samlauth.authentication''][''idp_single_sign_on_service''] in settings.local.php'
+idp_entity_id: 'file://settings.local.php/$config[''samlauth.authentication''][''idp_entity_id'']'
+idp_single_sign_on_service: 'file://settings.local.php/$config[''samlauth.authentication''][''idp_single_sign_on_service'']'
 idp_single_log_out_service: ''
 idp_change_password_service: ''
 idp_cert_type: single
-idp_x509_certificate: ''
+idp_x509_certificate: 'file://settings.local.php/$config[''samlauth.authentication''][''idp_x509_certificate'']'
 idp_x509_certificate_multi: ''
 unique_id_attribute: upn
 map_users: false
