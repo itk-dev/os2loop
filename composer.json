@@ -74,7 +74,6 @@
         "drupal/viewsreference": "^2.0",
         "drupal/xls_serialization": "^1.2",
         "drush/drush": "^10.4",
-        "itk-dev/itkdev_openid_connect_drupal": "dev-develop",
         "mikehaertl/phpwkhtmltopdf": "^2.5"
     },
     "scripts": {
