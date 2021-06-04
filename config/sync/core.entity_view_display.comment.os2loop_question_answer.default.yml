@@ -36,12 +36,10 @@ content:
     type: text_default
     region: content
   os2loop_question_answer_media:
-    type: entity_reference_entity_view
+    type: entity_reference_entity_id
     weight: 4
     label: above
-    settings:
-      view_mode: default
-      link: false
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

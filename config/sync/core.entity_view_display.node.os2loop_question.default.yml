@@ -29,9 +29,9 @@ content:
     third_party_settings: {  }
   flag_os2loop_subscription_node:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   links:
     weight: 0
     region: content
@@ -54,12 +54,10 @@ content:
     type: text_default
     region: content
   os2loop_question_file:
-    type: entity_reference_entity_view
+    type: entity_reference_entity_id
     weight: 11
     label: above
-    settings:
-      view_mode: default
-      link: false
+    settings: {  }
     third_party_settings: {  }
     region: content
   os2loop_shared_profession:

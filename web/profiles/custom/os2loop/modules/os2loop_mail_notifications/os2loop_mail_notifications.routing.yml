@@ -4,4 +4,4 @@ os2loop_mail_notifications.settings:
     _form: '\Drupal\os2loop_mail_notifications\Form\SettingsForm'
     _title: 'OS2Loop Mail notifications settings'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer os2loop settings'
