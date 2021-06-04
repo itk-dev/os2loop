@@ -109,7 +109,7 @@
       </div>
     </div>
     <div class="tab-pane" id="about-document" role="tabpanel" aria-labelledby="about-document-tab">
-      {{ macros.title("About document"|t, "document", node, content) }}
+      {{ macros.title("About document"|t, "document", node, content, false) }}
       <div>{{ content.os2loop_documents_document_autho }}</div>
       <div{{ content_attributes.addClass("bg-secondary-loop") }}>
         <div>{{ content.os2loop_shared_tags }}</div>

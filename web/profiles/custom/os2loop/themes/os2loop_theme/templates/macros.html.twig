@@ -3,7 +3,7 @@
  * Macro to display a node title bar with links and metadata.
  */
 #}
-{% macro title(title, class, node, content) %}
+{% macro title(title, class, node, content, show_subject=true) %}
   <div class="title d-flex justify-content-between">
     <div class="header my-3">
       {{ title_prefix }}
@@ -11,7 +11,9 @@
         {{ title }}
       </h1>
       {{ title_suffix }}
-      {{ content.os2loop_shared_subject }}
+      {% if show_subject %}
+        {{ content.os2loop_shared_subject }}
+      {% endif %}
     </div>
     <div>
     {% include '@os2loop_theme/navigation/content-tasks.html.twig' %}
