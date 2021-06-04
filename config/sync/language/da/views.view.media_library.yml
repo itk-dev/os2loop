@@ -69,10 +69,6 @@ display:
         name:
           expose:
             label: Navn
-      arguments:
-        bundle:
-          exception:
-            title: Alle
       header:
         display_link_grid:
           label: Gitter
@@ -93,10 +89,6 @@ display:
         name:
           expose:
             label: Navn
-      arguments:
-        bundle:
-          exception:
-            title: Alle
       header:
         display_link_grid:
           label: Gitter
