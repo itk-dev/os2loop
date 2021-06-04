@@ -75,7 +75,7 @@
       <div>
     {% endif %}
     {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
+      <div{{ item.attributes }}{{ attributes.addClass("badge badge-pill badge-secondary") }}>{{ item.content }}</div>
     {% endfor %}
     {% if multiple %}
       </div>

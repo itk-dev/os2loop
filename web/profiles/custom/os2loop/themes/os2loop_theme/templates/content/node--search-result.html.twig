@@ -1,7 +1,7 @@
 {% set node = elements['#node'] %}
 <div class="search-result search-result--node search-result--node--{{ node.bundle }}">
-  <h2><a href="{{ url }}">{{ label }}</a></h2>
-  <span class="badge bg-light text-dark node-bundle node-bundle-{{ node.bundle }}">{{ node.bundle|t }}</span>
-  <span class="search_api_excerpt">{{ elements['#search_api_excerpt']|raw }}</span>
-  [<span class="subject">{{ elements['os2loop_shared_subject'] }}</span>]
+  <h2 class="h5"><a href="{{ url }}">{{ label }}</a></h2>
+  <span class="badge badge-primary node-bundle node-bundle-{{ node.bundle }}">{{ node.bundle|t }}</span>{# TODO: Make this badge a link to the collection/bundle #}
+  <p class="search_api_excerpt mb-0">{{ elements['#search_api_excerpt']|raw }}</p>
+  <span class="subject">{{ elements['os2loop_shared_subject'] }}</span>
 </div>
