@@ -62,6 +62,7 @@ permissions:
   - 'administer pcp'
   - 'administer redirects'
   - 'administer rules'
+  - 'administer themes'
   - 'administer url aliases'
   - 'administer users'
   - 'administer uuid'
