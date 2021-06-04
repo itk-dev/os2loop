@@ -61,7 +61,7 @@ content:
     third_party_settings: {  }
     region: content
   os2loop_shared_profession:
-    label: inline
+    label: above
     settings:
       link: true
     third_party_settings: {  }
@@ -78,7 +78,7 @@ content:
     type: datetime_default
     region: content
   os2loop_shared_subject:
-    label: inline
+    label: above
     settings:
       link: true
     third_party_settings: {  }
@@ -86,7 +86,7 @@ content:
     region: content
     weight: 3
   os2loop_shared_tags:
-    label: inline
+    label: above
     settings:
       link: true
     third_party_settings: {  }
