@@ -151,3 +151,11 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
+
+// Adding a highligt color for search_api_excerpt
+
+.search_api_excerpt strong {
+  background-color: $warning;
+  padding-left: 1px;
+  padding-right: 1px;
+}

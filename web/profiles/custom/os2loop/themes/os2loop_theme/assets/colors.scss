@@ -58,6 +58,6 @@ $dark-favourite: darken($favourite, 10%) !default;
 // Attributes
 $highlighted: lighten($primary, 40%) !default;
 $highlighted-border: $primary !default;
-$link-color: #0056b3 !default;
+$link-color: $blue !default;
 
 $info-box-background: $info !default;
