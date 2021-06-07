@@ -3,8 +3,6 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 @import "mixins";
 
-$font-family-base: "Montserrat";
-
 a {
   color: $link-color;
 }
@@ -54,7 +52,6 @@ img {
 @import "./title";
 @import "./tabs";
 @import "./fields";
-@import "./font";
 @import "./form";
 @import "./icons";
 @import "./search";
