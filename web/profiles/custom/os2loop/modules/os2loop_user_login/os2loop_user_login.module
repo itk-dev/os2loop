@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * The module file for os2loop_user_login.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function os2loop_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  Drupal::service('os2loop_user_login.helper')->alterForm($form, $form_state, $form_id);
+}

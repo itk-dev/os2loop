@@ -8,5 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [LOOP-732](https://jira.itkdev.dk/browse/LOOP-732),
+  [LOOP-733](https://jira.itkdev.dk/browse/LOOP-733) and
+  [LOOP-734](https://jira.itkdev.dk/browse/LOOP-734): Drupal, SAML and OpenID
+  Connect login
 - [LOOP-874](https://jira.itkdev.dk/browse/LOOP-874): Fine-grained
   administrator permissions.

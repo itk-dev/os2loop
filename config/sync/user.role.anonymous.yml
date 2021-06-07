@@ -27,3 +27,4 @@ permissions:
   - 'use text format os2loop_question_plain_text'
   - 'use text format os2loop_question_rich_text'
   - 'view media'
+  - 'view sp metadata'
