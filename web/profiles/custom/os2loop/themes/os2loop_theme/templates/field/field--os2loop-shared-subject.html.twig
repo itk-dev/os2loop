@@ -40,8 +40,8 @@
 #}
 {% set title_classes = [
     label_display == 'visually_hidden' ? 'visually-hidden',
-    label_display == 'inline' ? 'os2loop-title-text-inline',
-    label_display != 'inline' ? 'os2loop-title-text',
+    label_display == 'inline' ? 'os2loop-title-text-inline col-auto',
+    label_display != 'inline' ? 'os2loop-title-text col-auto',
   ]
 %}
 {% if label_hidden %}
@@ -58,24 +58,29 @@
   <span{{ attributes }}>
     <span{{ title_attributes.addClass(title_classes) }}>{{ label }}:</span>
     {% if multiple %}
-      <span>
+      <span class="col">
     {% endif %}
     {% for item in items %}
       {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
-      <span{{ item.attributes.addClass(color_picker_value, 'shared-subject') }}>{{ item.content }}</span>
+      <span{{ item.attributes.addClass(color_picker_value, 'badge badge-success') }}>{{ item.content }}</span>
     {% endfor %}
     {% if multiple %}
       </span>
     {% endif %}
   </span>
 {% else %}
-  <div{{ attributes.addClass("os2loop-title") }}>
+  <div{{ attributes.addClass("os2loop-title row") }}>
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
-      <div>
+      <div class="col">
     {% endif %}
     {% for item in items %}
-      <div{{ item.attributes.addClass(color_picker_value, 'shared-subject') }}>{{ item.content }}</div>
+      <!-- TODO: Create twig link with variables, so we only have an a tag or an span tag.
+        for links <a href="#" class="badge badge-secondary">Link text</a>
+        for others non clickable <span class="badge badge-gray">Badge text</span>
+      -->
+
+      <span{{ item.attributes.addClass(color_picker_value, 'badge badge-success') }}>{{ item.content }}</span>
     {% endfor %}
     {% if multiple %}
       </div>
