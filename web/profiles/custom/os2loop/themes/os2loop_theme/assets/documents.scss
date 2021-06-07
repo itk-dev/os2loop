@@ -28,3 +28,22 @@
   background-color: $info-box-background;
   color: color-yiq($info-box-background);
 }
+
+table.loop-documents-table {
+  @extend .table, .table-hover, .table-bordered;
+
+  p {
+    margin-top: 0;
+  }
+
+  &-steps {
+    td:first-child {
+      width: 10%;
+      text-align: center;
+    }
+  }
+  img {
+    height: auto !important;
+    max-width: inherit !important;
+  }
+}

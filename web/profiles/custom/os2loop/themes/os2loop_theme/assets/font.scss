@@ -3,9 +3,6 @@
  * The font of the page.
  */
 
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 400;
-  src: local(""), url("./font/Montserrat-Regular.ttf") format("truetype"); /* Safari, Android, iOS */
-}
+@import "~@fontsource/montserrat/latin-400.css";
+@import "~@fontsource/montserrat/latin-700.css";
+@import "~@fontsource/montserrat/latin-700-italic.css";
