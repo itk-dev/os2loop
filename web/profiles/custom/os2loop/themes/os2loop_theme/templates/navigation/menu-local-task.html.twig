@@ -19,7 +19,7 @@
 {% set classes = [
   'nav-item',
 ] %}
-{% set link = link|merge({ '#attributes': { 'class': [ is_active ? 'active', 'nav-link' ] } }) %}
-<li{{ attributes.addClass(classes)}}>{{ link }}</li>
+{% set link = link|merge({'#attributes': {'class': [is_active ? 'active', 'nav-link']}}) %}
+<li{{ attributes.addClass(classes) }}>{{ link }}</li>
 
 <!-- Source: https://drupal-bootstrap.org/api/bootstrap/templates%21menu%21menu-local-task.html.twig/8.x-3.x -->
