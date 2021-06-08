@@ -38,52 +38,12 @@
  * @ingroup themeable
  */
 #}
-{% set title_classes = [
-    label_display == 'visually_hidden' ? 'visually-hidden',
-    label_display == 'inline' ? 'os2loop-title-text-inline col-auto',
-    label_display != 'inline' ? 'os2loop-title-text col-auto',
-  ]
-%}
-{% if label_hidden %}
-  {% if multiple %}
-    {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
-    {% endfor %}
-  {% else %}
-    {% for item in items %}
-      {{ item.content }}
-    {% endfor %}
-  {% endif %}
-{% elseif label_display == 'inline' %}
-  <span{{ attributes }}>
-    <span{{ title_attributes.addClass(title_classes) }}>{{ label }}:</span>
-    {% if multiple %}
-      <span class="col">
-    {% endif %}
-    {% for item in items %}
-      {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
-      <span{{ item.attributes.addClass(color_picker_value, 'badge badge-success') }}>{{ item.content }}</span>
-    {% endfor %}
-    {% if multiple %}
-      </span>
-    {% endif %}
-  </span>
-{% else %}
-  <div{{ attributes.addClass("os2loop-title row") }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-    {% if multiple %}
-      <div class="col">
-    {% endif %}
-    {% for item in items %}
-      <!-- TODO: Create twig link with variables, so we only have an a tag or an span tag.
-        for links <a href="#" class="badge badge-secondary">Link text</a>
-        for others non clickable <span class="badge badge-gray">Badge text</span>
-      -->
+{% import '@os2loop_theme/macros.html.twig' as macros %}
 
-      <span{{ item.attributes.addClass(color_picker_value, 'badge badge-success') }}>{{ item.content }}</span>
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
-  </div>
-{% endif %}
+<div{{ attributes }}>
+  <span{{ title_attributes }}>{{ label }}:</span>
+  {% for item in items %}
+    {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
+    {{ macros.term(item.content['#type']|default(''), item.content, true, color_picker_value) }}
+  {% endfor %}
+</div>

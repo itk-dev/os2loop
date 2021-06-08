@@ -1,6 +1,13 @@
 {#
 /**
  * Macro to display a node title bar with links and metadata.
+ *
+ * Variables:
+ * - title: The title to display.
+ * - class: A class on the H1 element.
+ * - node: The node related to the title.
+ * - content: Content of the node related to the title.
+ * - show_subject: Whether to show subject below the title.
  */
 #}
 {% macro title(title, class, node, content, show_subject=true) %}
@@ -19,4 +26,23 @@
     {% include '@os2loop_theme/navigation/content-tasks.html.twig' %}
     </div>
   </div>
+{% endmacro %}
+
+{#
+/**
+ * Macro to display a term.
+ *
+ * Variables:
+ * - type: Display type configuration of the field value (Link to term or not).
+ * - content: The content of the field.
+ * - use_color_picker: Whether to use color picker value configured for the taxonomy.
+ * - color_picker_value: THe value of the configured term color picker.
+ */
+#}
+{% macro term(type, content, use_color_picker=false, color_picker_value='') %}
+  {% if type is same as 'link' %}
+    <a class="badge badge-pill badge-secondary {{ use_color_picker ? color_picker_value }}" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': content['#options'].entity.id}) }}">{{ content['#options'].entity.name.value }}</a>
+  {% else %}
+    <span class="badge badge-light">{{ content['#plain_text'] }}</span>
+  {% endif %}
 {% endmacro %}

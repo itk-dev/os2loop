@@ -80,6 +80,7 @@ $search-highlight-color: $light;
 
 .search-api-autocomplete-search .ui-menu-item-wrapper {
   display: block;
+  padding: 0.5em 0;
 
   &:hover {
     background: $search-highlight-color;
@@ -90,8 +91,10 @@ $search-highlight-color: $light;
   }
 }
 
+.search-result,
 .search-autocomplete {
   @each $content-type in $content-types {
+    &.search-result--node--#{$content-type},
     &.search-autocomplete--node--#{$content-type} {
       @include icon(
         map.get($icons-content-types, $content-type),
@@ -103,6 +106,7 @@ $search-highlight-color: $light;
   }
 
   @each $comment-type in $comment-types {
+    &.search-result--comment--#{$comment-type},
     &.search-autocomplete--comment--#{$comment-type} {
       @include icon(
         map.get($icons-comment-types, $comment-type),
