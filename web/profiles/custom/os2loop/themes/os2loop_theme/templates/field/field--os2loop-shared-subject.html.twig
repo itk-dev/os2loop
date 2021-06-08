@@ -41,7 +41,7 @@
 {% import '@os2loop_theme/macros.html.twig' as macros %}
 
 <div{{ attributes }}>
-  <span{{ title_attributes }}>{{ label }}:</span>
+  <span{{ title_attributes }} class="small">{{ label }}:</span>
   {% for item in items %}
     {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
     {{ macros.term(item.content['#type']|default(''), item.content, true, color_picker_value) }}
