@@ -41,8 +41,8 @@
 #}
 {% macro term(type, content, use_color_picker=false, color_picker_value='') %}
   {% if type is same as 'link' %}
-    <a class="badge badge-pill badge-secondary {{ use_color_picker ? color_picker_value }}" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': content['#options'].entity.id}) }}">{{ content['#options'].entity.name.value }}</a>
+    <a class="badge badge-secondary {{ use_color_picker ? color_picker_value }}" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': content['#options'].entity.id}) }}">{{ content['#options'].entity.name.value }}</a>
   {% else %}
-    <span class="badge badge-light">{{ content['#plain_text'] }}</span>
+    <span class="badge badge-light badge-pill">{{ content['#plain_text'] }}</span>
   {% endif %}
 {% endmacro %}
