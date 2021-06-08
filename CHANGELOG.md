@@ -14,3 +14,4 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   Connect login
 - [LOOP-874](https://jira.itkdev.dk/browse/LOOP-874): Fine-grained
   administrator permissions.
+- [LOOP-934](https://jira.itkdev.dk/browse/LOOP-934): Several changes to design
