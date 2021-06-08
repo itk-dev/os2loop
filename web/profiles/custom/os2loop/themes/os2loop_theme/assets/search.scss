@@ -91,9 +91,11 @@ $search-highlight-color: $light;
   }
 }
 
+.icon,
 .search-result,
 .search-autocomplete {
   @each $content-type in $content-types {
+    &.#{$content-type},
     &.search-result--node--#{$content-type},
     &.search-autocomplete--node--#{$content-type} {
       @include icon(
@@ -106,6 +108,7 @@ $search-highlight-color: $light;
   }
 
   @each $comment-type in $comment-types {
+    &.#{$comment-type},
     &.search-result--comment--#{$comment-type},
     &.search-autocomplete--comment--#{$comment-type} {
       @include icon(
@@ -130,6 +133,10 @@ $search-highlight-color: $light;
       color: $link-color;
     }
   }
+}
+
+.search-result--wrapper {
+  min-height: 45px;
 }
 
 // Override hover effect on see all results.
