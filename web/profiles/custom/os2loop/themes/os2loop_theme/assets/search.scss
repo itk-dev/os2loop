@@ -8,10 +8,11 @@
 //
 // Uncomment the following rule to keep the suggestions visible:
 // .search-api-autocomplete-search {
-//   display: block !important;
+//    display: block !important;
 // }
 
 $search-icon-size: 40px;
+$search-icon-size-sm: 30px;
 $search-icon-padding: 10px;
 
 $icon-color: $dark;
@@ -49,7 +50,7 @@ $search-icon: bg-icon($search-icon-bg, $icon-color);
 
     &:focus {
       border-color: $gray-400;
-      box-shadow: 0 0 0.2rem 0.2rem $secondary;
+      box-shadow: 0 0 0.5em $gray-500;
     }
   }
 
@@ -62,11 +63,13 @@ $search-icon: bg-icon($search-icon-bg, $icon-color);
 }
 
 .search-api-autocomplete-search.ui-widget.ui-widget-content {
-  padding-bottom: 1em;
+  //padding-bottom: 1em;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   border-top: none;
-  box-shadow: -3px 0 3px $secondary, 3px 0 3px $secondary, 0 3px 3px $secondary;
+  border-color: $gray-400;
+  //box-shadow: -3px 0 3px $gray-500, 3px 0 3px $gray-500, 0 3px 3px $gray-500;
+  box-shadow: 0 0 0.5em $gray-500;
 }
 
 // See search_api_autocomplete/css/search_api_autocomplete.css for hints on how
@@ -122,6 +125,39 @@ $search-highlight-color: $light;
 
   padding-left: $search-icon-padding;
   padding-right: $search-icon-padding;
+  padding-top: $spacer/2;
+  padding-bottom: $spacer/2;
+}
+
+.search-autocomplete {
+  @each $content-type in $content-types {
+    &.search-result--node--#{$content-type},
+    &.search-autocomplete--node--#{$content-type} {
+      @include icon(
+        map.get($icons-content-types, $content-type),
+        $search-icon-size-sm - $search-icon-padding,
+        $margin-right: $search-icon-padding,
+        $icon-position: top
+      );
+    }
+  }
+
+  @each $comment-type in $comment-types {
+    &.search-result--comment--#{$comment-type},
+    &.search-autocomplete--comment--#{$comment-type} {
+      @include icon(
+        map.get($icons-comment-types, $comment-type),
+        $search-icon-size-sm - $search-icon-padding,
+        $margin-right: $search-icon-padding,
+        $icon-position: top
+      );
+    }
+  }
+
+  padding-left: $search-icon-padding;
+  padding-right: $search-icon-padding;
+  padding-top: $spacer/4;
+  padding-bottom: $spacer/4;
 
   .search-autocomplete-suggestion {
     display: inline-block;
@@ -131,6 +167,7 @@ $search-highlight-color: $light;
       font-size: 1em;
       font-weight: bold;
       color: $link-color;
+      margin-bottom: 0;
     }
   }
 }
