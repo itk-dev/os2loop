@@ -1,18 +1,45 @@
 input,
 a {
-  &.btn-primary,
-  &.btn-secondary,
-  &.btn-success,
-  &.btn-danger,
-  &.btn-warning,
-  &.btn-info,
-  &.btn-light,
-  &.btn-dark,
-  &.btn-link {
+  &.btn-primary {
     color: $text-on-primary;
 
     &:hover {
       color: $text-on-primary;
+    }
+  }
+  &.btn-secondary {
+    color: $text-on-secondary;
+
+    &:hover {
+      color: $text-on-secondary;
+    }
+  }
+  &.btn-success {
+    color: $text-on-success;
+
+    &:hover {
+      color: $text-on-success;
+    }
+  }
+  &.btn-danger {
+    color: $text-on-danger;
+
+    &:hover {
+      color: $text-on-danger;
+    }
+  }
+  &.btn-warning {
+    color: $text-on-warning;
+
+    &:hover {
+      color: $text-on-warning;
+    }
+  }
+  &.btn-info {
+    color: $text-on-info;
+
+    &:hover {
+      color: $text-on-info;
     }
   }
 }

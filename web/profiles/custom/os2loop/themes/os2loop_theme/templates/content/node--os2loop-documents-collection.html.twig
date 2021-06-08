@@ -111,7 +111,7 @@
       </div>
     </div>
     <div class="tab-pane" id="about-collection" role="tabpanel" aria-labelledby="about-collection-tab">
-      {{ macros.title("About collection"|t, "collection", node, content) }}
+      {{ macros.title("About collection"|t, "collection", node, content, false) }}
       <div{{ content_attributes.addClass("bg-secondary-loop") }}>
         <div>{{ content.os2loop_shared_tags }}</div>
         <div>{{ content.os2loop_shared_subject }}</div>

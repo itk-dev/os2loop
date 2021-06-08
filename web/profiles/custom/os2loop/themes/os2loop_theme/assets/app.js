@@ -16,9 +16,14 @@ import "bootstrap/js/dist/collapse";
 import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/tab";
 import "bootstrap/js/dist/alert";
+import "bootstrap/js/dist/tooltip";
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
+import $ from "jquery";
+
+// Enable tooltips on icon buttons.
+// Imported $ above to make this work.
+$(".icon-container .icon").tooltip();
 
 jQuery(() => {
   // Add/remove search-api-autocomplete-has-suggestions class when showing/hiding search autocomplete suggestions.

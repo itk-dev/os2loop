@@ -38,47 +38,12 @@
  * @ingroup themeable
  */
 #}
-{% set title_classes = [
-    label_display == 'visually_hidden' ? 'visually-hidden',
-    label_display == 'inline' ? 'os2loop-title-text-inline',
-    label_display != 'inline' ? 'os2loop-title-text',
-  ]
-%}
-{% if label_hidden %}
-  {% if multiple %}
-    {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
-    {% endfor %}
-  {% else %}
-    {% for item in items %}
-      {{ item.content }}
-    {% endfor %}
-  {% endif %}
-{% elseif label_display == 'inline' %}
-  <span{{ attributes }}>
-    <span{{ title_attributes.addClass(title_classes) }}>{{ label }}:</span>
-    {% if multiple %}
-      <span>
-    {% endif %}
-    {% for item in items %}
-      {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
-      <span{{ item.attributes.addClass(color_picker_value, 'shared-subject') }}>{{ item.content }}</span>
-    {% endfor %}
-    {% if multiple %}
-      </span>
-    {% endif %}
-  </span>
-{% else %}
-  <div{{ attributes.addClass("os2loop-title") }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-    {% if multiple %}
-      <div>
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
-  </div>
-{% endif %}
+{% import '@os2loop_theme/macros.html.twig' as macros %}
+
+<div{{ attributes }}>
+  <span{{ title_attributes }}>{{ label }}:</span>
+  {% for item in items %}
+    {% set color_picker_value = item.content['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
+    {{ macros.term(item.content['#type']|default(''), item.content, true, color_picker_value) }}
+  {% endfor %}
+</div>

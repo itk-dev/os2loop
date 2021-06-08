@@ -34,7 +34,7 @@
 {# Set nofollow to prevent search bots from crawling anonymous flag links #}
 {% set attributes = attributes.setAttribute('rel', 'nofollow') %}
 
-<li class="{{ classes|join(' ') }}" title='{{ title }}'>
+<li class="{{ classes|join(' ') }}" data-toggle="tooltip" title='{{ title }}'>
   <a{{ attributes }} aria-label='{{ title }}'></a>
   {{ upvotes }}
 </li>

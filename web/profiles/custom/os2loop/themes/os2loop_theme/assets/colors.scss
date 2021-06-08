@@ -3,56 +3,62 @@
  * Os2loop colors. for now.
  */
 
-// Bootstrap colors
-$primary: #41ab51 !default;
-$secondary: #6c757d !default;
-$success: #28a745 !default;
-$info: #17a2b8 !default;
-$warning: #ffc107 !default;
-$danger: #dc3545 !default;
-$light: #f8f9fa !default;
-$dark: #343a40 !default;
+// Override Bootstrap colors
+$primary: #41ab51;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+$blue: #0a58ca;
 
 // Taxonomy colors
-$taxonomy-color-1: hsl(60, 54%, 35%) !default;
-$taxonomy-color-2: hsl(120, 54%, 35%) !default;
-$taxonomy-color-3: hsl(230, 54%, 35%) !default;
-$taxonomy-color-4: hsl(0, 0%, 13%) !default;
+$taxonomy-color-1: hsl(60, 54%, 35%);
+$taxonomy-color-2: hsl(120, 54%, 35%);
+$taxonomy-color-3: hsl(230, 54%, 35%);
+$taxonomy-color-4: hsl(0, 0%, 13%);
 
 // Black and white
-$black: #000 !default;
-$white: #fff !default;
+$black: #000;
+$white: #fff;
 
 @import "contrast-function";
 
-$light-background: $light !default;
-$dark-background: darken($light-background, 10%) !default;
-$field-title-color: $dark !default;
+$light-background: $gray-100;
+$dark-background: $gray-300;
+$field-title-color: $dark;
 
 // Text color
-$text-color: $dark !default;
-$text-on-primary: contrast-color($primary) !default;
+$text-color: $dark;
+$text-on-primary: contrast-color($primary);
+$text-on-secondary: contrast-color($secondary);
+$text-on-success: contrast-color($success);
+$text-on-info: contrast-color($info);
+$text-on-warning: contrast-color($warning);
+$text-on-danger: contrast-color($danger);
 
 // Icon buttons
-$icon-base-color: $secondary !default;
-$delete: $danger !default;
-$upvote: $primary !default;
-$follow-content: $primary !default;
-$edit: $secondary !default;
-$subscribe: $primary !default;
-$favourite: $primary !default;
+$icon-base-color: $secondary;
+$delete: $danger;
+$upvote: $primary;
+$follow-content: $primary;
+$edit: $secondary;
+$subscribe: $primary;
+$favourite: $primary;
 
-$dark-icon-base-color: darken($icon-base-color, 10%) !default;
-$dark-delete: darken($delete, 10%) !default;
-$dark-upvote: darken($upvote, 10%) !default;
-$dark-follow-content: darken($follow-content, 10%) !default;
-$dark-edit: darken($edit, 10%) !default;
-$dark-subscribe: darken($subscribe, 10%) !default;
-$dark-favourite: darken($favourite, 10%) !default;
+$dark-icon-base-color: darken($icon-base-color, 10%);
+$dark-delete: darken($delete, 10%);
+$dark-upvote: darken($upvote, 10%);
+$dark-follow-content: darken($follow-content, 10%);
+$dark-edit: darken($edit, 10%);
+$dark-subscribe: darken($subscribe, 10%);
+$dark-favourite: darken($favourite, 10%);
 
 // Attributes
-$highlighted: lighten($primary, 40%) !default;
-$highlighted-border: $primary !default;
-$link-color: #0056b3 !default;
+$highlighted: lighten($primary, 40%);
+$highlighted-border: $primary;
+$link-color: $blue;
 
-$info-box-background: $info !default;
+$info-box-background: $info;

@@ -57,13 +57,11 @@
     </div>
   </div>
 
-  <div class="list-group">
-    {% if rows -%}
-      {{ rows }}
-    {% elseif empty -%}
-      {{ empty }}
-    {% endif %}
-  </div>
+  {% if rows -%}
+    {{ rows }}
+  {% elseif empty -%}
+    {{ empty }}
+  {% endif %}
 
   {{ pager }}
   {{ attachment_after }}

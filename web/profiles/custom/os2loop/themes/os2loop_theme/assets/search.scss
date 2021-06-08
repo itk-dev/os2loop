@@ -31,6 +31,7 @@ $search-icon: bg-icon($search-icon-bg, $icon-color);
   }
 
   .form-autocomplete {
+    @extend .form-control-lg;
     border-radius: 1em;
 
     // transition: border-radius .1s;
@@ -44,6 +45,11 @@ $search-icon: bg-icon($search-icon-bg, $icon-color);
       position: $search-icon-padding center;
       size: 24px 24px;
       repeat: no-repeat;
+    }
+
+    &:focus {
+      border-color: $gray-400;
+      box-shadow: 0 0 0.2rem 0.2rem $secondary;
     }
   }
 
@@ -60,6 +66,7 @@ $search-icon: bg-icon($search-icon-bg, $icon-color);
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   border-top: none;
+  box-shadow: -3px 0 3px $secondary, 3px 0 3px $secondary, 0 3px 3px $secondary;
 }
 
 // See search_api_autocomplete/css/search_api_autocomplete.css for hints on how
@@ -73,6 +80,7 @@ $search-highlight-color: $light;
 
 .search-api-autocomplete-search .ui-menu-item-wrapper {
   display: block;
+  padding: 0.5em 0;
 
   &:hover {
     background: $search-highlight-color;
@@ -83,23 +91,28 @@ $search-highlight-color: $light;
   }
 }
 
+.search-result,
 .search-autocomplete {
   @each $content-type in $content-types {
+    &.search-result--node--#{$content-type},
     &.search-autocomplete--node--#{$content-type} {
       @include icon(
         map.get($icons-content-types, $content-type),
         $search-icon-size - $search-icon-padding,
-        $margin-right: $search-icon-padding
+        $margin-right: $search-icon-padding,
+        $icon-position: top
       );
     }
   }
 
   @each $comment-type in $comment-types {
+    &.search-result--comment--#{$comment-type},
     &.search-autocomplete--comment--#{$comment-type} {
       @include icon(
         map.get($icons-comment-types, $comment-type),
         $search-icon-size - $search-icon-padding,
-        $margin-right: $search-icon-padding
+        $margin-right: $search-icon-padding,
+        $icon-position: top
       );
     }
   }
@@ -113,7 +126,24 @@ $search-highlight-color: $light;
 
     h2 {
       font-size: 1em;
+      font-weight: bold;
+      color: $link-color;
     }
+  }
+}
+
+// Override hover effect on see all results.
+.ui-menu-item:last-child .ui-menu-item-wrapper {
+  @extend .btn;
+  @extend .btn-secondary;
+  @extend .btn-sm;
+
+  background-color: $secondary;
+  margin: 1em;
+  transition: none;
+
+  .search-api-autocomplete-suggestion {
+    background: none !important;
   }
 }
 
@@ -124,4 +154,12 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
+}
+
+// Adding a highligt color for search_api_excerpt
+
+.search_api_excerpt strong {
+  background-color: $warning;
+  padding-left: 1px;
+  padding-right: 1px;
 }
