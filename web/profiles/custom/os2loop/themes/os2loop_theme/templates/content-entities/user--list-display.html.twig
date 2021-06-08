@@ -18,41 +18,49 @@
  * @ingroup themeable
  */
 #}
-<div class="member-list-item">
-  <div class="container">
-    <div class="row">
-      <div class="col-3 col-md-2 col-lg-1">
-        <div class="mb-2">
+<div class="col">
+  <div class="card bg-light w-100 member-list-item">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-auto">
           {% if user.os2loop_user_image.value is not empty %}
-            {{ content.os2loop_user_image }}
+            <div class="rounded-circle bg-white text-center" style="overflow: hidden;">
+              {{ content.os2loop_user_image }}
+            </div>
           {% else %}
             <i class="bi bi-person-circle display-4"></i>
           {% endif %}
         </div>
-      </div>
-      <div class="col-7 col-md-10 col-lg-11">
-        <h5 class="row mb-3 h6">
-          <a class="col-lg-auto" href="{{ url('entity.user.canonical', {'user': user.id}) }}">
-            {{ user.os2loop_user_given_name.value }} {{ user.os2loop_user_family_name.value }}
-          </a>
-          <span class="col-lg-auto">{{ user.os2loop_user_job_title.value }}</span>
-        </h5>
-        <div id="collapse-uid-{{ user.id }}" class="collapse row">
-          <span class="col-lg-auto">{{ user.email }}</span>
-          <span class="col-lg-auto">{{ user.os2loop_user_phone_number.value }}</span>
-          <span class="col-lg-auto">
-            {% if user.os2loop_user_place.value is not empty %}
-              <span class="mr-1">{{ user.os2loop_user_place.value }},</span>
-            {% endif %}
-            {% if user.os2loop_user_address.value is not empty %}
-              <span class="mr-1">{{ user.os2loop_user_address.value }},</span>
-            {% endif %}
-            <span>{{ user.os2loop_user_postal_code.value }} {{ user.os2loop_user_city.value }}</span>
-          </span>
+        <div class="col">
+          <div class="row">
+            <h2 class="card-title h6 col-auto mb-0">
+              <a href="{{ url('entity.user.canonical', {'user': user.id}) }}">
+              {{ user.os2loop_user_given_name.value }} {{ user.os2loop_user_family_name.value }}
+              </a>
+            </h2>
+            <p class="col h6 mb-0">{{ user.os2loop_user_job_title.value }}</p>
+          </div>
+          <div class="row">
+            <div class="col card-text">
+              <div id="collapse-uid-{{ user.id }}" class="collapse d-md-block">
+                <span class="mr-3 d-block d-md-inline">{{ user.email }}</span>
+                <span class="mr-3 d-block d-md-inline">{{ user.os2loop_user_phone_number.value }}</span>
+                <span class="mr-3 d-block d-md-inline">
+                  {% if user.os2loop_user_place.value is not empty %}
+                    <span class="mr-1">{{ user.os2loop_user_place.value }},</span>
+                  {% endif %}
+                  {% if user.os2loop_user_address.value is not empty %}
+                    <span class="mr-1">{{ user.os2loop_user_address.value }},</span>
+                  {% endif %}
+                  <span>{{ user.os2loop_user_postal_code.value }} {{ user.os2loop_user_city.value }}</span>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="carret-collapse col-2" data-toggle="collapse" href="#collapse-uid-{{ user.id }}" role="button" aria-expanded="false" aria-controls="collapse-uid-{{ user.id }}">
-        <i class="bi bi-caret-down"></i>
+        <div class="carret-collapse col-auto d-md-none" data-toggle="collapse" href="#collapse-uid-{{ user.id }}" role="button" aria-expanded="true" aria-controls="collapse-uid-{{ user.id }}">
+          <i class="bi bi-caret-down"></i>
+        </div>
       </div>
     </div>
   </div>
