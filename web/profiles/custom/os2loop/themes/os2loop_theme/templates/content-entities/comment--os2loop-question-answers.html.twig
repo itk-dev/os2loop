@@ -100,12 +100,17 @@
     accessibility. The list is difficult to navigate in a screen reader
     without this information.
   #}
+
   <div{{ content_attributes.addClass(background_class) }}>
-    {% if parent %}
-      <p class="visually-hidden">{{ parent }}</p>
-    {% endif %}
-    {{ content.os2loop_question_answer }}
-    {{ content.os2loop_question_answer_media }}
-    <div>{{ content.flag_os2loop_upvote_correct_answer }}</div>
+    <div class="row">
+      <div class="col-12 pb-3">
+        {% if parent %}
+        <p class="visually-hidden">{{ parent }}</p>
+        {% endif %}
+        {{ content.os2loop_question_answer }}
+      </div>
+      <div class="col">{{ content.os2loop_question_answer_media }}</div>
+      <div class="col-auto mt-auto">{{ content.flag_os2loop_upvote_correct_answer }}</div>
+    </div>
   </div>
 </article>

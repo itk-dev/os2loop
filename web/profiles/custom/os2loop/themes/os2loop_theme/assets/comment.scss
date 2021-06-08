@@ -11,26 +11,33 @@
 .os2loop-post,
 .os2loop-question {
   .indented {
-    margin-left: 25px;
+    margin-left: $spacer * 3;
   }
-
   .top-comment {
-    background-color: $primary;
-    border-radius: 0;
-    color: $text-on-primary;
+    //background-color: $primary;
+    //border-radius: 0;
+    //color: $text-on-primary;
+    .user {
+      background: #c3e6cb;
+    }
   }
 
   .top-comment-background {
-    background-color: $primary;
-    padding: $spacer * 2;
-    margin-bottom: $spacer * 2;
-    color: $black;
+    margin-top: 0;
+    padding: $spacer;
+    border-left: 1px solid $gray-200;
+    border-right: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
+    border-radius: 0 0 5px 5px;
 
-    a {
-      color: $text-on-primary;
-    }
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+
+    margin-bottom: $spacer * 2;
+    color: #155724;
   }
 }
+
 .os2loop-comment {
   position: relative;
 
@@ -39,4 +46,18 @@
     // @todo Design
     outline: solid 1px $primary;
   }
+
+  .bg-secondary-loop {
+    margin-top: 0;
+    padding: $spacer;
+    border-left: 1px solid $gray-200;
+    border-right: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+.comment-reply {
+  background-color: $light;
+  padding: $spacer;
 }
