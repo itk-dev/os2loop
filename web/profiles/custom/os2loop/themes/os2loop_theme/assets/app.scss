@@ -1,60 +1,19 @@
+// Bootstrap
+@import "~bootstrap"; // Import full bootstrap styling
+@import "~bootstrap-icons/font/bootstrap-icons.css"; // Import bootstrap icons
+
+// Colors
 @import "colors";
-@import "bootstrap";
-@import "bootstrap-icons/font/bootstrap-icons.css";
-@import "mixins";
-
-$font-family-base: "Montserrat";
-
-a {
-  color: $link-color;
-}
-
-.bg-secondary-loop {
-  background-color: $light-background;
-  padding: $spacer * 2;
-  border-radius: 3px;
-  margin-bottom: $spacer * 2;
-}
-
-.bg-white-loop {
-  @extend .container;
-  background-color: $white;
-  padding: $spacer * 2;
-  margin-bottom: $spacer * 2;
-}
-i {
-  font-size: 1.2em;
-}
-
-.os2loop-content {
-  position: relative;
-
-  h1,
-  h2 {
-    color: $text-color;
-    font-size: 2em;
-  }
-}
-
-img {
-  max-width: 100%;
-  object-fit: contain;
-  height: auto;
-}
-
-.navbar-brand {
-  min-width: 100px;
-}
-
-@import "bootstrap";
 @import "bootstrap-contrast-fixes";
+
+// Components
+@import "mixins";
 @import "./comment";
 @import "./teasers";
 @import "./documents";
 @import "./title";
 @import "./tabs";
 @import "./fields";
-@import "./font";
 @import "./form";
 @import "./icons";
 @import "./search";
@@ -68,3 +27,42 @@ img {
 @import "./paragraphs/info-block";
 @import "./taxonomy-colors";
 @import "./os2loop-user-login";
+
+// Generel overrides
+body {
+  background-color: $gray-100;
+}
+
+a {
+  color: $link-color;
+  &:hover {
+    color: darken($link-color, 10%);
+  }
+}
+
+.bg-white-loop {
+  background-color: $white;
+  //padding: $spacer * 2;
+  margin-bottom: $spacer * 2;
+}
+
+.bg-secondary-loop {
+  //padding: $spacer * 2;
+  border-radius: 3px;
+  //margin-top: $spacer;
+  margin-bottom: $spacer * 2;
+}
+
+i {
+  font-size: 1.2em;
+}
+
+.os2loop-content {
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  object-fit: contain;
+  height: auto;
+}

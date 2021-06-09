@@ -36,7 +36,12 @@
   }
 }
 
-@mixin icon($content: null, $font-size: 1em, $margin-right: $spacer) {
+@mixin icon(
+  $content: null,
+  $font-size: 1em,
+  $margin-right: $spacer,
+  $icon-position: middle
+) {
   @if $content {
     &::before {
       color: $icon-base-color;
@@ -44,7 +49,8 @@
       margin-right: $margin-right;
       font-family: bootstrap-icons !important;
       content: $content;
-      vertical-align: middle;
+      vertical-align: $icon-position;
+      float: left;
     }
   }
 }

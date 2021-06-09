@@ -131,10 +131,9 @@ $search-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
 // When it is in a comment, it should leave a little margin.
 .os2loop-comment {
   .icon-container {
-    right: 2em;
     display: flex;
     position: absolute;
-    right: 0px;
+    right: 0;
     z-index: 10;
   }
 }
