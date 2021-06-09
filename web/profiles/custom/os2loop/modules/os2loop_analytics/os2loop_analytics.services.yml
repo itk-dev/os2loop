@@ -1,0 +1,5 @@
+services:
+  os2loop_analytics.analytics_helper:
+    class: Drupal\os2loop_analytics\Helper\AnalyticsHelper
+    arguments:
+      - '@Drupal\os2loop_settings\Settings'
