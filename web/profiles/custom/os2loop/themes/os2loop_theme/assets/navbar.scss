@@ -2,6 +2,14 @@
   .main-menu {
     flex-grow: 0;
   }
+
+  .navbar-brand {
+    min-width: 100px;
+  }
+
+  .brand-logo {
+    max-height: 48px;
+  }
 }
 
 .dropdown-divider {
