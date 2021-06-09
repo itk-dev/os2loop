@@ -161,7 +161,7 @@ process:
         format:
           plugin: default_value
           default_value: os2loop_documents_body
-  field_revision_date:
+  os2loop_shared_rev_date:
     -
       plugin: sub_process
       source: field_revision_date
@@ -171,6 +171,28 @@ process:
           from_format: 'Y-m-d H:i:s'
           to_format: Y-m-d
           source: value
+  os2loop_shared_approval_date:
+    -
+      plugin: sub_process
+      source: field_loop_documents_approv_date
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value
+  os2loop_shared_approver:
+    -
+      plugin: get
+      source: field_loop_documents_approver
+  os2loop_shared_owner:
+    -
+      plugin: get
+      source: field_loop_documents_owner
+  os2loop_shared_version:
+    -
+      plugin: get
+      source: field_loop_documents_version
 destination:
   plugin: 'entity_complete:node'
   translations: true
