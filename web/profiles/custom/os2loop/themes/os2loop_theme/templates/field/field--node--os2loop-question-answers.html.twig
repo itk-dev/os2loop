@@ -37,7 +37,7 @@
   {% if comment_form %}
     <h2{{ content_attributes }}>{{ 'Add new comment'|t }}</h2>
     {% include '@os2loop_theme/field/user-info.html.twig' with {user: drupal_entity('user', user.account.id)} %}
-    <div class="bg-secondary-loop comment-reply">
+    <div class="bg-secondary-loop comment-write-reply">
       {{ comment_form }}
     </div>
   {% endif %}
