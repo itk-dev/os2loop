@@ -1,5 +1,5 @@
 // Bootstrap
-@import "bootstrap"; // Import full bootstrap styling
+@import "~bootstrap"; // Import full bootstrap styling
 @import "~bootstrap-icons/font/bootstrap-icons.css"; // Import bootstrap icons
 
 // Colors
@@ -47,8 +47,9 @@ a {
 }
 
 .bg-secondary-loop {
-  padding: $spacer * 2;
+  //padding: $spacer * 2;
   border-radius: 3px;
+  //margin-top: $spacer;
   margin-bottom: $spacer * 2;
 }
 

@@ -7,7 +7,7 @@
  * - user: The user to display info about.
  */
 #}
-<div class="user mb-2 rounded">
+<div class="user rounded-top">
   <div class="col-auto">
     {% set image = user['#user'].id is not empty ? drupal_field('os2loop_user_image', 'user', user['#user'].id, 'compact') %}
     {% if image['#items'] is not empty %}

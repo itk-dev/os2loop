@@ -56,6 +56,8 @@
         "drupal/field_group": "^3.1",
         "drupal/flag": "^4.0@beta",
         "drupal/gin": "^3.0",
+        "drupal/gin_login": "^1.0@RC",
+        "drupal/gin_toolbar": "^1.0@beta",
         "drupal/masquerade": "^2.0@beta",
         "drupal/message": "^1.2",
         "drupal/openid_connect": "^1.0",
