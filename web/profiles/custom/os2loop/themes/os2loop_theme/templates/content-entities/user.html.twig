@@ -56,28 +56,11 @@
           {{ content.os2loop_user_postal_code }}
           {{ content.os2loop_user_city }}
         </div>
-        {{ content.os2loop_user_professions }}
-        {{ content.os2loop_user_external_list }}
-        {{ content.os2loop_user_internal_list }}
       </div>
     </div>
     <div class="row">
       <div class="col">
         {{ content.os2loop_user_biography }}
-        {{ content|without(
-          'os2loop_user_image',
-          'os2loop_user_areas_of_expertise',
-          'os2loop_user_address',
-          'os2loop_user_city',
-          'os2loop_user_given_name',
-          'os2loop_user_job_title',
-          'os2loop_user_family_name',
-          'os2loop_user_phone_number',
-          'os2loop_user_place',
-          'os2loop_user_postal_code',
-          'os2loop_user_professions',
-          'os2loop_user_biography'
-        ) }}
       </div>
     </div>
   {% endif %}
