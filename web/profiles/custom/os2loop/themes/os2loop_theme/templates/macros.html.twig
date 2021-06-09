@@ -46,3 +46,26 @@
     <span class="badge badge-light badge-pill">{{ content['#plain_text'] }}</span>
   {% endif %}
 {% endmacro %}
+
+{#
+/**
+* Macro to display table of contents.
+*
+* Variables:
+* - items: Elements in collection.
+* - collection: The document collection.
+*/
+#}
+{% macro table_of_contents(items, collection) %}
+  {% if items %}
+    <ol class="document-collection-list">
+      {% for item in items %}
+        {% set document = item.document %}
+        <li class="document-collection-item">
+          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="document-title">{{ document.title.value }}</a>
+          {{ item.children ? _self.table_of_contents(item.children, collection) }}
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+{% endmacro %}
