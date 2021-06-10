@@ -59,14 +59,14 @@
 #}
 {% macro table_of_contents(items, collection, current_node_id=null) %}
   {% if items %}
-    <ol class="document-collection-list">
+    <div class="list-group document-collection-list mt-1 rounded-0">
       {% for item in items %}
         {% set document = item.document %}
-        <li class="document-collection-item {{ current_node_id is same as(document.id) ? 'active' }}">
-          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="document-title">{{ document.title.value }}</a>
+          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="list-group-item list-group-item-action document-collection-item {{ current_node_id is same as(document.id) ? 'active' }}">
+            {{ document.title.value }} {{ current_node_id is same as(document.id) ? '<span class="badge badge-dark badge-pill float-right mt-1">Currently open</span>' }}
+          </a>
           {{ item.children ? _self.table_of_contents(item.children, collection, current_node_id) }}
-        </li>
       {% endfor %}
-    </ol>
+    </>
   {% endif %}
 {% endmacro %}
