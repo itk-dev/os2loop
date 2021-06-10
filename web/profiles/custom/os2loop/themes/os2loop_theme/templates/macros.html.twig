@@ -54,16 +54,17 @@
 * Variables:
 * - items: Elements in collection.
 * - collection: The document collection.
+* - current_node_id: The id of the current node.
 */
 #}
-{% macro table_of_contents(items, collection) %}
+{% macro table_of_contents(items, collection, current_node_id=null) %}
   {% if items %}
     <ol class="document-collection-list">
       {% for item in items %}
         {% set document = item.document %}
-        <li class="document-collection-item">
+        <li class="document-collection-item {{ current_node_id is same as(document.id) ? 'active' }}">
           <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="document-title">{{ document.title.value }}</a>
-          {{ item.children ? _self.table_of_contents(item.children, collection) }}
+          {{ item.children ? _self.table_of_contents(item.children, collection, current_node_id) }}
         </li>
       {% endfor %}
     </ol>
