@@ -75,21 +75,6 @@
 {# Import macros #}
 {% import '@os2loop_theme/macros.html.twig' as macros %}
 
-{# Unique table of contents macro #}
-{% macro table_of_contents(items, collection) %}
-  {% if items %}
-    <ol>
-      {% for item in items %}
-        {% set document = item.document %}
-        <li>
-          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="document-title">{{ document.title.value }}</a>
-          {{ item.children ? _self.table_of_contents(item.children, collection) }}
-        </li>
-      {% endfor %}
-    </ol>
-  {% endif %}
-{% endmacro %}
-
 <article{{ attributes.addClass("document-collection") }}>
   {% set tabs = [
     {'id': 'collection', 'name': 'Collection'|t},
@@ -105,7 +90,7 @@
         {% if os2loop_documents_collection_tree|default(false) %}
           <div>
             <h2>{{ 'Documents in collection'|t }}</h2>
-            {{ _self.table_of_contents(os2loop_documents_collection_tree, node) }}
+            {{ macros.table_of_contents(os2loop_documents_collection_tree, node) }}
           </div>
         {% endif %}
       </div>
@@ -116,7 +101,6 @@
         <div>{{ content.os2loop_shared_tags }}</div>
         <div>{{ content.os2loop_shared_subject }}</div>
         <div>{{ content.os2loop_shared_profession }}</div>
-
         <div>{{ content.os2loop_shared_approver }}</div>
         <div>{{ content.os2loop_shared_approval_date }}</div>
         <div>{{ content.os2loop_shared_rev_date }}</div>
