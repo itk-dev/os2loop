@@ -13,6 +13,8 @@
   */
   #}
 {# @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Search_role#examples #}
-<form{{ attributes.setAttribute('role', 'search') }}>
-  {{ children }}
+<form{{ attributes.setAttribute('role', 'search') }} class="form" >
+  <div class="row">
+    {{ children }}
+  </div>
 </form>
