@@ -104,6 +104,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('siteimprove_tracking_code', $form_state->getValue('siteimprove_tracking_code'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 
