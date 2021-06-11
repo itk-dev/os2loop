@@ -32,13 +32,13 @@ Clean up source database:
 
 ```sh
 # Delete non-existing comments with upvotes.
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 1 AND entity_id NOT IN (SELECT cid FROM comment)"
+vendor/bin/drush sql:query --database=migrate 'DELETE FROM flagging WHERE fid = 1 AND entity_id NOT IN (SELECT cid FROM comment)'
 # Delete flagging of non-existing messages;
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 2 AND entity_id NOT IN (SELECT mid FROM message)"
+vendor/bin/drush sql:query --database=migrate 'DELETE FROM flagging WHERE fid = 2 AND entity_id NOT IN (SELECT mid FROM message)'
 # Delete subscriptions on non-existing nodes.
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 3 AND entity_id NOT IN (SELECT nid FROM node)"
+vendor/bin/drush sql:query --database=migrate 'DELETE FROM flagging WHERE fid = 3 AND entity_id NOT IN (SELECT nid FROM node)'
 # Delete subscriptions on non-existing taxonomies.
-vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 4 AND entity_id NOT IN (SELECT tid FROM taxonomy_term_data)"
+vendor/bin/drush sql:query --database=migrate 'DELETE FROM flagging WHERE fid = 4 AND entity_id NOT IN (SELECT tid FROM taxonomy_term_data)'
 ```
 
 ### Enabling migration modules and configuration
@@ -46,6 +46,8 @@ vendor/bin/drush sql:query --database=migrate "DELETE FROM flagging WHERE fid = 
 Install the OS2Loop Migrate module:
 
 ```sh
+# Install dev packages.
+composer install
 vendor/bin/drush --yes pm:enable os2loop_migrate
 ```
 
