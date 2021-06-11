@@ -25,33 +25,37 @@
  */
 #}
 {% set list_classes = [
-  'col'
+  'pl-0 pt-3'
 ] %}
 {% set list_item_classes = [
   'form-check form-check-inline'
 ] %}
 
-<div class="row mt-2 facets-widget- {{- facet.widget.type -}} ">
-  {% if facet.widget.type %}
-    {%- set attributes = attributes.addClass('item-list__' ~ facet.widget.type) %}
-  {% endif %}
-  {% if items or empty %}
-    {%- if title is not empty -%}
-      <h3 class="h5">{{ title }}</h3>
-    {%- endif -%}
+<div class="bg-light col mx-4 rounded-bottom facets-widget- {{- facet.widget.type -}}">
+  <div class="row">
+    <div class="collapse show col search-filters-collapse" id="searchFilterCollapseFacets">
+      {% if facet.widget.type %}
+        {%- set attributes = attributes.addClass('item-list__' ~ facet.widget.type) %}
+      {% endif %}
+      {% if items or empty %}
+        {%- if title is not empty -%}
+          <h3 class="h5">{{ title }}</h3>
+        {%- endif -%}
 
-    {%- if items -%}
-      <{{ list_type }}{{ attributes.addClass(list_classes) }}>
-        {%- for item in items -%}
-          <li{{ item.attributes.addClass(list_item_classes) }}>{{ item.value }}</li>
-        {%- endfor -%}
-      </{{ list_type }}>
-    {%- else -%}
-      {{- empty -}}
-    {%- endif -%}
-  {%- endif %}
+        {%- if items -%}
+          <{{ list_type }}{{ attributes.addClass(list_classes) }}>
+            {%- for item in items -%}
+              <li{{ item.attributes.addClass(list_item_classes) }}>{{ item.value }}</li>
+            {%- endfor -%}
+          </{{ list_type }}>
+        {%- else -%}
+          {{- empty -}}
+        {%- endif -%}
+      {%- endif %}
 
-{% if facet.widget.type == "dropdown" %}
-  <label id="facet_{{ facet.id }}_label">{{ 'Facet'|t }} {{ facet.label }}</label>
-{%- endif %}
+    {% if facet.widget.type == "dropdown" %}
+      <label id="facet_{{ facet.id }}_label">{{ 'Facet'|t }} {{ facet.label }}</label>
+    {%- endif %}
+    </div>
+  </div>
 </div>

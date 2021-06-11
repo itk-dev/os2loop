@@ -47,7 +47,7 @@
  */
 #}
 {% set classes = [
-    'col',
+    'col bg-light mr-4 pt-2 collapse show search-filters-collapse',
     'form-item',
     'js-form-item',
     'form-type-' ~ type|clean_class,
@@ -68,7 +68,7 @@
     description_display == 'invisible' ? 'visually-hidden',
   ]
 %}
-<div{{ attributes.addClass(classes) }}>
+<div{{ attributes.addClass(classes) }} id="searchFilterCollapseOrder">
   {% if label_display in ['before', 'invisible'] %}
     {{ label }}
   {% endif %}
