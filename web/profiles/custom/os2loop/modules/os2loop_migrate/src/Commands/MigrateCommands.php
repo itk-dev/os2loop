@@ -106,7 +106,7 @@ class MigrateCommands extends DrushCommands {
           ],
           'entity' => [
             'bundle' => 'comment',
-            'media_field_name' => 'os2loop_question_file',
+            'media_field_name' => 'os2loop_question_answer_media',
           ],
         ],
       ],
