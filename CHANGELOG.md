@@ -7,7 +7,7 @@ and this project adheres to [Semantic
 Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+- [LOOP-948](https://jira.itkdev.dk/browse/LOOP-948): Fix position of user dropdown menu, that extends outside the viewport on narrow screens.
 - [LOOP-732](https://jira.itkdev.dk/browse/LOOP-732),
   [LOOP-733](https://jira.itkdev.dk/browse/LOOP-733) and
   [LOOP-734](https://jira.itkdev.dk/browse/LOOP-734): Drupal, SAML and OpenID
