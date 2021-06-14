@@ -54,7 +54,7 @@
               {{ link(item.title, item.url, {'class': classes_link}) }}
               {% endif %}
               {% if item.below %}
-                <div class="dropdown-menu" aria-label="{{ item.title }}">
+                <div class="dropdown-menu position-right" aria-label="{{ item.title }}">
                   {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                 </div>
               {% endif %}

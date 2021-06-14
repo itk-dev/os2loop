@@ -15,3 +15,10 @@
 .dropdown-divider {
   display: block;
 }
+
+.dropdown-menu {
+  &.position-right {
+    left: auto !important;
+    right: 0;
+  }
+}
