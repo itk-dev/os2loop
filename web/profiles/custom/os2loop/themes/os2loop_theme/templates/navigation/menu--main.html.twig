@@ -24,8 +24,9 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
+<button class="navbar-toggler text-white border collapsed" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+  <i class="bi bi-list"></i>
+  <i class="bi bi-x"></i>
 </button>
 <div class="collapse navbar-collapse main-menu" id="navbarMain">
   {{ menus.menu_links(items, attributes, 0) }}
@@ -54,7 +55,7 @@
               {{ link(item.title, item.url, {'class': classes_link}) }}
               {% endif %}
               {% if item.below %}
-                <div class="dropdown-menu" aria-label="{{ item.title }}">
+                <div class="dropdown-menu position-right" aria-label="{{ item.title }}">
                   {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                 </div>
               {% endif %}

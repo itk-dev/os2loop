@@ -104,6 +104,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('filter_taxonomy_vocabulary', $form_state->getValue('filter_taxonomy_vocabulary'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 

@@ -59,6 +59,7 @@ class Helper {
 
       if ($this->config->get('show_saml_login')) {
         $form['saml_login'] = [
+          '#weight' => -100,
           '#type' => 'link',
           '#title' => $this->t('Log in with SAML'),
           '#url' => Url::fromRoute('samlauth.saml_controller_login'),
