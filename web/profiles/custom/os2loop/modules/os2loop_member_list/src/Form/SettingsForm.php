@@ -86,6 +86,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('enable_member_list', $form_state->getValue('enable_member_list'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 

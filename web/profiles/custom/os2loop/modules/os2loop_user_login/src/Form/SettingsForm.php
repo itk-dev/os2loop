@@ -121,6 +121,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('show_saml_login', $form_state->getValue('show_saml_login'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 
