@@ -50,7 +50,7 @@ content:
     settings:
       title: Paragraph
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
@@ -90,13 +90,13 @@ content:
   os2loop_shared_subject:
     weight: 9
     settings:
-      limit: '10'
-      min_length: '0'
+      limit: 10
+      min_length: 0
       delimiter: ''
       not_found_message: 'The term ''@term'' will be added'
       no_empty_message: 'No terms could be found. Please type in order to add a new term.'
-      not_found_message_allow: 0
-      new_terms: 0
+      not_found_message_allow: false
+      new_terms: false
       match_operator: CONTAINS
       autocomplete_route_name: autocomplete_deluxe.autocomplete
       size: 60
@@ -107,13 +107,13 @@ content:
   os2loop_shared_tags:
     weight: 10
     settings:
-      limit: '10'
-      min_length: '0'
+      limit: 10
+      min_length: 0
       delimiter: ''
       not_found_message: 'The term ''@term'' will be added'
-      new_terms: '1'
+      new_terms: true
       no_empty_message: 'No terms could be found. Please type in order to add a new term.'
-      not_found_message_allow: 0
+      not_found_message_allow: false
       match_operator: CONTAINS
       autocomplete_route_name: autocomplete_deluxe.autocomplete
       size: 60
