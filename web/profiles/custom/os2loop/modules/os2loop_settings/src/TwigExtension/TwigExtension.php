@@ -5,6 +5,7 @@ namespace Drupal\os2loop_settings\TwigExtension;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\os2loop_settings\Settings;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -27,11 +28,19 @@ class TwigExtension extends AbstractExtension {
   private $moduleHandler;
 
   /**
+   * The settings.
+   *
+   * @var \Drupal\os2loop_settings\Settings
+   */
+  private $settings;
+
+  /**
    * Constructor.
    */
-  public function __construct(AccountInterface $account, ModuleHandlerInterface $moduleHandler) {
+  public function __construct(AccountInterface $account, ModuleHandlerInterface $moduleHandler, Settings $settings) {
     $this->account = $account;
     $this->moduleHandler = $moduleHandler;
+    $this->settings = $settings;
   }
 
   /**
@@ -40,6 +49,7 @@ class TwigExtension extends AbstractExtension {
   public function getFunctions() {
     return [
       new TwigFunction('is_granted', [$this, 'isGranted']),
+      new TwigFunction('get_os2loop_config', [$this, 'getConfig']),
     ];
   }
 
@@ -85,6 +95,19 @@ class TwigExtension extends AbstractExtension {
     }
 
     return FALSE;
+  }
+
+  /**
+   * Get os2loop config.
+   *
+   * @param string|null $config_name
+   *   Name of the configuration.
+   *
+   * @return array
+   *   Array of default config or specified config.
+   */
+  public function getConfig(string $config_name = NULL): array {
+    return $this->settings->getConfig($config_name)->get();
   }
 
 }
