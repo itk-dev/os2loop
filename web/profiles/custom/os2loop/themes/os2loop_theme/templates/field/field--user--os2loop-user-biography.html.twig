@@ -38,15 +38,7 @@
  * @ingroup themeable
  */
 #}
-<p class="small muted m-0 p-0">{{ label }}</p>
-{% if multiple %}
-  <p>
-    {% for item in items %}
-      <span class="badge border">{{ item.content }}</span>
-    {% endfor %}
-  </p>
-{% else %}
-  {% for item in items %}
-    <p>{{ item.content }}</p>
-  {% endfor %}
-{% endif %}
+<h2 class="h4 border-bottom pb-2 mt-3 mt-md-5">{{ label }}</h2>
+{% for item in items %}
+  {{ item.content }}
+{% endfor %}

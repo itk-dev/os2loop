@@ -177,17 +177,19 @@ $search-highlight-color: $light;
 }
 
 // Override hover effect on see all results.
-.ui-menu-item:last-child .ui-menu-item-wrapper {
-  @extend .btn;
-  @extend .btn-secondary;
-  @extend .btn-sm;
+.search-api-autocomplete-search {
+  .ui-menu-item:last-child .ui-menu-item-wrapper {
+    @extend .btn;
+    @extend .btn-secondary;
+    @extend .btn-sm;
 
-  background-color: $secondary;
-  margin: 1em;
-  transition: none;
+    background-color: $secondary;
+    margin: 1em;
+    transition: none;
 
-  .search-api-autocomplete-suggestion {
-    background: none !important;
+    .search-api-autocomplete-suggestion {
+      background: none !important;
+    }
   }
 }
 
