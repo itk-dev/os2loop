@@ -118,6 +118,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('template_body', $form_state->getValue('template_body'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 
