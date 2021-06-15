@@ -62,10 +62,16 @@
     <div class="list-group document-collection-list mt-1 rounded-0">
       {% for item in items %}
         {% set document = item.document %}
-          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="list-group-item list-group-item-action document-collection-item {{ current_node_id is same as(document.id) ? 'active' }}">
-            {{ document.title.value }} {{ current_node_id is same as(document.id) ? '<span class="badge badge-dark badge-pill float-right mt-1">Currently open</span>' }}
+        {% if current_node_id is same as(document.id) %}
+          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="list-group-item list-group-item-action document-collection-item active">
+            {{ document.title.value }} <span class="badge badge-dark badge-pill float-right mt-1">{{ 'Currently open'|t }}</span>
           </a>
-          {{ item.children ? _self.table_of_contents(item.children, collection, current_node_id) }}
+        {% else %}
+          <a href="{{ path('entity.node.canonical', {node: document.id, collection: collection.id}) }}" class="list-group-item list-group-item-action document-collection-item">
+            {{ document.title.value }}
+          </a>
+        {% endif %}
+        {{ item.children ? _self.table_of_contents(item.children, collection, current_node_id) }}
       {% endfor %}
     </>
   {% endif %}
