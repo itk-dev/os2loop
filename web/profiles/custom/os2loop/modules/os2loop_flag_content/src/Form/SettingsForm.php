@@ -137,6 +137,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('node_types', $form_state->getValue('node_types'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 
