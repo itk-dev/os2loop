@@ -1,23 +1,5 @@
-ol.document-collection-list {
-  padding-left: 0px;
-
-  li.document-collection-item {
-    list-style: none;
-    padding: 0;
-    a {
-      background-color: $dark-background;
-      padding: $spacer;
-      margin-bottom: 4px;
-      width: 100%;
-      display: block;
-    }
-    ol.document-collection-list {
-      padding-left: $spacer;
-      a {
-        background-color: $light-background;
-      }
-    }
-  }
+.document-collection-item + .document-collection-list {
+  padding-left: $spacer;
 }
 
 .os2loop-documents-info-box {
