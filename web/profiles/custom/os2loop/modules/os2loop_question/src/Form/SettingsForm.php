@@ -86,6 +86,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('enable_rich_text', $form_state->getValue('enable_rich_text'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 

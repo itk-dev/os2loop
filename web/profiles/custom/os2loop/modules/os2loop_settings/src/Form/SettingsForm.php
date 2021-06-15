@@ -108,6 +108,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('search_settings', $form_state->getValue('search_settings'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 
