@@ -203,9 +203,24 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 // Adding a highligt color for search_api_excerpt
-
 .search_api_excerpt strong {
   background-color: $warning;
   padding-left: 1px;
   padding-right: 1px;
+}
+
+// Hide title on content type filters on search results page
+.block-facet--os2loop-search-db-document {
+  h2 {
+    @include sr-only;
+  }
+}
+
+.facets-widget-os2loop_search_db_document {
+  label {
+    @extend .form-check-label;
+  }
+  .facets-checkbox {
+    @extend .form-check-input;
+  }
 }
