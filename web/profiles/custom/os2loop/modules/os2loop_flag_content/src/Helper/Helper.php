@@ -26,6 +26,8 @@ class Helper {
 
   /**
    * Implements hook_os2loop_settings_is_granted().
+   *
+   * Get node type permissions.
    */
   public function isGranted(string $attribute, $object = NULL): bool {
     if ('contact editorial office' === $attribute && $object instanceof NodeInterface) {

@@ -11,6 +11,8 @@ use Drupal\os2loop_media\Helper\Helper;
 
 /**
  * Implements hook_views_query_alter().
+ *
+ * @see \Drupal\os2loop_media\Helper\Helper::queryAlter()
  */
 function os2loop_media_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   Drupal::service(Helper::class)->queryAlter($view, $query);

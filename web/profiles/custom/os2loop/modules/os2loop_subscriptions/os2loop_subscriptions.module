@@ -21,6 +21,8 @@ function os2loop_subscriptions_theme($existing, $type, $theme, $path) {
 
 /**
  * Implements hook_os2loop_settings_is_granted().
+ *
+ * @see \Drupal\os2loop_subscriptions\Helper\Helper::isGranted()
  */
 function os2loop_subscriptions_os2loop_settings_is_granted(string $attribute, $object = NULL): bool {
   return Drupal::service('os2loop_subscriptions.helper')->isGranted($attribute, $object);

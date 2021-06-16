@@ -37,8 +37,15 @@ class Helper {
 
   /**
    * Handle text formats.
+   *
+   * @param array $form
+   *   The form being altered.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
+   * @param string $form_id
+   *   The id of the the form.
    */
-  private function handleTextFormats(&$form, FormStateInterface $form_state, $form_id) {
+  private function handleTextFormats(array &$form, FormStateInterface $form_state, string $form_id) {
     switch ($form_id) {
       case 'node_os2loop_question_form':
       case 'node_os2loop_question_edit_form':

@@ -30,6 +30,8 @@ class Helper {
 
   /**
    * Implements hook_form_alter().
+   *
+   * Show different login options depending on the site configuration.
    */
   public function alterForm(&$form, FormStateInterface $form_state, $form_id) {
     if ('openid_connect_login_form' === $form_id) {

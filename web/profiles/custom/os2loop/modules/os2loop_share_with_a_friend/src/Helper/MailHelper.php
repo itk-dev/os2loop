@@ -36,6 +36,8 @@ class MailHelper {
 
   /**
    * Implements hook_mail().
+   *
+   * Prepare mail for sharing with a friend.
    */
   public function mail($key, &$message, $params) {
     switch ($key) {

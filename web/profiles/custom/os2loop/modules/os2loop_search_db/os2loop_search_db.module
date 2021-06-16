@@ -38,6 +38,8 @@ function os2loop_search_db_search_api_autocomplete_suggestions_alter(array &$sug
 
 /**
  * Implements hook_search_api_query_alter().
+ *
+ * @see \Drupal\os2loop_search_db\Helper\Helper::alterSearchApiQuery()
  */
 function os2loop_search_db_search_api_query_alter(QueryInterface $query) {
   Drupal::service(Helper::class)->alterSearchApiQuery($query);
@@ -46,7 +48,7 @@ function os2loop_search_db_search_api_query_alter(QueryInterface $query) {
 /**
  * Implements hook_block_access().
  *
- * @see Helper::blockAccess()
+ * @see \Drupal\os2loop_search_db\Helper\Helper::blockAccess()
  */
 function os2loop_search_db_block_access(Block $block, $operation, AccountInterface $account) {
   return Drupal::service(Helper::class)->blockAccess($block, $operation, $account);

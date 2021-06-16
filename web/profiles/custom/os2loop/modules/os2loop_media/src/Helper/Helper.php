@@ -29,12 +29,9 @@ class Helper {
   }
 
   /**
-   * Change query for media library.
+   * Implements hook_views_query_alter().
    *
-   * @param \Drupal\views\ViewExecutable $view
-   *   The view related to the alteration.
-   * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
-   *   The query to alter.
+   * Change query for media library.
    */
   public function queryAlter(ViewExecutable $view, QueryPluginBase $query) {
     if ($query instanceof Sql && 'media_library' === $view->id()) {
