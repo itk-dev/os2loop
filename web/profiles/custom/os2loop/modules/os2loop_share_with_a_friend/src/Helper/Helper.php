@@ -26,6 +26,8 @@ class Helper {
 
   /**
    * Implements hook_os2loop_settings_is_granted().
+   *
+   * Display share with friend functionality if enabled for node type.
    */
   public function isGranted(string $attribute, $object = NULL): bool {
     if ('share with a friend' === $attribute && $object instanceof NodeInterface) {

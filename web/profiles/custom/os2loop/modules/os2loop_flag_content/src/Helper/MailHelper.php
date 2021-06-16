@@ -36,6 +36,8 @@ class MailHelper {
 
   /**
    * Implements hook_mail().
+   *
+   * Prepare a mail when content is flagged.
    */
   public function mail($key, &$message, $params) {
     switch ($key) {
@@ -67,6 +69,8 @@ class MailHelper {
 
   /**
    * Implements hook_tokens().
+   *
+   * Replace tokens related to flag content.
    */
   public function tokens($type, $tokens, array $data) {
     $replacements = [];
@@ -82,6 +86,8 @@ class MailHelper {
 
   /**
    * Implements hook_token_info().
+   *
+   * Prepare tokens related to flag content.
    */
   public function tokenInfo() {
     return [

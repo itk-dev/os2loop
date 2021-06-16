@@ -16,24 +16,18 @@ use Drupal\node\NodeInterface;
 class Helper extends ControllerBase {
 
   /**
+   * Implements hook_entity_insert().
+   *
    * Create message on insert entity.
-   *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
-   *   The entity that is being created.
-   *
-   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function entityInsert(EntityInterface $entity) {
     $this->createMessage($entity, 'ins');
   }
 
   /**
+   * Implements hook_entity_update().
+   *
    * Create message on update entity.
-   *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
-   *   The entity that is being updated.
-   *
-   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function entityUpdate(EntityInterface $entity) {
     $this->createMessage($entity, 'upd');

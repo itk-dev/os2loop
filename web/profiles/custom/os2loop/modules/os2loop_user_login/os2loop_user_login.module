@@ -9,6 +9,8 @@ use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_form_alter().
+ *
+ * @see \Drupal\os2loop_user_login\Helper\Helper::alterForm()
  */
 function os2loop_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   Drupal::service('os2loop_user_login.helper')->alterForm($form, $form_state, $form_id);

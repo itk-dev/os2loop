@@ -26,6 +26,8 @@ class Helper {
 
   /**
    * Implements hook_os2loop_settings_is_granted().
+   *
+   * Handle access for favourite and subscribe flags on node types.
    */
   public function isGranted(string $attribute, $object = NULL): bool {
     if ($object instanceof NodeInterface) {

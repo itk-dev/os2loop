@@ -9,7 +9,7 @@ use Drupal\views\ViewExecutable;
 use Drupal\os2loop_member_list\Form\SettingsForm;
 
 /**
- * MailHelper for creating mail templates.
+ * Memberlist helper for creating memberlist queries.
  */
 class MemberListHelper {
   /**
@@ -36,6 +36,9 @@ class MemberListHelper {
 
   /**
    * Implements hook_views_query_alter().
+   *
+   * Change the contact list to display external users if current user is
+   * authenticated.
    */
   public function queryAlter(ViewExecutable $view, QueryPluginBase $query) {
     if ('contact_list' === $view->id()) {
@@ -53,6 +56,8 @@ class MemberListHelper {
 
   /**
    * Implements hook_views_form_alter().
+   *
+   * If member list config is enabled show form elements on user profile form.
    */
   public function formAlter(&$form, $form_id) {
     if ('user_form' === $form_id) {
