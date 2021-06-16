@@ -105,7 +105,7 @@ class Helper {
    *   The node type to check access for.
    *
    * @return \Drupal\Core\Access\AccessResultForbidden|\Drupal\Core\Access\AccessResultNeutral
-   *   THe access result.
+   *   The access result.
    */
   private function contentTypeAccess(string $type) {
     $enabledContentTypes = $this->settings->getEnabledContentTypes();
