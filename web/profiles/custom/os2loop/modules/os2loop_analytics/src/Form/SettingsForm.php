@@ -1,27 +1,24 @@
 <?php
 
-namespace Drupal\os2loop_search_db\Form;
+namespace Drupal\os2loop_analytics\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\os2loop_settings\Settings;
-use Drupal\taxonomy\Entity\Vocabulary;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Configure flag content admin settings for this site.
+ * Implements the OS2Loop analytics settings form.
  */
 class SettingsForm extends ConfigFormBase {
-  use StringTranslationTrait;
 
   /**
    * Config setting name.
    *
    * @var string
    */
-  public const SETTINGS_NAME = 'os2loop_search_db.settings';
+  public const SETTINGS_NAME = 'os2loop_analytics.settings';
 
   /**
    * The settings.
@@ -52,7 +49,7 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'os2loop_search_db_settings';
+    return 'os2loop_analytics_settings';
   }
 
   /**
@@ -70,26 +67,28 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->settings->getConfig(static::SETTINGS_NAME);
 
-    $vocabularies = $this->settings->getEnabledTaxonomyVocabularies();
-    $taxonomyVocabulariesOptions = array_map(static function (Vocabulary $vocabulary) {
-      return $vocabulary->label();
-    }, $vocabularies);
-    $taxonomyVocabulariesOptions = array_filter($taxonomyVocabulariesOptions, function (string $name) {
-      return $this->settings->isTaxonomyVocabularyEnabled($name);
-    }, ARRAY_FILTER_USE_KEY);
-
-    $form['filter_content_type'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Enable filter on content type'),
-      '#default_value' => $config->get('filter_content_type'),
+    $form['matomo_tracking_code'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Matomo tracking code'),
+      '#default_value' => $config->get('matomo_tracking_code'),
+      '#description' => $this->t('Set Matomo tracking code'),
+      '#cols' => 8,
     ];
 
-    $form['filter_taxonomy_vocabulary'] = [
-      '#type' => 'checkboxes',
-      '#title' => $this->t('Taxonomy vocabulary filters'),
-      '#description' => $this->t('Enable taxonomy vocabulary filters'),
-      '#options' => $taxonomyVocabulariesOptions,
-      '#default_value' => $config->get('filter_taxonomy_vocabulary') ?: [],
+    $form['google_analytics_tracking_code'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Google analytics tracking code'),
+      '#default_value' => $config->get('google_analytics_tracking_code'),
+      '#description' => $this->t('Set Google Analytics tracking code'),
+      '#cols' => 8,
+    ];
+
+    $form['siteimprove_tracking_code'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Siteimprove tracking code'),
+      '#default_value' => $config->get('siteimprove_tracking_code'),
+      '#description' => $this->t('Set Siteimprove tracking code'),
+      '#cols' => 8,
     ];
 
     return parent::buildForm($form, $form_state);
@@ -100,8 +99,9 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable(static::SETTINGS_NAME)
-      ->set('filter_content_type', $form_state->getValue('filter_content_type'))
-      ->set('filter_taxonomy_vocabulary', $form_state->getValue('filter_taxonomy_vocabulary'))
+      ->set('matomo_tracking_code', $form_state->getValue('matomo_tracking_code'))
+      ->set('google_analytics_tracking_code', $form_state->getValue('google_analytics_tracking_code'))
+      ->set('siteimprove_tracking_code', $form_state->getValue('siteimprove_tracking_code'))
       ->save();
 
     drupal_flush_all_caches();

@@ -16,5 +16,6 @@ services:
     arguments:
       - '@current_user'
       - '@module_handler'
+      - '@Drupal\os2loop_settings\Settings'
     tags:
       - { name: twig.extension }

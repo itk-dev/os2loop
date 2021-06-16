@@ -688,6 +688,7 @@ display:
           granularity: second
           plugin_id: date
       header: {  }
+      enabled: false
     cache_metadata:
       max-age: -1
       contexts:

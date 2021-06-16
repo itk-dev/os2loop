@@ -103,6 +103,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('favourite_node_types', $form_state->getValue('favourite_node_types'))
       ->save();
 
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 

@@ -5,10 +5,6 @@
   }
 }
 
-.list-group-item {
-  border-top: 1px solid $black;
-}
-
 // We don't wnat to display the sort by selecter since there is only one type of sort,
 // but we need it for sort order reference field to work.
 #views-exposed-form-contact-list-page-1,
