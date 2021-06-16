@@ -52,7 +52,7 @@ class MailHelper {
   /**
    * Implements hook_mail().
    *
-   * Prepare a notifcation mail to be sent.
+   * Prepare a notification mail to be sent.
    */
   public function mail($key, &$message, $params) {
     switch ($key) {
