@@ -1,0 +1,5 @@
+name: 'Os2loop cookies'
+type: module
+description: 'OS2Loop cookies'
+core_version_requirement: ^9
+package: 'OS2Loop'
