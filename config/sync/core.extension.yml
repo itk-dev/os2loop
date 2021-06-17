@@ -38,6 +38,8 @@ module:
   openid_connect_windows_aad: 0
   options: 0
   os2loop_analytics: 0
+  os2loop_cookie_information: 0
+  os2loop_cookies: 0
   os2loop_documents: 0
   os2loop_external: 0
   os2loop_flag_content: 0
