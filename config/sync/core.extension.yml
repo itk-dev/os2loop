@@ -85,6 +85,7 @@ module:
   twig_tweak: 0
   user: 0
   views: 0
+  views_autosubmit: 0
   views_data_export: 0
   views_flag_refresh: 0
   viewsreference: 0
