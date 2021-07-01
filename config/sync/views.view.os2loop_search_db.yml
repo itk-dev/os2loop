@@ -6,6 +6,7 @@ dependencies:
     - search_api.index.os2loop_search_db_index
   module:
     - search_api
+    - views_autosubmit
 id: os2loop_search_db
 label: 'os2loop search db'
 module: views
@@ -274,13 +275,28 @@ display:
     display_title: Page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        views_flag_refresh:
+          flags: {  }
+          noscrolltop: 0
       path: search
       cache:
         type: none
       defaults:
         cache: false
+        exposed_form: false
       exposed_block: true
+      exposed_form:
+        type: autosubmit
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          autosubmit_hide: true
     cache_metadata:
       max-age: -1
       contexts:

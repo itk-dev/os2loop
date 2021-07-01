@@ -3,13 +3,20 @@
 namespace Drupal\os2loop_documents\Helper;
 
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Node helper.
  */
 class NodeHelper {
+  use StringTranslationTrait;
+
   public const CONTENT_TYPE_DOCUMENT = 'os2loop_documents_document';
   public const CONTENT_TYPE_COLLECTION = 'os2loop_documents_collection';
 
@@ -35,12 +42,20 @@ class NodeHelper {
   private $cacheTagsInvalidator;
 
   /**
+   * The messenger.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  private $messenger;
+
+  /**
    * Constructor.
    */
-  public function __construct(CollectionHelper $collectionHelper, RequestStack $requestStack, CacheTagsInvalidatorInterface $cacheTagsInvalidator) {
+  public function __construct(CollectionHelper $collectionHelper, RequestStack $requestStack, CacheTagsInvalidatorInterface $cacheTagsInvalidator, MessengerInterface $messenger) {
     $this->collectionHelper = $collectionHelper;
     $this->requestStack = $requestStack;
     $this->cacheTagsInvalidator = $cacheTagsInvalidator;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -102,6 +117,29 @@ class NodeHelper {
       // https://www.drupal.org/docs/drupal-apis/cache-api/cache-contexts).
       $variables['#cache']['contexts'][] = 'url.query_args:collection';
     }
+  }
+
+  /**
+   * Implements hook_access().
+   */
+  public function nodeAccess(EntityInterface $entity, string $operation, AccountInterface $account) {
+    if ('delete' === $operation && $entity instanceof NodeInterface && self::CONTENT_TYPE_DOCUMENT === $entity->getType()) {
+      $collections = $this->collectionHelper->loadCollections($entity);
+      if (!empty($collections)) {
+        $message = $this->formatPlural(
+          count($collections),
+          'You can not delete document "%title" as it is being used in a collection.',
+          'You can not delete document "%title" as it is being used in @count collections.',
+          [
+            '%title' => $entity->getTitle(),
+          ]
+        );
+        $this->messenger->addError($message);
+        return AccessResult::forbidden('document is used in collections');
+      }
+    }
+
+    return AccessResult::neutral();
   }
 
   /**
