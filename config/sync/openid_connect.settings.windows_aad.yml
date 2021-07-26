@@ -1,4 +1,4 @@
-enabled: false
+enabled: 0
 settings:
   redirect_url: ''
   client_id: '$config[''openid_connect.settings.windows_aad''][''settings''][''client_id''] in settings.local.php'
@@ -15,6 +15,5 @@ settings:
   userinfo_endpoint_wa: 'fake://not-used-when-use_v2-is-enabled'
   userinfo_graph_api_use_other_mails: 0
   userinfo_update_email: 0
-  hide_email_address_warning: 0
+  hide_email_address_warning: 1
   use_v2: 1
-  user_name_attribute: upn
