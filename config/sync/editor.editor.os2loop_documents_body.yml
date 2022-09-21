@@ -15,6 +15,7 @@ settings:
         -
           name: Formatting
           items:
+            - Format
             - Bold
             - Italic
         -
@@ -31,7 +32,6 @@ settings:
           name: Media
           items:
             - Blockquote
-            - DrupalImage
         -
           name: Tools
           items:
