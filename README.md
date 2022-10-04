@@ -55,7 +55,7 @@ modules.
 See [docs/development](docs/development/README.md) for details on development.
 
 ```sh
-docker-compose up --detach
+docker-compose up --detach --build
 docker-compose exec phpfpm composer install
 docker-compose exec phpfpm vendor/bin/drush --yes site:install os2loop --existing-config
 # Get the site url
@@ -177,4 +177,4 @@ composer coding-standards-check
 ```sh
 docker run --volume ${PWD}:/app --workdir /app node:16.13.2 yarn install
 docker run --volume ${PWD}:/app --workdir /app node:16.13.2 yarn encore dev
- ```
+```
