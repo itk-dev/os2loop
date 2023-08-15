@@ -8,8 +8,8 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\message\Entity\Message;
 use Drupal\node\NodeInterface;
-use Drupal\os2loop_documents\Helper\NodeHelper as DocumentsNodeHelper;
 use Drupal\os2loop_documents\Helper\CollectionHelper as DocumentsCollectionHelper;
+use Drupal\os2loop_documents\Helper\NodeHelper as DocumentsNodeHelper;
 use Drupal\os2loop_settings\Settings;
 
 /**
@@ -33,15 +33,23 @@ class Helper extends ControllerBase {
   protected $currentUser;
 
   /**
+   * The documents collection helper.
+   *
+   * @var \Drupal\os2loop_documents\Helper\CollectionHelper
+   */
+  protected $documentsCollectionHelper;
+
+  /**
    * Constructor.
    */
   public function __construct(
     Settings $settings,
     AccountProxyInterface $currentUser,
-    private readonly DocumentsCollectionHelper $documentsCollectionHelper
+    DocumentsCollectionHelper $documentsCollectionHelper
   ) {
     $this->config = $settings->getConfig('os2loop_subscriptions.settings');
     $this->currentUser = $currentUser;
+    $this->documentsCollectionHelper = $documentsCollectionHelper;
   }
 
   /**

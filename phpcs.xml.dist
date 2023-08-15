@@ -21,4 +21,6 @@
   </rule>
 
   <rule ref="DrupalPractice"/>
+
+  <rule ref="Generic.PHP.Syntax"/>
 </ruleset>
