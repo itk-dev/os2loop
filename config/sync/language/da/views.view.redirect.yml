@@ -23,7 +23,7 @@ display:
             offset_label: Forskydning
       fields:
         redirect_bulk_form:
-          action_title: 'With selection'
+          action_title: Handling
         redirect_source__path:
           label: Fra
           separator: ', '

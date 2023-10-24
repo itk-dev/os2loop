@@ -27,6 +27,10 @@ display:
       empty:
         area_text_custom:
           content: 'Ingen tilgængelige media.'
+      sorts:
+        created:
+          expose:
+            label: 'Nyeste først'
       filters:
         bundle:
           expose:

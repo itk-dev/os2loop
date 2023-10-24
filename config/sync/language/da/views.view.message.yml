@@ -1,6 +1,7 @@
 label: Meddelelse
 display:
   default:
+    display_title: Master
     display_options:
       exposed_form:
         options:
@@ -22,18 +23,18 @@ display:
             last: 'sidste »'
       fields:
         message_bulk_form_1:
-          action_title: 'With selection'
+          action_title: Handling
         mid:
           separator: ', '
         template:
           separator: ', '
         get_text:
-          label: 'Message text'
+          label: 'Besked tekst'
         uid:
           label: Forfatter
           separator: ', '
         created:
-          label: 'Published date'
+          label: Udgivelsesdato
       filters:
         template:
           expose:
@@ -42,7 +43,7 @@ display:
       empty:
         area:
           content:
-            value: 'No messages created yet'
+            value: 'Ingen meddelelser oprettet endnu'
   page_1:
     display_title: Side
     display_options:
