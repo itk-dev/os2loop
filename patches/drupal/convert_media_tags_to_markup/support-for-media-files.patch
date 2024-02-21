@@ -1,0 +1,74 @@
+diff --git a/src/ConvertMediaTagsToMarkup/App.php b/src/ConvertMediaTagsToMarkup/App.php
+index 336b3f1..3a92803 100644
+--- a/src/ConvertMediaTagsToMarkup/App.php
++++ b/src/ConvertMediaTagsToMarkup/App.php
+@@ -11,6 +11,7 @@ use Drupal\convert_media_tags_to_markup\traits\CommonUtilities;
+ class App {
+ 
+   const MEDIA_WYSIWYG_TOKEN_REGEX = '/\[\[\{.*?"type":"media".+?\}\]\]/s';
++  const MEDIAFILE_WYSIWYG_TOKEN_REGEX = '/\[\[\{.*?"link_text":"*".+?\}\]\]/s';
+ 
+   use Singleton;
+   use CommonUtilities;
+@@ -31,6 +32,17 @@ class App {
+   public function filterText(string $text) : string {
+     $rendered_text = $text;
+     $count = 1;
++
++    // Check for inline file references first.
++    preg_match_all(self::MEDIAFILE_WYSIWYG_TOKEN_REGEX, $text, $filematches);
++    if (!empty($filematches)) {
++      foreach ($filematches[0] as $match) {
++        $replacement = $this->tokenToMarkupFile(array($match), FALSE);
++        $rendered_text = str_replace($match, $replacement, $rendered_text, $count);
++      }
++    }
++
++    // Check remaining text for inline images.
+     preg_match_all(self::MEDIA_WYSIWYG_TOKEN_REGEX, $text, $matches);
+     if (!empty($matches[0])) {
+       foreach ($matches[0] as $match) {
+@@ -95,4 +107,43 @@ class App {
+     }
+   }
+ 
++  public function tokenToMarkupFile($match, $wysiwyg = FALSE) {
++    try {
++      $match = str_replace("[[", "", $match);
++      $match = str_replace("]]", "", $match);
++      $tag = $match[0];
++
++      if (!is_string($tag)) {
++        throw new \Exception('Unable to find matching tag');
++      }
++
++      $tag_info = $this->drupalJsonDecode($tag);
++      if (!isset($tag_info['fid'])) {
++        throw new \Exception('No file Id');
++      }
++
++      $file = $this->fileLoad($tag_info['fid']);
++      $uri = $file->getFileUri();
++      $filepath = \Drupal::service('file_url_generator')->transformRelative(\Drupal::service('file_url_generator')->generateAbsoluteString($uri));
++      $alt = empty($tag_info['attributes']['alt']) ? '' : $tag_info['attributes']['alt'];
++      $title = $alt;
++      $class = empty($tag_info['attributes']['class']) ? '' : $tag_info['attributes']['class'];
++      $style = empty($tag_info['attributes']['style']) ? '' : $tag_info['attributes']['style'];
++      $link_text = $tag_info['link_text'] ?: $file->getFilename();
++      $output = '
++      <div class="media media-element-container media-default">
++        <div id="file-' . $tag_info['fid'] . '" class="file file-media">
++          <div class="content">
++            <a style="' . $style . '" alt="' . $alt . '" title="' . $title . '" class="' . $class . '" href="' . $filepath . '">' . $link_text . '</a>
++          </div>
++        </div>
++      </div>';
++      return $output;
++    }
++    catch (\Throwable $t) {
++      $this->watchdogThrowable($t);
++      return '';
++    }
++  }
++
+ }
