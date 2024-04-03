@@ -77,6 +77,10 @@ server {
 
         fastcgi_intercept_errors on;
         fastcgi_pass ${NGINX_FPM_SERVICE};
+
+        # @TODO Can we fall back to the default value here if NGINX_FASTCGI_READ_TIMEOUT is not defined?
+        # Cf. https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout
+        fastcgi_read_timeout ${NGINX_FASTCGI_READ_TIMEOUT};
     }
 
     # Enforce clean URLs
