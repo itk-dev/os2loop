@@ -60,6 +60,10 @@ img {
 	height: auto;
 }
 
+.paragraph {
+	margin-bottom: $spacer * 2;
+}
+
 // redesign using boostrap overriding and a component-based approach
 @import "bootstrap-custom/bootstrap-custom-index.scss";
 @import "components/components-index.scss";
