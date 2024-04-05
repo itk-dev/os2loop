@@ -11,3 +11,4 @@ includes:
     taskfile: task/
     vars:
       DOCKER_COMPOSE: itkdev-docker-compose-server
+      COMPOSER_INSTALL_ARGUMENTS: --no-dev --optimize-autoloader

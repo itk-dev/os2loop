@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-351](https://github.com/itk-dev/os2loop/pull/351):
+  Updated tasks
 - [PR-341](https://github.com/itk-dev/os2loop/pull/341):
 Notify of collection changed when document is changed.
 
