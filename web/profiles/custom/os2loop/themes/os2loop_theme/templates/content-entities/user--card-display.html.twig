@@ -31,7 +31,7 @@
       </div>
       <div class="col-auto user-profile">
         <h5 class="card-title user-name">
-          <a class="link-unstyled" href="{{ url('entity.user.canonical', {'user': user.id}) }}">
+          <a class="link-unstyled" href="{{ url('entity.user.canonical', {user: user.id}) }}">
             {{ user.os2loop_user_given_name.value }} {{ user.os2loop_user_family_name.value }}
           </a>
         </h5>

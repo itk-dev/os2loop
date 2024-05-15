@@ -52,7 +52,7 @@
                   {{ item.title }}
                 </a>
               {% else %}
-              {{ link(item.title, item.url, {'class': classes_link}) }}
+              {{ link(item.title, item.url, {class: classes_link}) }}
               {% endif %}
               {% if item.below %}
                 <div class="dropdown-menu position-right" aria-label="{{ item.title }}">
@@ -70,7 +70,7 @@
             route_name != '<nolink>' ? 'dropdown-item',
             item.in_active_trail ? 'active',
             ] %}
-          {{ link(item.title, item.url, {'class': classes_link}) }}
+          {{ link(item.title, item.url, {class: classes_link}) }}
         {% endfor %}
       {% endif %}
     {% endif %}

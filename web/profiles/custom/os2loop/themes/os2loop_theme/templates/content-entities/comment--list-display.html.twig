@@ -84,7 +84,7 @@
       {% endif %}
     </div>
     <div class="d-flex mt-10 mb-0">
-      <a href="{{ path('entity.comment.canonical', {'comment': comment.id}) }}#comment-{{ comment.id }}" class="link-unstyled">
+      <a href="{{ path('entity.comment.canonical', {comment: comment.id}) }}#comment-{{ comment.id }}" class="link-unstyled">
         {% if comment_value_truncated %}
           {{ comment_value|truncate(200, true, '...')|raw }}
         {% else %}

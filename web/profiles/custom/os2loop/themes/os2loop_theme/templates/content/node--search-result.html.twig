@@ -8,7 +8,7 @@
 <div class="search-result search-result--node search-result--node--{{ node.bundle|clean_class }} d-flex w-100">
   {# icon #}
   <div class="search-result-icon">
-    {{- source(icon_source, ignore_missing=true) -}}
+    {{- source(icon_source, ignore_missing = true) -}}
   </div>
   <div class="container px-0 search-result-information">
     <div class="row no-gutters">
@@ -39,7 +39,7 @@
               {% set reply_field = node.os2loop_question_answers ?: node.os2loop_post_comments %}
               <div class="d-inline-flex align-items-center text-sm ml-15">
                 {# comment: icon #}
-                {{- source(comment_icon_source, ignore_missing=true) -}}
+                {{- source(comment_icon_source, ignore_missing = true) -}}
                 {# comment: count #}
                 <div class="comment-count ml-10">
                   {{- reply_field.comment_count -}}
@@ -51,7 +51,7 @@
       <div class="col-auto ml-auto">
         {# date #}
         <div class="search-result-date text-sm">
-          {{- (node.createdtime|date("d-m-Y")) -}}
+          {{- (node.createdtime|date('d-m-Y')) -}}
         </div>
       </div>
     </div>

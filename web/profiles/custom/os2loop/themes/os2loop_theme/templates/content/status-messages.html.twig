@@ -29,17 +29,17 @@
 {# @see https://www.drupal.org/project/bootstrap/issues/2892936 #}
 {% set classes = attributes.offsetGet('class')|default({}) %}
 {% set status_classes = {
-    'status': 'success',
-    'error': 'danger',
-    'warning': 'warning',
-    'info': 'info',
+    status: 'success',
+    error: 'danger',
+    warning: 'warning',
+    info: 'info',
   }
 %}
 {% set status_roles = {
-    'status': 'status',
-    'error': 'alert',
-    'warning': 'alert',
-    'info': 'status',
+    status: 'status',
+    error: 'alert',
+    warning: 'alert',
+    info: 'status',
   }
 %}
 <div data-drupal-messages>
