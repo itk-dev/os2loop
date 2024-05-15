@@ -161,14 +161,14 @@ for further details.
 ## Coding standards
 
 ```sh
-docker compose exec phpfpm composer coding-standards-check
 docker compose exec phpfpm composer coding-standards-apply
+docker compose exec phpfpm composer coding-standards-check
 ```
 
 ```sh
 docker compose run --rm node yarn install
-docker compose run --rm node yarn coding-standards-check
 docker compose run --rm node yarn coding-standards-apply
+docker compose run --rm node yarn coding-standards-check
 ```
 
 ### GitHub Actions
@@ -186,20 +186,6 @@ act -P ubuntu-latest=shivammathur/node:focal pull_request
 ```
 
 (cf. <https://github.com/shivammathur/setup-php#local-testing-setup>).
-
-### Twigcs
-
-To run only twigcs:
-
-```sh
-docker compose exec phpfpm composer coding-standards-check/twigcs
-```
-
-But this is also a part of
-
-```sh
-docker compose exec phpfpm composer coding-standards-check
-```
 
 ## Build theme assets
 

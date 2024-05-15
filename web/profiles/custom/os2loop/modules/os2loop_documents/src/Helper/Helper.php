@@ -13,7 +13,7 @@ class Helper {
    * Constructor.
    */
   public function __construct(
-    private readonly RouteMatchInterface $routeMatch
+    private readonly RouteMatchInterface $routeMatch,
   ) {
   }
 

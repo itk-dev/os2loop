@@ -86,7 +86,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro document_content(items, level=1) %}
+{% macro document_content(items, level = 1) %}
   {% if items %}
     {% for item in items %}
       {% set document = item.document %}
@@ -103,7 +103,7 @@
 
 <article>
   {{ title_prefix }}
-  {% if label  %}
+  {% if label %}
     <h1{{ title_attributes }}>
       {{ label }}
     </h1>

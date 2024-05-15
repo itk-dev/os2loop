@@ -1,4 +1,4 @@
-{% set content_url = path('entity.node.canonical', {'node': commented_entity.id}) %}
+{% set content_url = path('entity.node.canonical', {node: commented_entity.id}) %}
 {% set comment_url = content_url ~ '#comment-' ~ comment.id %}
 
 <div class="my-3 search-result search-result--comment search-result--comment--{{ comment.bundle }}">
