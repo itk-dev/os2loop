@@ -38,7 +38,8 @@ final class EntityPrintController extends ControllerBase {
     public Settings $settings,
     public $entityTypeManager,
     public RendererInterface $renderer,
-    private readonly FileUrlGeneratorInterface $fileUrlGenerator) {
+    private readonly FileUrlGeneratorInterface $fileUrlGenerator,
+  ) {
     $this->config = $settings->getConfig(SettingsForm::SETTINGS_NAME)->get('pdf');
     $this->fileStorage = $entityTypeManager->getStorage('file');
 

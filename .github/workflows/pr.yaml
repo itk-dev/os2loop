@@ -43,6 +43,9 @@ jobs:
       - name: Validate composer files
         run: |
           composer validate composer.json
+      - name: Check composer file is normalized
+        run: |
+          composer normalize composer.json --dry-run
 
   phpcs:
     name: PHP - Check Coding Standards

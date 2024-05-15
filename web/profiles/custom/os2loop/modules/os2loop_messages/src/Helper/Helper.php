@@ -38,7 +38,7 @@ class Helper extends ControllerBase {
   public function __construct(
     Settings $settings,
     AccountProxyInterface $currentUser,
-    private readonly DocumentsCollectionHelper $documentsCollectionHelper
+    private readonly DocumentsCollectionHelper $documentsCollectionHelper,
   ) {
     $this->config = $settings->getConfig('os2loop_subscriptions.settings');
     $this->currentUser = $currentUser;

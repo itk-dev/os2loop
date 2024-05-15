@@ -34,7 +34,7 @@ class MailHelper {
     Settings $settings,
     private readonly Token $token,
     private readonly MailManagerInterface $mailer,
-    private readonly LanguageDefault $defaultLanguage
+    private readonly LanguageDefault $defaultLanguage,
   ) {
     $this->config = $settings->getConfig(SettingsForm::SETTINGS_NAME);
   }
