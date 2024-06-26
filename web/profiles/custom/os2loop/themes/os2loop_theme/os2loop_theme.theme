@@ -18,6 +18,11 @@ use Drupal\user\Entity\User;
 function os2loop_theme_preprocess(&$variables) {
   $variables['logopath'] = \Drupal::service('file_url_generator')->generateString(theme_get_setting('logo.url'));
   $variables['os2loop_container_class'] = theme_get_setting('container_class') ?: 'container-fluid';
+  // Poor man's App Global Variable
+  // (https://symfony.com/doc/current/templates.html#the-app-global-variable).
+  $variables['app'] = [
+    'request' => \Drupal::request(),
+  ];
 }
 
 /**
