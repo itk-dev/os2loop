@@ -53,7 +53,6 @@
 
 {% set expanded = app.request.query.get('expanded') %}
 {% set class_collapsed = not expanded ? 'collapsed' %}
-{% set class_collapse = not expanded ? 'collapse' %}
 
 {% block paragraph %}
   {% block content %}
@@ -66,13 +65,13 @@
           </span>
         </span>
       {% else %}
-        <a class="{{ class_collapsed }} step--collapse-toggle" type="button" data-toggle="{{ class_collapse }}" data-target="#paragraph-id-{{ paragraph.id() }}">
+        <a class="{{ class_collapsed }} step--collapse-toggle" type="button" data-toggle="collapse" data-target="#paragraph-id-{{ paragraph.id() }}">
           <span class="bold {{ has_title ? 'line-clamp-1' }}">
             {{ has_title ? content.os2loop_documents_step_title : content.os2loop_documents_step_text }}
           </span>
         </a>
       {% endif %}
-      <div class="row no-gutters {{ class_collapse }}" id="paragraph-id-{{ paragraph.id() }}">
+      <div class="row no-gutters collapse {{ expanded ? 'show' }}" id="paragraph-id-{{ paragraph.id() }}">
         <div class="col">
           <div class="row no-gutters">
             <div class="col">
