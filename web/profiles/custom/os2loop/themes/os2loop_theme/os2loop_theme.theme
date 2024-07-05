@@ -23,6 +23,8 @@ function os2loop_theme_preprocess(&$variables) {
   $variables['app'] = [
     'request' => \Drupal::request(),
   ];
+  // Add the `expanded` query string parameter to the cache context.
+  $variables['#cache']['contexts'][] = 'url.query_args:expanded';
 }
 
 /**
