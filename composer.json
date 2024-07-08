@@ -67,7 +67,7 @@
         "ergebnis/composer-normalize": "^2.42",
         "kint-php/kint": "^5.0",
         "mglaman/phpstan-drupal": "^1.2",
-        "os2loop/os2loop_fixtures": "*",
+        "os2loop/os2loop_fixtures": "dev-develop",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan-deprecation-rules": "^1.1",
