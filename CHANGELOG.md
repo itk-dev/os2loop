@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-354](https://github.com/itk-dev/os2loop/pull/354)
+  1712: Added “Expand all steps” link on step by step
 - [PR-353](https://github.com/itk-dev/os2loop/pull/353):
   Security update
 - [PR-352](https://github.com/itk-dev/os2loop/pull/352):
