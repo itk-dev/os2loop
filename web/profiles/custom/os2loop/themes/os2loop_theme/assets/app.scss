@@ -113,3 +113,11 @@ img {
 //     }
 //   }
 // }
+
+// Offset used for (trying to) prevent topbar from overlapping content when using URL fragment identifier.
+$target-offset: 64px;
+
+:target {
+	margin-top: -$target-offset;
+	padding-top: $target-offset;
+}
