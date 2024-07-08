@@ -8,6 +8,16 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [develop]
+- Upgrade drupal core (10.3.1)
+- Switch to dompdf
+- Upgrade drupal core (9.5.10)
+- Upgrade contrib module
+- Change code analysis tool
+  drupal-check -> phpstan for more configuration options
+- Update custom modules with phpcs and phpstan tools.
+- Update configuration to match drupal upgrade.
+- Upgrade docker setup to use php 8.1
 - [PR-353](https://github.com/itk-dev/os2loop/pull/353):
   Security update
 - [PR-352](https://github.com/itk-dev/os2loop/pull/352):
@@ -15,21 +25,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - [PR-351](https://github.com/itk-dev/os2loop/pull/351):
   Updated tasks
 - [PR-341](https://github.com/itk-dev/os2loop/pull/341):
-Notify of collection changed when document is changed.
-
-## [feature/update-drupal-and-php] - 2023-08-25
-
-- Switch to dompdf
-- Upgrade drupal core (9.5.10)
-- Upgrade contrib module
-- Change code analysis tool
-drupal-check -> phpstan for more configuration options
-- Update custom modules with phpcs and phpstan tools.
-- Update configuration to match drupal upgrade.
-- Upgrade docker setup to use php 8.1
-
-## [develop]
-
+  Notify of collection changed when document is changed.
 - [LOOP-862](https://jira.itkdev.dk/browse/LOOP-862): Added documentation for
 modules and hooks.
 - [LOOP-947](https://jira.itkdev.dk/browse/LOOP-947): Styling user profile page

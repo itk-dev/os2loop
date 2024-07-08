@@ -186,7 +186,7 @@
         },
         "patches": {
             "drupal/core": {
-                "Disable forced configuration langcode (https://www.drupal.org/project/drupal/issues/3150540)": "https://www.drupal.org/files/issues/2024-01-25/3150540-40.patch",
+                "Disable forced configuration langcode (https://www.drupal.org/project/drupal/issues/3150540)": "https://www.drupal.org/files/issues/2024-07-03/drupal-3150540-42.patch",
                 "Handle undefined index when using form states (https://www.drupal.org/project/drupal/issues/2700667)": "https://www.drupal.org/files/issues/2020-03-11/2700667-104.patch"
             },
             "drupal/devel": {
