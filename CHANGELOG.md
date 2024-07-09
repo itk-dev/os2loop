@@ -8,7 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [develop]
+## [1.0.0]
 
 - Upgrade drupal core (10.3.1)
 - Switch to dompdf
