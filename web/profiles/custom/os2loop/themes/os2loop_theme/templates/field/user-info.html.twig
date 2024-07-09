@@ -23,7 +23,7 @@
       {% if is_anonymous_user %}
         <div class="user-name">{{ 'Anonymous user'|t }}</div>
       {% else %}
-        {% set user_url = user['#user'].id is not empty ? url('entity.user.canonical', {'user': user['#user'].id}) : '#' %}
+        {% set user_url = user['#user'].id is not empty ? url('entity.user.canonical', {user: user['#user'].id}) : '#' %}
         <div class="user-name user-link">
           <a href="{{ user_url }}" class="link-unstyled">{{ user['#user'].os2loop_user_given_name.value }} {{ user['#user'].os2loop_user_family_name.value }}</a>
         </div>

@@ -5,9 +5,9 @@
  * The primary PHP file for the os2loop_theme theme.
  */
 
-use Drupal\file\Entity\File;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 use Drupal\user\Entity\User;
 
 /**
@@ -18,6 +18,13 @@ use Drupal\user\Entity\User;
 function os2loop_theme_preprocess(&$variables) {
   $variables['logopath'] = \Drupal::service('file_url_generator')->generateString(theme_get_setting('logo.url'));
   $variables['os2loop_container_class'] = theme_get_setting('container_class') ?: 'container-fluid';
+  // Poor man's App Global Variable
+  // (https://symfony.com/doc/current/templates.html#the-app-global-variable).
+  $variables['app'] = [
+    'request' => \Drupal::request(),
+  ];
+  // Add the `expanded` query string parameter to the cache context.
+  $variables['#cache']['contexts'][] = 'url.query_args:expanded';
 }
 
 /**
@@ -285,5 +292,18 @@ function os2loop_theme_preprocess_form_element(&$variables) {
   if ($variables['element']['#type'] == 'managed_file') {
     $variables['description_display'] = 'before';
     $variables['label_display'] = 'after';
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function os2loop_theme_preprocess_entity_print(&$variables) {
+  $routeName = \Drupal::routeMatch()->getRouteName();
+  if ('entity_print.view.debug' === $routeName && isset($variables['content'][0][0]['#node'])) {
+    $variables['node'] = $variables['content'][0][0]['#node'];
+  }
+  else {
+    $variables['node'] = $variables['content'][0]['#node'] ?? NULL;
   }
 }

@@ -1,0 +1,10 @@
+services:
+  phpfpm:
+    environment:
+      - PHP_MAX_EXECUTION_TIME=300
+      - PHP_MEMORY_LIMIT=512M
+
+  nginx:
+    environment:
+      # Match PHP_MAX_EXECUTION_TIME above
+      - NGINX_FASTCGI_READ_TIMEOUT=300

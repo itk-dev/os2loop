@@ -74,12 +74,12 @@
 {% import '@os2loop_theme/macros.html.twig' as macros %}
 {% set comment_form = content.os2loop_post_comments[0].comment_form %}
 
-<article{{ attributes.addClass("os2loop-content os2loop-post mb-90") }}>
+<article{{ attributes.addClass('os2loop-content os2loop-post mb-90') }}>
   <div class="block-primary-white">
-    {{ macros.title(label, "post", node, content, false) }}
+    {{ macros.title(label, 'post', node, content, false) }}
     <div class="entity first-entity">
       <div class="container entity-header d-inline-flex align-items-top">
-        {% include '@os2loop_theme/field/user-info.html.twig' with {user: drupal_entity('user', node.uid.target_id), entity: node} %}
+        {{ include('@os2loop_theme/field/user-info.html.twig', {user: drupal_entity('user', node.uid.target_id), entity: node}) }}
       </div>
       <div{{ content_attributes.addClass('entity-body mb-20') }}>
         {{ content.os2loop_post_content }}

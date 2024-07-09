@@ -1,0 +1,20 @@
+services:
+  node:
+    image: node:20
+    profiles:
+      - dev
+    networks:
+      - app
+    volumes:
+      - .:/app:delegated
+    working_dir: /app
+
+  phpfpm:
+    environment:
+      - PHP_MAX_EXECUTION_TIME=300
+      - PHP_MEMORY_LIMIT=512M
+
+  nginx:
+    environment:
+      # Match PHP_MAX_EXECUTION_TIME above
+      - NGINX_FASTCGI_READ_TIMEOUT=300

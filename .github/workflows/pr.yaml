@@ -1,6 +1,23 @@
 on: pull_request
 name: PR Review
 jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    name: Changelog should be updated
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 2
+
+      - name: Git fetch
+        run: git fetch
+
+      - name: Check that changelog has been updated.
+        run: git diff --exit-code origin/${{ github.base_ref }} -- CHANGELOG.md && exit 1 || exit 0
+
   test-composer-files:
     name: Validate composer
     runs-on: ubuntu-latest
@@ -9,7 +26,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.2
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -26,6 +43,10 @@ jobs:
       - name: Validate composer files
         run: |
           composer validate composer.json
+      - name: Check composer file is normalized
+        run: |
+          composer install --no-interaction --no-progress
+          composer normalize composer.json --dry-run
 
   phpcs:
     name: PHP - Check Coding Standards
@@ -35,7 +56,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.2
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -51,10 +72,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install Dependencies
         run: |
-          # Using `--no-scripts` breaks something with mglaman/drupal-check.
           composer install --no-interaction --no-progress
-          # @see https://github.com/Dealerdirect/phpcodesniffer-composer-installer#calling-the-plugin-directly
-          composer run-script install-codestandards
       - name: PHPCS
         run: |
           composer coding-standards-check
@@ -64,11 +82,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '14', '15' ]
+        node: [ '16' ]
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - run: |
@@ -80,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mariadb:
-        image: mariadb:10.4
+        image: mariadb:10.11
         ports:
           - 3306:3306
         env:
@@ -98,7 +116,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.2
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -150,7 +168,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mariadb:
-        image: mariadb:10.4
+        image: mariadb:10.11
         ports:
           - 3306:3306
         env:
@@ -168,7 +186,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.2
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2

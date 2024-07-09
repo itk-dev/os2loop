@@ -47,10 +47,15 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+  {% set paragraph_id = 'paragraph-id-' ~ paragraph.id.value %}
+  {% set expanded = app.request.query.get('expanded') %}
+  <div{{ attributes.addClass(classes) }} id="{{ paragraph_id }}">
     {{ content.contextual_links }}
-    {% include '@os2loop_theme/content-entities/os2loop_documents_title.html.twig' %}
+    {{ include('@os2loop_theme/content-entities/os2loop_documents_title.html.twig') }}
     {{ content.os2loop_documents_description }}
+
+    <a class="btn btn-link os2loop-expand" href="{{ path('<current>', {expanded: not expanded}, {fragment: paragraph_id}) }}">{{ expanded ? 'Collapse all steps'|trans : 'Expand all steps'|trans }}</a>
+
     <ol class="os2loop-documents-steps">
       {{ content.os2loop_documents_steps }}
     </ol>

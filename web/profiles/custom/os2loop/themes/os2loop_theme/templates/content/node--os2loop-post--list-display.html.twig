@@ -70,4 +70,4 @@
  *   in different view modes.
  */
 #}
-{% include 'node--list-display.html.twig' with {'body_text': content.os2loop_post_content} %}
+{{ include('node--list-display.html.twig', {body_text: content.os2loop_post_content}) }}
