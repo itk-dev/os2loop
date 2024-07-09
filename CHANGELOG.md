@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- Update config to mach drupal version.
+
 ## [1.0.0]
 
 - Upgrade drupal core (10.3.1)
