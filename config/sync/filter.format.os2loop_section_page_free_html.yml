@@ -10,6 +10,15 @@ name: 'Section (Free HTML)'
 format: os2loop_section_page_free_html
 weight: 0
 filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -10
+    settings:
+      allowed_html: ''
+      filter_html_help: true
+      filter_html_nofollow: false
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
@@ -27,22 +36,6 @@ filters:
         default: default
       allowed_media_types:
         os2loop_media_image: os2loop_media_image
-  token_filter:
-    id: token_filter
-    provider: token_filter
-    status: false
-    weight: 0
-    settings:
-      replace_empty: '0'
-  filter_html:
-    id: filter_html
-    provider: filter
-    status: false
-    weight: -10
-    settings:
-      allowed_html: ''
-      filter_html_help: true
-      filter_html_nofollow: false
   toc_filter:
     id: toc_filter
     provider: toc_filter
@@ -53,3 +46,10 @@ filters:
       auto: ''
       block: '0'
       exclude_above: '0'
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: false
+    weight: 0
+    settings:
+      replace_empty: '0'
