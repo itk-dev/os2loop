@@ -6,5 +6,6 @@ dependencies:
     - comment
 id: comment.search_result
 label: 'Search result'
+description: ''
 targetEntityType: comment
 cache: true

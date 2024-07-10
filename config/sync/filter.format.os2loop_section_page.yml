@@ -9,6 +9,12 @@ name: 'Section (rich text)'
 format: os2loop_section_page
 weight: 0
 filters:
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -18,19 +24,12 @@ filters:
       allowed_html: '<br> <p> <a hreflang href> <ul type> <ol type start> <strong> <em> <li>'
       filter_html_help: true
       filter_html_nofollow: false
-  filter_autop:
-    id: filter_autop
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
     provider: filter
     status: true
-    weight: 0
+    weight: 10
     settings: {  }
-  token_filter:
-    id: token_filter
-    provider: token_filter
-    status: false
-    weight: 0
-    settings:
-      replace_empty: '0'
   filter_url:
     id: filter_url
     provider: filter
@@ -38,12 +37,6 @@ filters:
     weight: 0
     settings:
       filter_url_length: 72
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
   toc_filter:
     id: toc_filter
     provider: toc_filter
@@ -54,3 +47,10 @@ filters:
       auto: ''
       block: '0'
       exclude_above: '0'
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: false
+    weight: 0
+    settings:
+      replace_empty: '0'
