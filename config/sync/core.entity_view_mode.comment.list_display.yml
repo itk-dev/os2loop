@@ -6,5 +6,6 @@ dependencies:
     - comment
 id: comment.list_display
 label: 'List display'
+description: ''
 targetEntityType: comment
 cache: true

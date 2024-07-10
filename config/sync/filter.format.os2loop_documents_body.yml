@@ -12,15 +12,6 @@ name: 'Document body (legacy)'
 format: os2loop_documents_body
 weight: 0
 filters:
-  filter_html:
-    id: filter_html
-    provider: filter
-    status: false
-    weight: -43
-    settings:
-      allowed_html: ''
-      filter_html_help: true
-      filter_html_nofollow: false
   convert_legacy_media_tags_to_markup:
     id: convert_legacy_media_tags_to_markup
     provider: convert_media_tags_to_markup
@@ -33,11 +24,50 @@ filters:
     status: false
     weight: -48
     settings: {  }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: false
+    weight: -47
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: -45
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: false
+    weight: -44
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -43
+    settings:
+      allowed_html: ''
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: -49
+    settings: {  }
   filter_html_image_secure:
     id: filter_html_image_secure
     provider: filter
     status: false
     weight: -41
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: -40
     settings: {  }
   filter_url:
     id: filter_url
@@ -46,36 +76,6 @@ filters:
     weight: -46
     settings:
       filter_url_length: 72
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: true
-    weight: -45
-    settings: {  }
-  filter_align:
-    id: filter_align
-    provider: filter
-    status: false
-    weight: -47
-    settings: {  }
-  filter_caption:
-    id: filter_caption
-    provider: filter
-    status: false
-    weight: -44
-    settings: {  }
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: false
-    weight: -40
-    settings: {  }
-  filter_html_escape:
-    id: filter_html_escape
-    provider: filter
-    status: false
-    weight: -49
-    settings: {  }
   media_embed:
     id: media_embed
     provider: media
@@ -85,13 +85,6 @@ filters:
       default_view_mode: default
       allowed_view_modes: {  }
       allowed_media_types: {  }
-  token_filter:
-    id: token_filter
-    provider: token_filter
-    status: false
-    weight: -42
-    settings:
-      replace_empty: '0'
   toc_filter:
     id: toc_filter
     provider: toc_filter
@@ -102,3 +95,10 @@ filters:
       auto: ''
       block: '0'
       exclude_above: '0'
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: false
+    weight: -42
+    settings:
+      replace_empty: '0'

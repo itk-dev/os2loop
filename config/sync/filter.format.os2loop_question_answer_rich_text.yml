@@ -9,6 +9,12 @@ name: 'Answer (rich text)'
 format: os2loop_question_answer_rich_text
 weight: 0
 filters:
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -18,6 +24,12 @@ filters:
       allowed_html: '<br> <p> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <cite> <dl> <dt> <dd> <a hreflang href> <blockquote cite> <ul type> <ol type start> <strong> <em> <code> <li>'
       filter_html_help: true
       filter_html_nofollow: false
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }
   filter_url:
     id: filter_url
     provider: filter
@@ -25,25 +37,6 @@ filters:
     weight: 0
     settings:
       filter_url_length: 72
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: true
-    weight: 0
-    settings: {  }
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
-  token_filter:
-    id: token_filter
-    provider: token_filter
-    status: false
-    weight: 0
-    settings:
-      replace_empty: '0'
   toc_filter:
     id: toc_filter
     provider: toc_filter
@@ -54,3 +47,10 @@ filters:
       auto: ''
       block: '0'
       exclude_above: '0'
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: false
+    weight: 0
+    settings:
+      replace_empty: '0'

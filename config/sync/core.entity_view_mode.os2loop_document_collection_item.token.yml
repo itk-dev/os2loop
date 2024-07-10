@@ -6,5 +6,6 @@ dependencies:
     - os2loop_documents
 id: os2loop_document_collection_item.token
 label: Token
+description: ''
 targetEntityType: os2loop_document_collection_item
 cache: true
