@@ -55,3 +55,10 @@ function os2loop_user_login_openid_connect_userinfo_alter(array &$userinfo, arra
 function os2loop_user_login_menu_links_discovered_alter(&$links) {
   Drupal::service('os2loop_user_login.helper')->menuLinksDiscoveredAlter($links);
 }
+
+/**
+ * Implements hook_openid_connect_userinfo_save().
+ */
+function os2loop_user_login_openid_connect_userinfo_save(UserInterface $account, array $context) {
+  Drupal::service('os2loop_user_login.helper')->openidConnectUserinfoSave($account, $context);
+}
