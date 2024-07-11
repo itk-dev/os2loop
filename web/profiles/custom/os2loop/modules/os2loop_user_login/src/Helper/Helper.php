@@ -220,6 +220,17 @@ class Helper {
   }
 
   /**
+   * Implements hook_openid_connect_userinfo_save().
+   */
+  public function openidConnectUserinfoSave($account, $context) {
+    // If profession mapping is enabled we save the professions as a taxonomy
+    // term in professions taxonomy.
+    if ($this->config->get('map_oidc_profession_claim_to_term')) {
+      $a = 1;
+    }
+  }
+
+  /**
    * Check if a user has empty required fields.
    *
    * @param \Drupal\Core\Session\AccountInterface $account

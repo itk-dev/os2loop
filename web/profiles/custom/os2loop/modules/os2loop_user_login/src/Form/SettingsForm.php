@@ -113,7 +113,34 @@ final class SettingsForm extends ConfigFormBase {
       '#description' => $this->t('If checked, the "Log out" item in the user menu will be hidden.'),
     ];
 
+    $form['map_oidc_profession_claim_to_term'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Map profession claim to term'),
+      '#default_value' => $config->get('map_oidc_profession_claim_to_term'),
+      '#description' => $this->t('If checked, the users Profession field will be set by OIDC on login. This requires a profession claim to be mapped. I.e  $config["os2loop_user_login.settings"]["claims_mapping"]["taxonomy"]["user_professions"] = "professions"'),
+      '#states' => [
+        'visible' => [
+          ':input[name="default_login_method"]' => ['value' => 'oidc'],
+        ],
+      ],
+    ];
+
     return parent::buildForm($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
+    if ($form_state->getValue('map_oidc_profession_claim_to_term')) {
+      $config = $this->settings->getConfig(SettingsForm::SETTINGS_NAME);
+
+      if (empty($config->get('claims_mapping.taxonomy.user_professions'))) {
+        $form_state->setErrorByName('map_oidc_profession_claim_to_term', 'Missing configuration $config["os2loop_user_login.settings"]["claims_mapping"]["taxonomy"]["user_professions"]');
+      }
+    }
+
+    parent::validateForm($form, $form_state);
   }
 
   /**
@@ -125,6 +152,7 @@ final class SettingsForm extends ConfigFormBase {
       ->set('show_oidc_login', $form_state->getValue('show_oidc_login'))
       ->set('default_login_method', $form_state->getValue('default_login_method'))
       ->set('hide_logout_menu_item', $form_state->getValue('hide_logout_menu_item'))
+      ->set('map_oidc_profession_claim_to_term', $form_state->getValue('map_oidc_profession_claim_to_term'))
       ->save();
 
     drupal_flush_all_caches();
