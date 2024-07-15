@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "626e065da7498cc59a829bb0b57aaf91",
+    "content-hash": "a8f8e0a1a3ba4d82da62169c24d5cc30",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -13290,7 +13290,7 @@
         },
         {
             "name": "os2loop/os2loop_fixtures",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "web/profiles/custom/os2loop/modules/os2loop_fixtures",
