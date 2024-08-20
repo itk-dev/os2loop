@@ -126,6 +126,11 @@ docker compose exec phpfpm vendor/bin/drush --yes pm:uninstall content_fixtures
 docker compose exec phpfpm vendor/bin/drush --yes pm:enable entity_reference_integrity_enforce
 ```
 
+Commands to get machine names
+```sh
+docker compose exec phpfpm vendor/bin/drush field:info
+```
+
 ## Updates
 
 ```sh
