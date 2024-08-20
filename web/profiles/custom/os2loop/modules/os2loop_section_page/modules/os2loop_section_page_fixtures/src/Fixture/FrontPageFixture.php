@@ -68,7 +68,6 @@ class FrontPageFixture extends AbstractFixture implements FixtureGroupInterface 
     $paragraph2->save();
     $page->get('os2loop_section_page_paragraph')->appendItem($paragraph2);
 
-
     // 3 Normal Indhold med Overskrift
     $paragraph3 = Paragraph::create([
       'type' => 'os2loop_section_page_views_refer',
@@ -94,7 +93,7 @@ class FrontPageFixture extends AbstractFixture implements FixtureGroupInterface 
     $paragraph4->save();
     $page->get('os2loop_section_page_paragraph')->appendItem($paragraph4);
 
-    // save the node
+    // Save the node.
     $page->save();
 
     // Set page as the site front page.
