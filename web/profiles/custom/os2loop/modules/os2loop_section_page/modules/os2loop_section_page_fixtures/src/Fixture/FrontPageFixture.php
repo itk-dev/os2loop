@@ -38,7 +38,7 @@ class FrontPageFixture extends AbstractFixture implements FixtureGroupInterface 
     ]);
 
     // 1 Highlighted Indhold
-    $paragraph = Paragraph::create([
+    $paragraph1 = Paragraph::create([
       'type' => 'os2loop_section_page_info_block',
       'os2loop_section_page_title' => '',
       'os2loop_section_page_info_text' => [
@@ -49,11 +49,11 @@ class FrontPageFixture extends AbstractFixture implements FixtureGroupInterface 
       ],
 
     ]);
-    $paragraph->save();
-    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph);
+    $paragraph1->save();
+    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph1);
 
     // 2 Search Bar
-    $paragraph = Paragraph::create([
+    $paragraph2 = Paragraph::create([
       'type' => 'os2loop_section_page_search',
       'os2loop_section_page_block' => [
         'plugin_id' => 'views_exposed_filter_block:os2loop_search_db-page_search_form',
@@ -65,12 +65,12 @@ class FrontPageFixture extends AbstractFixture implements FixtureGroupInterface 
       ],
     ]);
 
-    $paragraph->save();
-    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph);
-    $page->save();
+    $paragraph2->save();
+    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph2);
 
-    // 3 Normal Content med Overskrift
-    $paragraph = Paragraph::create([
+
+    // 3 Normal Indhold med Overskrift
+    $paragraph3 = Paragraph::create([
       'type' => 'os2loop_section_page_views_refer',
       'os2loop_section_page_view_header' => 'I dag findes der over 300 forskellige hesteracer!',
       'os2loop_section_page_view_text' => [
@@ -80,8 +80,22 @@ class FrontPageFixture extends AbstractFixture implements FixtureGroupInterface 
         'format' => 'os2loop_section_page',
       ],
     ]);
-    $paragraph->save();
-    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph);
+    $paragraph3->save();
+    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph3);
+
+    // 4 Post beskeder
+    $paragraph4 = Paragraph::create([
+      'type' => 'os2loop_section_page_views_refer',
+      'os2loop_section_page_view_header' => 'Nyeste indlæg',
+      'os2loop_section_page_block' => [
+        'plugin_id' => 'views_block:os2loop_section_page_most_viewed-block_1',
+      ],
+    ]);
+    $paragraph4->save();
+    $page->get('os2loop_section_page_paragraph')->appendItem($paragraph4);
+
+    // save the node
+    $page->save();
 
     // Set page as the site front page.
     $config = $this->configFactory->getEditable('system.site');
