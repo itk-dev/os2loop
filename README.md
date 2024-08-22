@@ -127,6 +127,7 @@ docker compose exec phpfpm vendor/bin/drush --yes pm:enable entity_reference_int
 ```
 
 Commands to get machine names
+
 ```sh
 docker compose exec phpfpm vendor/bin/drush field:info
 ```
