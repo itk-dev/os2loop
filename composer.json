@@ -205,6 +205,9 @@
             },
             "drupal/masquerade": {
                 "https://www.drupal.org/project/masquerade/issues/2962970#comment-13391256": "https://www.drupal.org/files/issues/2019-12-13/temporary%20unmask%20workaround-2962970-8.patch"
+            },
+            "drupal/toc_api": {
+                "https://www.drupal.org/project/toc_api/issues/3417862": "https://www.drupal.org/files/issues/2024-02-07/toc_api-3417862-anchors_add_01-1.patch"
             }
         }
     },
