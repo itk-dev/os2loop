@@ -59,3 +59,5 @@ page
 Add tagging to media library, fix bugged file reference in display
 - [LOOP-968](https://jira.itkdev.dk/browse/LOOP-968): Remove Connected accounts
 tab
+- [LOOP-2056](https://leantime.itkdev.dk/dashboard/home#/tickets/showTicket/2056):
+Create new frontpage with fixtures.
