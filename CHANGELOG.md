@@ -8,9 +8,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.1]
+
+- [PR-360](https://github.com/itk-dev/os2loop/pull/360)
+  Fix bug in toc
+
 ## [1.1.0]
+
 - Update config to mach drupal version.
-- [PR-358] (https://github.com/itk-dev/os2loop/pull/358)
+- [PR-358](https://github.com/itk-dev/os2loop/pull/358)
   Update pdf css to ensure display of all paragraphs
 
 ## [1.0.0]

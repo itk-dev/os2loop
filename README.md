@@ -1,4 +1,4 @@
-https://github.com/itk-dev/os2loop/pull/358# OS2loop
+# OS2loop
 
 [![Github](https://img.shields.io/badge/source-os2loop/os2loop-blue?style=flat-square)](https://github.com/os2loop/os2loop)
 [![Release](https://img.shields.io/github/v/release/os2loop/os2loop?sort=semver&style=flat-square)](https://github.com/os2loop/os2loop/releases)
