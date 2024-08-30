@@ -6,5 +6,6 @@ _core:
   default_config_hash: MsoWt3yaPNIP0NmsPs6ZOrsRs14TKW_3JTmxuj7nOF0
 name: Tag
 vid: os2loop_tag
-description: ''
+description: null
 weight: 0
+new_revision: false

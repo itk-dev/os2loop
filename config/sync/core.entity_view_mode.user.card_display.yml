@@ -6,5 +6,6 @@ dependencies:
     - user
 id: user.card_display
 label: 'Card display'
+description: ''
 targetEntityType: user
 cache: true

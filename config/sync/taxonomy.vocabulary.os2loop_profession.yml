@@ -6,5 +6,6 @@ _core:
   default_config_hash: gNjXtszwmWiYsqA1YqWhp1OQ3tb1kcox4IL4biW1qr4
 name: Profession
 vid: os2loop_profession
-description: ''
+description: null
 weight: 0
+new_revision: false

@@ -80,13 +80,7 @@
     <span class="field-suffix">{{ suffix }}</span>
   {% endif %}
   {% if label_display == 'after' %}
-    {% if type == 'managed_file' %}
-    <div class='btn btn-primary upload-button mt-15'>
-      {{ label }}
-    </div>
-    {% else %}
-      {{ label }}
-    {% endif %}
+    {{ label }}
   {% endif %}
   {% if errors %}
     <div class="form-item--error-message">
