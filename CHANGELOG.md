@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-361](https://github.com/itk-dev/os2loop/pull/361)
+  Added local OIDC server-mock
+
 ## [1.1.1]
 
 - [PR-360](https://github.com/itk-dev/os2loop/pull/360)
