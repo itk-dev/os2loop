@@ -92,26 +92,36 @@ final class ShareWithAFriendForm extends FormBase implements ContainerInjectionI
     /** @var \Drupal\node\NodeInterface $node */
     $node = $this->routeMatcher->getParameter('node');
 
-    $form['title'] = [
+    $form['wrapper'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['container', 'col-6']],
+    ];
+
+    $form['wrapper']['title'] = [
       '#type' => 'page_title',
       '#title' => $this->t('Share the following with a friend: @document', ['@document' => $node->label()]),
     ];
 
-    $form['message'] = [
+    $form['wrapper']['to_email'] = [
+      '#type' => 'email',
+      '#required' => TRUE,
+      '#title' => $this->t('Email address of recipient'),
+      '#attributes' => [
+        'class' => [
+          'form-control',
+        ],
+      ],
+    ];
+
+    $form['wrapper']['message'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Message'),
       '#description' => $this->t('Write a message to the recipient'),
       '#required' => TRUE,
     ];
 
-    $form['to_email'] = [
-      '#type' => 'email',
-      '#required' => TRUE,
-      '#title' => $this->t('Email address of recipient'),
-    ];
-
-    $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = [
+    $form['wrapper']['actions']['#type'] = 'actions';
+    $form['wrapper']['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Send'),
       '#attributes' => [
@@ -120,7 +130,7 @@ final class ShareWithAFriendForm extends FormBase implements ContainerInjectionI
         ],
       ],
     ];
-    $form['actions']['cancel'] = [
+    $form['wrapper']['actions']['cancel'] = [
       '#type' => 'link',
       '#url' => $node->toUrl(),
       '#title' => $this->t('Cancel'),
