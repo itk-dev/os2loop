@@ -88,11 +88,11 @@
             "type": "package",
             "package": {
                 "name": "jjj/chosen",
-                "version": "2.2.1",
                 "type": "drupal-library",
+                "version": "2.2.1",
                 "source": {
-                    "url": "https://github.com/JJJ/chosen.git",
                     "type": "git",
+                    "url": "https://github.com/JJJ/chosen.git",
                     "reference": "2.2.1"
                 }
             }
