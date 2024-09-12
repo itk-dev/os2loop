@@ -85,17 +85,17 @@
             "canonical": false
         },
         "chosen": {
-          "type": "package",
-          "package": {
-            "name": "jjj/chosen",
-            "version": "2.2.1",
-            "type": "drupal-library",
-            "source": {
-              "url": "https://github.com/JJJ/chosen.git",
-              "type": "git",
-              "reference": "2.2.1"
+            "type": "package",
+            "package": {
+                "name": "jjj/chosen",
+                "version": "2.2.1",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/JJJ/chosen.git",
+                    "type": "git",
+                    "reference": "2.2.1"
+                }
             }
-          }
         },
         "drupal/theme_switcher": {
             "type": "vcs",
