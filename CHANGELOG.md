@@ -8,7 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-- Change contact form
+- Change Share with a friend form
 - Add chosen lib
 - Use chosen lib for profession and expertise fields
 
