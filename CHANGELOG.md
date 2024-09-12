@@ -8,6 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- Change contact form
+- Add chosen lib
+- Use chosen lib for profession and expertise fields
+
 ## [1.1.1]
 
 - [PR-360](https://github.com/itk-dev/os2loop/pull/360)
