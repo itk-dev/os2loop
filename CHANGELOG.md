@@ -8,9 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-- Change Share with a friend form
-- Add chosen lib
-- Use chosen lib for profession and expertise fields
+- [PR-362](https://github.com/itk-dev/os2loop/pull/362)
+  - Change Share with a friend form
+  - Add chosen lib
+  - Use chosen lib for profession and expertise fields
 
 ## [1.1.1]
 
