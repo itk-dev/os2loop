@@ -1,0 +1,4 @@
+show_drupal_login: 0
+show_oidc_login: 1
+default_login_method: ''
+hide_logout_menu_item: 0
