@@ -46,6 +46,17 @@
 	.field--type-entity-reference {
 		@extend .form-group;
 		margin-bottom: 0;
+
+		.chosen-enable.custom-select {
+			padding: 0;
+
+			ul {
+				padding: 12px 15px;
+			}
+		}
+	}
+	.chosen-drop {
+		top: 50px;
 	}
 
 	.form-submit {
