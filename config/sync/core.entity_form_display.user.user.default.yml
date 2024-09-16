@@ -20,7 +20,7 @@ dependencies:
     - field.field.user.user.os2loop_user_postal_code
     - field.field.user.user.os2loop_user_professions
   module:
-    - autocomplete_deluxe
+    - chosen_field
     - field_group
     - inline_entity_form
     - user
@@ -123,21 +123,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   os2loop_user_areas_of_expertise:
-    type: autocomplete_deluxe
+    type: chosen_select
     weight: 20
     region: content
-    settings:
-      match_operator: CONTAINS
-      autocomplete_route_name: autocomplete_deluxe.autocomplete
-      size: 60
-      selection_handler: default
-      min_length: 0
-      delimiter: ''
-      not_found_message_allow: false
-      not_found_message: "The term '@term' will be added"
-      new_terms: false
-      no_empty_message: 'No terms could be found. Please type in order to add a new term.'
-      match_limit: '0'
+    settings: {  }
     third_party_settings: {  }
   os2loop_user_biography:
     type: string_textarea
@@ -180,9 +169,14 @@ content:
       override_labels: false
       label_singular: ''
       label_plural: ''
+      allow_new: true
+      hide_fieldset: false
+      hide_title: false
       collapsible: false
       collapsed: false
       revision: false
+      config_labels_button: _none
+      labels: {  }
     third_party_settings: {  }
   os2loop_user_job_title:
     type: string_textfield
@@ -217,21 +211,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   os2loop_user_professions:
-    type: autocomplete_deluxe
+    type: chosen_select
     weight: 30
     region: content
-    settings:
-      match_operator: CONTAINS
-      autocomplete_route_name: autocomplete_deluxe.autocomplete
-      size: 60
-      selection_handler: default
-      min_length: 0
-      delimiter: ''
-      not_found_message_allow: false
-      not_found_message: "The term '@term' will be added"
-      new_terms: false
-      no_empty_message: 'No terms could be found. Please type in order to add a new term.'
-      match_limit: '0'
+    settings: {  }
     third_party_settings: {  }
 hidden:
   langcode: true
