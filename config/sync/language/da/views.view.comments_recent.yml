@@ -5,6 +5,11 @@ display:
     display_title: Standard
     display_options:
       title: 'Seneste kommentarer'
+      fields:
+        changed:
+          settings:
+            future_format: 'om @interval'
+            past_format: '@interval siden'
       empty:
         area_text_custom:
           content: 'Der er ingen kommentarer at vise.'

@@ -90,4 +90,4 @@ filters:
     status: false
     weight: -42
     settings:
-      replace_empty: '0'
+      replace_empty: false

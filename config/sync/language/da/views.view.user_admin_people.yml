@@ -19,10 +19,18 @@ display:
           label: Roller
         created:
           label: 'Medlem i'
+          settings:
+            future_format: '@interval'
+            past_format: '@interval'
         access:
           label: 'Seneste tilgang'
+          settings:
+            future_format: 'om @interval'
+            past_format: '@interval siden'
         operations:
           label: Handlinger
+        mail:
+          separator: ', '
       pager:
         options:
           tags:
@@ -36,6 +44,7 @@ display:
             offset_label: Forskydning
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende

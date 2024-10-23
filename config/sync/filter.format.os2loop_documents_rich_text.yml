@@ -93,12 +93,12 @@ filters:
     settings:
       type: default
       auto: ''
-      block: '0'
-      exclude_above: '0'
+      block: false
+      exclude_above: false
   token_filter:
     id: token_filter
     provider: token_filter
     status: false
     weight: -44
     settings:
-      replace_empty: '0'
+      replace_empty: false
