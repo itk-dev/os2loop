@@ -36,14 +36,14 @@ class Settings {
   /**
    * Get config.
    */
-  public function getConfig(string $name = NULL) {
+  public function getConfig(?string $name = NULL) {
     return $this->configFactory->get($name ?? SettingsForm::SETTINGS_NAME);
   }
 
   /**
    * Get editable config.
    */
-  public function getEditableConfig(string $name = NULL) {
+  public function getEditableConfig(?string $name = NULL) {
     return $this->configFactory->getEditable($name ?? SettingsForm::SETTINGS_NAME);
   }
 
