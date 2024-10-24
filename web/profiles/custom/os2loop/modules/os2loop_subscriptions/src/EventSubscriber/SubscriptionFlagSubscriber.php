@@ -164,7 +164,7 @@ class SubscriptionFlagSubscriber implements EventSubscriberInterface {
    * @param \Drupal\flag\FlagInterface|null $flag
    *   The flag we want to set.
    */
-  private function flagMessageRead(int $entity_id, array $active_messages, FlagInterface $flag = NULL) {
+  private function flagMessageRead(int $entity_id, array $active_messages, ?FlagInterface $flag = NULL) {
     $messages = $this->getReferencedMessages($entity_id);
     foreach ($messages as $id => $message) {
       // Check if the flag has already been set.
