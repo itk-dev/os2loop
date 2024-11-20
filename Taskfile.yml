@@ -1,0 +1,33 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+        - task --list
+    silent: true
+
+  coding-standards:check:
+    desc: "Apply coding standards and run checks"
+    cmds:
+      - task: coding-standards:apply
+      - task: coding-standards:check:shellcheck
+
+  coding-standards:apply:
+    desc: "Apply coding standards"
+    cmds:
+      - task: coding-standards:apply:markdownlint
+
+  coding-standards:apply:markdownlint:
+    desc: "Run markdownlint-cli (https://github.com/igorshubovych/markdownlint-cli)"
+    cmds:
+      - docker run --rm --volume "$PWD:/md" peterdavehello/markdownlint markdownlint '**/*.md' --fix
+
+  coding-standards:check:markdownlint:
+    desc: "Run markdownlint-cli (https://github.com/igorshubovych/markdownlint-cli)"
+    cmds:
+      - docker run --rm --volume "$PWD:/md" peterdavehello/markdownlint markdownlint '**/*.md'
+
+  coding-standards:check:shellcheck:
+    desc: "Run ShellCheck (https://github.com/koalaman/shellcheck)"
+    cmds:
+      - docker run --rm --volume "$PWD:/mnt" koalaman/shellcheck:stable */*.sh

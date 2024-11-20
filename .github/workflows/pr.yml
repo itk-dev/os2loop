@@ -1,0 +1,45 @@
+on:
+  push:
+    branches:
+      - 'ai-stuff'
+  pull_request:
+    branches:
+      - 'ai-stuff'
+
+name: Review
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    name: Changelog should be updated
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Git fetch
+        run: git fetch
+
+      - name: Check that changelog has been updated.
+        run: git diff --exit-code origin/${{ github.base_ref }} -- CHANGELOG.md && exit 1 || exit 0
+
+  coding-standards-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Coding standards
+        run: |
+          docker run --rm --volume "$PWD:/md" peterdavehello/markdownlint markdownlint '**/*.md'
+
+  coding-standards-shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Coding standards
+        run: |
+          docker run --rm --volume "$PWD:/mnt" koalaman/shellcheck:stable */*.sh
