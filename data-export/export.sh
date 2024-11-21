@@ -13,52 +13,42 @@ EOF
     fi
 
     >&2 cat <<EOF
-Usage: ${BASH_SOURCE[0]} project-dir site-uri
+Usage: ${BASH_SOURCE[0]} site-uri
 
 EOF
     exit 1
 }
 
-if (( $# < 2 )); then
+if (( $# < 1 )); then
     usage "Too few arguments"
 fi
 
-project_dir="$1"
-uri="$2"
+site_uri="$1"
 
-if [ -z "$project_dir" ]; then
-    usage "Invalid project directory"
-fi
-
-if [ ! -d "$project_dir" ] ; then
-    (>&2 echo 'Project directory "'"$project_dir"'" does not exist')
-    exit 1
-fi
-
-if [ -z "$uri" ]; then
+if [ -z "$site_uri" ]; then
     usage "Invalid site-uri"
 fi
 
-cd "$project_dir"
+# cd "$project_dir"
 
 filenames=("$script_dir"/export_*.sql)
 
 for filename in "${filenames[@]}"; do
-    echo "$filename"
+    echo "Running $filename"
 
     # JSON
 
     # https://tldp.org/LDP/abs/html/string-manipulation.html
     output_filename=${filename/%.sql/.json}
     # https://github.com/drush-ops/drush/issues/3071#issuecomment-347929777
-    vendor/bin/drush --uri="$uri" php:eval "return \Drupal::database()->query(file_get_contents('$filename'))->fetchAll()" --format=json >| "$output_filename" || true
-    echo "$output_filename"
+    vendor/bin/drush --uri="$site_uri" php:eval "return \Drupal::database()->query(file_get_contents('$filename'))->fetchAll()" --format=json >| "$output_filename" || true
+    ls -lh "$output_filename"
 
     # CSV
 
     output_filename=${filename/%.sql/.csv}
     # https://stackoverflow.com/a/22421445/2502647
-    vendor/bin/drush --uri="$uri" sql:cli < "$filename" | awk 'BEGIN { FS="\t"; OFS="," } {
+    vendor/bin/drush --uri="$site_uri" sql:cli < "$filename" | awk 'BEGIN { FS="\t"; OFS="," } {
   rebuilt=0
   for(i=1; i<=NF; ++i) {
     if ($i ~ /,/ && $i !~ /^".*"$/) {
@@ -70,5 +60,6 @@ for filename in "${filenames[@]}"; do
   if (!rebuilt) { $1=$1 }
   print
 }' >| "$output_filename" || true
-    echo "$output_filename"
+    ls -lh "$output_filename"
+
 done
