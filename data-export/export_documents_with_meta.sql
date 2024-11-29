@@ -12,7 +12,7 @@ Select
   -- 	Digitalisering
   --  	Digitalisering og Kvalitet, MSO
   --	"Personnavn", Digitalisering
-  -- 	"Personnavn"; Digitalisering
+  -- 	"Personnavn", Digitalisering
   -- 	"Personnavn" - SUE Område Marselisborg, "Personnavn" - SUE Område Marselisborg, "Personnavn" - SOL, "Personnavn" - SOL, "Personnavn" - SOL, "Personnavn" og "Personnavn" - Digitalisering
   -- 	"Personnavn" - SUE Område Marselisborg, "Personnavn" - SOL, "Personnavn" - SOL, Digitalisering
   -- 	"Personnavn", Digitalisering
