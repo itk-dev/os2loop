@@ -167,7 +167,7 @@ left join (
 		left join paragraph__os2loop_documents_tbl_desc as tbl_desc on tbl_content.entity_id = tbl_desc.entity_id
 		) as tbl on n_ddc.os2loop_documents_document_conte_target_id = tbl.entity_id
 	-- where para_ifd.`type` = 'os2loop_documents_table' -- returns 3 of 16 records
-    left join `local_loop`.`paragraph__os2loop_documents_title` as doc_title on n_ddc.os2loop_documents_document_conte_target_id = doc_title.entity_id
+    left join paragraph__os2loop_documents_title as doc_title on n_ddc.os2loop_documents_document_conte_target_id = doc_title.entity_id
 	left join paragraph__os2loop_documents_description as doc_desc on n_ddc.os2loop_documents_document_conte_target_id = doc_desc.entity_id -- all para doc desc relates to bundle step_by_step
 	-- we miss content on step by step paragraphs, (we only have description so far) this must be added post querying using the dedicated query export_folding_parts_of_documents after it have been post-processed by the preprocess_loop_document_folding_parts.py
 	-- we ignore table of contents as this does not add any additional information conveying text
