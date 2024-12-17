@@ -110,7 +110,7 @@ class Helper {
    * @return array
    *   The mail addresses.
    */
-  public function getUserEmails(array $userIds = NULL): array {
+  public function getUserEmails(?array $userIds = NULL): array {
     $query = $this->database
       ->select('users_field_data', 'u')
       ->fields('u', ['mail'])

@@ -65,7 +65,7 @@ class TwigExtension extends AbstractExtension {
    *   Check for permission:     is_granted('administer nodes')
    *   Check for access on node: is_granted('update', node)
    */
-  public function isGranted(string $attribute = NULL, $object = NULL) {
+  public function isGranted(?string $attribute = NULL, $object = NULL) {
     if (NULL !== $attribute) {
       // If no object is passed we Check for permission or role.
       if (NULL === $object) {
@@ -106,7 +106,7 @@ class TwigExtension extends AbstractExtension {
    * @return array
    *   Array of default config or specified config.
    */
-  public function getConfig(string $config_name = NULL): array {
+  public function getConfig(?string $config_name = NULL): array {
     return $this->settings->getConfig($config_name)->get();
   }
 
