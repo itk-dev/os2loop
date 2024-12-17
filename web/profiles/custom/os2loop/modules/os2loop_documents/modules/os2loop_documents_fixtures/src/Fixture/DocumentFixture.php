@@ -371,7 +371,7 @@ BODY,
    *
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  private function createStep(array $values, Paragraph $parent = NULL): Paragraph {
+  private function createStep(array $values, ?Paragraph $parent = NULL): Paragraph {
     $step = Paragraph::create($values + ['type' => 'os2loop_documents_step']);
     $step->save();
     if (NULL !== $parent) {

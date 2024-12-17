@@ -2,10 +2,10 @@
 
 namespace Drupal\os2loop_messages\Helper;
 
-use Drupal\comment\CommentInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\comment\CommentInterface;
 use Drupal\message\Entity\Message;
 use Drupal\node\NodeInterface;
 use Drupal\os2loop_documents\Helper\CollectionHelper as DocumentsCollectionHelper;

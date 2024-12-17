@@ -2,8 +2,8 @@
 
 namespace Drupal\os2loop_upvote\EventSubscriber;
 
-use Drupal\comment\Entity\Comment;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\comment\Entity\Comment;
 use Drupal\flag\Event\FlagEvents;
 use Drupal\flag\Event\FlaggingEvent;
 use Drupal\flag\FlagServiceInterface;

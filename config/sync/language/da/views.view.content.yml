@@ -21,6 +21,7 @@ display:
           label: Titel
         type:
           label: Indholdstype
+          separator: ', '
         name:
           label: Forfatter
         status:
@@ -63,6 +64,7 @@ display:
       title: Indhold
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende

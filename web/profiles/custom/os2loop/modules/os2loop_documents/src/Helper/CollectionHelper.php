@@ -136,7 +136,7 @@ class CollectionHelper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public function addDocument(NodeInterface $collection, NodeInterface $document, NodeInterface $parent = NULL) {
+  public function addDocument(NodeInterface $collection, NodeInterface $document, ?NodeInterface $parent = NULL) {
     $items = $this->loadCollectionItems($collection);
     $weight = -1;
     foreach ($items as $item) {
@@ -313,7 +313,7 @@ class CollectionHelper {
    * @return \Drupal\os2loop_documents\Entity\DocumentCollectionItem[]
    *   The tree.
    */
-  public function loadTree(int $collectionId, int $parent = 0, int $max_depth = NULL, bool $load_entities = FALSE) {
+  public function loadTree(int $collectionId, int $parent = 0, ?int $max_depth = NULL, bool $load_entities = FALSE) {
     $cache_key = implode(':', func_get_args());
     if (!isset($this->trees[$cache_key])) {
       // We cache trees, so it's not CPU-intensive to call on an item and its
@@ -413,7 +413,7 @@ class CollectionHelper {
    * @return array|DocumentCollectionItem[]
    *   The items with children.
    */
-  public function buildDocumentTree(array $items, DocumentCollectionItem $root = NULL): array {
+  public function buildDocumentTree(array $items, ?DocumentCollectionItem $root = NULL): array {
     if (NULL === $root) {
       $nodeIds = array_map(static function (DocumentCollectionItem $item) {
         return $item->getDocumentId();

@@ -2,10 +2,10 @@
 
 namespace Drupal\os2loop_media_fixtures\Fixture;
 
-use Drupal\content_fixtures\Fixture\AbstractFixture;
-use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\content_fixtures\Fixture\AbstractFixture;
+use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
 use Drupal\file\FileRepositoryInterface;
 use Drupal\media\Entity\Media;
 

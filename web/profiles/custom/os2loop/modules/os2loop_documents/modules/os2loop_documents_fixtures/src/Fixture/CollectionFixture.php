@@ -2,10 +2,10 @@
 
 namespace Drupal\os2loop_documents_fixtures\Fixture;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\node\Entity\Node;
 use Drupal\os2loop_documents\Helper\CollectionHelper;
 use Drupal\os2loop_taxonomy_fixtures\Fixture\ProfessionFixture;

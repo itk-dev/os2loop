@@ -2,9 +2,9 @@
 
 namespace Drupal\os2loop_section_page_fixtures\Fixture;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 
