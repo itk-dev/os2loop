@@ -44,12 +44,12 @@ filters:
     settings:
       type: default
       auto: ''
-      block: false
-      exclude_above: false
+      block: '0'
+      exclude_above: '0'
   token_filter:
     id: token_filter
     provider: token_filter
     status: false
     weight: 0
     settings:
-      replace_empty: false
+      replace_empty: '0'

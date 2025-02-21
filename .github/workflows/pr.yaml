@@ -47,6 +47,7 @@ jobs:
         run: |
           composer install --no-interaction --no-progress
           composer normalize composer.json --dry-run
+          composer audit
 
   config-check:
     name: Check that config is up to date
