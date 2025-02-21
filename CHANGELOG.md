@@ -27,7 +27,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.1.2]
 
-  - [PR-362](https://github.com/itk-dev/os2loop/pull/362)
+- [PR-362](https://github.com/itk-dev/os2loop/pull/362)
   - Change Share with a friend form
   - Add chosen lib
   - Use chosen lib for profession and expertise fields
