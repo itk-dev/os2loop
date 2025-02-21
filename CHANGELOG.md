@@ -8,6 +8,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.0]
+
+- [PR-366](https://github.com/itk-dev/os2loop/pull/366)
+  - Security update
+    - Drupal Core 10.3.6 => 10.4.3
+    - XLS serialization 1.4.0 => 2.0.0
 
 ## [1.1.4]
 
@@ -21,7 +27,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.1.2]
 
-  - [PR-362](https://github.com/itk-dev/os2loop/pull/362)
+- [PR-362](https://github.com/itk-dev/os2loop/pull/362)
   - Change Share with a friend form
   - Add chosen lib
   - Use chosen lib for profession and expertise fields
