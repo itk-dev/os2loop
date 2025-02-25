@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- DevOps: Update docker setup to ensure real IPs in logs
+
 ## [1.2.0]
 
 - [PR-366](https://github.com/itk-dev/os2loop/pull/366)
