@@ -182,7 +182,7 @@ class Helper {
         $key = ucfirst($key);
         switch ($key) {
           case 'Cc':
-          case 'Bcc';
+          case 'Bcc':
             $message['headers'][$key] = $value;
             break;
         }

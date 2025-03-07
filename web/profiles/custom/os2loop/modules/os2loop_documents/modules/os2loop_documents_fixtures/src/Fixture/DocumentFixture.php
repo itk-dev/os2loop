@@ -377,7 +377,7 @@ BODY,
     if (NULL !== $parent) {
       switch ($parent->getType()) {
         case 'os2loop_documents_step':
-        case 'os2loop_documents_step_by_step';
+        case 'os2loop_documents_step_by_step':
           $parent->get('os2loop_documents_steps')->appendItem($step);
           $parent->save();
           break;
