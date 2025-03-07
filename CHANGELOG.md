@@ -11,6 +11,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - DevOps: Update docker setup to ensure real IPs in logs
 - [PR-363](https://github.com/itk-dev/os2loop/pull/367)
   Security update of Drupal core
+  Fixed code error in switch cases
 
 ## [1.2.0]
 
