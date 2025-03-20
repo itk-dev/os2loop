@@ -1,3 +1,4 @@
+-- USE local_loop;
 Select 
   n_fd.nid,
   n_fd.type,

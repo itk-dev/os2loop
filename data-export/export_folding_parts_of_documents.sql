@@ -1,3 +1,4 @@
+-- USE local_loop;
 SELECT 
 	steps.bundle as step_bundle,
     steps.entity_id,
