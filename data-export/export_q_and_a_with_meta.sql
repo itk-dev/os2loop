@@ -61,6 +61,7 @@ answer_attachment AS (SELECT
 
 Select -- *,
   n_fd.title as title, 
+  n_fd.nid as nid,
   pa.alias as relative_public_url,
   n_qc.os2loop_question_content_value as question, 
   DATE_FORMAT(FROM_UNIXTIME(n_fd.created), '%Y-%m-%dT%H:%i:%s') as question_created,
