@@ -1,4 +1,3 @@
--- USE local_loop;
 WITH media_attachments AS (SELECT
 	media_collected.mid,
 	fm.uri, -- where public:// -> https://loop.sundhedogomsorg.dk/sites/loop.sundhedogomsorg.dk/files/
