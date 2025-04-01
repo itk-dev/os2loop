@@ -778,6 +778,8 @@ $conf['memcache_servers'] = [
 
 $settings['config_sync_directory'] = '../config/sync';
 
+$settings['skip_permissions_hardening'] = TRUE;
+
 /**
  * Load local development override configuration, if available.
  *
