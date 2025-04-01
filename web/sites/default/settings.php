@@ -778,6 +778,8 @@ $conf['memcache_servers'] = [
 
 $settings['config_sync_directory'] = '../config/sync';
 
+$settings['skip_permissions_hardening'] = TRUE;
+
 /**
  * Load local development override configuration, if available.
  *
@@ -794,5 +796,3 @@ $settings['config_sync_directory'] = '../config/sync';
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
-
-$settings['skip_permissions_hardening'] = TRUE;
