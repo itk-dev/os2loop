@@ -1,13 +1,13 @@
 services:
   node:
     image: node:20
+    working_dir: /app
     profiles:
       - dev
     networks:
       - app
     volumes:
       - .:/app:delegated
-    working_dir: /app
 
   phpfpm:
     environment:
