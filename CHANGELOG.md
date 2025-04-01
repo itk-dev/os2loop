@@ -8,6 +8,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.2]
+
+- [PR-369](https://github.com/itk-dev/os2loop/pull/369) Update drupal core 10.4.5
+
+## [1.2.1]
+
 - DevOps: Update docker setup to ensure real IPs in logs
 - [PR-363](https://github.com/itk-dev/os2loop/pull/367)
   Security update of Drupal core
