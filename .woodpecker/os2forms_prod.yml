@@ -4,7 +4,7 @@ when:
 skip_clone: true
 
 labels:
-  zone: CLOUD
+  zone: DMZ
 
 steps:
   - name: Ansible playbook
@@ -27,8 +27,8 @@ steps:
         - itkdev-docker-compose-server run --rm phpfpm composer2 dump-autoload
         - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes cache:rebuild
         - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes deploy
-        - itkdev-docker-compose-server exec phpfpm vendor/bin/drush --yes locale:update
-        - itkdev-docker-compose-server exec phpfpm vendor/bin/drush --yes locale:import --type=customized --override=none da /app/web/profiles/custom/os2loop/translations/translations.da.po
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes locale:update
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes locale:import --type=customized --override=none da /app/web/profiles/custom/os2loop/translations/translations.da.po
         - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes cache:rebuild
       cron:
         cron:
