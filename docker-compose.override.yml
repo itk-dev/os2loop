@@ -2,12 +2,10 @@ services:
   node:
     image: node:20
     working_dir: /app
-    profiles:
-      - dev
     networks:
       - app
     volumes:
-      - .:/app:delegated
+      - ./web/profiles/custom/os2loop/themes/os2loop_theme:/app
 
   phpfpm:
     environment:
