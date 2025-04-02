@@ -23,7 +23,7 @@ ignored_config_entities:
   - user.role.os2loop_user_post_author
   - user.role.os2loop_user_document_collection_editor
   - user.role.os2loop_user_document_author
-  - user.role.os2loop_user_administrator'
+  - user.role.os2loop_user_administrator
   - user.role.authenticated
   - user.role.os2loop_user_user_administrator
   - views.view.files
