@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-370](https://github.com/itk-dev/os2loop/pull/370)
+  Added woodpecker to test site deployment
+
 ## [1.2.2]
 
 - [PR-369](https://github.com/itk-dev/os2loop/pull/369) Update drupal core 10.4.5
