@@ -8,6 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-371](https://github.com/itk-dev/os2loop/pull/371)
+  Added GitHub action to build release
+  Added os2forms auto deployment
+
 - [PR-370](https://github.com/itk-dev/os2loop/pull/370)
   Added woodpecker to test site deployment
 
