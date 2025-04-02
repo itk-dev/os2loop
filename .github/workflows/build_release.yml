@@ -32,8 +32,6 @@ jobs:
           - docker compose run --rm node yarn install
           - docker compose run --rm node yarn build
           - docker compose run --rm node rm -rf node_modules
-          # Ensure everything is owned by runner
-          - sudo chown -R ${{ COMPOSE_USER }}:${{ COMPOSE_USER }} web
 
       - name: Make assets dir
         run: |
