@@ -29,9 +29,9 @@ jobs:
 
       - name: Build theme
         run: |
-          - docker compose run --rm node yarn install
-          - docker compose run --rm node yarn build
-          - docker compose run --rm node rm -rf node_modules
+          docker compose run --rm node yarn install
+          docker compose run --rm node yarn build
+          docker compose run --rm node rm -rf node_modules
 
       - name: Make assets dir
         run: |
