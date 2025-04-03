@@ -1,0 +1,9 @@
+services:
+  phpfpm:
+    volumes:
+      - ../../shared/${SUB_SITE_FOLDER}:/app/web/sites/${SUB_SITE_FOLDER}
+      - ../../shared/sites.php:/app/web/sites/sites.php
+
+  nginx:
+    volumes:
+      - ../../shared/${SUB_SITE_FOLDER}/files:/app/web/sites/${SUB_SITE_FOLDER}/files
