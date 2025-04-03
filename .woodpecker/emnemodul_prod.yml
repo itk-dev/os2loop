@@ -19,20 +19,22 @@ steps:
         from_secret: prod_emnemodul_host
       path:
         from_secret: prod_emnemodul_path
+      uri:
+        from_secret: prod_emnemodul_uri
       user:
         from_secret: user
       playbook: 'release'
       pre_up:
         # Fixes issue with 'Drupal\mysql\Driver\Database\mysql\Connection' not found
         - itkdev-docker-compose-server run --rm phpfpm composer2 dump-autoload
-        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes cache:rebuild
-        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes deploy
-        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes locale:update
-        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes locale:import --type=customized --override=none da /app/web/profiles/custom/os2loop/translations/translations.da.po
-        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes cache:rebuild
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --uri=$${PLUGIN_URI} --yes cache:rebuild
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --uri=$${PLUGIN_URI} --yes deploy
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --uri=$${PLUGIN_URI} --yes locale:update
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --uri=$${PLUGIN_URI} --yes locale:import --type=customized --override=none da /app/web/profiles/custom/os2loop/translations/translations.da.po
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --uri=$${PLUGIN_URI} --yes cache:rebuild
       cron:
         cron:
-          minute: '47'
+          minute: '08'
           hour: '*'
           day: '*'
           month: '*'
