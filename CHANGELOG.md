@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.3]
+
+- [PR-372](https://github.com/itk-dev/os2loop/pull/372)
+  Migrate to DRUSH_OPTIONS_URI
+
 ## [1.2.2]
 
 - [PR-371](https://github.com/itk-dev/os2loop/pull/371)
