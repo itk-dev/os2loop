@@ -4,12 +4,31 @@
  * Display lists of user subscriptions.
  */
 #}
+{% set enabledBundles = drupal_config('flag.flag.os2loop_subscription_term', 'bundles') %}
+{% set requiredBundles = drupal_config('os2loop_subscriptions.settings', 'subscription_required_taxonomy') %}
+
 <h2 class="h4 my-30">{{ 'Content subscriptions'|t }}</h2>
 <div class="os2loop-subscriptions-node mb-30">
   {{ drupal_view('os2loop_subscriptions_node', 'block_1') }}
 </div>
 
 <h2 class="h4 mt-60 mb-30">{{ 'Taxonomy term subscriptions'|t }}</h2>
-<div class="os2loop-subscription-term">
-  {{ drupal_view('os2loop_subscription_term', 'block_1') }}
-</div>
+{% if 'os2loop_profession' in enabledBundles %}
+    <div class="os2loop-subscription-term taxonomy-professions">
+        <h3 class="h5 my-30">{{ 'Professions'|t }}</h3>
+        {% if 'os2loop_profession' in requiredBundles %}
+            <div class="text-muted">{{ 'Note! At least one subscription is required for this group.' }}</div>
+        {% endif %}
+        {{ drupal_view('os2loop_subscription_term', 'block_2') }}
+    </div>
+
+{% endif %}
+{% if 'os2loop_subject' in enabledBundles %}
+    <div class="os2loop-subscription-term taxonomy-subjects">
+        <h3 class="h5 my-30">{{ 'Subjects'|t }}</h3>
+        {{ drupal_view('os2loop_subscription_term', 'block_1') }}
+        {% if 'os2loop_subject' in requiredBundles %}
+            <small>{{ 'Note! At least one subscription is required for this group.' }}</small>
+        {% endif %}
+    </div>
+{% endif %}

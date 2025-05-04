@@ -5,6 +5,10 @@
  * OS2loop subscriptions.
  */
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\flag\FlagInterface;
+
 /**
  * Implements hook_theme().
  *
@@ -26,4 +30,33 @@ function os2loop_subscriptions_theme($existing, $type, $theme, $path) {
  */
 function os2loop_subscriptions_os2loop_settings_is_granted(string $attribute, $object = NULL): bool {
   return Drupal::service('os2loop_subscriptions.helper')->isGranted($attribute, $object);
+}
+
+/**
+ * Implements hook_views_data().
+ *
+ * @phpstan-return array<string, mixed>
+ */
+function os2loop_subscriptions_views_data(): array {
+  $data['taxonomy_term_data']['webform_submission_serial_exists'] = [
+    'title' => t('User has profession filter'),
+    'help' => t('Provides a filter for users profession.'),
+    'filter' => [
+      'title' => t('User has profession'),
+      'field' => 'id',
+      'id' => 'taxonomy_term_user_has_profession',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  return $data;
+}
+
+/**
+ * Implements
+ *
+ * @see \Drupal\os2loop_subscriptions\Helper\Helper::flagActionAcess()
+ */
+function os2loop_subscriptions_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
+  return Drupal::service('os2loop_subscriptions.helper')->flagActionAccess($action, $flag, $account, $flaggable);
 }
