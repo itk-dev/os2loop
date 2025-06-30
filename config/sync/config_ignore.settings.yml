@@ -1,9 +1,10 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
+mode: simple
 ignored_config_entities:
   - os2loop.settings
-  - os2loop_analytics.settings
   - os2loop_alert.settings
+  - os2loop_analytics.settings
   - os2loop_cookies.settings
   - os2loop_documents.settings
   - os2loop_flag_content.settings
@@ -16,17 +17,17 @@ ignored_config_entities:
   - os2loop_user_login.settings
   - samlauth.authentication
   - samlauth_user_roles.mapping
+  - system.action.user_add_role_action.os2loop_user_user_administrator
+  - system.action.user_remove_role_action.os2loop_user_user_administrator
   - system.site
   - user.role.anonymous
+  - user.role.authenticated
+  - user.role.os2loop_user_administrator
+  - user.role.os2loop_user_document_author
+  - user.role.os2loop_user_document_collection_editor
   - user.role.os2loop_user_external_sources_editor
   - user.role.os2loop_user_manual
   - user.role.os2loop_user_post_author
-  - user.role.os2loop_user_document_collection_editor
-  - user.role.os2loop_user_document_author
-  - user.role.os2loop_user_administrator
-  - user.role.authenticated
+  - user.role.os2loop_user_user_administrator
   - user.role.os2loop_user_user_administrator
   - views.view.files
-  - system.action.user_add_role_action.os2loop_user_user_administrator
-  - system.action.user_remove_role_action.os2loop_user_user_administrator
-  - user.role.os2loop_user_user_administrator
