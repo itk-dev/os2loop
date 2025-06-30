@@ -31,12 +31,12 @@ jQuery(() => {
 		.on("autocompleteopen", (event) =>
 			jQuery(event.target)
 				.parent()
-				.addClass("search-api-autocomplete-has-suggestions")
+				.addClass("search-api-autocomplete-has-suggestions"),
 		)
 		.on("autocompleteclose", (event) =>
 			jQuery(event.target)
 				.parent()
-				.removeClass("search-api-autocomplete-has-suggestions")
+				.removeClass("search-api-autocomplete-has-suggestions"),
 		);
 
 	// Add target="_blank" to all external links in main content.
