@@ -1,8 +1,8 @@
-name: 'os2loop_messages'
+name: "os2loop_messages"
 type: module
-description: 'Create and show messages when content is created or changed'
+description: "Create and show messages when content is created or changed"
 core_version_requirement: ^10 || ^11
-package: 'OS2Loop'
+package: "OS2Loop"
 dependencies:
   - drupal:os2loop_documents
   - drupal:os2loop_settings

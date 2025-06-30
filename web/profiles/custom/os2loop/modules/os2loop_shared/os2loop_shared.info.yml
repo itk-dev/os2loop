@@ -1,5 +1,5 @@
-name: 'OS2Loop shared'
+name: "OS2Loop shared"
 type: module
-description: 'OS2Loop shared'
+description: "OS2Loop shared"
 core_version_requirement: ^10 || ^11
-package: 'OS2Loop'
+package: "OS2Loop"

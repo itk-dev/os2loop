@@ -1,6 +1,6 @@
-name: 'OS2Loop Page fixtures'
+name: "OS2Loop Page fixtures"
 type: module
-description: 'OS2Loop Page fixtures'
+description: "OS2Loop Page fixtures"
 # Used only for development and testing.
 hidden: true
 core_version_requirement: ^10 || ^11

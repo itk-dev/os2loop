@@ -1,8 +1,8 @@
-name: 'OS2Loop taxonomy'
+name: "OS2Loop taxonomy"
 type: module
-description: 'OS2Loop taxonomy'
+description: "OS2Loop taxonomy"
 core_version_requirement: ^10 || ^11
-package: 'OS2Loop'
+package: "OS2Loop"
 
 dependencies:
   - drupal:taxonomy

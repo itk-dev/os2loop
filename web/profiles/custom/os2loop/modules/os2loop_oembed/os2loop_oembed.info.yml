@@ -1,7 +1,7 @@
-name: 'OS2Loop oembed'
+name: "OS2Loop oembed"
 type: module
-description: 'OS2Loop oembed'
+description: "OS2Loop oembed"
 core_version_requirement: ^10 || ^11
-package: 'OS2Loop'
+package: "OS2Loop"
 dependencies:
   - drupal:media

@@ -1,7 +1,7 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies: {}
 name: Tag
 vid: os2loop_tag
-description: ''
+description: ""
 weight: 0

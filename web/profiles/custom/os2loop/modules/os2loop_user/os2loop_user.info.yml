@@ -1,8 +1,8 @@
-name: 'OS2Loop user'
+name: "OS2Loop user"
 type: module
-description: 'OS2Loop user'
+description: "OS2Loop user"
 core_version_requirement: ^10 || ^11
-package: 'OS2Loop'
+package: "OS2Loop"
 
 dependencies:
   - drupal:field_group
