@@ -45,7 +45,6 @@ install:
   - shortcut
   - toolbar
   - file
-  - rdf
   - views
   - editor
 
