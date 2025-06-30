@@ -8,6 +8,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-373](https://github.com/itk-dev/os2loop/pull/373)
+  Update contrib modules
+  Update custom modules
+  Update drupal core
+  Remove deprecated code
+  Uninstall unused themes
+
 ## [1.2.3]
 
 - [PR-372](https://github.com/itk-dev/os2loop/pull/372)
