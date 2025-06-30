@@ -64,12 +64,12 @@ class Helper {
     if ($useRichText) {
       $form['os2loop_question_content']['widget'][0]['#better_formats']['settings']['allowed_formats'] =
         ['os2loop_question_rich_text' => 'os2loop_question_rich_text'];
-      $form["os2loop_question_content"]["widget"][0]["#format"] = 'os2loop_question_rich_text';
+      $form['os2loop_question_content']['widget'][0]['#format'] = 'os2loop_question_rich_text';
     }
     else {
       $form['os2loop_question_content']['widget'][0]['#better_formats']['settings']['allowed_formats'] =
         ['os2loop_question_plain_text' => 'os2loop_question_plain_text'];
-      $form["os2loop_question_content"]["widget"][0]["#format"] = 'os2loop_question_plain_text';
+      $form['os2loop_question_content']['widget'][0]['#format'] = 'os2loop_question_plain_text';
     }
 
     // We must use a static callback here to prevent “LogicException: The

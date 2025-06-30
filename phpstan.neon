@@ -1,10 +1,9 @@
 parameters:
   paths:
-    - web/profiles/custom/os2loop
+    - web/profiles/custom/os2loop/modules
   level: 0
   customRulesetUsed: true
-  ignoreErrors:
-      - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
-      - '#Missing cache backend declaration for performance.#'
-      - '#Plugin manager has cache backend specified but does not declare cache tags.#'
   reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+        -
+            message: '#\Drupal calls should be avoided in classes, use dependency injection instead#'

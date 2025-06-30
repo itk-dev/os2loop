@@ -34,7 +34,7 @@ class SetRevisionDate extends ActionBase {
     if ($node) {
       /** @var \Drupal\node\NodeInterface $node */
       if (!$node->hasField('os2loop_shared_rev_date')) {
-        throw new \RuntimeException("Revisioning date field not found on node.");
+        throw new \RuntimeException('Revisioning date field not found on node.');
       }
       $node->set('os2loop_shared_rev_date', $this->getNextRevisionDate()->format('Y-m-d'));
       $node->save();
