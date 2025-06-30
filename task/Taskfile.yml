@@ -74,8 +74,8 @@ tasks:
       - task dev:compose -- exec phpfpm vendor/bin/phpcs --standard=phpcs.xml.dist
       - task dev:compose -- exec phpfpm vendor/bin/phpstan analyse --configuration=phpstan.neon
       - task dev:compose -- exec phpfpm vendor/bin/twig-cs-fixer lint web/profiles/custom/os2loop/themes/*/templates
-      - docker compose run --rm prettier '**/*.{yml,yaml}' --check
-      - docker compose run --rm prettier 'web/profiles/custom/os2loop/themes/**/css/**/*.{css,scss}' --check
+      - task dev:compose -- run --rm prettier '**/*.{yml,yaml}' --check
+      - task dev:compose -- run --rm prettier 'web/profiles/custom/os2loop/themes/**/*.{css,scss}' --check
       - docker run --rm --volume "$PWD:/md" itkdev/markdownlint '**/*.md'
 
   code:apply-standards:
@@ -83,6 +83,6 @@ tasks:
     cmds:
       - task dev:compose -- exec phpfpm vendor/bin/phpcbf --standard=phpcs.xml.dist
       - task dev:compose -- exec phpfpm vendor/bin/twig-cs-fixer lint web/profiles/custom/os2loop/themes/*/templates --fix
-      - docker compose run --rm prettier '**/*.{yml,yaml}' --write
-      - docker compose run --rm prettier 'web/profiles/custom/os2loop/themes/**/*.{css,scss}' --write
+      - task dev:compose -- run --rm prettier '**/*.{yml,yaml}' --write
+      - task dev:compose -- run --rm prettier 'web/profiles/custom/os2loop/themes/**/*.{css,scss}' --write
       - docker run --rm --volume "$PWD:/md" itkdev/markdownlint '**/*.md' --fix
