@@ -59,6 +59,7 @@
         "drupal/views_flag_refresh": "^1.0",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/xls_serialization": "^2.0",
+        "drush/drush": "^13.0",
         "jjj/chosen": "2.2.1"
     },
     "require-dev": {
@@ -66,7 +67,6 @@
         "drupal/coder": "^8.3",
         "drupal/core-dev": "^10.1",
         "drupal/devel": "^5.1",
-        "drush/drush": "^13.0",
         "ergebnis/composer-normalize": "^2.42",
         "kint-php/kint": "^5.0",
         "mglaman/phpstan-drupal": "^1.2",
