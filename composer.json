@@ -15,6 +15,7 @@
         "drupal/block_field": "^1.0@RC",
         "drupal/chosen": "^4.0",
         "drupal/color": "^1.0",
+        "drupal/config_filter": "^2.7",
         "drupal/config_ignore": "^3.3",
         "drupal/convert_media_tags_to_markup": "^4.0",
         "drupal/core-composer-scaffold": "^10.5",
