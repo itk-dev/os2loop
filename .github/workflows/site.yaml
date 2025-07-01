@@ -120,6 +120,8 @@ jobs:
 
       - name: Update site
         run: |
+          docker compose exec phpfpm vendor/bin/drush updatedb --yes
+          docker compose exec phpfpm vendor/bin/drush cr --yes
           docker compose exec phpfpm vendor/bin/drush config-import --yes
           docker compose exec phpfpm vendor/bin/drush deploy --yes
 
