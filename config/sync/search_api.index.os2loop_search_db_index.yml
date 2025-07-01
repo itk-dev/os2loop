@@ -3,32 +3,32 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.os2loop_question_answers
-    - field.storage.node.os2loop_documents_document_body
-    - field.storage.node.os2loop_shared_category
-    - field.storage.node.os2loop_post_comments
     - field.storage.node.os2loop_documents_dc_content
-    - field.storage.node.os2loop_question_content
-    - field.storage.node.os2loop_post_content
+    - field.storage.node.os2loop_documents_document_body
     - field.storage.node.os2loop_documents_document_conte
-    - field.storage.paragraph.os2loop_documents_hc_content
-    - field.storage.paragraph.os2loop_documents_description
-    - field.storage.paragraph.os2loop_documents_step_text
-    - field.storage.paragraph.os2loop_documents_steps
-    - field.storage.paragraph.os2loop_documents_step_title
-    - field.storage.paragraph.os2loop_documents_tai_text
-    - field.storage.paragraph.os2loop_documents_hc_title
     - field.storage.node.os2loop_external_descripti
-    - field.storage.paragraph.os2loop_documents_tbl_cont
+    - field.storage.node.os2loop_post_comments
+    - field.storage.node.os2loop_post_content
+    - field.storage.node.os2loop_question_answers
+    - field.storage.node.os2loop_question_content
+    - field.storage.node.os2loop_shared_category
     - field.storage.node.os2loop_shared_profession
     - field.storage.node.os2loop_shared_subject
     - field.storage.node.os2loop_shared_tags
+    - field.storage.paragraph.os2loop_documents_description
+    - field.storage.paragraph.os2loop_documents_hc_content
+    - field.storage.paragraph.os2loop_documents_hc_title
+    - field.storage.paragraph.os2loop_documents_step_text
+    - field.storage.paragraph.os2loop_documents_step_title
+    - field.storage.paragraph.os2loop_documents_steps
+    - field.storage.paragraph.os2loop_documents_tai_text
+    - field.storage.paragraph.os2loop_documents_tbl_cont
+    - field.storage.paragraph.os2loop_documents_title
     - search_api.server.os2loop_search_db_server
   module:
     - node
-    - taxonomy
     - paragraphs
-    - search_api
+    - taxonomy
 id: os2loop_search_db_index
 name: Index
 description: ''
@@ -370,13 +370,16 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  custom_value: {  }
   entity_status: {  }
+  entity_type: {  }
   highlight:
     weights:
       postprocess_query: 0
     prefix: '<strong>'
     suffix: '</strong>'
     excerpt: true
+    excerpt_always: false
     excerpt_length: 256
     exclude_fields: {  }
     highlight: always
@@ -512,6 +515,7 @@ tracker_settings:
     indexing_order: fifo
 options:
   cron_limit: 50
+  delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
 server: os2loop_search_db_server

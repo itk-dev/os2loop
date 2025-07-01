@@ -3,23 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.os2loop_search_db_search_autocomplete
     - search_api.index.os2loop_search_db_index
     - views.view.os2loop_search_db
-    - core.entity_view_mode.comment.os2loop_search_db_search_autocomplete
-    - core.entity_view_mode.node.os2loop_search_db_search_autocomplete
   module:
     - views
-    - search_api_autocomplete
 id: os2loop_search_db
 label: 'os2loop search db'
 index_id: os2loop_search_db_index
 suggester_settings:
   live_results:
     fields: {  }
+    highlight:
+      enabled: false
+      field: ''
+    suggest_keys: false
     view_modes:
-      'entity:comment':
-        os2loop_post_comment: os2loop_search_db_search_autocomplete
-        os2loop_question_answer: os2loop_search_db_search_autocomplete
       'entity:node':
         os2loop_documents_collection: os2loop_search_db_search_autocomplete
         os2loop_documents_document: os2loop_search_db_search_autocomplete
