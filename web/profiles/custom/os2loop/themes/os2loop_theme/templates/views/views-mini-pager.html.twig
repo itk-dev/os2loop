@@ -27,7 +27,7 @@
       {% if items.current %}
         <li class="page-item">
           <span class="page-link">
-            {% trans %}Page {{ items.current }}{% endtrans %}
+            {{ 'Page @items'|t({'@items': items.current}) }}
           </span>
         </li>
       {% endif %}
