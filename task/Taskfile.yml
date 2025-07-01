@@ -71,7 +71,7 @@ tasks:
   code:check:
     desc: Check php, twig and markdown files and analyze php code
     cmds:
-      - task dev:compose -- exec phpfpm vendor/bin/phpcs --standard=phpcs.xml.dist
+      - task dev:compose -- exec phpfpm vendor/bin/phpcs
       - task dev:compose -- exec phpfpm vendor/bin/phpstan analyse --configuration=phpstan.neon
       - task dev:compose -- exec phpfpm vendor/bin/twig-cs-fixer lint
       - task dev:compose -- run --rm prettier '**/*.{yml,yaml}' --check
@@ -82,7 +82,7 @@ tasks:
   code:apply-standards:
     desc: Apply coding standards to php, twig and markdown files
     cmds:
-      - task dev:compose -- exec phpfpm vendor/bin/phpcbf --standard=phpcs.xml.dist
+      - task dev:compose -- exec phpfpm vendor/bin/phpcbf
       - task dev:compose -- exec phpfpm vendor/bin/twig-cs-fixer lint --fix
       - task dev:compose -- run --rm prettier '**/*.{yml,yaml}' --write
       - task dev:compose -- run --rm prettier 'web/profiles/custom/os2loop/themes/**/*.{css,scss}' --write

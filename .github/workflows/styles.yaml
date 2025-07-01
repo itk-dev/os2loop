@@ -33,4 +33,4 @@ jobs:
           docker network create frontend
 
       - run: |
-          docker compose run --rm prettier 'web/themes/custom/**/css/**/*.{css,scss}' --check
+          docker compose run --rm prettier 'web/profiles/custom/os2loop/**/*.{css,scss}' --check
