@@ -7,9 +7,7 @@ dependencies:
     - field.storage.node.os2loop_documents_document_body
     - field.storage.node.os2loop_documents_document_conte
     - field.storage.node.os2loop_external_descripti
-    - field.storage.node.os2loop_post_comments
     - field.storage.node.os2loop_post_content
-    - field.storage.node.os2loop_question_answers
     - field.storage.node.os2loop_question_content
     - field.storage.node.os2loop_shared_category
     - field.storage.node.os2loop_shared_profession
@@ -233,14 +231,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.os2loop_external_descripti
-  os2loop_post_comments:
-    label: Comments
-    datasource_id: 'entity:node'
-    property_path: os2loop_post_comments
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.os2loop_post_comments
   os2loop_post_content:
     label: Content
     datasource_id: 'entity:node'
@@ -249,14 +239,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.os2loop_post_content
-  os2loop_question_answers:
-    label: Answers
-    datasource_id: 'entity:node'
-    property_path: os2loop_question_answers
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.os2loop_question_answers
   os2loop_question_content:
     label: Content
     datasource_id: 'entity:node'
@@ -330,16 +312,6 @@ field_settings:
         - field.storage.paragraph.os2loop_documents_tbl_cont
       module:
         - paragraphs
-  processed_answer:
-    label: Answer
-    datasource_id: 'entity:node'
-    property_path: 'search_api_reverse_entity_references_comment__entity_id:os2loop_question_answer:processed'
-    type: text
-  processed_comment:
-    label: Comment
-    datasource_id: 'entity:node'
-    property_path: 'search_api_reverse_entity_references_comment__entity_id:os2loop_post_comment:processed'
-    type: text
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -407,15 +379,11 @@ processor_settings:
       - os2loop_documents_tai_text
       - os2loop_documents_title
       - os2loop_external_descripti
-      - os2loop_post_comments
       - os2loop_post_content
-      - os2loop_question_answers
       - os2loop_question_content
       - os2loop_shared_category_name
       - os2loop_shared_subject_name
       - processed
-      - processed_answer
-      - processed_comment
       - title
       - type
     title: false
@@ -449,15 +417,11 @@ processor_settings:
       - os2loop_documents_tai_text
       - os2loop_documents_title
       - os2loop_external_descripti
-      - os2loop_post_comments
       - os2loop_post_content
-      - os2loop_question_answers
       - os2loop_question_content
       - os2loop_shared_category_name
       - os2loop_shared_subject_name
       - processed
-      - processed_answer
-      - processed_comment
       - title
       - type
   language_with_fallback: {  }
@@ -491,8 +455,6 @@ processor_settings:
       - os2loop_shared_category_name
       - os2loop_shared_subject_name
       - processed
-      - processed_answer
-      - processed_comment
       - title
     spaces: ''
     ignored: ._-

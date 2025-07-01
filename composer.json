@@ -40,7 +40,7 @@
         "drupal/openid_connect": "^3.0@alpha",
         "drupal/paragraphs": "^1.16",
         "drupal/paragraphs_edit": "^3.0",
-        "drupal/pathauto": "^1.12",
+        "drupal/pathauto": "^1.13",
         "drupal/redirect": "^1.9",
         "drupal/search_api": "^1.29",
         "drupal/search_api_autocomplete": "^1.7",
@@ -227,6 +227,9 @@
             },
             "drupal/toc_api": {
                 "https://www.drupal.org/project/toc_api/issues/3417862": "https://www.drupal.org/files/issues/2024-02-07/toc_api-3417862-anchors_add_01-1.patch"
+            },
+            "drupal/pathauto": {
+              "Fix PHP 8.4 implicit nullable deprecation (https://www.drupal.org/project/pathauto/issues/3489108)": "https://www.drupal.org/files/issues/2025-03-06/pathauto-3489108.diff"
             }
         }
     }
