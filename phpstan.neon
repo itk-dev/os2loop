@@ -1,6 +1,6 @@
 parameters:
   paths:
-    - web/profiles/custom/os2loop/modules
+    - web/profiles/custom/os2loop
   level: 0
   customRulesetUsed: true
   reportUnmatchedIgnoredErrors: false
