@@ -68,6 +68,8 @@ jobs:
     steps:
       # Install site from our base ref
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
 
       - name: Start docker and install dependencies
         run: |
