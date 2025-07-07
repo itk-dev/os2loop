@@ -73,9 +73,6 @@ display:
           empty_zero: false
           hide_alter_empty: true
           view_modes:
-            'entity:comment':
-              os2loop_post_comment: search_result
-              os2loop_question_answer: search_result
             'entity:node':
               os2loop_documents_collection: search_result
               os2loop_documents_document: search_result
@@ -234,9 +231,6 @@ display:
         type: search_api
         options:
           view_modes:
-            'entity:comment':
-              os2loop_post_comment: search_result
-              os2loop_question_answer: search_result
             'entity:node':
               os2loop_documents_collection: search_result
               os2loop_documents_document: search_result
@@ -274,6 +268,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.os2loop_search_db_index'
+        - 'search_api_list:os2loop_search_db_index'
   page_search:
     id: page_search
     display_title: Page
@@ -313,6 +308,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.os2loop_search_db_index'
+        - 'search_api_list:os2loop_search_db_index'
   page_search_form:
     id: page_search_form
     display_title: 'Page (simple form)'
@@ -340,3 +336,4 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.os2loop_search_db_index'
+        - 'search_api_list:os2loop_search_db_index'

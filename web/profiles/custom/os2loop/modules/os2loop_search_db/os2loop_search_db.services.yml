@@ -3,5 +3,5 @@ services:
     class: Drupal\os2loop_search_db\Helper\Helper
     arguments:
       - '@Drupal\os2loop_settings\Settings'
-      - '@request_stack'
-      - '@entity_type.manager'
+      - "@request_stack"
+      - "@entity_type.manager"

@@ -4,13 +4,13 @@ os2loop_user.user:
   menu_name: main
   class: Drupal\os2loop_user\Plugin\Menu\UserParentMenuLink
 os2loop_user.profile:
-  title: 'Profile'
+  title: "Profile"
   parent: os2loop_user.user
   weight: 1
   menu_name: main
   route_name: user.page
 os2loop_user.divider:
-  title: 'Divider'
+  title: "Divider"
   weight: 50
   parent: os2loop_user.user
   route_name: <nolink>
@@ -20,19 +20,19 @@ os2loop_user.divider:
       class:
         - dropdown-divider
 os2loop_user.questions:
-  title: 'My questions'
+  title: "My questions"
   parent: os2loop_user.user
   weight: 51
   menu_name: main
   route_name: view.os2loop_user_questions.page_1
 os2loop_user.answers:
-  title: 'My replies'
+  title: "My replies"
   parent: os2loop_user.user
   weight: 52
   menu_name: main
   route_name: view.os2loop_user_answers.page_1
 os2loop_user.divider_logout:
-  title: 'Divider'
+  title: "Divider"
   weight: 99
   parent: os2loop_user.user
   route_name: <nolink>

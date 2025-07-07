@@ -1,5 +1,5 @@
 os2loop_user.messages:
-  title: 'Messages'
+  title: "Messages"
   parent: os2loop_user.user
   weight: 3
   menu_name: main
