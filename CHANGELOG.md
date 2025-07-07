@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.4]
+
 - [374](https://github.com/itk-dev/os2loop/pull/374)
   Added itkdev template with github actions and tasks
 - [PR-373](https://github.com/itk-dev/os2loop/pull/373)
