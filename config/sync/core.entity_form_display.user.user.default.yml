@@ -170,11 +170,11 @@ content:
       label_singular: ''
       label_plural: ''
       allow_new: true
-      hide_fieldset: false
-      hide_title: false
       collapsible: false
       collapsed: false
       revision: false
+      hide_fieldset: false
+      hide_title: false
       config_labels_button: _none
       labels: {  }
     third_party_settings: {  }

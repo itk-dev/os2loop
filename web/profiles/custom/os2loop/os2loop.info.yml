@@ -1,8 +1,8 @@
 # https://www.drupal.org/docs/distributions/creating-distributions/how-to-write-a-drupal-installation-profile
 name: OS2Loop
 type: profile
-description: 'The OS2Loop profile'
-core_version_requirement: ^10
+description: "The OS2Loop profile"
+core_version_requirement: ^10 || ^11
 
 # Optional: Declare your installation profile as a distribution
 # This will make the installer auto-select this installation profile.
@@ -45,7 +45,6 @@ install:
   - shortcut
   - toolbar
   - file
-  - rdf
   - views
   - editor
 

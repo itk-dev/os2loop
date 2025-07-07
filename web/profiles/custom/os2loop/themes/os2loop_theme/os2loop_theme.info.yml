@@ -1,9 +1,9 @@
 type: theme
 base theme: false
-name: 'os2loop'
-description: 'A theme for os2loop.'
+name: "os2loop"
+description: "A theme for os2loop."
 logo: logo.png
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 screenshot: loop.png
 
 # This breaks `drush site:install` (maybe related to
@@ -25,10 +25,10 @@ libraries-override:
 regions:
   header: Header
   content: Content
-  sidebar_first: 'Sidebar first'
+  sidebar_first: "Sidebar first"
   footer: Footer
 
 # Styling for entity_print (cf. https://www.drupal.org/node/2706755#from-your-theme)
 entity_print:
   node:
-    all: 'os2loop_theme/pdf-styling'
+    all: "os2loop_theme/pdf-styling"

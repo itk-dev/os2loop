@@ -1,5 +1,5 @@
-name: 'OS2Loop Menu'
+name: "OS2Loop Menu"
 type: module
-description: 'OS2Loop Menu'
-core_version_requirement: ^10
-package: 'OS2Loop'
+description: "OS2Loop Menu"
+core_version_requirement: ^10 || ^11
+package: "OS2Loop"

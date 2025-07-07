@@ -3,5 +3,5 @@ services:
     class: Drupal\os2loop_messages\Helper\Helper
     arguments:
       - '@Drupal\os2loop_settings\Settings'
-      - '@current_user'
+      - "@current_user"
       - '@Drupal\os2loop_documents\Helper\CollectionHelper'

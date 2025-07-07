@@ -14,7 +14,6 @@
  * - flaggable: The flaggable entity.
  */
 #}
-{% apply spaceless %}
 
 {# Depending on the flag action, set the appropriate action class. #}
 {% set action_class = action == 'unflag' ? 'unsubscribe' : 'subscribe' %}
@@ -37,4 +36,3 @@
     <span class="visually-hidden">{{ title }}</span>
   </a>
 </div>
-{% endapply %}

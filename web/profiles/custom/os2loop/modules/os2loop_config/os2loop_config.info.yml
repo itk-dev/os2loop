@@ -1,9 +1,8 @@
-name: 'os2loop_config'
+name: "os2loop_config"
 type: module
-description: 'OS2Loop Config'
+description: "OS2Loop Config"
 # Used only for development and testing.
 hidden: true
-core_version_requirement: ^10
-package: 'OS2Loop'
-
+core_version_requirement: ^10 || ^11
+package: "OS2Loop"
 # https://www.drupal.org/node/2087879

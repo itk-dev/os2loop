@@ -92,7 +92,7 @@
     <footer>
       {{ author_picture }}
       <div{{ author_attributes }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ 'Submitted by @authorname on @date'|t({'@authorname': author_name, '@date': date}) }}
         {{ metadata }}
       </div>
     </footer>
