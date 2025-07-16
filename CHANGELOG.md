@@ -8,6 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.3]
+
+- Set `DRUSH_OPTIONS_URI` environment variable
+
 ## [1.2.2]
 
 - [PR-371](https://github.com/itk-dev/os2loop/pull/371)
