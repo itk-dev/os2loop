@@ -1,0 +1,4 @@
+services:
+  logger.channel.os2loop_login_hack:
+    parent: logger.channel_base
+    arguments: ['os2loop_login_hack']

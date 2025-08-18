@@ -1,0 +1,167 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Drupal\os2loop_login_hack\Controller;
+
+use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Routing\TrustedRedirectResponse;
+use Drupal\Core\Url;
+use Drupal\user\Entity\User;
+use Drupal\user\UserStorageInterface;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+
+/**
+ * Returns responses for os2loop_login_hack routes.
+ */
+final class Os2loopLoginHackController extends ControllerBase {
+  private const JWT_KEY = 'os2loop_login_hack';
+
+  /**
+   * The user storage.
+   */
+  private readonly UserStorageInterface $userStorage;
+
+  /**
+   * Constructor.
+   */
+  public function __construct(
+    EntityTypeManagerInterface $entityTypeManager,
+    private readonly TimeInterface $time,
+    #[Autowire(service: 'logger.channel.os2loop_login_hack')]
+    private readonly LoggerInterface $logger,
+  ) {
+    $this->userStorage = $entityTypeManager->getStorage('user');
+  }
+
+  /**
+   * Start user authentication.
+   */
+  public function start(Request $request): Response {
+    try {
+      $data = json_decode($request->getContent(), associative: TRUE, flags: JSON_THROW_ON_ERROR);
+      $username = $data['username'] ?? NULL;
+      if (empty($username)) {
+        throw new BadRequestHttpException('Missing username');
+      }
+
+      $user = $this->loadUser($username);
+      if (empty($user)) {
+        // Don't disclose whether or not the user exists.
+        throw new BadRequestHttpException();
+      }
+
+      // Check that we can get userinfo.
+      $userinfo = $this->getUserinfo($user);
+      if (empty($userinfo)) {
+        throw new BadRequestHttpException();
+      }
+
+      // https://github.com/firebase/php-jwt?tab=readme-ov-file#example
+      $payload = [
+        // Issued at.
+        'iat' => $this->time->getRequestTime(),
+        // Expire af 60 seconds.
+        'exp' => $this->time->getRequestTime() + 60,
+        'username' => $username,
+      ];
+      $jwt = JWT::encode($payload, self::JWT_KEY, 'HS256');
+
+      $url = Url::fromRoute('os2loop_login_hack.authenticate', [
+        'username' => $username,
+        'jwt' => $jwt,
+      ])->setAbsolute()->toString(TRUE)->getGeneratedUrl();
+
+      return new JsonResponse([
+        'authenticate_url' => $url,
+        'jwt' => $jwt,
+      ]);
+    }
+    catch (\Exception $exception) {
+      $this->logger->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
+      throw new BadRequestException($exception->getMessage());
+    }
+  }
+
+  /**
+   * Authenticate user.
+   */
+  public function authenticate(Request $request): Response {
+    try {
+      $username = $request->get('username');
+      $jwt = $request->get('jwt');
+      if (empty($username) || empty($jwt)) {
+        throw new BadRequestHttpException();
+      }
+
+      $payload = (array) JWT::decode($jwt, new Key(self::JWT_KEY, 'HS256'));
+      $username = $payload['username'] ?? NULL;
+      if (empty($username)) {
+        throw new BadRequestHttpException();
+      }
+
+      $user = $this->loadUser($username);
+      if (empty($user)) {
+        // Don't disclose whether or not the user exists.
+        throw new BadRequestHttpException();
+      }
+
+      $this->updateUser($user);
+
+      user_login_finalize($user);
+
+      $url = Url::fromRoute('<front>')->setAbsolute()->toString(TRUE)->getGeneratedUrl();
+      $this->messenger()->addStatus($this->t('Welcome @user.', ['@user' => $user->getDisplayName()]));
+
+      return new TrustedRedirectResponse($url);
+    }
+    catch (\Exception $exception) {
+      $this->logger->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
+      throw new BadRequestException($exception->getMessage());
+    }
+  }
+
+  /**
+   * Load user by username.
+   *
+   * @param string $username
+   *   The username.
+   *
+   * @return \Drupal\user\Entity\User|null
+   *   The user if any.
+   */
+  private function loadUser(string $username): ?User {
+    $users = $this->userStorage->loadByProperties(['name' => $username]);
+
+    return reset($users) ?: NULL;
+  }
+
+  /**
+   * Update user with info from IdP.
+   */
+  private function updateUser(User $user): User {
+    // $userinfo = $this->getUserinfo($user);
+    // @todo Update user.
+    return $user;
+  }
+
+  /**
+   * Get user info from userinfo endpoint.
+   */
+  private function getUserinfo(User $user): array {
+    return [
+      'name' => $user->getDisplayName(),
+    ];
+  }
+
+}

@@ -1,0 +1,15 @@
+{
+    "name": "os2loop/os2loop_login_hack",
+    "description": "drupal/os2loop_login_hack",
+    "license": "GPL-2.0+",
+    "type": "os2loop-custom-module",
+    "authors": [
+        {
+            "name": "Mikkel Ricky",
+            "email": "rimi@aarhus.dk"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.11"
+    }
+}

@@ -1,0 +1,17 @@
+os2loop_login_hack.start:
+  path: '/os2loop-login-hack/start'
+  defaults:
+    _title: 'Start login hack'
+    _controller: '\Drupal\os2loop_login_hack\Controller\Os2loopLoginHackController::start'
+  methods: [POST]
+  requirements:
+    _role: 'anonymous'
+
+os2loop_login_hack.authenticate:
+  path: '/os2loop-login-hack/authenticate'
+  defaults:
+    _title: 'Authenticate'
+    _controller: '\Drupal\os2loop_login_hack\Controller\Os2loopLoginHackController::authenticate'
+  methods: [GET]
+  requirements:
+    _role: 'anonymous'
