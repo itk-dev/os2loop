@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [376](https://github.com/itk-dev/os2loop/pull/376)
+  Updated core and contrib modules
+
 ## [1.2.5]
 
 - [374](https://github.com/itk-dev/os2loop/pull/374)
