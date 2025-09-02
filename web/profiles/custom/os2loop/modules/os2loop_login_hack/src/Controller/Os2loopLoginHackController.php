@@ -49,6 +49,16 @@ final class Os2loopLoginHackController extends ControllerBase {
    */
   public function start(Request $request): Response {
     try {
+      $this->logger->info('Request: @request', [
+        '@request' => json_encode([
+          'method' => $request->getMethod(),
+          'query' => $request->query->all(),
+          'content' => (string) $request->getContent(),
+        ]),
+      ]);
+
+      return new Response('https://example.com/cura-login');
+
       $data = json_decode($request->getContent(), associative: TRUE, flags: JSON_THROW_ON_ERROR);
       $username = $data['username'] ?? NULL;
       if (empty($username)) {

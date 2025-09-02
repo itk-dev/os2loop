@@ -1,9 +1,9 @@
 os2loop_login_hack.start:
-  path: '/os2loop-login-hack/start'
+  path: '/os2loop-cura-login/start'
   defaults:
     _title: 'Start login hack'
     _controller: '\Drupal\os2loop_login_hack\Controller\Os2loopLoginHackController::start'
-  methods: [POST]
+  methods: [GET, POST]
   requirements:
     _role: 'anonymous'
 
@@ -15,3 +15,15 @@ os2loop_login_hack.authenticate:
   methods: [GET]
   requirements:
     _role: 'anonymous'
+
+os2loop_login_preview.show:
+  path: '/os2loop-login-hack/preview/show/{id}'
+#  options:
+#    parameters:
+#      id: '.+'
+  defaults:
+    _title: 'Preview'
+    _controller: '\Drupal\os2loop_login_hack\Controller\Os2loopPreviewContentController::show'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
