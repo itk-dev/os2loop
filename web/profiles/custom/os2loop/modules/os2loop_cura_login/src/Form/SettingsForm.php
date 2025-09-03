@@ -8,6 +8,7 @@ use Drupal\Component\Utility\Random;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\Core\Url;
 
 /**
  * Configure OS2Loop Cura login settings for this site.
@@ -78,6 +79,22 @@ final class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('Log level'),
       '#default_value' => $config->get('log_level') ?? RfcLogLevel::ERROR,
     ];
+
+    $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start')->setAbsolute()->toString(true)->getGeneratedUrl();
+    $form['info'] = [
+      '#theme' => 'item_list',
+      '#items' => [
+        '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code>.', [':url' => $authenticationStartUrl]),
+      ],
+    ];
+
+    if ($name = $config->get('token_param_name')) {
+      $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start', [$name => '…'])->setAbsolute()->toString(true)->getGeneratedUrl();
+      $authenticationStartUrl = str_replace(urlencode('…'), '…', $authenticationStartUrl);
+      $form['info']['#items'][] = [
+        '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code> for <core>GET</core>.', [':url' => $authenticationStartUrl]),
+      ];
+    }
 
     return parent::buildForm($form, $form_state);
   }

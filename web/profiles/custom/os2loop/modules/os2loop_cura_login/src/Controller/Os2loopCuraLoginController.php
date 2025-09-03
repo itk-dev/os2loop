@@ -59,11 +59,15 @@ final class Os2loopCuraLoginController extends ControllerBase {
    */
   public function start(Request $request): Response {
     try {
-      $this->info('Request: @request', [
-        '@request' => json_encode([
+            $content = NULL;
+      try {
+        $content = (string) $request->getContent();
+      } catch (\Exception) {}
+      $this->debug('@debug', [
+        '@debug' => json_encode([
           'method' => $request->getMethod(),
           'query' => $request->query->all(),
-          'content' => (string) $request->getContent(),
+          'content' => $content,
         ]),
       ]);
 
@@ -71,7 +75,23 @@ final class Os2loopCuraLoginController extends ControllerBase {
         ? $request->getContent()
         : $request->query->getString($this->config->get('token_param_name') ?? 'token');
 
+      $this->debug('@debug', [
+        '@debug' => json_encode([
+          'jwt' => $jwt,
+        ]),
+      ]);
+
+      if (empty($jwt)) {
+        throw new BadRequestHttpException('Missing or empty JWT');
+      }
+
       $payload = (array) JWT::decode($jwt, new Key($this->config->get('signing_secret'), $this->config->get('signing_algorithm')));
+
+      $this->debug('@debug', [
+        '@debug' => json_encode([
+          'payload' => $payload,
+        ]),
+      ]);
 
       $username = $payload['username'] ?? NULL;
       if (empty($username)) {
@@ -79,6 +99,13 @@ final class Os2loopCuraLoginController extends ControllerBase {
       }
 
       $user = $this->loadUser($username);
+
+      $this->debug('@debug', [
+        '@debug' => json_encode([
+          'user' => $user,
+        ]),
+      ]);
+
       if (empty($user)) {
         // Don't disclose whether or not the user exists.
         throw new BadRequestHttpException();
@@ -86,6 +113,13 @@ final class Os2loopCuraLoginController extends ControllerBase {
 
       // Check that we can get userinfo.
       $userinfo = $this->getUserinfo($user);
+
+      $this->debug('@debug', [
+        '@debug' => json_encode([
+          'userinfo' => $userinfo,
+        ]),
+      ]);
+
       if (empty($userinfo)) {
         throw new BadRequestHttpException();
       }

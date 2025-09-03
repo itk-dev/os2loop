@@ -1,7 +1,7 @@
 os2loop_cura_login.start:
   path: '/os2loop-cura-login/start'
   defaults:
-    _title: 'Start login hack'
+    _title: 'Start Cura login'
     _controller: '\Drupal\os2loop_cura_login\Controller\Os2loopCuraLoginController::start'
   methods: [GET, POST]
   requirements:
@@ -10,7 +10,7 @@ os2loop_cura_login.start:
 os2loop_cura_login.authenticate:
   path: '/os2loop-login-hack/authenticate'
   defaults:
-    _title: 'Authenticate'
+    _title: 'Authenticate with Cura login'
     _controller: '\Drupal\os2loop_cura_login\Controller\Os2loopCuraLoginController::authenticate'
   methods: [GET]
   requirements:
