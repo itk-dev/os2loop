@@ -1,0 +1,6 @@
+os2loop_cura_login.settings:
+  title: 'OS2Loop Cura login settings'
+  route_name: os2loop_cura_login.settings
+  description: 'Configure OS2Loop Cura login settings'
+  parent: os2loop.group.admin
+  weight: 100

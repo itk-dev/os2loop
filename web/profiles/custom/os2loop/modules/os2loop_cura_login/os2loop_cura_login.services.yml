@@ -1,0 +1,4 @@
+services:
+  logger.channel.os2loop_cura_login:
+    parent: logger.channel_base
+    arguments: ['os2loop_cura_login']

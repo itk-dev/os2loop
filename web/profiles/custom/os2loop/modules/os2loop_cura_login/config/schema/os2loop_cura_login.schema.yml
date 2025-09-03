@@ -1,0 +1,8 @@
+# Schema for the configuration files of the OS2Loop Cura login module.
+os2loop_cura_login.settings:
+  type: config_object
+  label: 'OS2Loop Cura login settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

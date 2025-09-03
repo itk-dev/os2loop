@@ -1,6 +1,6 @@
 {
-    "name": "os2loop/os2loop_login_hack",
-    "description": "drupal/os2loop_login_hack",
+    "name": "os2loop/os2loop_cura_login",
+    "description": "drupal/os2loop_cura_login",
     "license": "GPL-2.0+",
     "type": "os2loop-custom-module",
     "authors": [

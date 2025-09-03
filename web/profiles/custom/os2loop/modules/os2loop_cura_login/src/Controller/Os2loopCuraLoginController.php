@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Drupal\os2loop_login_hack\Controller;
+namespace Drupal\os2loop_cura_login\Controller;
 
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\Url;
 use Drupal\user\Entity\User;
@@ -14,6 +15,8 @@ use Drupal\user\UserStorageInterface;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerTrait;
+use Psr\Log\LogLevel;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,10 +25,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
- * Returns responses for os2loop_login_hack routes.
+ * Returns responses for os2loop_cura_login routes.
  */
-final class Os2loopLoginHackController extends ControllerBase {
-  private const JWT_KEY = 'os2loop_login_hack';
+final class Os2loopCuraLoginController extends ControllerBase {
+  use LoggerTrait;
+
+  private const JWT_KEY = 'os2loop_cura_login';
 
   /**
    * The user storage.
@@ -33,15 +38,20 @@ final class Os2loopLoginHackController extends ControllerBase {
   private readonly UserStorageInterface $userStorage;
 
   /**
+   * The module config.
+   */
+  private readonly ImmutableConfig $config;
+
+  /**
    * Constructor.
    */
   public function __construct(
-    EntityTypeManagerInterface $entityTypeManager,
     private readonly TimeInterface $time,
-    #[Autowire(service: 'logger.channel.os2loop_login_hack')]
+    #[Autowire(service: 'logger.channel.os2loop_cura_login')]
     private readonly LoggerInterface $logger,
   ) {
-    $this->userStorage = $entityTypeManager->getStorage('user');
+    $this->userStorage = $this->entityTypeManager()->getStorage('user');
+    $this->config = $this->config('os2loop_cura_login.settings');
   }
 
   /**
@@ -49,7 +59,7 @@ final class Os2loopLoginHackController extends ControllerBase {
    */
   public function start(Request $request): Response {
     try {
-      $this->logger->info('Request: @request', [
+      $this->info('Request: @request', [
         '@request' => json_encode([
           'method' => $request->getMethod(),
           'query' => $request->query->all(),
@@ -57,10 +67,13 @@ final class Os2loopLoginHackController extends ControllerBase {
         ]),
       ]);
 
-      return new Response('https://example.com/cura-login');
+      $jwt = Request::METHOD_POST === $request->getMethod()
+        ? $request->getContent()
+        : $request->query->getString($this->config->get('token_param_name') ?? 'token');
 
-      $data = json_decode($request->getContent(), associative: TRUE, flags: JSON_THROW_ON_ERROR);
-      $username = $data['username'] ?? NULL;
+      $payload = (array) JWT::decode($jwt, new Key($this->config->get('signing_secret'), $this->config->get('signing_algorithm')));
+
+      $username = $payload['username'] ?? NULL;
       if (empty($username)) {
         throw new BadRequestHttpException('Missing username');
       }
@@ -87,7 +100,7 @@ final class Os2loopLoginHackController extends ControllerBase {
       ];
       $jwt = JWT::encode($payload, self::JWT_KEY, 'HS256');
 
-      $url = Url::fromRoute('os2loop_login_hack.authenticate', [
+      $url = Url::fromRoute('os2loop_cura_login.authenticate', [
         'username' => $username,
         'jwt' => $jwt,
       ])->setAbsolute()->toString(TRUE)->getGeneratedUrl();
@@ -98,7 +111,7 @@ final class Os2loopLoginHackController extends ControllerBase {
       ]);
     }
     catch (\Exception $exception) {
-      $this->logger->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
+      $this->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
       throw new BadRequestException($exception->getMessage());
     }
   }
@@ -136,7 +149,7 @@ final class Os2loopLoginHackController extends ControllerBase {
       return new TrustedRedirectResponse($url);
     }
     catch (\Exception $exception) {
-      $this->logger->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
+      $this->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
       throw new BadRequestException($exception->getMessage());
     }
   }
@@ -172,6 +185,25 @@ final class Os2loopLoginHackController extends ControllerBase {
     return [
       'name' => $user->getDisplayName(),
     ];
+  }
+
+  public function log($level, \Stringable|string $message, array $context = []): void
+  {
+    // Lifted from LoggerChannel
+    $levels = [
+      LogLevel::EMERGENCY => RfcLogLevel::EMERGENCY,
+      LogLevel::ALERT => RfcLogLevel::ALERT,
+      LogLevel::CRITICAL => RfcLogLevel::CRITICAL,
+      LogLevel::ERROR => RfcLogLevel::ERROR,
+      LogLevel::WARNING => RfcLogLevel::WARNING,
+      LogLevel::NOTICE => RfcLogLevel::NOTICE,
+      LogLevel::INFO => RfcLogLevel::INFO,
+      LogLevel::DEBUG => RfcLogLevel::DEBUG,
+    ];
+    $rfcLogLevel = $levels[$level] ?? RfcLogLevel::ERROR;
+    if ((int)$this->config->get('log_level') >= $rfcLogLevel) {
+      $this->logger->log($level, $message, $context);
+    }
   }
 
 }

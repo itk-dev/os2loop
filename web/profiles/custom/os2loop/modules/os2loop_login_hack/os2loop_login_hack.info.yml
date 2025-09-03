@@ -1,7 +1,0 @@
-name: 'os2loop_login_hack'
-type: module
-description: 'os2loop_login_hack'
-package: Custom
-core_version_requirement: ^10 || ^11
-dependencies:
-  - drupal:user
