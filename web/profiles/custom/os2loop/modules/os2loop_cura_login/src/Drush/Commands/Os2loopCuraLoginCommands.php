@@ -2,24 +2,19 @@
 
 namespace Drupal\os2loop_cura_login\Drush\Commands;
 
-use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\DependencyInjection\AutowireTrait;
 use Drupal\Core\Url;
-use Drupal\Core\Utility\Token;
 use Drush\Attributes as CLI;
 use Drush\Commands\DrushCommands;
 use Firebase\JWT\JWT;
-use Http\Client\HttpClient;
 use Psr\Http\Client\ClientInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * A Drush commandfile.
  */
-final class Os2loopCuraLoginCommands extends DrushCommands
-{
+final class Os2loopCuraLoginCommands extends DrushCommands {
   use AutowireTrait;
 
   /**
@@ -42,10 +37,10 @@ final class Os2loopCuraLoginCommands extends DrushCommands
   public function commandName(
     $username,
     $options = [
-      'get' => null,
-      'secret' => null,
+      'get' => NULL,
+      'secret' => NULL,
       'algorithm' => 'HS256',
-    ]
+    ],
   ) {
     // https://github.com/firebase/php-jwt?tab=readme-ov-file#example
     $payload = [
@@ -62,11 +57,12 @@ final class Os2loopCuraLoginCommands extends DrushCommands
     if ($name = $options['get']) {
       $method = Request::METHOD_GET;
       $routeParameters[$name] = $jwt;
-    } else {
+    }
+    else {
       $method = Request::METHOD_POST;
       $requestOptions['body'] = $jwt;
     }
-    $url = Url::fromRoute('os2loop_cura_login.start', $routeParameters)->setAbsolute()->toString(true)->getGeneratedUrl();
+    $url = Url::fromRoute('os2loop_cura_login.start', $routeParameters)->setAbsolute()->toString(TRUE)->getGeneratedUrl();
     $this->io()->writeln($method === Request::METHOD_POST
       ? sprintf('POST\'ing to %s', $url)
       : sprintf('GET\'ing %s', $url),
@@ -78,7 +74,7 @@ final class Os2loopCuraLoginCommands extends DrushCommands
       $url,
       $request->getStatusCode(),
       $request->getBody()->getContents(),
-    ], true);
+    ], TRUE);
     die(__FILE__ . ':' . __LINE__ . ':' . __METHOD__);
   }
 

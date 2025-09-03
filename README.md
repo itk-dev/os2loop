@@ -140,8 +140,8 @@ for further details.
 ## Coding standards
 
 ```sh
-docker compose exec phpfpm composer coding-standards-apply
-docker compose exec phpfpm composer coding-standards-check
+docker compose exec phpfpm vendor/bin/phpcs
+docker compose exec phpfpm vendor/bin/phpcbf
 ```
 
 ```sh

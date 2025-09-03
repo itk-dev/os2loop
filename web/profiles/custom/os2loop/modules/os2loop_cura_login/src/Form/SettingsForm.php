@@ -66,11 +66,17 @@ final class SettingsForm extends ConfigFormBase {
       '#description' => $this->t('Check this to generate a new random secret'),
     ];
 
-    $form['token_param_name'] = [
+    $form['payload_name'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Token param name'),
-      '#default_value' => $config->get('token_param_name'),
-      '#description' => $this->t('Query string param name used for JWT token on GET request'),
+      '#title' => $this->t('Payload name'),
+      '#default_value' => $config->get('payload_name') ?? 'payload',
+      '#description' => $this->t('Name of parameter used for payload'),
+    ];
+
+    $form['jwt_leeway'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('JWT leeway'),
+      '#default_value' => $config->get('jwt_leeway') ?? 0,
     ];
 
     $form['log_level'] = [
@@ -80,40 +86,29 @@ final class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('log_level') ?? RfcLogLevel::ERROR,
     ];
 
-    $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start')->setAbsolute()->toString(true)->getGeneratedUrl();
+    $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start')->setAbsolute()->toString(TRUE)->getGeneratedUrl();
     $form['info'] = [
       '#theme' => 'item_list',
       '#items' => [
-        '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code>.', [':url' => $authenticationStartUrl]),
+        '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code> for <code>postToGetLinkURL ≡ true</code>.', [':url' => $authenticationStartUrl]),
       ],
     ];
 
-    if ($name = $config->get('token_param_name')) {
-      $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start', [$name => '…'])->setAbsolute()->toString(true)->getGeneratedUrl();
-      $authenticationStartUrl = str_replace(urlencode('…'), '…', $authenticationStartUrl);
+    $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start', [])->setAbsolute()->toString(TRUE)->getGeneratedUrl();
+    $authenticationStartUrl = rtrim($authenticationStartUrl, '/') . '/';
+    $form['info']['#items'][] = [
+      '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code> for <core><code>postToGetLinkURL ≡ false</code>.', [':url' => $authenticationStartUrl]),
+    ];
+
+    if ($name = $config->get('payload_name')) {
+      $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start', [$name => '…'])->setAbsolute()->toString(TRUE)->getGeneratedUrl();
+      $authenticationStartUrl = str_replace(urlencode('…'), '', $authenticationStartUrl);
       $form['info']['#items'][] = [
-        '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code> for <core>GET</core>.', [':url' => $authenticationStartUrl]),
+        '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code> for <core><code>postToGetLinkURL ≡ false</code>.', [':url' => $authenticationStartUrl]),
       ];
     }
 
     return parent::buildForm($form, $form_state);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state): void {
-    // @todo Validate the form here.
-    // Example:
-    // @code
-    //   if ($form_state->getValue('example') === 'wrong') {
-    //     $form_state->setErrorByName(
-    //       'message',
-    //       $this->t('The value is not correct.'),
-    //     );
-    //   }
-    // @endcode
-    parent::validateForm($form, $form_state);
   }
 
   /**
@@ -127,7 +122,8 @@ final class SettingsForm extends ConfigFormBase {
     $this->config('os2loop_cura_login.settings')
       ->set('signing_algorithm', $form_state->getValue('signing_algorithm'))
       ->set('signing_secret', $secret)
-      ->set('token_param_name', $form_state->getValue('token_param_name'))
+      ->set('payload_name', $form_state->getValue('payload_name'))
+      ->set('jwt_leeway', $form_state->getValue('jwt_leeway'))
       ->set('log_level', $form_state->getValue('log_level'))
       ->save();
     parent::submitForm($form, $form_state);

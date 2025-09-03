@@ -57,23 +57,29 @@ final class Os2loopCuraLoginController extends ControllerBase {
   /**
    * Start user authentication.
    */
-  public function start(Request $request): Response {
+  public function start(Request $request, ?string $jwt): Response {
     try {
-            $content = NULL;
+      $content = NULL;
       try {
         $content = (string) $request->getContent();
-      } catch (\Exception) {}
+      }
+      catch (\Exception) {
+      }
       $this->debug('@debug', [
         '@debug' => json_encode([
           'method' => $request->getMethod(),
+          'headers' => $request->headers->all(),
           'query' => $request->query->all(),
           'content' => $content,
         ]),
       ]);
 
-      $jwt = Request::METHOD_POST === $request->getMethod()
-        ? $request->getContent()
-        : $request->query->getString($this->config->get('token_param_name') ?? 'token');
+      if (empty($jwt)) {
+        $name = $this->config->get('payload_name') ?? 'payload';
+        $jwt = Request::METHOD_POST === $request->getMethod()
+          ? $request->request->getString($name)
+          : $request->query->getString($name);
+      }
 
       $this->debug('@debug', [
         '@debug' => json_encode([
@@ -85,7 +91,17 @@ final class Os2loopCuraLoginController extends ControllerBase {
         throw new BadRequestHttpException('Missing or empty JWT');
       }
 
-      $payload = (array) JWT::decode($jwt, new Key($this->config->get('signing_secret'), $this->config->get('signing_algorithm')));
+      $secret = $this->config->get('signing_secret');
+      // @todo Get rid of the double base64 encoding.
+      $secret = base64_decode($secret);
+
+      $originalLeeway = JWT::$leeway;
+      $leeway = (int) $this->config->get('jwt_leeway');
+      if ($leeway > 0) {
+        JWT::$leeway = $leeway;
+      }
+      $payload = (array) JWT::decode($jwt, new Key($secret, $this->config->get('signing_algorithm')));
+      JWT::$leeway = $originalLeeway;
 
       $this->debug('@debug', [
         '@debug' => json_encode([
@@ -93,7 +109,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
         ]),
       ]);
 
-      $username = $payload['username'] ?? NULL;
+      $username = $payload['username'] ?? $payload['brugerId'] ?? NULL;
       if (empty($username)) {
         throw new BadRequestHttpException('Missing username');
       }
@@ -221,9 +237,11 @@ final class Os2loopCuraLoginController extends ControllerBase {
     ];
   }
 
-  public function log($level, \Stringable|string $message, array $context = []): void
-  {
-    // Lifted from LoggerChannel
+  /**
+   * {@inheritdoc}
+   */
+  public function log($level, \Stringable|string $message, array $context = []): void {
+    // Lifted from LoggerChannel.
     $levels = [
       LogLevel::EMERGENCY => RfcLogLevel::EMERGENCY,
       LogLevel::ALERT => RfcLogLevel::ALERT,
@@ -235,7 +253,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
       LogLevel::DEBUG => RfcLogLevel::DEBUG,
     ];
     $rfcLogLevel = $levels[$level] ?? RfcLogLevel::ERROR;
-    if ((int)$this->config->get('log_level') >= $rfcLogLevel) {
+    if ((int) $this->config->get('log_level') >= $rfcLogLevel) {
       $this->logger->log($level, $message, $context);
     }
   }

@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-375](https://github.com/itk-dev/os2loop/pull/375)
+  Added Cura login module
+
 ## [1.2.5]
 
 - [374](https://github.com/itk-dev/os2loop/pull/374)
