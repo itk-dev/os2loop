@@ -1,8 +1,8 @@
 {
     "name": "os2loop/os2loop_cura_login",
     "description": "drupal/os2loop_cura_login",
-    "license": "GPL-2.0+",
     "type": "os2loop-custom-module",
+    "license": "GPL-2.0+",
     "authors": [
         {
             "name": "Mikkel Ricky",
