@@ -17,7 +17,7 @@ os2loop_cura_login.start_get_jwt:
     _role: "anonymous"
 
 os2loop_cura_login.authenticate:
-  path: "/os2loop-login-hack/authenticate"
+  path: "/os2loop-cura-login/authenticate"
   defaults:
     _title: "Authenticate with Cura login"
     _controller: '\Drupal\os2loop_cura_login\Controller\Os2loopCuraLoginController::authenticate'
