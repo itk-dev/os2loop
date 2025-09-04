@@ -5,15 +5,26 @@ declare(strict_types=1);
 namespace Drupal\os2loop_cura_login\Form;
 
 use Drupal\Component\Utility\Random;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\DependencyInjection\AutowireTrait;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Url;
+use Drupal\os2loop_cura_login\Settings;
 
 /**
  * Configure OS2Loop Cura login settings for this site.
  */
 final class SettingsForm extends ConfigFormBase {
+  use AutowireTrait;
+
+  public function __construct(
+    ConfigFactoryInterface $config_factory,
+    private readonly Settings $settings,
+  ) {
+    parent::__construct($config_factory);
+  }
 
   /**
    * {@inheritdoc}
@@ -26,34 +37,30 @@ final class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   protected function getEditableConfigNames(): array {
-    return ['os2loop_cura_login.settings'];
+    return [Settings::CONFIG_NAME];
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-    $config = $this->config('os2loop_cura_login.settings');
+    $settings = \Drupal::service(Settings::class);
     $form['signing_algorithm'] = [
       '#required' => TRUE,
       '#type' => 'select',
-      '#options' => [
-        'HS256' => 'HS256',
-        'HS384' => 'HS384',
-        'HS512' => 'HS512',
-      ],
+      '#options' => Settings::SIGNING_ALGORITHMS,
       '#title' => $this->t('Signing algorithm'),
-      '#default_value' => $config->get('signing_algorithm'),
+      '#default_value' => $this->settings->getSigningAlgorithm(),
     ];
 
-    $hasSigningSecret = !empty($config->get('signing_secret'));
+    $hasSigningSecret = !empty($this->settings->getSigningSecret());
 
     $form['signing_secret'] = [
       '#type' => 'textfield',
       '#size' => 128,
       '#required' => $hasSigningSecret,
       '#title' => $this->t('Signing secret'),
-      '#default_value' => $config->get('signing_secret'),
+      '#default_value' => $this->settings->getSigningSecret(),
       '#description' => !$hasSigningSecret
         ? $this->t('Save the configuration to generate a random secret.')
         : '',
@@ -69,21 +76,21 @@ final class SettingsForm extends ConfigFormBase {
     $form['payload_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Payload name'),
-      '#default_value' => $config->get('payload_name') ?? 'payload',
+      '#default_value' => $this->settings->getPayloadName(),
       '#description' => $this->t('Name of parameter used for payload'),
     ];
 
     $form['jwt_leeway'] = [
       '#type' => 'textfield',
       '#title' => $this->t('JWT leeway'),
-      '#default_value' => $config->get('jwt_leeway') ?? 0,
+      '#default_value' => $this->settings->getJwtLeeway(),
     ];
 
     $form['log_level'] = [
       '#type' => 'select',
       '#options' => RfcLogLevel::getLevels(),
       '#title' => $this->t('Log level'),
-      '#default_value' => $config->get('log_level') ?? RfcLogLevel::ERROR,
+      '#default_value' => $this->settings->getLogLevel(),
     ];
 
     $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start')->setAbsolute()->toString(TRUE)->getGeneratedUrl();
@@ -100,7 +107,7 @@ final class SettingsForm extends ConfigFormBase {
       '#markup' => $this->t('Use <a href=":url">:url</a> as <code>linkURL</code> for <core><code>postToGetLinkURL ≡ false</code>.', [':url' => $authenticationStartUrl]),
     ];
 
-    if ($name = $config->get('payload_name')) {
+    if ($name = $this->settings->getPayloadName()) {
       $authenticationStartUrl = Url::fromRoute('os2loop_cura_login.start', [$name => '…'])->setAbsolute()->toString(TRUE)->getGeneratedUrl();
       $authenticationStartUrl = str_replace(urlencode('…'), '', $authenticationStartUrl);
       $form['info']['#items'][] = [
@@ -117,15 +124,12 @@ final class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $secret = $form_state->getValue('signing_secret');
     if ($form_state->getValue('generate_new_secret')) {
-      $secret = base64_encode((new Random())->string(64));
+      $form_state->setValue('signing_secret', base64_encode((new Random())->string(64)));
     }
-    $this->config('os2loop_cura_login.settings')
-      ->set('signing_algorithm', $form_state->getValue('signing_algorithm'))
-      ->set('signing_secret', $secret)
-      ->set('payload_name', $form_state->getValue('payload_name'))
-      ->set('jwt_leeway', $form_state->getValue('jwt_leeway'))
-      ->set('log_level', $form_state->getValue('log_level'))
-      ->save();
+    /** @var \Drupal\os2loop_cura_login\Settings $settings */
+    $settings = \Drupal::service(Settings::class);
+    $settings->saveSettings($form_state);
+
     parent::submitForm($form, $form_state);
   }
 

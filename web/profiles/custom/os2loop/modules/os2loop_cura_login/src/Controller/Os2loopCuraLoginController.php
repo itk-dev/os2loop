@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Drupal\os2loop_cura_login\Controller;
 
 use Drupal\Component\Datetime\TimeInterface;
-use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\Url;
+use Drupal\os2loop_cura_login\Settings;
 use Drupal\user\Entity\User;
 use Drupal\user\UserStorageInterface;
 use Firebase\JWT\JWT;
@@ -38,20 +38,15 @@ final class Os2loopCuraLoginController extends ControllerBase {
   private readonly UserStorageInterface $userStorage;
 
   /**
-   * The module config.
-   */
-  private readonly ImmutableConfig $config;
-
-  /**
    * Constructor.
    */
   public function __construct(
+    private readonly Settings $settings,
     private readonly TimeInterface $time,
     #[Autowire(service: 'logger.channel.os2loop_cura_login')]
     private readonly LoggerInterface $logger,
   ) {
     $this->userStorage = $this->entityTypeManager()->getStorage('user');
-    $this->config = $this->config('os2loop_cura_login.settings');
   }
 
   /**
@@ -75,7 +70,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
       ]);
 
       if (empty($jwt)) {
-        $name = $this->config->get('payload_name') ?? 'payload';
+        $name = $this->settings->getPayloadName();
         $jwt = Request::METHOD_POST === $request->getMethod()
           ? $request->request->getString($name)
           : $request->query->getString($name);
@@ -91,16 +86,16 @@ final class Os2loopCuraLoginController extends ControllerBase {
         throw new BadRequestHttpException('Missing or empty JWT');
       }
 
-      $secret = $this->config->get('signing_secret');
+      $secret = $this->settings->getSigningSecret();
       // @todo Get rid of the double base64 encoding.
       $secret = base64_decode($secret);
 
       $originalLeeway = JWT::$leeway;
-      $leeway = (int) $this->config->get('jwt_leeway');
+      $leeway = $this->settings->getJwtLeeway();
       if ($leeway > 0) {
         JWT::$leeway = $leeway;
       }
-      $payload = (array) JWT::decode($jwt, new Key($secret, $this->config->get('signing_algorithm')));
+      $payload = (array) JWT::decode($jwt, new Key($secret, $this->settings->getSigningAlgorithm()));
       JWT::$leeway = $originalLeeway;
 
       $this->debug('@debug', [
@@ -253,7 +248,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
       LogLevel::DEBUG => RfcLogLevel::DEBUG,
     ];
     $rfcLogLevel = $levels[$level] ?? RfcLogLevel::ERROR;
-    if ((int) $this->config->get('log_level') >= $rfcLogLevel) {
+    if ((int) $this->settings->getLogLevel() >= $rfcLogLevel) {
       $this->logger->log($level, $message, $context);
     }
   }

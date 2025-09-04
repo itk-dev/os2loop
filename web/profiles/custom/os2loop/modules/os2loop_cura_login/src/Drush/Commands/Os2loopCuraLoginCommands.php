@@ -34,9 +34,10 @@ final class Os2loopCuraLoginCommands extends DrushCommands {
   #[CLI\Argument(name: 'username', description: 'The username.')]
   #[CLI\Option(name: 'post', description: 'Use POST to get the login URL')]
   #[CLI\Usage(name: 'os2loop-cura-login:get-login-url test@example.com', description: 'Get login URL')]
-  public function commandName(
+  public function getLoginUrl(
     $username,
     $options = [
+      'linkUrl' => NULL,
       'get' => NULL,
       'secret' => NULL,
       'algorithm' => 'HS256',
@@ -60,7 +61,7 @@ final class Os2loopCuraLoginCommands extends DrushCommands {
     }
     else {
       $method = Request::METHOD_POST;
-      $requestOptions['body'] = $jwt;
+      $requestOptions['body'] = ['payload' => $jwt];
     }
     $url = Url::fromRoute('os2loop_cura_login.start', $routeParameters)->setAbsolute()->toString(TRUE)->getGeneratedUrl();
     $this->io()->writeln($method === Request::METHOD_POST
