@@ -4,6 +4,7 @@ namespace Drupal\os2loop_cura_login\Drush\Commands;
 
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\DependencyInjection\AutowireTrait;
+use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Url;
 use Drush\Attributes as CLI;
 use Drush\Commands\DrushCommands;
@@ -12,7 +13,7 @@ use Psr\Http\Client\ClientInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * A Drush commandfile.
+ * A Drush command file.
  */
 final class Os2loopCuraLoginCommands extends DrushCommands {
   use AutowireTrait;
@@ -53,30 +54,32 @@ final class Os2loopCuraLoginCommands extends DrushCommands {
     ];
     $jwt = JWT::encode($payload, $options['secret'], $options['algorithm']);
 
+    $routeName = 'os2loop_cura_login.start';
     $routeParameters = [];
     $requestOptions = [];
     if ($name = $options['get']) {
       $method = Request::METHOD_GET;
       $routeParameters[$name] = $jwt;
+      if ('jwt' === $name) {
+        $routeName = 'os2loop_cura_login.start_get_jwt';
+      }
     }
     else {
       $method = Request::METHOD_POST;
-      $requestOptions['body'] = ['payload' => $jwt];
+      $requestOptions['form_params'] = ['payload' => $jwt];
     }
-    $url = Url::fromRoute('os2loop_cura_login.start', $routeParameters)->setAbsolute()->toString(TRUE)->getGeneratedUrl();
+    $url = Url::fromRoute($routeName, $routeParameters)->setAbsolute()->toString(TRUE)->getGeneratedUrl();
     $this->io()->writeln($method === Request::METHOD_POST
       ? sprintf('POST\'ing to %s', $url)
       : sprintf('GET\'ing %s', $url),
     );
-    $request = $this->httpClient->request($method, $url, $requestOptions);
+    $response = $this->httpClient->request($method, $url, $requestOptions);
 
-    header('content-type: text/plain');
-    echo var_export([
-      $url,
-      $request->getStatusCode(),
-      $request->getBody()->getContents(),
-    ], TRUE);
-    die(__FILE__ . ':' . __LINE__ . ':' . __METHOD__);
+    $this->io()->writeln(Yaml::encode([
+      'status' => $response->getStatusCode(),
+      'headers' => Yaml::encode($response->getHeaders()),
+      'body' => $response->getBody()->getContents(),
+    ]));
   }
 
 }

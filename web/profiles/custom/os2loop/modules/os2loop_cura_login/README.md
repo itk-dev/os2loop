@@ -37,8 +37,10 @@ curl "http://$(docker compose port nginx 8080)/os2loop-cura-login/start"
 drush os2loop-cura-login:get-login-url --help
 ```
 
-``` shell
-drush --uri='http://nginx:8080' os2loop-cura-login:get-login-url test@example.com --secret=$(drush config:get --format string os2loop_cura_login.settings signing_secret --include-overridden) --algorithm=$(drush config:get --format string os2loop_cura_login.settings signing_algorithm --include-overridden)
+``` shell name=drush-get-login-url
+drush --uri='http://nginx:8080' os2loop-cura-login:get-login-url test@example.com \
+  --algorithm=$(drush config:get --format string os2loop_cura_login.settings cura.signing_algorithm --include-overridden) \
+  --secret=$(drush config:get --format string os2loop_cura_login.settings cura.signing_secret --include-overridden)
 ```
 
 ## Development and debugging
