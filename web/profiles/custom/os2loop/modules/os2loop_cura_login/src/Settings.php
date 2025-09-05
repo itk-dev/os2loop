@@ -6,6 +6,8 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\os2loop_cura_login\Settings\Cura;
+use Drupal\os2loop_cura_login\Settings\IdP;
 
 /**
  * Settings for OS2Loop Cura login.
@@ -13,22 +15,23 @@ use Drupal\Core\Logger\RfcLogLevel;
 final class Settings {
   const string CONFIG_NAME = 'os2loop_cura_login.settings';
 
-  private const SETTING_SIGNING_SECRET = 'signing_secret';
-  private const SETTING_SIGNING_ALGORITHM = 'signing_algorithm';
-  private const SETTING_PAYLOAD_NAME = 'payload_name';
-  private const SETTING_JWT_LEEWAY = 'jwt_leeway';
-  private const SETTING_LOG_LEVEL = 'log_level';
-
-  const array SIGNING_ALGORITHMS = [
-    'HS256' => 'HS256',
-    'HS384' => 'HS384',
-    'HS512' => 'HS512',
-  ];
+  const string NAME = 'general';
+  const string SETTING_LOG_LEVEL = 'log_level';
 
   /**
    * The config.
    */
   private readonly ImmutableConfig $config;
+
+  /**
+   * The Cura settings.
+   */
+  private readonly Cura $curaSettings;
+
+  /**
+   * The IdP settings.
+   */
+  private readonly IdP $idpSettings;
 
   /**
    * Constructor.
@@ -40,53 +43,43 @@ final class Settings {
   }
 
   /**
-   * Get payload name.
+   * Get Cura settings.
    */
-  public function getPayloadName(): string {
-    return $this->config->get('payload_name') ?? 'payload';
+  public function getCuraSettings() {
+    if (!isset($this->curaSettings)) {
+      $this->curaSettings = new Cura($this->config->get(Cura::NAME) ?? []);
+    }
+
+    return $this->curaSettings;
   }
 
   /**
-   * Get signing algorithm.
+   * Get IdP settings.
    */
-  public function getSigningAlgorithm(): string {
-    return $this->config->get('signing_algorithm') ?? self::SIGNING_ALGORITHMS[array_key_first(self::SIGNING_ALGORITHMS)];
-  }
+  public function getIdpSettings() {
+    if (!isset($this->idpSettings)) {
+      $this->idpSettings = new IdP($this->config->get(IdP::NAME) ?? []);
+    }
 
-  /**
-   * Get signing secret.
-   */
-  public function getSigningSecret(): string {
-    return $this->config->get('signing_secret') ?? '';
-  }
-
-  /**
-   * Get JWT leeway.
-   */
-  public function getJwtLeeway(): int {
-    return (int) $this->config->get('jwt_leeway');
+    return $this->idpSettings;
   }
 
   /**
    * Get log level.
    */
   public function getLogLevel() {
-    return (int) $this->config->get('log_level') ?? RfcLogLevel::ERROR;
+    return (int) $this->config->get(self::SETTING_LOG_LEVEL) ?? RfcLogLevel::ERROR;
   }
 
   /**
    * Save settings.
    */
-  public function saveSettings(array|FormStateInterface $values): array {
-    if ($values instanceof FormStateInterface) {
-      $values = [
-        self::SETTING_SIGNING_ALGORITHM => $values->getValue(self::SETTING_SIGNING_ALGORITHM),
-        self::SETTING_SIGNING_SECRET => $values->getValue(self::SETTING_SIGNING_SECRET),
-        self::SETTING_PAYLOAD_NAME => $values->getValue(self::SETTING_PAYLOAD_NAME),
-        self::SETTING_JWT_LEEWAY => $values->getValue(self::SETTING_JWT_LEEWAY),
-        self::SETTING_LOG_LEVEL => $values->getValue(self::SETTING_LOG_LEVEL),
-      ];
-    }
+  public function saveSettings(FormStateInterface $formState): array {
+    $values = array_filter(
+      $formState->getValues(),
+      static fn(string $key) => in_array($key, [self::NAME, Cura::NAME, IdP::NAME], TRUE),
+      ARRAY_FILTER_USE_KEY
+    );
 
     // @todo validate values
     $config = $this->configFactory->getEditable(self::CONFIG_NAME);

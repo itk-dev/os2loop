@@ -45,7 +45,7 @@ drush --uri='http://nginx:8080' os2loop-cura-login:get-login-url test@example.co
 
 ``` php
 # settings.local.php
-$config['os2loop_cura_login.settings']['log_level'] = \Drupal\Core\Logger\RfcLogLevel::DEBUG;
+$config['os2loop_cura_login.settings']['general']['log_level'] = \Drupal\Core\Logger\RfcLogLevel::DEBUG;
 ```
 
 Run

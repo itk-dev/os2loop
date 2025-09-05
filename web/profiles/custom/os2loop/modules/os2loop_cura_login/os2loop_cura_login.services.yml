@@ -7,3 +7,9 @@ services:
     arguments: ["os2loop_cura_login"]
 
   Drupal\os2loop_cura_login\Settings:
+
+  Drupal\os2loop_cura_login\CuraHelper:
+
+  Drupal\os2loop_cura_login\IdPHelper:
+
+  Drupal\os2loop_cura_login\UserHelper:
