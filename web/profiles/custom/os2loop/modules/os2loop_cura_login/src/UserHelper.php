@@ -63,4 +63,11 @@ final class UserHelper {
     return reset($users) ?: NULL;
   }
 
+  /**
+   * Authenticate user.
+   */
+  public function authenticateUser($user) {
+    user_login_finalize($user);
+  }
+
 }

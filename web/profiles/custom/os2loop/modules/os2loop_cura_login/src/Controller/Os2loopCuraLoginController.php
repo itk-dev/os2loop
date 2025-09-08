@@ -19,6 +19,7 @@ use Psr\Log\LoggerTrait;
 use Psr\Log\LogLevel;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -116,8 +117,8 @@ final class Os2loopCuraLoginController extends ControllerBase {
       }
 
       return Request::METHOD_POST === $request->getMethod()
-        ? $this->createAuthenticateResponse($user)
-        : $this->authenticateUser($user);
+        ? $this->createAuthenticateResponse($user, $request)
+        : $this->authenticateUser($user, $request);
     }
     catch (\Exception $exception) {
       $this->error('start: @message', ['@message' => $exception->getMessage(), $exception]);
@@ -146,7 +147,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
         throw new BadRequestHttpException();
       }
 
-      return $this->authenticateUser($user);
+      return $this->authenticateUser($user, $request);
     }
     catch (\Exception $exception) {
       $this->error('authenticate: @message', ['@message' => $exception->getMessage(), $exception]);
@@ -157,7 +158,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
   /**
    * Create authenticate response.
    */
-  private function createAuthenticateResponse(UserInterface $user): Response {
+  private function createAuthenticateResponse(UserInterface $user, Request $request): Response {
     // https://github.com/firebase/php-jwt?tab=readme-ov-file#example
     $payload = [
       // Issued at.
@@ -168,9 +169,15 @@ final class Os2loopCuraLoginController extends ControllerBase {
     ];
     $jwt = $this->encodeJwt($payload);
 
-    $url = Url::fromRoute('os2loop_cura_login.authenticate', [
+    $routeParameters = [
       'jwt' => $jwt,
-    ])->setAbsolute()->toString(TRUE)->getGeneratedUrl();
+    ];
+    if ($destination = $request->query->get('destination')) {
+      $routeParameters['destination'] = $destination;
+    }
+
+    $url = Url::fromRoute('os2loop_cura_login.authenticate', $routeParameters)
+      ->setAbsolute()->toString(TRUE)->getGeneratedUrl();
 
     return new Response($url);
   }
@@ -178,12 +185,21 @@ final class Os2loopCuraLoginController extends ControllerBase {
   /**
    * Authenticate user.
    */
-  private function authenticateUser($user): Response {
-    user_login_finalize($user);
+  private function authenticateUser($user, Request $request): Response {
+    $this->userHelper->authenticateUser($user);
 
     $this->messenger()->addStatus($this->t('Welcome Cura user @user.', ['@user' => $user->getDisplayName()]));
+    $url = Url::fromRoute('<front>');
+    if ($destination = $request->query->get('destination')) {
+      try {
+        $url = Url::fromUserInput($destination);
+      }
+      catch (\Exception) {
+        // Ignore any exceptions.
+      }
+    }
 
-    return $this->redirect('<front>');
+    return new RedirectResponse($url->setAbsolute()->toString());
   }
 
   /**
