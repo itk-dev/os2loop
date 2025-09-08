@@ -166,7 +166,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
     $payload = [
       // Issued at.
       'iat' => $this->time->getRequestTime(),
-      // Expire af 60 seconds.
+      // Expire after 60 seconds.
       'exp' => $this->time->getRequestTime() + 60,
       'username' => $user->getAccountName(),
     ];
