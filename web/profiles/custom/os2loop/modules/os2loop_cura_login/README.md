@@ -38,9 +38,9 @@ drush os2loop-cura-login:get-login-url --help
 ```
 
 ``` shell name=drush-get-login-url
-drush --uri='http://nginx:8080' os2loop-cura-login:get-login-url test@example.com \
-  --algorithm=$(drush config:get --format string os2loop_cura_login.settings cura.signing_algorithm --include-overridden) \
-  --secret=$(drush config:get --format string os2loop_cura_login.settings cura.signing_secret --include-overridden)
+drush os2loop-cura-login:get-login-url test@example.com --get=jwt --destination=/user \
+  --algorithm="$(drush config:get --format string os2loop_cura_login.settings cura.signing_algorithm --include-overridden)" \
+  --secret="$(drush config:get --format string os2loop_cura_login.settings cura.signing_secret --include-overridden)"
 ```
 
 ## Development and debugging

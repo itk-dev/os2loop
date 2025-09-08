@@ -42,6 +42,7 @@ final class Os2loopCuraLoginCommands extends DrushCommands {
       'get' => NULL,
       'secret' => NULL,
       'algorithm' => 'HS256',
+      'destination' => NULL,
     ],
   ) {
     // https://github.com/firebase/php-jwt?tab=readme-ov-file#example
@@ -56,6 +57,9 @@ final class Os2loopCuraLoginCommands extends DrushCommands {
 
     $routeName = 'os2loop_cura_login.start';
     $routeParameters = [];
+    if ($destination = trim($options['destination'])) {
+      $routeParameters['destination'] = $destination;
+    }
     $requestOptions = [];
     if ($name = $options['get']) {
       $method = Request::METHOD_GET;
@@ -69,17 +73,23 @@ final class Os2loopCuraLoginCommands extends DrushCommands {
       $requestOptions['form_params'] = ['payload' => $jwt];
     }
     $url = Url::fromRoute($routeName, $routeParameters)->setAbsolute()->toString(TRUE)->getGeneratedUrl();
-    $this->io()->writeln($method === Request::METHOD_POST
-      ? sprintf('POST\'ing to %s', $url)
-      : sprintf('GET\'ing %s', $url),
-    );
-    $response = $this->httpClient->request($method, $url, $requestOptions);
 
-    $this->io()->writeln(Yaml::encode([
-      'status' => $response->getStatusCode(),
-      'headers' => Yaml::encode($response->getHeaders()),
-      'body' => $response->getBody()->getContents(),
-    ]));
+    if ($method === Request::METHOD_GET) {
+      $this->io()->writeln($url);
+    }
+    else {
+      $this->io()->writeln(sprintf('POST\'ing to %s', $url));
+      $response = $this->httpClient->request($method, $url, $requestOptions);
+
+      $contents = $response->getBody()->getContents();
+      $this->io()->writeln(Yaml::encode([
+        'status' => $response->getStatusCode(),
+        'headers' => Yaml::encode($response->getHeaders()),
+        'contents' => $contents,
+      ]));
+
+      $this->io()->writeln($contents);
+    }
   }
 
 }
