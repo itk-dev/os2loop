@@ -60,7 +60,8 @@
         "drupal/viewsreference": "^2.0@beta",
         "drupal/xls_serialization": "^2.0",
         "drush/drush": "^13.0",
-        "jjj/chosen": "^2.2"
+        "jjj/chosen": "^2.2",
+        "os2loop/os2loop_cura_login": "^1.0"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -102,11 +103,21 @@
             "type": "vcs",
             "url": "https://git.drupalcode.org/project/theme_switcher"
         },
+        "os2loop/os2loop_cura_login": {
+            "type": "path",
+            "url": "web/profiles/custom/os2loop/modules/os2loop_cura_login",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "os2loop/os2loop_cura_login": "1.0"
+                }
+            }
+        },
         "os2loop/os2loop_fixtures": {
             "type": "path",
             "url": "web/profiles/custom/os2loop/modules/os2loop_fixtures",
             "options": {
-                "symlink": false,
+                "symlink": true,
                 "versions": {
                     "os2loop/os2loop_fixtures": "1.0"
                 }

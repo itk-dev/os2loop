@@ -780,6 +780,9 @@ $settings['config_sync_directory'] = '../config/sync';
 
 $settings['skip_permissions_hardening'] = TRUE;
 
+// https://www.drupal.org/node/3079028
+$settings['config_exclude_modules'] = ['os2loop_cura_login'];
+
 /**
  * Load local development override configuration, if available.
  *

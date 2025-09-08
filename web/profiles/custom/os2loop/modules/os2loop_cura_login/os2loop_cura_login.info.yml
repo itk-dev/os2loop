@@ -1,0 +1,10 @@
+name: "OS2Loop Cura login"
+type: module
+description: "OS2Loop Cura login"
+package: "OS2Loop"
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:user
+  - openid_connect:openid_connect
+
+configure: os2loop_cura_login.settings

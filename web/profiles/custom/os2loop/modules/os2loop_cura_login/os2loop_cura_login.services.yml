@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+
+  logger.channel.os2loop_cura_login:
+    parent: logger.channel_base
+    arguments: ["os2loop_cura_login"]
+
+  Drupal\os2loop_cura_login\Settings:
+
+  Drupal\os2loop_cura_login\CuraHelper:
+
+  Drupal\os2loop_cura_login\IdPHelper:
+
+  Drupal\os2loop_cura_login\UserHelper:

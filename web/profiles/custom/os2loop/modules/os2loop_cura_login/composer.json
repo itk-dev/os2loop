@@ -1,0 +1,15 @@
+{
+    "name": "os2loop/os2loop_cura_login",
+    "description": "drupal/os2loop_cura_login",
+    "type": "os2loop-custom-module",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Mikkel Ricky",
+            "email": "rimi@aarhus.dk"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.11"
+    }
+}

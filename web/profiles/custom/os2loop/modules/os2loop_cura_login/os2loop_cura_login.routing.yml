@@ -1,0 +1,40 @@
+os2loop_cura_login.start:
+  path: "/os2loop-cura-login/start"
+  defaults:
+    _title: "Start Cura login with POST or GET"
+    _controller: '\Drupal\os2loop_cura_login\Controller\Os2loopCuraLoginController::start'
+  methods: [GET, POST]
+  requirements:
+    _user_is_logged_in: "FALSE"
+  options:
+    no_cache: TRUE
+
+os2loop_cura_login.start_get_jwt:
+  path: "/os2loop-cura-login/start/{jwt}"
+  defaults:
+    _title: "Start Cura login with JWT in request path"
+    _controller: '\Drupal\os2loop_cura_login\Controller\Os2loopCuraLoginController::start'
+  methods: [GET]
+  requirements:
+    _user_is_logged_in: "FALSE"
+  options:
+    no_cache: TRUE
+
+os2loop_cura_login.authenticate:
+  path: "/os2loop-cura-login/authenticate/{jwt}"
+  defaults:
+    _title: "Authenticate with Cura login"
+    _controller: '\Drupal\os2loop_cura_login\Controller\Os2loopCuraLoginController::authenticate'
+  methods: [GET]
+  requirements:
+    _user_is_logged_in: "FALSE"
+  options:
+    no_cache: TRUE
+
+os2loop_cura_login.settings:
+  path: "/admin/config/os2loop/os2loop_cura_login/settings"
+  defaults:
+    _form: '\Drupal\os2loop_cura_login\Form\SettingsForm'
+    _title: "OS2Loop Cura login settings"
+  requirements:
+    _permission: "administer site settings"
