@@ -38,7 +38,7 @@ drush os2loop-cura-login:get-login-url --help
 ```
 
 ``` shell name=drush-get-login-url
-drush os2loop-cura-login:get-login-url test@example.com --get=jwt --destination=/user \
+drush os2loop-cura-login:get-login-url az000000 --get=jwt --destination=/user \
   --algorithm="$(drush config:get --format string os2loop_cura_login.settings cura.signing_algorithm --include-overridden)" \
   --secret="$(drush config:get --format string os2loop_cura_login.settings cura.signing_secret --include-overridden)"
 ```

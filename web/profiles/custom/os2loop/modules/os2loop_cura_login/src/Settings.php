@@ -68,7 +68,7 @@ final class Settings {
    * Get log level.
    */
   public function getLogLevel() {
-    return (int) $this->config->get(self::SETTING_LOG_LEVEL) ?? RfcLogLevel::ERROR;
+    return (int) ($this->config->get(self::NAME)[self::SETTING_LOG_LEVEL] ?? RfcLogLevel::ERROR);
   }
 
   /**

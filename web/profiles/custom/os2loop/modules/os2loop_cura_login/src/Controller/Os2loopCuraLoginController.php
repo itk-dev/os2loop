@@ -44,6 +44,9 @@ final class Os2loopCuraLoginController extends ControllerBase {
     #[Autowire(service: 'logger.channel.os2loop_cura_login')]
     private readonly LoggerInterface $logger,
   ) {
+    $this->curaHelper->setController($this);
+    $this->idPHelper->setController($this);
+    $this->userHelper->setController($this);
   }
 
   /**
@@ -107,7 +110,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
 
       $this->debug('@debug', [
         '@debug' => json_encode([
-          'user' => $user,
+          'user' => $user->toArray(),
         ]),
       ]);
 
@@ -227,7 +230,7 @@ final class Os2loopCuraLoginController extends ControllerBase {
       LogLevel::DEBUG => RfcLogLevel::DEBUG,
     ];
     $rfcLogLevel = $levels[$level] ?? RfcLogLevel::ERROR;
-    if ((int) $this->settings->getLogLevel() >= $rfcLogLevel) {
+    if ($this->settings->getLogLevel() >= $rfcLogLevel) {
       $this->logger->log($level, $message, $context);
     }
   }

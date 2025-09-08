@@ -3,6 +3,7 @@
 namespace Drupal\os2loop_cura_login;
 
 use Drupal\os2loop_cura_login\Settings\Cura;
+use Drupal\os2loop_cura_login\Trait\ControllerAwareTrait;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -10,6 +11,8 @@ use Firebase\JWT\Key;
  * Cura helper.
  */
 final class CuraHelper {
+  use ControllerAwareTrait;
+
   /**
    * The settings.
    */

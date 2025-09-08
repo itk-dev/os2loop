@@ -3,19 +3,26 @@
 namespace Drupal\os2loop_cura_login;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\openid_connect\OpenIDConnect;
+use Drupal\os2loop_cura_login\Trait\ControllerAwareTrait;
 use Drupal\user\UserInterface;
 use Drupal\user\UserStorageInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
  * User helper.
  */
 final class UserHelper {
+  use ControllerAwareTrait;
+
   /**
    * The user storage.
    */
   private readonly UserStorageInterface $userStorage;
 
   public function __construct(
+    #[Autowire(service: 'openid_connect.openid_connect')]
+    private readonly OpenIDConnect $openidConnect,
     EntityTypeManagerInterface $entityTypeManager,
   ) {
     $this->userStorage = $entityTypeManager->getStorage('user');
@@ -39,17 +46,21 @@ final class UserHelper {
       $user = $this->userStorage->create();
     }
 
-    foreach ($userinfo as $field => $value) {
-      $currentValue = $user->get($field);
-      if ($currentValue !== $value) {
-        $user->set($field, $value);
-      }
+    // Make sure that the user is active.
+    $user->activate();
+    // saveUserinfo below needs a user id (uid).
+    if ($user->isNew()) {
+      $user->setUsername($username);
+      $user->save();
     }
 
-    // Make sure that the user is active.
-    $user
-      ->activate()
-      ->save();
+    // We piggyback on the OpenId Connect module to set user fields and roles.
+    if ($this->openidConnect->saveUserinfo($user, ['userinfo' => $userinfo])) {
+      $this->info('Userinfo saved on user @user (@username)', ['@user' => $user->label(), '@username' => $username]);
+    }
+    else {
+      $this->error('Error saving info on user @user (@username)', ['@user' => $user->label(), '@username' => $username]);
+    }
 
     return $user;
   }
