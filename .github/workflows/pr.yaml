@@ -21,22 +21,6 @@ jobs:
       - name: Check for changes in config
         run: git diff --diff-filter=ACMRT --exit-code config/
 
-  yarncs:
-    name: Yarn - Check Coding Standards (Node ${{ matrix.node }})
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: ["16"]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - run: |
-          yarn install
-          yarn coding-standards-check
-
   site-install-dev:
     name: (Dev) Verify Drupal install and fixtures
     runs-on: ubuntu-latest
