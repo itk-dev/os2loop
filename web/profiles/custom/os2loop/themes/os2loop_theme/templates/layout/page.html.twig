@@ -52,11 +52,11 @@
   cleaned_url,
   node.bundle ? node.bundle|clean_class,
   path('<current>') matches '/^\\/user\\/\\d+$/' ? 'view-profile-page',
-  'my-90'
+  'my-90',
 ] %}
 
 {% set pages_with_search_bar = [
-  'node-add-osloop-question'
+  'node-add-osloop-question',
 ] %}
 
 {{ page.header }}
@@ -67,7 +67,7 @@
   <div class="{{ classes|filter(c => c is not empty)|join(' ') }}">
     {% if cleaned_url in pages_with_search_bar %}
       <div class="search-wrapper block-primary-gray mb-30">
-        {{ drupal_block('views_exposed_filter_block:os2loop_search_db-page_search_form', wrapper = false) }}
+        {{ drupal_block('views_exposed_filter_block:os2loop_search_db-page_search_form', wrapper: false) }}
       </div>
     {% endif %}
     {{ page.content }}

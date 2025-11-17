@@ -34,7 +34,7 @@
 #}
 {% set classes = [
     dom_id ? 'js-view-dom-id-' ~ dom_id,
-    empty ? 'js-view-empty'
+    empty ? 'js-view-empty',
   ] %}
 <h1>{{ 'Messages read'|t }}</h1>
 <div{{ attributes.addClass(classes) }}>
