@@ -1,4 +1,4 @@
-# itk-version: 3.2.3
+# itk-version: 3.2.4
 networks:
   frontend:
     external: true
@@ -52,7 +52,7 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
 
   memcached:
-    image: 'memcached:latest'
+    image: "memcached:latest"
     restart: unless-stopped
     networks:
       - app
