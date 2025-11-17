@@ -59,7 +59,7 @@
         "drupal/viewsreference": "^2.0@beta",
         "drupal/xls_serialization": "^2.0",
         "drush/drush": "^12.2",
-        "jjj/chosen": "2.2.1"
+        "jjj/chosen": "^2.2"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
