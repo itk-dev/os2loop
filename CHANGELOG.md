@@ -8,6 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-377](https://github.com/itk-dev/os2loop/pull/377)
+  - Security update
+  - Code cleanup
+
 ## [1.2.3]
 
 - [PR-372](https://github.com/itk-dev/os2loop/pull/372)
