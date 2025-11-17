@@ -42,7 +42,7 @@
               'btn',
               'btn-primary',
               'btn-block',
-              item.value['#attributes']['class'][0] == 'is-active' ? 'active'
+              item.value['#attributes']['class'][0] == 'is-active' ? 'active',
             ] %}
             <a{{ item.attributes.addClass(classes) }} href="{{ item.value['#url'] }}">{{ item.value['#title'] }}</a>
           {%- endfor -%}

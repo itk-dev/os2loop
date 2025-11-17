@@ -14,7 +14,7 @@
   <div class="container px-0 title d-inline-flex align-items-top">
     {# icon #}
     <div class="title-icon mr-20 d-print-none">
-      {{ source("#{active_theme_path()}/assets/svg/#{class}.svg", ignore_missing = true) }}
+      {{ source("#{active_theme_path()}/assets/svg/#{class}.svg", ignore_missing: true) }}
     </div>
     <div class="container px-0 title-information">
       <div class="row no-gutters mb-15">
@@ -89,7 +89,7 @@
           <div class="container list-group-item list-group-item-action d-inline-flex align-items-top">
             {# icon #}
             <div class="list-display-icon">
-              {{ source("#{active_theme_path()}/assets/svg/#{short_type}.svg", ignore_missing = true) }}
+              {{ source("#{active_theme_path()}/assets/svg/#{short_type}.svg", ignore_missing: true) }}
             </div>
             <div class="container px-0 list-display-information">
               <div class="row no-gutters">
