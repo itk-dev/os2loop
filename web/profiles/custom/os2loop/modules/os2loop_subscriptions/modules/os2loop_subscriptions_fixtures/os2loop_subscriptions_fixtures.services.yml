@@ -2,6 +2,6 @@ services:
   os2loop_subscriptions_fixtures.page_fixture:
     class: Drupal\os2loop_subscriptions_fixtures\Fixture\SubscriptionFixture
     arguments:
-      - '@flag'
+      - "@flag"
     tags:
       - { name: content_fixture }

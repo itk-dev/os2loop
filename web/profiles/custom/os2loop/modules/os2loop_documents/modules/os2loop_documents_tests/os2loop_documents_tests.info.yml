@@ -1,6 +1,6 @@
-name: 'OS2Loop Documents test'
+name: "OS2Loop Documents test"
 type: module
-description: 'OS2Loop Documents tests'
+description: "OS2Loop Documents tests"
 # Used only for development and testing.
 hidden: true
 core_version_requirement: ^10

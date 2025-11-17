@@ -1,6 +1,6 @@
-name: 'OS2Loop External fixtures'
+name: "OS2Loop External fixtures"
 type: module
-description: 'OS2Loop External fixtures'
+description: "OS2Loop External fixtures"
 # Used only for development and testing.
 hidden: true
 core_version_requirement: ^10

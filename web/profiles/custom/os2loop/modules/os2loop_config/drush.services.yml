@@ -2,8 +2,8 @@ services:
   os2loop_config.commands:
     class: \Drupal\os2loop_config\Commands\ConfigCommands
     arguments:
-      - '@config.factory'
-      - '@module_handler'
-      - '@file_system'
+      - "@config.factory"
+      - "@module_handler"
+      - "@file_system"
     tags:
       - { name: drush.command }

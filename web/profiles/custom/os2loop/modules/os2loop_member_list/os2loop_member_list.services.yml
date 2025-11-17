@@ -2,7 +2,7 @@ services:
   os2loop_member_list.member_list_helper:
     class: Drupal\os2loop_member_list\Helper\MemberListHelper
     arguments:
-      - '@current_user'
+      - "@current_user"
       - '@Drupal\os2loop_settings\Settings'
 
   os2loop_member_list.access_checker:

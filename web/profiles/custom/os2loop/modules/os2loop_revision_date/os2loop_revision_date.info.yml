@@ -1,5 +1,5 @@
-name: 'OS2Loop revision date'
+name: "OS2Loop revision date"
 type: module
-description: 'OS2Loop revision date'
+description: "OS2Loop revision date"
 core_version_requirement: ^10
-package: 'OS2Loop'
+package: "OS2Loop"

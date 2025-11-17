@@ -1,8 +1,8 @@
-name: 'OS2Loop Post'
+name: "OS2Loop Post"
 type: module
-description: 'OS2Loop Post'
+description: "OS2Loop Post"
 core_version_requirement: ^10
-package: 'OS2Loop'
+package: "OS2Loop"
 dependencies:
   - drupal:better_formats
   - drupal:comment

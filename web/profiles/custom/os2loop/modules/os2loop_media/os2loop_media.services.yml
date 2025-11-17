@@ -2,4 +2,4 @@ services:
   Drupal\os2loop_media\Helper\Helper:
     class: Drupal\os2loop_media\Helper\Helper
     arguments:
-      - '@current_user'
+      - "@current_user"

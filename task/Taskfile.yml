@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 vars:
   DOCKER_COMPOSE: docker compose
@@ -58,6 +58,6 @@ tasks:
         # TODO: Evaluate this only when $COMPOSE_SERVER_DOMAIN is not set.
         sh: echo "$(docker compose port nginx 8080 2> /dev/null|| true)"
     env:
-      DRUSH_OPTIONS_URI: 'http://{{default .DOCKER_COMPOSE_SITE_DOMAIN .COMPOSE_SERVER_DOMAIN}}'
+      DRUSH_OPTIONS_URI: "http://{{default .DOCKER_COMPOSE_SITE_DOMAIN .COMPOSE_SERVER_DOMAIN}}"
     cmds:
       - "{{.DOCKER_COMPOSE}} exec --env DRUSH_OPTIONS_URI=$DRUSH_OPTIONS_URI phpfpm vendor/bin/drush {{.CLI_ARGS}}"
