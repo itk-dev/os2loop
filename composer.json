@@ -210,9 +210,6 @@
             "drupal/core": {
                 "Disable forced configuration langcode (https://www.drupal.org/project/drupal/issues/3150540)": "https://www.drupal.org/files/issues/2024-07-03/drupal-3150540-42.patch"
             },
-            "drupal/devel": {
-                "Public methods are not visible in kint (https://gitlab.com/drupalspoons/devel/-/issues/221 via https://www.drupal.org/project/devel/issues/3112201)": "https://gitlab.com/-/project/18040690/uploads/7897853cd83cb829ae8d752657e2f497/kint.221-5-3.patch"
-            },
             "drupal/entity_print": {
                 "Add page count https://www.drupal.org/project/entity_print/issues/2823430": "https://www.drupal.org/files/issues/2023-07-10/entity_print-dompdf_page_count-2823430-14.patch",
                 "Fix bug in cached pdf styles (https://www.drupal.org/project/entity_print/issues/3394857)": "https://www.drupal.org/files/issues/2023-12-01/3394857-hotfix.patch"
