@@ -1,6 +1,6 @@
-name: 'OS2Loop Upvote fixtures'
+name: "OS2Loop Upvote fixtures"
 type: module
-description: 'OS2Loop Upvote fixtures'
+description: "OS2Loop Upvote fixtures"
 # Used only for development and testing.
 hidden: true
 core_version_requirement: ^10

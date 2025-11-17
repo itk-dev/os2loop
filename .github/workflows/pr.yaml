@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '16' ]
+        node: ["16"]
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
@@ -127,8 +127,7 @@ jobs:
           MYSQL_PASSWORD: db
           MYSQL_DATABASE: db
           MYSQL_ROOT_PASSWORD: db
-        options:
-          --health-cmd="mysqladmin ping"
+        options: --health-cmd="mysqladmin ping"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
@@ -197,8 +196,7 @@ jobs:
           MYSQL_PASSWORD: db
           MYSQL_DATABASE: db
           MYSQL_ROOT_PASSWORD: db
-        options:
-          --health-cmd="mysqladmin ping"
+        options: --health-cmd="mysqladmin ping"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3

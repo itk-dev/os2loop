@@ -1,7 +1,7 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies: {}
 name: Subject
 vid: os2loop_subject
-description: ''
+description: ""
 weight: 0

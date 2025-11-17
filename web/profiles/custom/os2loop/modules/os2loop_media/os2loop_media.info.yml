@@ -1,5 +1,5 @@
-name: 'OS2Loop media'
+name: "OS2Loop media"
 type: module
-description: 'OS2Loop media'
+description: "OS2Loop media"
 core_version_requirement: ^10
-package: 'OS2Loop'
+package: "OS2Loop"

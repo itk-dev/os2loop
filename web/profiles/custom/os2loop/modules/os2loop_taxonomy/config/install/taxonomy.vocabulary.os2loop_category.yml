@@ -1,7 +1,7 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies: {}
 name: Category
 vid: os2loop_category
-description: ''
+description: ""
 weight: 0
