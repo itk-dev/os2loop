@@ -6,18 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic
 Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## Unreleased
+
+## 1.3.0
 
 - [PR-377](https://github.com/itk-dev/os2loop/pull/377)
   - Security update
   - Code cleanup
 
-## [1.2.3]
+## 1.2.3
 
 - [PR-372](https://github.com/itk-dev/os2loop/pull/372)
   Migrate to DRUSH_OPTIONS_URI
 
-## [1.2.2]
+## 1.2.2
 
 - [PR-371](https://github.com/itk-dev/os2loop/pull/371)
   Added GitHub action to build release
@@ -26,31 +28,31 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   Added woodpecker to test site deployment
 - [PR-369](https://github.com/itk-dev/os2loop/pull/369) Update drupal core 10.4.5
 
-## [1.2.1]
+## 1.2.1
 
 - DevOps: Update docker setup to ensure real IPs in logs
 - [PR-363](https://github.com/itk-dev/os2loop/pull/367)
   Security update of Drupal core
   Fixed code error in switch cases
 
-## [1.2.0]
+## 1.2.0
 
 - [PR-366](https://github.com/itk-dev/os2loop/pull/366)
   - Security update
     - Drupal Core 10.3.6 => 10.4.3
     - XLS serialization 1.4.0 => 2.0.0
 
-## [1.1.4]
+## 1.1.4
 
 - [PR-363](https://github.com/itk-dev/os2loop/pull/363)
   Security update
 
-## [1.1.3]
+## 1.1.3
 
 - [PR-363](https://github.com/itk-dev/os2loop/pull/363)
   Security update
 
-## [1.1.2]
+## 1.1.2
 
 - [PR-362](https://github.com/itk-dev/os2loop/pull/362)
   - Change Share with a friend form
@@ -59,18 +61,18 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - [PR-361](https://github.com/itk-dev/os2loop/pull/361)
   Added local OIDC server-mock
 
-## [1.1.1]
+## 1.1.1
 
 - [PR-360](https://github.com/itk-dev/os2loop/pull/360)
   Fix bug in toc
 
-## [1.1.0]
+## 1.1.0
 
 - Update config to mach drupal version.
 - [PR-358](https://github.com/itk-dev/os2loop/pull/358)
   Update pdf css to ensure display of all paragraphs
 
-## [1.0.0]
+## 1.0.0
 
 - Upgrade drupal core (10.3.1)
 - Switch to dompdf
