@@ -14,3 +14,6 @@ favourite_node_types:
   os2loop_section_page: os2loop_section_page
   os2loop_external: 0
   os2loop_page: 0
+subscription_required_taxonomy:
+  os2loop_profession: os2loop_profession
+  os2loop_subject: 0

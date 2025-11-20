@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.taxonomy_term.list_display
+    - taxonomy.vocabulary.os2loop_profession
     - taxonomy.vocabulary.os2loop_subject
   module:
+    - os2loop_subscriptions
     - taxonomy
     - user
 id: os2loop_subscription_term
@@ -22,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Subscription term'
+      title: 'Subscription subject'
       fields:
         vid:
           id: vid
@@ -282,26 +284,145 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - user.permissions
-      tags:
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_profession.default'
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_profession.list_display'
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_subject.default'
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_subject.list_display'
+      tags: {  }
   block_1:
     id: block_1
-    display_title: Block
+    display_title: 'Subscription subject - Block'
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_description: ''
+      display_extenders:
+        views_flag_refresh:
+          flags: {  }
+          noscrolltop: 0
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - user.permissions
-      tags:
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_profession.default'
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_profession.list_display'
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_subject.default'
-        - 'config:core.entity_view_display.taxonomy_term.os2loop_subject.list_display'
+      tags: {  }
+  block_2:
+    id: block_2
+    display_title: 'Subscription profession - Block'
+    display_plugin: block
+    position: 1
+    display_options:
+      title: 'Subscription profession'
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          operator: in
+          value:
+            os2loop_profession: os2loop_profession
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        webform_submission_serial_exists:
+          id: webform_submission_serial_exists
+          table: taxonomy_term_data
+          field: webform_submission_serial_exists
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          plugin_id: taxonomy_term_user_has_profession
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        views_flag_refresh:
+          flags: {  }
+          noscrolltop: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user.permissions
+      tags: {  }

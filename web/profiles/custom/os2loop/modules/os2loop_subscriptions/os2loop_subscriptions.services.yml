@@ -4,6 +4,7 @@ services:
     arguments:
       - '@Drupal\os2loop_settings\Settings'
       - '@database'
+      - '@entity_type.manager'
 
   os2loop_subscriptions.flag_subscriber:
     class: Drupal\os2loop_subscriptions\EventSubscriber\SubscriptionFlagSubscriber
