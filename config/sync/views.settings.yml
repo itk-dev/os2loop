@@ -9,7 +9,7 @@ ui:
     performance_statistics: false
     preview_information: true
     sql_query:
-      enabled: false
+      enabled: true
       where: above
     display_embed: false
   always_live_preview: true
@@ -44,4 +44,3 @@ field_rewrite_elements:
   ins: INS
   q: Q
   s: S
-skip_cache: false
