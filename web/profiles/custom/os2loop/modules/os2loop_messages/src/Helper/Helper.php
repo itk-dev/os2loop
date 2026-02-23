@@ -88,7 +88,7 @@ class Helper extends ControllerBase {
           return;
         }
         $message->set('os2loop_message_node_refer', $entity);
-        if (isset($entity->revision_log->value)) {
+        if ($message->hasField('os2loop_revision_message') && isset($entity->revision_log->value)) {
           $message->set('os2loop_revision_message', $entity->revision_log->value);
         }
       }
