@@ -21,6 +21,7 @@ dependencies:
     - node
     - os2loop_alert
     - paragraphs
+    - scanner
     - system
     - taxonomy
     - toolbar
@@ -48,6 +49,7 @@ permissions:
   - 'edit terms in os2loop_tag'
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop send alert'
+  - 'perform search and replace'
   - 'unflag os2loop_upvote_correct_answer'
   - 'update any media'
   - 'use text format os2loop_documents_body'

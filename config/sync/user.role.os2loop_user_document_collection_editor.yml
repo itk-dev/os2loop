@@ -18,6 +18,7 @@ dependencies:
     - os2loop_alert
     - os2loop_messages
     - paragraphs
+    - scanner
     - system
     - toolbar
     - view_unpublished
@@ -44,6 +45,7 @@ permissions:
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop see notify users option'
   - 'os2loop send alert'
+  - 'perform search only'
   - 'unflag os2loop_upvote_correct_answer'
   - 'update any media'
   - 'use text format os2loop_documents_body'

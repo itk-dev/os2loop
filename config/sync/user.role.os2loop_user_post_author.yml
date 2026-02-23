@@ -14,6 +14,7 @@ dependencies:
     - media
     - node
     - os2loop_alert
+    - scanner
     - system
     - toolbar
 id: os2loop_user_post_author
@@ -37,6 +38,7 @@ permissions:
   - 'edit own os2loop_post content'
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop send alert'
+  - 'perform search only'
   - 'revert os2loop_post revisions'
   - 'unflag os2loop_upvote_correct_answer'
   - 'update any media'

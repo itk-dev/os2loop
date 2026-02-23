@@ -36,6 +36,7 @@ dependencies:
     - os2loop_messages
     - paragraphs
     - path
+    - scanner
     - simple_menu_permissions
     - system
     - taxonomy
@@ -104,6 +105,7 @@ permissions:
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop see notify users option'
   - 'os2loop send alert'
+  - 'perform search and replace'
   - 'revert os2loop_post revisions'
   - 'translate interface'
   - 'unflag os2loop_upvote_correct_answer'

@@ -42,6 +42,7 @@
         "drupal/pathauto": "^1.12",
         "drupal/rdf": "^2.1",
         "drupal/redirect": "^1.9",
+        "drupal/scanner": "^1.0",
         "drupal/search_api": "^1.29",
         "drupal/search_api_autocomplete": "^1.7",
         "drupal/simple_menu_permissions": "^2.0",
