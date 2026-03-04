@@ -5,7 +5,7 @@ dotenv:
 
 includes:
   dev:
-    taskfile: task/
+    taskfile: task/dev.yml
 
   server:
     taskfile: task/
