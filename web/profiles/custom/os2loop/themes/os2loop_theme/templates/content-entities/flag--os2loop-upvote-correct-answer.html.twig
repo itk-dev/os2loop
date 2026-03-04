@@ -14,7 +14,6 @@
  * - flaggable: The flaggable entity.
  */
 #}
-{% apply spaceless %}
 
 {# Depending on the flag action, set the appropriate action class. #}
 {% set action_class = action == 'unflag' ? 'unflag' : 'flag' %}
@@ -31,4 +30,3 @@
 {% set attributes = attributes.setAttribute('rel', 'nofollow') %}
 
 <div class="{{ classes|join(' ') }}"><a {{ attributes }} class="btn btn-sm btn-outline-success ml-auto">{{ title }}</a></div>
-{% endapply %}

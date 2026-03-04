@@ -1,7 +1,7 @@
 name: 'OS2Loop user login'
 type: module
 description: 'OS2Loop user login'
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 package: 'OS2Loop'
 
 dependencies:

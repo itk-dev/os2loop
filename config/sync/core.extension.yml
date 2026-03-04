@@ -102,6 +102,8 @@ module:
   token_filter: 0
   toolbar: 0
   twig_tweak: 0
+  update: 0
+  upgrade_status: 0
   user: 0
   view_unpublished: 0
   views: 0
@@ -117,8 +119,6 @@ module:
   os2loop: 1000
 theme:
   os2loop_theme: 0
-  seven: 0
-  adminimal_theme: 0
   claro: 0
   gin: 0
 profile: os2loop

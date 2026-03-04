@@ -3,6 +3,7 @@
 namespace Drupal\os2loop_media_fixtures\Fixture;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
@@ -103,7 +104,7 @@ class MediaFixture extends AbstractFixture implements FixtureGroupInterface {
       $loadedFiles[] = $this->fileRepository->writeData(
         file_get_contents($file->uri),
         $destination,
-        FileSystemInterface::EXISTS_REPLACE
+        FileExists::Replace
       );
     }
 
