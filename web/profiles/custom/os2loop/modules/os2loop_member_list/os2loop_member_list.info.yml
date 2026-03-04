@@ -1,4 +1,4 @@
-name: 'OS2Loop member list'
+name: "OS2Loop member list"
 type: module
 description: 'OS2Loop member list'
 core_version_requirement: ^10 || ^11

@@ -1,4 +1,4 @@
-name: 'OS2Loop Post'
+name: "OS2Loop Post"
 type: module
 description: 'OS2Loop Post'
 core_version_requirement: ^10 || ^11

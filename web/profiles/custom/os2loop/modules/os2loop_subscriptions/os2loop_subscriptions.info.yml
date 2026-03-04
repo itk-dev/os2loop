@@ -1,4 +1,4 @@
-name: 'os2loop_subscriptions'
+name: "os2loop_subscriptions"
 type: module
 description: 'Show subscriptions on user page and provide info on subscribers'
 core_version_requirement: ^10 || ^11

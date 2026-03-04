@@ -2,12 +2,12 @@ services:
   os2loop_flag_content.config_service:
     class: Drupal\os2loop_flag_content\Services\ConfigService
     arguments:
-      - '@config.factory'
+      - "@config.factory"
 
   os2loop_flag_content.mail_helper:
     class: Drupal\os2loop_flag_content\Helper\MailHelper
     arguments:
-      - '@token'
+      - "@token"
       - '@Drupal\os2loop_settings\Settings'
 
   os2loop_flag_content.helper:

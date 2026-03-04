@@ -1,6 +1,6 @@
-name: 'OS2Loop User fixtures'
+name: "OS2Loop User fixtures"
 type: module
-description: 'OS2Loop User fixtures'
+description: "OS2Loop User fixtures"
 # Used only for development and testing.
 hidden: true
 core_version_requirement: ^10 || ^11

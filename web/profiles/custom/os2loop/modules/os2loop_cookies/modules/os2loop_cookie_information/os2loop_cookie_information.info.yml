@@ -1,4 +1,4 @@
-name: 'Os2loop cookie information'
+name: "Os2loop cookie information"
 type: module
 description: 'OS2Loop cookie information'
 core_version_requirement: ^10 || ^11

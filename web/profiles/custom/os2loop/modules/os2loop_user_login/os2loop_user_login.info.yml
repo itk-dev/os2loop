@@ -1,4 +1,4 @@
-name: 'OS2Loop user login'
+name: "OS2Loop user login"
 type: module
 description: 'OS2Loop user login'
 core_version_requirement: ^10 || ^11

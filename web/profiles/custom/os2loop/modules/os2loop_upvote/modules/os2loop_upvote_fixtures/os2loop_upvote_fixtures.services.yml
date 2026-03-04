@@ -2,6 +2,6 @@ services:
   os2loop_upvote_fixtures.upvote_fixture:
     class: Drupal\os2loop_upvote_fixtures\Fixture\UpvoteFixture
     arguments:
-      - '@flag'
+      - "@flag"
     tags:
       - { name: content_fixture }

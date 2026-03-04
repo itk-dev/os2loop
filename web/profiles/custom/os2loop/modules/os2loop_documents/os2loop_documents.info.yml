@@ -1,4 +1,4 @@
-name: 'OS2Loop Documents'
+name: "OS2Loop Documents"
 type: module
 description: 'OS2Loop Documents'
 core_version_requirement: ^10 || ^11

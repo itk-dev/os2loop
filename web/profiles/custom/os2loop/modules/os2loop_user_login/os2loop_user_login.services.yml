@@ -3,9 +3,9 @@ services:
     class: Drupal\os2loop_user_login\Helper\Helper
     arguments:
       - '@Drupal\os2loop_settings\Settings'
-      - '@module_handler'
-      - '@entity_type.manager'
-      - '@entity_field.manager'
-      - '@messenger'
-      - '@request_stack'
-      - '@path.current'
+      - "@module_handler"
+      - "@entity_type.manager"
+      - "@entity_field.manager"
+      - "@messenger"
+      - "@request_stack"
+      - "@path.current"

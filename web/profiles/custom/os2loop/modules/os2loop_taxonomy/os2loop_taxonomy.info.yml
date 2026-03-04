@@ -1,4 +1,4 @@
-name: 'OS2Loop taxonomy'
+name: "OS2Loop taxonomy"
 type: module
 description: 'OS2Loop taxonomy'
 core_version_requirement: ^10 || ^11

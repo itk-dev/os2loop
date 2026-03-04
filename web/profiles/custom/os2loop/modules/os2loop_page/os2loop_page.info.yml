@@ -1,4 +1,4 @@
-name: 'OS2Loop Page'
+name: "OS2Loop Page"
 type: module
 description: 'OS2Loop Page'
 core_version_requirement: ^10 || ^11

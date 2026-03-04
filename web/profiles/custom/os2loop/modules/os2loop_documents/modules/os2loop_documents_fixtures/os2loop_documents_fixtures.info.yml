@@ -1,6 +1,6 @@
-name: 'OS2Loop Documents fixtures'
+name: "OS2Loop Documents fixtures"
 type: module
-description: 'OS2Loop Documents fixtures'
+description: "OS2Loop Documents fixtures"
 # Used only for development and testing.
 hidden: true
 core_version_requirement: ^10 || ^11

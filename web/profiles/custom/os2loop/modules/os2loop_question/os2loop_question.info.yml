@@ -1,4 +1,4 @@
-name: 'OS2Loop Question'
+name: "OS2Loop Question"
 type: module
 description: 'OS2Loop Question'
 core_version_requirement: ^10 || ^11

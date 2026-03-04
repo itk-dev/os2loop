@@ -1,4 +1,4 @@
-name: 'OS2Loop toc block'
+name: "OS2Loop toc block"
 type: module
 description: 'Adds table of contents block'
 core_version_requirement: ^10 || ^11

@@ -27,7 +27,7 @@
 {% set highlight_color = node_id ? drupal_field('os2loop_shared_subject', 'node', node_id)['0']['#options'].entity.os2loop_taxonomy_color_picker.value|default('') %}
 {% set classes = [
 'os2loop-documents-info-box',
-highlight_color
+highlight_color,
 ]
 %}
 <div{{ attributes.addClass(classes) }}>

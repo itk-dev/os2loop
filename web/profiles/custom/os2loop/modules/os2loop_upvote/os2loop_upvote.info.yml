@@ -1,4 +1,4 @@
-name: 'OS2Loop upvote'
+name: "OS2Loop upvote"
 type: module
 description: 'OS2Loop upvote'
 core_version_requirement: ^10 || ^11

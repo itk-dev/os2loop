@@ -1,4 +1,4 @@
-name: 'Os2loop analytics'
+name: "Os2loop analytics"
 type: module
 description: 'OS2Loop analytics'
 core_version_requirement: ^10 || ^11

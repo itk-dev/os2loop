@@ -2,12 +2,12 @@ services:
   os2loop_upvote.flag_helper:
     class: Drupal\os2loop_upvote\Helper\FlagHelper
     arguments:
-      - '@flag.count'
+      - "@flag.count"
 
   os2loop_upvote.flag_subscriber:
     class: Drupal\os2loop_upvote\EventSubscriber\UpvoteFlagSubscriber
     tags:
       - { name: event_subscriber }
     arguments:
-      - '@entity_type.manager'
-      - '@flag'
+      - "@entity_type.manager"
+      - "@flag"

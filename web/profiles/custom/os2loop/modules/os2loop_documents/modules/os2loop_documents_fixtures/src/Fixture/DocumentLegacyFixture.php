@@ -48,7 +48,7 @@ BODY,
       ],
     ]);
     $document->save();
-    $this->setReference($document->getType() . ':' . 'legacy-body', $document);
+    $this->setReference($document->getType() . ':legacy-body', $document);
 
     $document = Node::create([
       'type' => 'os2loop_documents_document',
@@ -78,7 +78,7 @@ BODY,
       ],
     ]);
     $document->save();
-    $this->setReference($document->getType() . ':' . 'legacy-info', $document);
+    $this->setReference($document->getType() . ':legacy-info', $document);
 
     $document = Node::create([
       'type' => 'os2loop_documents_document',

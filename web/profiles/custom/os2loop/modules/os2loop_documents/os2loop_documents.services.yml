@@ -1,33 +1,33 @@
 services:
   Drupal\os2loop_documents\Helper\Helper:
     arguments:
-      - '@current_route_match'
+      - "@current_route_match"
 
   Drupal\os2loop_documents\Helper\CollectionHelper:
     arguments:
-      - '@entity_type.manager'
+      - "@entity_type.manager"
 
   Drupal\os2loop_documents\Helper\FormHelper:
     arguments:
       - '@Drupal\os2loop_documents\Helper\CollectionHelper'
-      - '@renderer'
-      - '@main_content_renderer.ajax'
-      - '@request_stack'
-      - '@current_route_match'
-      - '@messenger'
+      - "@renderer"
+      - "@main_content_renderer.ajax"
+      - "@request_stack"
+      - "@current_route_match"
+      - "@messenger"
 
   Drupal\os2loop_documents\Helper\NodeHelper:
     arguments:
       - '@Drupal\os2loop_documents\Helper\CollectionHelper'
-      - '@request_stack'
-      - '@cache_tags.invalidator'
-      - '@messenger'
+      - "@request_stack"
+      - "@cache_tags.invalidator"
+      - "@messenger"
 
   Drupal\os2loop_documents\EventSubscriber\EntityPrintEventSubscriber:
     tags:
       - { name: event_subscriber }
-    arguments: ['@request_stack']
+    arguments: ["@request_stack"]
 
   Drupal\os2loop_documents\Helper\UpdateHelper:
     arguments:
-      - '@entity_type.manager'
+      - "@entity_type.manager"
