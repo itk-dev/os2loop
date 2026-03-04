@@ -11,6 +11,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - [PR-377](https://github.com/itk-dev/os2loop/pull/377)
   - Security update
   - Code cleanup
+  - d11 preparation
 
 ## [1.2.3]
 
