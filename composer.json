@@ -42,7 +42,7 @@
         "drupal/pathauto": "^1.12",
         "drupal/rdf": "^2.1",
         "drupal/redirect": "^1.9",
-        "drupal/scanner": "^2.0",
+        "drupal/scanner": "2.0.x-dev@dev",
         "drupal/search_api": "^1.29",
         "drupal/search_api_autocomplete": "^1.7",
         "drupal/simple_menu_permissions": "^2.0",
@@ -224,6 +224,9 @@
             },
             "drupal/masquerade": {
                 "https://www.drupal.org/project/masquerade/issues/2962970#comment-13391256": "https://www.drupal.org/files/issues/2019-12-13/temporary%20unmask%20workaround-2962970-8.patch"
+            },
+            "drupal/scanner": {
+                "https://www.drupal.org/project/scanner/issues/3564664": "https://git.drupalcode.org/project/scanner/-/merge_requests/48.diff"
             },
             "drupal/toc_api": {
                 "https://www.drupal.org/project/toc_api/issues/3417862": "https://www.drupal.org/files/issues/2024-02-07/toc_api-3417862-anchors_add_01-1.patch"
