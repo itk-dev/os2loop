@@ -17,7 +17,6 @@
         "drupal/color": "^1.0",
         "drupal/config_filter": "^2.7",
         "drupal/config_ignore": "^3.3",
-        "drupal/content_fixtures": "^3.2",
         "drupal/convert_media_tags_to_markup": "^4.0",
         "drupal/core-composer-scaffold": "^10.4",
         "drupal/core-project-message": "^10.4",
@@ -67,6 +66,7 @@
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "drupal/coder": "^8.3",
+        "drupal/content_fixtures": "^3.2",
         "drupal/core-dev": "^10.1",
         "drupal/devel": "^5.1",
         "ergebnis/composer-normalize": "^2.42",
