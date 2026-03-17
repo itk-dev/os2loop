@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19d8ec07aea606ce44fe9095453200ce",
+    "content-hash": "f8bafdc5f2a89caa1a32d149d244973a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4175,7 +4175,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/scanner.git",
-                "reference": "b2d0e116d8bcf7af98d2915d874200db5923e0a2"
+                "reference": "56fb1d10d0388e7f5bef98181665e132255fcbde"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
@@ -4189,8 +4189,8 @@
                     "dev-2.0.x": "2.0.x-dev"
                 },
                 "drupal": {
-                    "version": "2.0.0-beta1+8-dev",
-                    "datestamp": "1743895890",
+                    "version": "2.0.0-beta1+12-dev",
+                    "datestamp": "1773744916",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
