@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-380](https://github.com/itk-dev/os2loop/pull/380)
+  Added search and replace in content
 - [PR-383](https://github.com/itk-dev/os2loop/pull/383)
   Fixed OpenID Connect redirect URLs
 - [PR-377](https://github.com/itk-dev/os2loop/pull/377)

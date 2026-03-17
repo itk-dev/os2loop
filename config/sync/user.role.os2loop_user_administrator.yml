@@ -49,6 +49,7 @@ dependencies:
     - path
     - pathauto
     - redirect
+    - scanner
     - simple_menu_permissions
     - system
     - taxonomy
@@ -166,6 +167,7 @@ permissions:
   - 'notify of path changes'
   - 'os2loop see notify users option'
   - 'os2loop send alert'
+  - 'perform search and replace'
   - 'revert all revisions'
   - 'revert os2loop_documents_collection revisions'
   - 'revert os2loop_documents_document revisions'

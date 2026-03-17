@@ -18,6 +18,7 @@ dependencies:
     - node
     - os2loop_alert
     - paragraphs
+    - scanner
     - system
     - toolbar
     - view_unpublished
@@ -41,6 +42,7 @@ permissions:
   - 'edit own os2loop_documents_document content'
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop send alert'
+  - 'perform search only'
   - 'unflag os2loop_upvote_correct_answer'
   - 'update any media'
   - 'use text format os2loop_documents_body'
