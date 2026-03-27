@@ -22,6 +22,9 @@ use Drupal\node\NodeInterface;
  *     "collection_id" = "collection_id",
  *     "document_id" = "document_id",
  *   },
+ *   handlers = {
+ *     "views_data" = "Drupal\os2loop_documents\ItemViewsData",
+ *   },
  * )
  *
  * @property \Drupal\Core\Field\FieldItemList $collection_id
