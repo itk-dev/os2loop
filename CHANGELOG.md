@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-385](https://github.com/itk-dev/os2loop/pull/385)
+  Cleaned up OpenID Connect settings and removed some obsolete custom settings
 - [PR-384](https://github.com/itk-dev/os2loop/pull/384)
   Set access permission on search view
 - [PR-383](https://github.com/itk-dev/os2loop/pull/383)
