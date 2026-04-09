@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-387](https://github.com/itk-dev/os2loop/pull/387)
+  Disabled caching of error pages
 - [PR-384](https://github.com/itk-dev/os2loop/pull/384)
   Set access permission on search view
 - [PR-383](https://github.com/itk-dev/os2loop/pull/383)
