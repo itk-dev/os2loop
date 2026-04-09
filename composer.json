@@ -226,6 +226,9 @@
             },
             "drupal/toc_api": {
                 "https://www.drupal.org/project/toc_api/issues/3417862": "https://www.drupal.org/files/issues/2024-02-07/toc_api-3417862-anchors_add_01-1.patch"
+            },
+            "drupal/openid_connect": {
+                "Fix render bug, inspired by https://drupal.stackexchange.com/a/251931": "patches/openid_connect-renderRootError.patch"
             }
         }
     },

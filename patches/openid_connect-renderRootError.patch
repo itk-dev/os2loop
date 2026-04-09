@@ -1,0 +1,18 @@
+diff --git a/openid_connect.module b/openid_connect.module
+index 0e9af60..12e9de5 100644
+--- a/openid_connect.module
++++ b/openid_connect.module
+@@ -189,11 +189,11 @@ function openid_connect_form_user_login_form_alter(&$form, FormStateInterface $f
+     $openid_form = \Drupal::formBuilder()->getForm('Drupal\openid_connect\Form\OpenIDConnectLoginForm');
+     switch ($user_login_display) {
+       case 'above':
+-        $form['#prefix'] = \Drupal::service('renderer')->renderRoot($openid_form);
++        $form['#prefix'] = \Drupal::service('renderer')->render($openid_form);
+         break;
+ 
+       case 'below':
+-        $form['#suffix'] = \Drupal::service('renderer')->renderRoot($openid_form);
++        $form['#suffix'] = \Drupal::service('renderer')->render($openid_form);
+         break;
+ 
+       case 'replace':
