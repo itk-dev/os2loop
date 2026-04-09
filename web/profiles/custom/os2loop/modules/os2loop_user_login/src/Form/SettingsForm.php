@@ -73,37 +73,43 @@ final class SettingsForm extends ConfigFormBase {
     $form['show_drupal_login'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Show Drupal login'),
-      '#default_value' => $config->get('show_drupal_login'),
+      '#default_value' => FALSE,
+      '#disabled' => TRUE,
       '#description' => $this->t(
-        'Show Drupal (username and password) login on user login page. If not enabled, the login form will still be visible if <a href="@login_url"><code>#drupal-login</code></a> is appended to the url (<a href="@login_url">@login_url</a>).',
+        'This option has been removed. This is now controlled by the "@config_title" setting in the <a href=":config_url">OpenID Connect settings</a>.',
         [
-          '@login_url' => Url::fromRoute('user.login', [], [
-            'absolute' => TRUE,
-            'fragment' => 'drupal-login',
-          ])->toString(),
-        ]),
+          '@config_title' => $this->t('OpenID buttons display in user login form'),
+          ':config_url' => Url::fromRoute('openid_connect.admin_settings')->toString(),
+        ],
+      ),
     ];
 
     $form['show_oidc_login'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Show OpenID Connect login'),
-      '#default_value' => $config->get('show_oidc_login'),
+      '#default_value' => FALSE,
+      '#disabled' => TRUE,
       '#description' => $this->t(
-        'Show OpenID Connect login button on user login page. Set up proper <a href="@config_url">OpenID Connect configuration</a> before enabling this.',
+        'This option has been removed. This is now controlled by the "@config_title" setting in the <a href=":config_url">OpenID Connect settings</a>.',
         [
-          '@config_url' => Url::fromRoute('openid_connect.admin_settings')->toString(),
-        ]
+          '@config_title' => $this->t('OpenID buttons display in user login form'),
+          ':config_url' => Url::fromRoute('openid_connect.admin_settings')->toString(),
+        ],
       ),
     ];
 
-    $options['oidc'] = $this->t('OpenID Connect');
     $form['default_login_method'] = [
       '#type' => 'select',
       '#title' => $this->t('Default login method'),
-      '#options' => $options,
-      '#empty_value' => '',
-      '#default_value' => $config->get('default_login_method'),
-      '#description' => $this->t('The default login method to use. If specified, anonymous users will automatically be logged in with this method.'),
+      '#default_value' => FALSE,
+      '#disabled' => TRUE,
+      '#description' => $this->t(
+        'This option has been removed. This is now controlled by the "@config_title" setting in the <a href=":config_url">OpenID Connect settings</a>.',
+        [
+          '@config_title' => $this->t('Autostart login process'),
+          ':config_url' => Url::fromRoute('openid_connect.admin_settings')->toString(),
+        ],
+      ),
     ];
 
     $form['hide_logout_menu_item'] = [
@@ -121,9 +127,6 @@ final class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable(static::SETTINGS_NAME)
-      ->set('show_drupal_login', $form_state->getValue('show_drupal_login'))
-      ->set('show_oidc_login', $form_state->getValue('show_oidc_login'))
-      ->set('default_login_method', $form_state->getValue('default_login_method'))
       ->set('hide_logout_menu_item', $form_state->getValue('hide_logout_menu_item'))
       ->save();
 
