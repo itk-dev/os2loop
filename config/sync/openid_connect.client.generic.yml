@@ -16,3 +16,4 @@ settings:
   end_session_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/endsession'
   scopes:
     - openid
+    - email
