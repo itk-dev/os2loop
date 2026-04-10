@@ -170,6 +170,7 @@
         },
         "drupal-scaffold": {
             "file-mapping": {
+                "[web-root]/robots.txt": false,
                 "[web-root]/sites/development.services.yml": false
             },
             "locations": {
