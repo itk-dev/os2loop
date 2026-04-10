@@ -439,7 +439,7 @@ $settings['update_free_access'] = FALSE;
  * of client error responses set the value to 0. Currently applies only to
  * page_cache module.
  */
-# $settings['cache_ttl_4xx'] = 3600;
+$settings['cache_ttl_4xx'] = 0;
 
 /**
  * Expiration of cached forms.
