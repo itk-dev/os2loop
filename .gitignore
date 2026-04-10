@@ -93,7 +93,6 @@
 /web/autoload.php
 /web/example.gitignore
 /web/index.php
-/web/robots.txt
 /web/update.php
 /web/web.config
 /web/modules/README.txt
@@ -169,7 +168,6 @@
 /web/INSTALL.txt
 /web/LICENSE.txt
 /web/README.txt
-/web/robots.txt
 /web/update.php
 /web/web.config
 

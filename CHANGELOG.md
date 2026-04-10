@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-388](https://github.com/itk-dev/os2loop/pull/388)
+  Cleaned up robots.txt
 - [PR-387](https://github.com/itk-dev/os2loop/pull/387)
   Disabled caching of error pages
 - [PR-385](https://github.com/itk-dev/os2loop/pull/385)
