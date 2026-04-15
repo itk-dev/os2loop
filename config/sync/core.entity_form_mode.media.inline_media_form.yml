@@ -6,6 +6,6 @@ dependencies:
     - media
 id: media.inline_media_form
 label: 'Inline media form'
-description: null
+description: ''
 targetEntityType: media
 cache: true
