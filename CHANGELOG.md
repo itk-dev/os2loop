@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.0]
+
+- [PR-382](https://github.com/itk-dev/os2loop/pull/382)
+  Updated drupal core Drupal 11.3.7
+
 ## [1.2.4]
 
 - [PR-388](https://github.com/itk-dev/os2loop/pull/388)

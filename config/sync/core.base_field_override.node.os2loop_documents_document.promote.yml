@@ -1,0 +1,22 @@
+uuid: 19daa0d5-927a-40c3-8ce9-160864d2c795
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.os2loop_documents_document
+id: node.os2loop_documents_document.promote
+field_name: promote
+entity_type: node
+bundle: os2loop_documents_document
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

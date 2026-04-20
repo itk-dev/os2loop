@@ -48,6 +48,7 @@ permissions:
   - 'edit terms in os2loop_tag'
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop send alert'
+  - 'rebuild node access permissions'
   - 'unflag os2loop_upvote_correct_answer'
   - 'update any media'
   - 'use text format os2loop_documents_body'

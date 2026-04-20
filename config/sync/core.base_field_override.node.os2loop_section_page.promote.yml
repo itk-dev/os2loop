@@ -1,0 +1,22 @@
+uuid: c681901d-c706-4be0-9d5d-4d7204202898
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.os2loop_section_page
+id: node.os2loop_section_page.promote
+field_name: promote
+entity_type: node
+bundle: os2loop_section_page
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
