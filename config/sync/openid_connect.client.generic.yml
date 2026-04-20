@@ -9,6 +9,8 @@ settings:
   client_id: client-id
   client_secret: '[client-secret]'
   iss_allowed_domains: ''
+  prompt:
+    login: login
   issuer_url: ''
   authorization_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/authorize'
   token_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/token'
@@ -16,5 +18,3 @@ settings:
   end_session_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/endsession'
   scopes:
     - openid
-  prompt:
-    login: login

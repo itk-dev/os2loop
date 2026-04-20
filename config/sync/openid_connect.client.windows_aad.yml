@@ -9,6 +9,8 @@ settings:
   client_id: "file:///settings.local.php#$config['openid_connect.client.windows_aad']['settings']['client_id']"
   client_secret: "file:///settings.local.php#$config['openid_connect.client.windows_aad']['settings']['client_secret']"
   iss_allowed_domains: ''
+  prompt:
+    login: login
   issuer_url: ''
   authorization_endpoint: "file:///settings.local.php#$config['openid_connect.client.windows_aad]['settings']['client_id']"
   token_endpoint: "file:///settings.local.php#$config['openid_connect.client.windows_aad]['settings'][token_endpoint']"
@@ -17,5 +19,3 @@ settings:
   scopes:
     - openid
     - email
-  prompt:
-    login: login

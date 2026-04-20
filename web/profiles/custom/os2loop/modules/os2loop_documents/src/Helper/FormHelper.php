@@ -341,6 +341,7 @@ class FormHelper {
       '#type' => 'submit',
       '#submit' => [[$this, 'addDocumentSubmit']],
       '#name' => 'add-document',
+      '#id' => 'add-document',
       // @see https://www.drupal.org/docs/drupal-apis/ajax-api/basic-concepts#sub_form
       '#ajax' => [
         'callback' => [$this, 'addDocumentResult'],
