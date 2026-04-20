@@ -1,0 +1,34 @@
+services:
+  idp-employee:
+    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    networks:
+      - app
+      - frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME:?}.rule=Host(`idp-employee.${COMPOSE_DOMAIN:?}`)"
+      - "traefik.http.services.idp-employee_${COMPOSE_PROJECT_NAME:?}.loadbalancer.server.port=9400"
+    command:
+      [
+        "--user-claims",
+        '{"sub": "user", "email": "user@example.com", "groups": ["authenticated"]}',
+        "--user-claims",
+        '{"sub": "administrator", "email": "administrator@example.com", "groups": ["os2loop_user_administrator"]}',
+        "--user-claims",
+        '{"sub": "user_administrator", "email": "user_administrator@example.com", "groups": ["os2loop_user_user_administrator"]}',
+        "--user-claims",
+        '{"sub": "manager", "email": "manager@example.com", "groups": ["os2loop_user_manager"]}',
+        "--user-claims",
+        '{"sub": "documentation_coordinator", "email": "documentation_coordinator@example.com", "groups": ["os2loop_user_documentation_coordinator"]}',
+        "--user-claims",
+        '{"sub": "document_collection_editor", "email": "document_collection_editor@example.com", "groups": ["os2loop_user_document_collection_editor"]}',
+        "--user-claims",
+        '{"sub": "document_author", "email": "document_author@example.com", "groups": ["os2loop_user_document_author"]}',
+        "--user-claims",
+        '{"sub": "external_sources_editor", "email": "external_sources_editor@example.com", "groups": ["os2loop_user_external_sources_editor"]}',
+        "--user-claims",
+        '{"sub": "post_author", "email": "post_author@example.com", "groups": ["os2loop_user_post_author"]}',
+        "--user-claims",
+        '{"sub": "read_only", "email": "read_only@example.com", "groups": ["os2loop_user_read_only"]}',
+      ]

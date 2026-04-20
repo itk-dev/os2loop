@@ -8,11 +8,22 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.4]
+
+- [PR-388](https://github.com/itk-dev/os2loop/pull/388)
+  Cleaned up robots.txt
+- [PR-387](https://github.com/itk-dev/os2loop/pull/387)
+  Disabled caching of error pages
+- [PR-385](https://github.com/itk-dev/os2loop/pull/385)
+  Cleaned up OpenID Connect settings and removed some obsolete custom settings
+- [PR-384](https://github.com/itk-dev/os2loop/pull/384)
+  Set access permission on search view
 - [PR-383](https://github.com/itk-dev/os2loop/pull/383)
   Fixed OpenID Connect redirect URLs
 - [PR-377](https://github.com/itk-dev/os2loop/pull/377)
   - Security update
   - Code cleanup
+  - d11 preparation
 
 ## [1.2.3]
 

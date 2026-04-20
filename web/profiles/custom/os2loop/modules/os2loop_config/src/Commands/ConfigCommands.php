@@ -4,6 +4,7 @@ namespace Drupal\os2loop_config\Commands;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Site\Settings;
 use Drush\Commands\DrushCommands;
@@ -226,7 +227,7 @@ class ConfigCommands extends DrushCommands {
           continue;
         }
 
-        $this->fileSystem->move($source, $destination, FileSystemInterface::EXISTS_REPLACE);
+        $this->fileSystem->move($source, $destination, FileExists::Replace);
         $this->output()->writeln(sprintf('%s -> %s', $source, $destination));
       }
     }

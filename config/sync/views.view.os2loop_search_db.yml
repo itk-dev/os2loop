@@ -6,6 +6,7 @@ dependencies:
     - search_api.index.os2loop_search_db_index
   module:
     - search_api
+    - user
     - views_autosubmit
 id: os2loop_search_db
 label: 'os2loop search db'
@@ -115,8 +116,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: search_api_none
         options: {  }
@@ -272,8 +274,10 @@ display:
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:search_api.index.os2loop_search_db_index'
+        - 'search_api_list:os2loop_search_db_index'
   page_search:
     id: page_search
     display_title: Page
@@ -311,8 +315,10 @@ display:
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:search_api.index.os2loop_search_db_index'
+        - 'search_api_list:os2loop_search_db_index'
   page_search_form:
     id: page_search_form
     display_title: 'Page (simple form)'
@@ -338,5 +344,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:search_api.index.os2loop_search_db_index'
+        - 'search_api_list:os2loop_search_db_index'

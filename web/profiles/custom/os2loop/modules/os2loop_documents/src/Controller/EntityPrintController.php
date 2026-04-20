@@ -2,7 +2,7 @@
 
 namespace Drupal\os2loop_documents\Controller;
 
-use Drupal\Console\Core\Utils\NestedArray;
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;

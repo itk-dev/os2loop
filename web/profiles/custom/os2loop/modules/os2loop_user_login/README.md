@@ -7,14 +7,10 @@ Go to Administration › Configuration › OS2Loop › OS2Loop user login settin
 
 ## OpenID Connect
 
-The modules [OpenID Connect](https://www.drupal.org/project/openid_connect) and
-[OpenID Connect Microsoft Azure Active Directory
-client](https://www.drupal.org/project/openid_connect_windows_aad) are used for
-OpenID Connect login. *Note*: Eventhough it's called “OpenID Connect Microsoft
-Azure Active Directory client” it also work with other OpenID Connect identity
-providers.
+The module [OpenID Connect](https://www.drupal.org/project/openid_connect) is
+used for OpenID Connect login.
 
-In the default configuration both login methods assume that the identitity
+In the default configuration the login method assumes that the identitity
 provider returns a `name` claim which is used as the Drupal user name and that a
 `groups` claim is a list of groups that can be mapped to Drupal roles.
 
@@ -83,12 +79,16 @@ $config['openid_connect.client.generic']['settings']['authorization_endpoint'] =
 $config['openid_connect.client.generic']['settings']['token_endpoint'] = …; // Get this from your OpenID Connect Discovery endpoint
 // Optional
 $config['openid_connect.client.generic']['settings']['end_session_endpoint'] = …; // Get this from your OpenID Connect Discovery endpoint
+
+// Disable "Autostart login process"
+$config['openid_connect.settings']['autostart_login'] = false;
 ```
 
 Check your overwrites by running
 
 ```sh
 vendor/bin/drush config:get --include-overridden openid_connect.client.generic
+vendor/bin/drush config:get --include-overridden openid_connect.settings
 ```
 
 #### Groups to roles mapping
