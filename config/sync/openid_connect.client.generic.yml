@@ -12,9 +12,12 @@ settings:
   prompt:
     login: login
   issuer_url: ''
-  authorization_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/authorize'
-  token_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/token'
+  authorization_endpoint: 'https://idp-employee.os2loop.local.itkdev.dk/oauth2/authorize'
+  token_endpoint: 'http://idp-employee:9400/oauth2/token'
   userinfo_endpoint: ''
-  end_session_endpoint: 'https://idp-citizen.os2loop.local.itkdev.dk/connect/endsession'
+  end_session_endpoint: 'https://idp-employee.os2loop.local.itkdev.dk/oauth2/end_session'
   scopes:
     - openid
+    - email
+  prompt:
+    - login

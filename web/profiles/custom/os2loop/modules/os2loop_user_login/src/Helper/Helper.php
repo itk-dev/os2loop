@@ -5,7 +5,6 @@ namespace Drupal\os2loop_user_login\Helper;
 use Drupal\Core\Entity\EntityFieldManager;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Session\AccountInterface;
@@ -27,6 +26,13 @@ class Helper {
    * @var \Drupal\Core\Config\ImmutableConfig
    */
   private $config;
+
+  /**
+   * The OpenID Connect config.
+   *
+   * @var \Drupal\Core\Config\ImmutableConfig
+   */
+  private $openIdConnectConfig;
 
   /**
    * The entity type manager.
@@ -75,45 +81,13 @@ class Helper {
    */
   public function __construct(Settings $settings, ModuleHandlerInterface $module_handler, EntityTypeManagerInterface $entity_type_manager, EntityFieldManager $entity_field_manager, MessengerInterface $messenger, RequestStack $requestStack, CurrentPathStack $currentPathStack) {
     $this->config = $settings->getConfig(SettingsForm::SETTINGS_NAME);
+    $this->openIdConnectConfig = $settings->getConfig('openid_connect.settings');
     $this->moduleHandler = $module_handler;
     $this->entityTypeManager = $entity_type_manager;
     $this->entityFieldManager = $entity_field_manager;
     $this->messenger = $messenger;
     $this->requestStack = $requestStack;
     $this->currentPathStack = $currentPathStack;
-  }
-
-  /**
-   * Implements hook_form_alter().
-   *
-   * Show different login options depending on the site configuration.
-   */
-  public function alterForm(&$form, FormStateInterface $form_state, $form_id) {
-    if ('openid_connect_login_form' === $form_id) {
-      if (!$this->config->get('show_oidc_login')) {
-        $form['#access'] = FALSE;
-      }
-    }
-    elseif ('user_login_form' === $form_id) {
-      if (!$this->config->get('show_drupal_login')) {
-        $form['#attached']['library'][] = 'os2loop_user_login/user-login-form';
-
-        // Wrap default Drupal login form in an element with a known id
-        // (drupal-login) so we can visually hide it.
-        foreach ($form as $key => $value) {
-          if (0 !== strpos($key, '#')) {
-            $form['drupal_login'][$key] = array_merge($value);
-            unset($form[$key]);
-          }
-        }
-        $form['drupal_login'] += [
-          '#type' => 'fieldset',
-          '#title' => $this->t('Drupal login'),
-          '#weight' => 100,
-          '#attributes' => ['id' => 'drupal-login'],
-        ];
-      }
-    }
   }
 
   /**
@@ -138,7 +112,12 @@ class Helper {
         return;
       }
 
-      $defaultLoginMethod = $this->config->get('default_login_method');
+      // The OpenID Connect module's "Autostart login process" triggers only on
+      // login, register or password reset pages. We need to trigger it in the
+      // userlogin block as well and use JavaScript to submit the (OIDC) login
+      // form if found on the page
+      // (cf. @os2loop_theme/templates/block/block--user-login-block.html.twig).
+      $defaultLoginMethod = TRUE === $this->openIdConnectConfig->get('autostart_login') ? 'oidc' : NULL;
       switch ($defaultLoginMethod) {
         case 'oidc':
           $variables['default_login_form_id'] = 'openid-connect-login-form';
