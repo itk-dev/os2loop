@@ -491,16 +491,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              os2loop_user_administrator: '0'
-              os2loop_user_documentation_coordinator: '0'
-              os2loop_user_manager: '0'
-              os2loop_user_read_only: '0'
-              os2loop_user_external_sources_editor: '0'
-              os2loop_user_document_author: '0'
-              os2loop_user_document_collection_editor: '0'
-              os2loop_user_post_author: '0'
-              os2loop_user_user_administrator: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -547,8 +537,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -633,16 +621,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              os2loop_user_administrator: '0'
-              os2loop_user_documentation_coordinator: '0'
-              os2loop_user_manager: '0'
-              os2loop_user_read_only: '0'
-              os2loop_user_external_sources_editor: '0'
-              os2loop_user_document_author: '0'
-              os2loop_user_document_collection_editor: '0'
-              os2loop_user_post_author: '0'
-              os2loop_user_user_administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -2135,6 +2113,7 @@ display:
         options:
           row_class: 'media-library-item media-library-item--table js-media-library-item js-click-to-select'
           default_row_class: true
+          class: ''
       row:
         type: fields
       defaults:

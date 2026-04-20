@@ -1,0 +1,22 @@
+uuid: 4d704e7f-75c9-45b7-b204-ad0dbbaade6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.os2loop_external
+id: node.os2loop_external.promote
+field_name: promote
+entity_type: node
+bundle: os2loop_external
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

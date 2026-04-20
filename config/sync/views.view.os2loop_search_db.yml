@@ -202,16 +202,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              os2loop_user_administrator: '0'
-              os2loop_user_documentation_coordinator: '0'
-              os2loop_user_manager: '0'
-              os2loop_user_read_only: '0'
-              os2loop_user_external_sources_editor: '0'
-              os2loop_user_document_author: '0'
-              os2loop_user_document_collection_editor: '0'
-              os2loop_user_post_author: '0'
-              os2loop_user_user_administrator: '0'
             expose_fields: false
             placeholder: 'Search for content or subjects'
             searched_fields_id: search_api_fulltext_searched_fields

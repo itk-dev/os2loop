@@ -1,0 +1,22 @@
+uuid: 132f58ac-1ccb-4ed8-8e1e-3ecf1a29c5d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.os2loop_post
+id: node.os2loop_post.promote
+field_name: promote
+entity_type: node
+bundle: os2loop_post
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

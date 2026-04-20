@@ -20,6 +20,7 @@ dependencies:
     - node.type.os2loop_post
     - node.type.os2loop_question
     - node.type.os2loop_section_page
+    - system.menu.main
     - taxonomy.vocabulary.os2loop_profession
     - taxonomy.vocabulary.os2loop_subject
     - taxonomy.vocabulary.os2loop_tag
@@ -104,6 +105,7 @@ permissions:
   - 'flag os2loop_upvote_correct_answer'
   - 'os2loop see notify users option'
   - 'os2loop send alert'
+  - 'rebuild node access permissions'
   - 'revert os2loop_post revisions'
   - 'translate interface'
   - 'unflag os2loop_upvote_correct_answer'
