@@ -11,6 +11,9 @@ settings:
   iss_allowed_domains: ''
   prompt:
     login: login
+    none: '0'
+    consent: '0'
+    select_account: '0'
   issuer_url: ''
   authorization_endpoint: 'https://idp-employee.os2loop.local.itkdev.dk/oauth2/authorize'
   token_endpoint: 'http://idp-employee:9400/oauth2/token'
@@ -19,5 +22,3 @@ settings:
   scopes:
     - openid
     - email
-  prompt:
-    - login
