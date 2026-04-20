@@ -60,7 +60,10 @@
 
 			// hack to align icon with first row of multi-line text
 			padding-top: calc(
-				(#{$font-size-base} * #{$line-height-base} - #{$user-contact-icon-size}) /
+				(
+						#{$font-size-base} * #{$line-height-base} -
+							#{$user-contact-icon-size}
+					) /
 					2
 			);
 			margin-right: $user-contact-icon-spacer;

@@ -78,7 +78,7 @@
 {% set display_inline_view = view_id in [
   'os2loop_subscriptions_node',
   'os2loop_user_questions',
-  'os2loop_section_page_user_favourites'
+  'os2loop_section_page_user_favourites',
 ] %}
 
 {% set short_type = node.getType|split('_')|last %}
@@ -88,7 +88,7 @@
 <article class="{{ os2loop_container_class }} list-group-item list-display d-inline-flex align-items-top">
   {# icon #}
   <div class="list-display-icon">
-    {{ source(icon_source, ignore_missing = true) }}
+    {{ source(icon_source, ignore_missing: true) }}
   </div>
   <div class="container px-0 list-display-information">
     <div class="row no-gutters">

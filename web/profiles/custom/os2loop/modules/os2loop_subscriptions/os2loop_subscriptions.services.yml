@@ -3,13 +3,13 @@ services:
     class: Drupal\os2loop_subscriptions\Helper\Helper
     arguments:
       - '@Drupal\os2loop_settings\Settings'
-      - '@database'
+      - "@database"
 
   os2loop_subscriptions.flag_subscriber:
     class: Drupal\os2loop_subscriptions\EventSubscriber\SubscriptionFlagSubscriber
     tags:
       - { name: event_subscriber }
     arguments:
-      - '@entity_type.manager'
-      - '@current_user'
-      - '@flag'
+      - "@entity_type.manager"
+      - "@current_user"
+      - "@flag"

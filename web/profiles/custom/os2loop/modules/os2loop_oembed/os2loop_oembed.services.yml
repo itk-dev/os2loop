@@ -4,9 +4,9 @@ services:
     tags:
       - { name: twig.extension }
     arguments:
-      - '@http_client'
-      - '@media.oembed.url_resolver'
-      - '@messenger'
+      - "@http_client"
+      - "@media.oembed.url_resolver"
+      - "@messenger"
       - '@Drupal\os2loop_settings\Settings'
 
   os2loop_oembed.helper:

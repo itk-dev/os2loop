@@ -1,5 +1,5 @@
 os2loop_share_with_a_friend.share_with_a_friend:
-  path: '/node/{node}/share_with_a_friend'
+  path: "/node/{node}/share_with_a_friend"
   defaults:
     _form: '\Drupal\os2loop_share_with_a_friend\Form\ShareWithAFriendForm'
   options:
@@ -7,12 +7,12 @@ os2loop_share_with_a_friend.share_with_a_friend:
       node:
         type: entity:node
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 os2loop_share_with_a_friend.settings:
-  path: '/admin/config/os2loop/os2loop_share_with_a_friend/settings'
+  path: "/admin/config/os2loop/os2loop_share_with_a_friend/settings"
   defaults:
     _form: '\Drupal\os2loop_share_with_a_friend\Form\SettingsForm'
-    _title: 'OS2Loop share with a friend settings'
+    _title: "OS2Loop share with a friend settings"
   requirements:
-    _permission: 'administer os2loop settings'
+    _permission: "administer os2loop settings"
