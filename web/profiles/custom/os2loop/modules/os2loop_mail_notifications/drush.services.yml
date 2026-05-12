@@ -1,0 +1,7 @@
+services:
+  os2loop_mail_notifications.send_mail:
+    class: Drupal\os2loop_mail_notifications\Command\SendMailCommand
+    arguments:
+      - "@plugin.manager.mail"
+    tags:
+      - { name: console.command }

@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-391](https://github.com/itk-dev/os2loop/pull/391)
+  Mail development setup
 
 ## [1.3.1]
 
