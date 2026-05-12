@@ -1,6 +1,8 @@
 services:
   idp-employee:
     image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    # Let this container be accessible both internally and externally on the same domain.
+    container_name: idp-employee.${COMPOSE_DOMAIN}
     networks:
       - app
       - frontend
@@ -8,9 +10,12 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME:?}.rule=Host(`idp-employee.${COMPOSE_DOMAIN:?}`)"
-      - "traefik.http.services.idp-employee_${COMPOSE_PROJECT_NAME:?}.loadbalancer.server.port=9400"
+    expose:
+      - "80"
     command:
       [
+        "--port",
+        "80",
         "--user-claims",
         '{"sub": "user", "email": "user@example.com", "groups": ["authenticated"]}',
         "--user-claims",
