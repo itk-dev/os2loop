@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.2]
+
 - [PR-392](https://github.com/itk-dev/os2loop/pull/392)
   - Update admin forms to match d11
   - Update OIDC container
