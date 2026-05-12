@@ -8,6 +8,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
+## [1.3.1]
+
+- [PR-390](https://github.com/itk-dev/os2loop/pull/390)
+  Updated php spreadsheet
+
 ## [1.3.0]
 
 - [PR-382](https://github.com/itk-dev/os2loop/pull/382)
