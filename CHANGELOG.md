@@ -8,6 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-392](https://github.com/itk-dev/os2loop/pull/392)
+  - Update admin forms to match d11
+  - Update OIDC container
+
 - [PR-391](https://github.com/itk-dev/os2loop/pull/391)
   Mail development setup
 
