@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.3] - 2026-05-20
+
+- [PR-393](https://github.com/itk-dev/os2loop/pull/393)
+  - Drupal core security update
+
 ## [1.3.2]
 
 - [PR-392](https://github.com/itk-dev/os2loop/pull/392)
@@ -144,3 +149,20 @@ Add tagging to media library, fix bugged file reference in display
 tab
 - [LOOP-2056](https://leantime.itkdev.dk/dashboard/home#/tickets/showTicket/2056):
 Create new frontpage with fixtures.
+
+[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.3.3...HEAD
+[1.3.3]: https://github.com/itk-dev/os2loop/compare/1.3.1..1.3.2...1.3.3
+[1.3.2]: https://github.com/itk-dev/os2loop/compare/1.3.1..1.3.2
+[1.3.1]: https://github.com/itk-dev/os2loop/compare/1.3.0..1.3.1
+[1.3.0]: https://github.com/itk-dev/os2loop/compare/1.2.4..1.3.0
+[1.2.4]: https://github.com/itk-dev/os2loop/compare/1.2.3..1.2.4
+[1.2.3]: https://github.com/itk-dev/os2loop/compare/1.2.2..1.2.3
+[1.2.2]: https://github.com/itk-dev/os2loop/compare/1.2.1..1.2.2
+[1.2.1]: https://github.com/itk-dev/os2loop/compare/1.2.0..1.2.1
+[1.2.0]: https://github.com/itk-dev/os2loop/compare/1.1.4..1.2.0
+[1.1.4]: https://github.com/itk-dev/os2loop/compare/1.1.3..1.1.4
+[1.1.3]: https://github.com/itk-dev/os2loop/compare/1.1.2..1.1.3
+[1.1.2]: https://github.com/itk-dev/os2loop/compare/1.1.1..1.1.2
+[1.1.1]: https://github.com/itk-dev/os2loop/compare/1.1.0..1.1.1
+[1.1.0]: https://github.com/itk-dev/os2loop/compare/1.0.0..1.1.0
+[1.0.0]: https://github.com/itk-dev/os2loop/releases/tag/1.0.0
