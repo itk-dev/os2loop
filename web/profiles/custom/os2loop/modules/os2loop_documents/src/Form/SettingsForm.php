@@ -3,6 +3,7 @@
 namespace Drupal\os2loop_documents\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
@@ -41,8 +42,8 @@ final class SettingsForm extends ConfigFormBase {
   /**
    * Constructor.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, Settings $settings, EntityTypeManagerInterface $entityTypeManager) {
-    parent::__construct($config_factory);
+  public function __construct(ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typedConfigManager, Settings $settings, EntityTypeManagerInterface $entityTypeManager) {
+    parent::__construct($config_factory, $typedConfigManager);
     $this->settings = $settings;
     $this->fileStorage = $entityTypeManager->getStorage('file');
   }
@@ -53,6 +54,7 @@ final class SettingsForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
+      $container->get('config.typed'),
       $container->get(Settings::class),
       $container->get('entity_type.manager')
     );

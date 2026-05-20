@@ -11,7 +11,7 @@ use Drupal\Core\Mail\Plugin\Mail\PhpMail as PhpMailBase;
  *
  * @Mail(
  *   id = "os2loop_mail_notifications",
- *   label = @Translation("Custom PHP mailer"),
+ *   label = @Translation("OS2Loop mail notifications"),
  *   description = @Translation("Sends the message as plain text, using PHP's native mail() function.")
  * )
  */

@@ -3,6 +3,7 @@
 namespace Drupal\os2loop_question\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -32,8 +33,8 @@ final class SettingsForm extends ConfigFormBase {
   /**
    * Constructor.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, Settings $settings) {
-    parent::__construct($config_factory);
+  public function __construct(ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typedConfigManager, Settings $settings) {
+    parent::__construct($config_factory, $typedConfigManager);
     $this->settings = $settings;
   }
 
@@ -43,6 +44,7 @@ final class SettingsForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
+      $container->get('config.typed'),
       $container->get(Settings::class)
     );
   }
