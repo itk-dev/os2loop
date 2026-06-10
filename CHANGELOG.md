@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-394](https://github.com/itk-dev/os2loop/pull/394)
+  Made `NGINX_FASTCGI_READ_TIMEOUT` have effect
+
 ## [1.3.3] - 2026-05-20
 
 - [PR-393](https://github.com/itk-dev/os2loop/pull/393)
