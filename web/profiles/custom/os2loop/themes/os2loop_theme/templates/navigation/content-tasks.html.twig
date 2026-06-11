@@ -11,9 +11,10 @@
 <div class="icon-container">
   {% if node.id|default(false) %}
     {% if is_granted('entity print access bundle ' ~ node.bundle) %}
-      <div class="icon print" data-toggle="tooltip" title="{{ 'Print document (PDF)'|t }}">
-        <a aria-label="{{ 'Print document (PDF)'|t }}" href="{{ path('entity_print.view', {export_type: 'pdf', entity_type: 'node', entity_id: node.id}) }}">
-          <span class="visually-hidden">{{ 'Print document (PDF)'|t }}</span>
+      {% set print_label = node.bundle == 'os2loop_documents_collection' ? 'Print document collection (PDF)'|t : 'Print document (PDF)'|t %}
+      <div class="icon print" data-toggle="tooltip" title="{{ print_label }}">
+        <a aria-label="{{ print_label }}" href="{{ path('entity_print.view', {export_type: 'pdf', entity_type: 'node', entity_id: node.id}) }}">
+          <span class="visually-hidden">{{ print_label }}</span>
         </a>
       </div>
     {% endif %}

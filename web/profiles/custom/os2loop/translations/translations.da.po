@@ -765,6 +765,9 @@ msgstr "Dansk"
 msgid "Print document (PDF)"
 msgstr "Udskriv dokument (PDF)"
 
+msgid "Print document collection (PDF)"
+msgstr "Udskriv dokumentsamling (PDF)"
+
 msgid "Contact editoral staff"
 msgstr "Skriv til redaktionen"
 
