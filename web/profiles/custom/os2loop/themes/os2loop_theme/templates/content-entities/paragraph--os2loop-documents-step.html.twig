@@ -49,8 +49,6 @@
   ]
 %}
 
-{% set has_title = content.os2loop_documents_step_title['#title'] is not null %}
-
 {% set expanded = app.request.query.get('expanded') %}
 {% set class_collapsed = not expanded ? 'collapsed' %}
 
@@ -61,13 +59,13 @@
       {% if 'print/pdf' in url('<current>')['#markup'] %}
         <span class="{{ class_collapsed }} step--collapse-toggle">
           <span class="bold">
-            {{ has_title ? content.os2loop_documents_step_title : content.os2loop_documents_step_text }}
+            {{ content.os2loop_documents_step_title }}
           </span>
         </span>
       {% else %}
         <a class="{{ class_collapsed }} step--collapse-toggle" type="button" data-toggle="collapse" data-target="#paragraph-id-{{ paragraph.id() }}">
-          <span class="bold {{ has_title ? 'line-clamp-1' }}">
-            {{ has_title ? content.os2loop_documents_step_title : content.os2loop_documents_step_text }}
+          <span class="bold">
+            {{ content.os2loop_documents_step_title }}
           </span>
         </a>
       {% endif %}
