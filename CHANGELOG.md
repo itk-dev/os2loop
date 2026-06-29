@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-396](https://github.com/itk-dev/os2loop/pull/396)
+  Security update
 - [PR-395](https://github.com/itk-dev/os2loop/pull/395)
   7840: Improved handling of empty step title
 - [PR-394](https://github.com/itk-dev/os2loop/pull/394)
