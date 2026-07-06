@@ -8,6 +8,7 @@
 services:
   idp-employee:
     image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    restart: unless-stopped
     networks:
       - app
       - frontend
