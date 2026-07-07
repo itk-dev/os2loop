@@ -14,7 +14,5 @@ services:
     profiles:
       - dev
     working_dir: /app
-    networks:
-      - app
     volumes:
       - ./web/profiles/custom/os2loop/themes/os2loop_theme:/app
