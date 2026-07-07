@@ -2,14 +2,6 @@ include:
   - docker-compose.oidc.yml
 
 services:
-  node:
-    image: node:20
-    working_dir: /app
-    networks:
-      - app
-    volumes:
-      - ./web/profiles/custom/os2loop/themes/os2loop_theme:/app
-
   phpfpm:
     environment:
       - PHP_MAX_EXECUTION_TIME=300
@@ -19,3 +11,11 @@ services:
     environment:
       # Match PHP_MAX_EXECUTION_TIME above
       - NGINX_FASTCGI_READ_TIMEOUT=300
+
+  node:
+    image: node:20
+    profiles:
+      - dev
+    working_dir: /app
+    volumes:
+      - ./web/profiles/custom/os2loop/themes/os2loop_theme:/app

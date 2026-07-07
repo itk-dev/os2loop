@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-398](https://github.com/itk-dev/os2loop/pull/398)
+  Updated `node` docker compose setup
+
 ## [1.4.0] - 2026-06-29
 
 - [PR-396](https://github.com/itk-dev/os2loop/pull/396)
