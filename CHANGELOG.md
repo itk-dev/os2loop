@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-401](https://github.com/itk-dev/os2loop/pull/401)
+  Added private files setup
 - [PR-400](https://github.com/itk-dev/os2loop/pull/400)
   Updated OpenID Connect "prompt" config
 
