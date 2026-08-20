@@ -2,6 +2,7 @@ services:
   phpfpm:
     volumes:
       - ../../shared/${SUB_SITE_FOLDER}:/app/web/sites/${SUB_SITE_FOLDER}
+      - ../../shared/private-files:/app/private-files
       - ../../shared/sites.php:/app/web/sites/sites.php
 
   nginx:

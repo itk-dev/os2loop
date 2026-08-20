@@ -780,6 +780,8 @@ $settings['config_sync_directory'] = '../config/sync';
 
 $settings['skip_permissions_hardening'] = TRUE;
 
+$settings['file_private_path'] = DRUPAL_ROOT . '/../private-files';
+
 /**
  * Load local development override configuration, if available.
  *
