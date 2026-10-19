@@ -8,9 +8,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-10-29
+
+- [PR-402](https://github.com/itk-dev/os2loop/pull/402)
+  - Update drupal core ^11.4
+  - Update contrib modules minor and major versions
+
 ## [1.4.3] - 2026-10-27
 
-- [PR-](https://github.com/itk-dev/os2loop/pull/)
+- [PR-406](https://github.com/itk-dev/os2loop/pull/406)
   Updated OpenID Connect config
 
 ## [1.4.2] - 2026-10-26
