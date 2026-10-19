@@ -8,7 +8,7 @@
         "php": "^8.3",
         "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.7",
-        "dompdf/dompdf": "^2.0",
+        "dompdf/dompdf": "^3",
         "drupal/autocomplete_deluxe": "^2.0",
         "drupal/better_formats": "^1.0@beta",
         "drupal/block_field": "^1.0@RC",
@@ -17,18 +17,18 @@
         "drupal/config_filter": "^2.7",
         "drupal/config_ignore": "^3.3",
         "drupal/convert_media_tags_to_markup": "^4.0",
-        "drupal/core-composer-scaffold": "^11.3",
-        "drupal/core-project-message": "^11.3",
-        "drupal/core-recommended": "^11.3",
+        "drupal/core-composer-scaffold": "^11.4",
+        "drupal/core-project-message": "^11.4",
+        "drupal/core-recommended": "^11.4",
         "drupal/date_popup": "^2.0",
-        "drupal/diff": "^1.1",
+        "drupal/diff": "^2.1",
         "drupal/entity_print": "^2.13",
         "drupal/entity_reference_integrity": "^2.0",
         "drupal/entity_usage": "^2.0@beta",
         "drupal/externalauth": "^2.0",
         "drupal/facets": "^2.0",
-        "drupal/field_group": "^3.4",
-        "drupal/flag": "^4.0@beta",
+        "drupal/field_group": "^4.1",
+        "drupal/flag": "^5.1",
         "drupal/gin": "^5.0",
         "drupal/gin_login": "^2.0",
         "drupal/gin_toolbar": "^3.0",
@@ -123,6 +123,7 @@
             "ergebnis/composer-normalize": true,
             "php-http/discovery": true,
             "phpstan/extension-installer": true,
+            "symfony/runtime": true,
             "tbachert/spi": true
         },
         "process-timeout": 0,
@@ -194,7 +195,7 @@
         },
         "patches": {
             "drupal/core": {
-                "Disable forced configuration langcode (https://www.drupal.org/project/drupal/issues/3150540)": "https://www.drupal.org/files/issues/2025-07-24/drupal-3150540-D1122_0.patch"
+                "Disable forced configuration langcode (https://www.drupal.org/project/drupal/issues/3150540)": "https://www.drupal.org/files/issues/2026-07-08/drupal-3150540-60.patch"
             },
             "drupal/entity_print": {
                 "Add page count https://www.drupal.org/project/entity_print/issues/2823430": "https://www.drupal.org/files/issues/2023-07-10/entity_print-dompdf_page_count-2823430-14.patch",
