@@ -12,6 +12,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 - [PR-404](https://github.com/itk-dev/os2loop/pull/404)
   Switched to maintained `nginx/nginx-unprivileged` docker image
+## [1.5.0] - 2026-10-19
+
+- [PR-402](https://github.com/itk-dev/os2loop/pull/402)
+  - Update drupal core ^10.4
+  - Update contrib modules minor and major versions
 
 ## [1.4.1] - 2026-07-07
 
