@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-10-26
+
+- [PR-404](https://github.com/itk-dev/os2loop/pull/404)
+  Switched to maintained `nginx/nginx-unprivileged` docker image
+
 ## [1.4.1] - 2026-07-07
 
 - [PR-398](https://github.com/itk-dev/os2loop/pull/398)
@@ -164,7 +169,8 @@ tab
 - [LOOP-2056](https://leantime.itkdev.dk/dashboard/home#/tickets/showTicket/2056):
 Create new frontpage with fixtures.
 
-[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.4.1...HEAD
+[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.4.2...HEAD
+[1.4.2]: https://github.com/itk-dev/os2loop/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/itk-dev/os2loop/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/itk-dev/os2loop/compare/1.3.3...1.4.0
 [1.3.3]: https://github.com/itk-dev/os2loop/compare/1.3.1..1.3.2...1.3.3
