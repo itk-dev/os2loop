@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.1] - 2026-10-26
+
+- [PR-403](https://github.com/itk-dev/os2loop/pull/403)
+  Switched to maintained `nginx/nginx-unprivileged` docker image
+
 ## [1.5.0] - 2026-10-19
 
 - [PR-402](https://github.com/itk-dev/os2loop/pull/402)
