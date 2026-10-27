@@ -8,19 +8,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-- [PR-400](https://github.com/itk-dev/os2loop/pull/400)
-  Updated OpenID Connect "prompt" config
+## [1.4.3] - 2026-10-27
+
+- [PR-](https://github.com/itk-dev/os2loop/pull/)
+  Updated OpenID Connect config
 
 ## [1.4.2] - 2026-10-26
 
 - [PR-404](https://github.com/itk-dev/os2loop/pull/404)
   Switched to maintained `nginx/nginx-unprivileged` docker image
-
-## [1.5.0] - 2026-10-19
-
-- [PR-402](https://github.com/itk-dev/os2loop/pull/402)
-  - Update drupal core ^10.4
-  - Update contrib modules minor and major versions
 
 ## [1.4.1] - 2026-07-07
 
@@ -178,7 +174,8 @@ tab
 - [LOOP-2056](https://leantime.itkdev.dk/dashboard/home#/tickets/showTicket/2056):
 Create new frontpage with fixtures.
 
-[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.4.2...HEAD
+[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.4.3...HEAD
+[1.4.3]: https://github.com/itk-dev/os2loop/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/itk-dev/os2loop/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/itk-dev/os2loop/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/itk-dev/os2loop/compare/1.3.3...1.4.0

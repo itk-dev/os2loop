@@ -8,6 +8,7 @@ plugin: generic
 settings:
   client_id: client-id
   client_secret: '[client-secret]'
+  provider_slug: ''
   iss_allowed_domains: ''
   prompt:
     - login
