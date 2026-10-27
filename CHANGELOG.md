@@ -8,7 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [1.5.0] - 2026-10-29
+## [1.5.0] - 2026-10-27
 
 - [PR-402](https://github.com/itk-dev/os2loop/pull/402)
   - Update drupal core ^11.4
@@ -180,7 +180,8 @@ tab
 - [LOOP-2056](https://leantime.itkdev.dk/dashboard/home#/tickets/showTicket/2056):
 Create new frontpage with fixtures.
 
-[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.4.3...HEAD
+[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/itk-dev/os2loop/compare/1.4.3...1.5.0
 [1.4.3]: https://github.com/itk-dev/os2loop/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/itk-dev/os2loop/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/itk-dev/os2loop/compare/1.4.0...1.4.1
