@@ -3,22 +3,22 @@ _core:
 local_task_enabled_entity_types:
   - media
 track_enabled_source_entity_types:
-  - user
-  - node
   - comment
-track_enabled_target_entity_types:
+  - node
   - user
+track_enabled_target_entity_types:
   - media
+  - user
 track_enabled_plugins:
+  - block_field
   - dynamic_entity_reference
-  - linkit
+  - entity_embed
+  - entity_reference
+  - html_link
   - layout_builder
   - link
+  - linkit
   - media_embed
-  - entity_reference
-  - block_field
-  - html_link
-  - entity_embed
 track_enabled_base_fields: false
 site_domains: {  }
 edit_warning_message_entity_types: {  }
