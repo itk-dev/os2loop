@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-405](https://github.com/itk-dev/os2loop/pull/405)
+  - Updated OpenID Connect client "generic" config
+
 ## [1.5.0] - 2026-10-19
 
 - [PR-402](https://github.com/itk-dev/os2loop/pull/402)
