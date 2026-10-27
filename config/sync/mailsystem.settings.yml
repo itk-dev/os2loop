@@ -4,3 +4,5 @@ theme: current
 defaults:
   sender: os2loop_mail_notifications
   formatter: os2loop_mail_notifications
+modules:
+  os2loop_flag_content: {  }
