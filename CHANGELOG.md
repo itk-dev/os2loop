@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.1] - 2026-11-05
+
+- [PR-408](https://github.com/itk-dev/os2loop/pull/408)
+  Fixed bug in openid connect field mapping
+
 ## [1.5.0] - 2026-10-27
 
 - [PR-402](https://github.com/itk-dev/os2loop/pull/402)
