@@ -6,8 +6,8 @@ user_login_display: replace
 redirect_login: /user
 redirect_logout: /
 userinfo_mappings:
-  os2loop_user_city: family_name
-  os2loop_user_external_list: given_name
+  os2loop_user_family_name: family_name
+  os2loop_user_given_name: given_name
 role_mappings:
   os2loop_user_administrator:
     - administrator
