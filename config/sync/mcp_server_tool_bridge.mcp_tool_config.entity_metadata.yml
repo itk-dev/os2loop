@@ -1,0 +1,14 @@
+uuid: 8199b04b-c820-45bd-944f-f1bf76a42a02
+langcode: en
+status: true
+dependencies:
+  module:
+    - mcp_server_oauth
+third_party_settings:
+  mcp_server_oauth:
+    authentication_mode: required
+    scopes:
+      - 'mcp:read'
+id: entity_metadata
+tool_id: 'tool_belt:entity_metadata'
+description: null

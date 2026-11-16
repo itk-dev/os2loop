@@ -1,0 +1,14 @@
+uuid: dcf812a7-4cdb-432f-9915-26fa1a0ca578
+langcode: en
+status: true
+dependencies:
+  module:
+    - mcp_server_oauth
+third_party_settings:
+  mcp_server_oauth:
+    authentication_mode: required
+    scopes:
+      - 'mcp:read'
+id: entity_field_values
+tool_id: 'tool_belt:entity_field_values'
+description: null

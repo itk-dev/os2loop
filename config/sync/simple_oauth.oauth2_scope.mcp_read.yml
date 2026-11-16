@@ -1,0 +1,19 @@
+uuid: e4ae4ebd-0cc9-45a3-92ba-b432baf83029
+langcode: en
+status: true
+dependencies: {  }
+id: mcp_read
+name: 'mcp:read'
+description: 'Read content through MCP'
+grant_types:
+  authorization_code:
+    status: true
+    description: 'Read content through MCP'
+  refresh_token:
+    status: true
+    description: 'Read content through MCP'
+umbrella: false
+parent: null
+granularity_id: role
+granularity_configuration:
+  role: os2loop_user_mcp

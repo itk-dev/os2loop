@@ -50,8 +50,8 @@ server {
     }
 
     # Block access to "hidden" files and directories whose names begin with a
-    # period.
-    location ~ (^|/)\. {
+    # period. Drupal serves "/.well-known/" (OAuth metadata for the MCP server).
+    location ~ (^|/)\.(?!well-known/) {
         return 403;
     }
 
