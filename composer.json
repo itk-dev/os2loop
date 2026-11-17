@@ -64,6 +64,7 @@
         "drupal/viewsreference": "^2.0@beta",
         "drupal/xls_serialization": "^2.0",
         "drush/drush": "^13.0",
+        "firebase/php-jwt": "^7.0",
         "jjj/chosen": "^2.2"
     },
     "require-dev": {

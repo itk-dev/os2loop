@@ -12,6 +12,9 @@ grant_types:
   refresh_token:
     status: true
     description: 'Read content through MCP'
+  client_credentials:
+    status: true
+    description: 'Read content through MCP'
 umbrella: false
 parent: null
 granularity_id: role

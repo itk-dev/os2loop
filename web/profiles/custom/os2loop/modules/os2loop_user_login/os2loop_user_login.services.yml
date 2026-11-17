@@ -9,3 +9,31 @@ services:
       - "@messenger"
       - "@request_stack"
       - "@path.current"
+
+  logger.channel.os2loop_user_login:
+    parent: logger.channel_base
+    arguments: ["os2loop_user_login"]
+
+  os2loop_user_login.oidc_bearer_authentication:
+    class: Drupal\os2loop_user_login\Authentication\OidcBearerAuthenticationProvider
+    arguments:
+      - "@http_client"
+      - "@cache.default"
+      - "@externalauth.authmap"
+      - "@entity_type.manager"
+      - "@logger.channel.os2loop_user_login"
+    tags:
+      - { name: authentication_provider, provider_id: os2loop_oidc_bearer, priority: 40 }
+
+  os2loop_user_login.route_subscriber:
+    class: Drupal\os2loop_user_login\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  os2loop_user_login.mcp_tool_scope_middleware:
+    class: Drupal\os2loop_user_login\Mcp\OidcBearerToolScopeMiddleware
+    decorates: mcp_server_oauth.tool_scope_middleware
+    decoration_on_invalid: ignore
+    arguments:
+      - "@.inner"
+      - "@request_stack"
