@@ -8,6 +8,16 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.2] - 2026-11-18
+
+- [PR-410](https://github.com/itk-dev/os2loop/pull/410)
+  - Security update drupal/core 11.4.10 => 11.4.13 ([PSA-2026-11-16](https://www.drupal.org/psa-2026-11-16),
+    SA-CORE-2026-017, SA-CORE-2026-018)
+  - Updated masterminds/html5 and symfony/* packages that drupal/core-recommended 11.4.13 requires
+  - Security update drupal/entity_print 2.19.0 => 2.20.0 (SA-CONTRIB-2026-327),
+    drupal/paragraphs_edit 3.0.1 => 3.0.2 (SA-CONTRIB-2026-317) and
+    drupal/view_unpublished 1.4.0 => 1.5.0 (SA-CONTRIB-2026-235)
+
 ## [1.5.1] - 2026-11-05
 
 - [PR-408](https://github.com/itk-dev/os2loop/pull/408)
@@ -185,7 +195,8 @@ tab
 - [LOOP-2056](https://leantime.itkdev.dk/dashboard/home#/tickets/showTicket/2056):
 Create new frontpage with fixtures.
 
-[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.5.1...HEAD
+[Unreleased]: https://github.com/itk-dev/os2loop/compare/1.5.2...HEAD
+[1.5.2]: https://github.com/itk-dev/os2loop/compare/1.5.1...1.5.2
 [1.5.1]: https://github.com/itk-dev/os2loop/compare/1.5.0...1.5.1
 [1.5.0]: https://github.com/itk-dev/os2loop/compare/1.4.3...1.5.0
 [1.4.3]: https://github.com/itk-dev/os2loop/compare/1.4.2...1.4.3
