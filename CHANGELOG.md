@@ -11,7 +11,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.5.2] - 2026-11-18
 
 - [PR-410](https://github.com/itk-dev/os2loop/pull/410)
-  - Prepared the Drupal core security update ([PSA-2026-11-16](https://www.drupal.org/psa-2026-11-16))
+  - Security update drupal/core 11.4.10 => 11.4.13 ([PSA-2026-11-16](https://www.drupal.org/psa-2026-11-16),
+    SA-CORE-2026-017, SA-CORE-2026-018)
+  - Updated masterminds/html5 and symfony/* packages that drupal/core-recommended 11.4.13 requires
 
 ## [1.5.1] - 2026-11-05
 
