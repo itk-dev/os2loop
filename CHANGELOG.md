@@ -8,6 +8,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [PR-411](https://github.com/itk-dev/os2loop/pull/411)
+  - Stop composer install when a patch does not apply
+    (`composer-exit-on-patch-failure`)
+
 ## [1.5.2] - 2026-11-18
 
 - [PR-410](https://github.com/itk-dev/os2loop/pull/410)
