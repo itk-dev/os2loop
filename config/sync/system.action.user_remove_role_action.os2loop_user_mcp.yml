@@ -1,0 +1,14 @@
+uuid: 995c5397-0599-41d8-ac56-7f53d7986549
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.os2loop_user_mcp
+  module:
+    - user
+id: user_remove_role_action.os2loop_user_mcp
+label: 'Remove the MCP read-only role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: os2loop_user_mcp

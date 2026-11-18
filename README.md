@@ -105,6 +105,115 @@ Commands to get machine names
 docker compose exec phpfpm vendor/bin/drush field:info
 ```
 
+## MCP server and Open WebUI
+
+The site has an MCP end-point at `/mcp`. Open WebUI can call it with the
+Azure AD B2C access token of the signed-in user. The request then runs as the
+Drupal user with the same `sub` claim. The user must sign in to the site one
+time before the user can use MCP.
+
+Each signed-in user has the permission `access mcp server`. The Drupal
+permissions of the user control the access to the content.
+
+The site does not accept B2C tokens until you set
+`$settings['os2loop_oidc_bearer']`.
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant WebUI as Open WebUI
+    participant AD as Azure AD (B2C)
+    participant Site as OS2Loop /mcp
+
+    User->>WebUI: Sign in
+    WebUI->>AD: Sign in with the scope "mcp" of the OS2Loop API
+    AD-->>WebUI: Access token (iss, aud, scp, sub)
+    User->>WebUI: Use an MCP tool in a chat
+    WebUI->>Site: Authorization: Bearer #lt;access token#gt;
+    Site->>AD: Get the signing keys (jwks_uri, cached 1 hour)
+    Site->>Site: Check the signature, iss, aud, scp and exp
+    Site->>Site: Find the Drupal user from sub (authmap)
+    Site-->>WebUI: Tool result with the access of that user
+```
+
+Open WebUI and the site have different app registrations in the same
+directory. The site finds the user only if the user signed in to the site one
+time before.
+
+### Azure AD app registrations
+
+1. Open the app registration of the OS2Loop site and go to `Expose an API`.
+2. Set the Application ID URI (for example `api://<os2loop client id>`).
+3. Add the scope `mcp`.
+4. Open the app registration of Open WebUI and go to `API permissions`.
+5. Click `Add a permission`, then `My APIs`, and select the OS2Loop API.
+6. Select the scope `mcp` and grant admin consent.
+
+### Site
+
+Get a real access token that Open WebUI sends, and decode it (for example
+with <https://jwt.ms>). Copy the `iss` and `aud` values from the token. The
+values depend on the token version:
+
+- v1 token (Entra ID default): `iss` is `https://sts.windows.net/<tenant id>/`
+  and `aud` is the Application ID URI (`api://...`).
+- v2 token (B2C, or `accessTokenAcceptedVersion: 2`): `iss` ends in `/v2.0/`
+  and `aud` is the client ID.
+
+Get `jwks_uri` from the OpenID Connect discovery document of the tenant (or
+of the B2C policy).
+
+Add this to `web/sites/default/settings.local.php`:
+
+```php
+$settings['os2loop_oidc_bearer'] = [
+  // The "iss" value of a real access token.
+  'issuer' => 'https://<tenant>.b2clogin.com/<tenant id>/v2.0/',
+  // The "jwks_uri" value of the discovery document.
+  'jwks_uri' => 'https://<tenant>.b2clogin.com/<tenant>.onmicrosoft.com/<policy>/discovery/v2.0/keys',
+  // The "aud" value of a real access token (the OS2Loop API).
+  'audience' => '<aud value>',
+  // Optional. The claim that holds the user ID. The default is "sub".
+  // 'claim' => 'oid',
+];
+```
+
+Then clear the cache:
+
+```sh
+vendor/bin/drush cache:rebuild
+```
+
+### Open WebUI
+
+1. Add the full scope URI and `offline_access` to the scope variable. Example
+   of a scope URI: `https://<tenant>.onmicrosoft.com/<api>/mcp`.
+   - Generic OIDC provider (`OPENID_PROVIDER_URL`): use `OAUTH_SCOPES`.
+   - Microsoft provider: use `MICROSOFT_OAUTH_SCOPE`.
+2. Start Open WebUI again. Each user must sign out and sign in again.
+3. Go to `Settings > Integrations > External Tool Servers` and click
+   `+ Add Connection`.
+4. Set `Type` to `MCP (Streamable HTTP)`.
+5. Set `URL` to `https://<site>/mcp`.
+6. Set `Auth` to `OAuth` and save.
+
+### Troubleshooting
+
+The site writes the reason for each refused token to the log:
+
+```sh
+vendor/bin/drush watchdog:show --type=os2loop_user_login
+```
+
+- `no active user for the subject "<value>"`: the user did not sign in to the
+  site, or the site stored a different claim. Compare the value with
+  `vendor/bin/drush sql:query "SELECT authname FROM authmap WHERE provider = 'openid_connect.generic' LIMIT 5"`.
+  If necessary, set `claim` in the settings.
+- `no scp claim`: B2C did not issue an access token for the API. Check the
+  scope variable of Open WebUI.
+- `wrong audience`: `audience` is not the `aud` value of the token. Copy the
+  value from a real token, but only if it identifies the OS2Loop API.
+
 ## Updates
 
 ```sh

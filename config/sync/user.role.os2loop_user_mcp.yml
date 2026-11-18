@@ -1,0 +1,16 @@
+uuid: 89dd2a0f-3955-40b6-acc9-33f209ada643
+langcode: en
+status: true
+dependencies:
+  module:
+    - mcp_server
+    - simple_oauth
+    - system
+id: os2loop_user_mcp
+label: 'MCP read-only'
+weight: 12
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access mcp server'
+  - 'grant simple_oauth codes'

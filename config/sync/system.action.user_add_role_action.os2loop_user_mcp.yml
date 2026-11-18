@@ -1,0 +1,14 @@
+uuid: 514f1bf5-dc19-4e66-bb75-364e41f7de57
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.os2loop_user_mcp
+  module:
+    - user
+id: user_add_role_action.os2loop_user_mcp
+label: 'Add the MCP read-only role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: os2loop_user_mcp

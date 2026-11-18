@@ -35,6 +35,9 @@
         "drupal/inline_entity_form": "^3.0@RC",
         "drupal/mailsystem": "^4.4",
         "drupal/masquerade": "^2.0@RC",
+        "drupal/mcp_server": "^2.0@beta",
+        "drupal/mcp_server_oauth": "^1.0@alpha",
+        "drupal/mcp_server_tool_bridge": "^1.0@beta",
         "drupal/message": "^1.4",
         "drupal/openid_connect": "^3.0@alpha",
         "drupal/paragraphs": "^1.16",
@@ -51,6 +54,7 @@
         "drupal/toc_filter": "^2.1",
         "drupal/token": "^1.12",
         "drupal/token_filter": "^2.0",
+        "drupal/tool_belt": "^1.0@alpha",
         "drupal/twig_tweak": "^3.2",
         "drupal/upgrade_status": "^4.3",
         "drupal/view_unpublished": "^1.2",
@@ -60,6 +64,7 @@
         "drupal/viewsreference": "^2.0@beta",
         "drupal/xls_serialization": "^2.0",
         "drush/drush": "^13.0",
+        "firebase/php-jwt": "^7.0",
         "jjj/chosen": "^2.2"
     },
     "require-dev": {

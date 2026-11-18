@@ -1,0 +1,14 @@
+uuid: 974f90bb-12ed-4a4b-bfe1-f1285dca4e73
+langcode: en
+status: true
+dependencies:
+  module:
+    - mcp_server_oauth
+third_party_settings:
+  mcp_server_oauth:
+    authentication_mode: required
+    scopes:
+      - 'mcp:read'
+id: entity_list
+tool_id: 'tool_belt:entity_list'
+description: null

@@ -13,6 +13,7 @@ module:
   config_filter: 0
   config_ignore: 0
   config_translation: 0
+  consumers: 0
   contextual: 0
   convert_media_tags_to_markup: 0
   csv_serialization: 0
@@ -41,6 +42,9 @@ module:
   locale: 0
   mailsystem: 0
   masquerade: 0
+  mcp_server: 0
+  mcp_server_oauth: 0
+  mcp_server_tool_bridge: 0
   media: 0
   media_library: 0
   menu_link_content: 0
@@ -90,6 +94,10 @@ module:
   search_api_db: 0
   serialization: 0
   simple_menu_permissions: 0
+  simple_oauth: 0
+  simple_oauth_21: 0
+  simple_oauth_client_registration: 0
+  simple_oauth_server_metadata: 0
   snowball_stemmer: 0
   statistics: 0
   system: 0
@@ -100,6 +108,9 @@ module:
   toc_filter: 0
   token: 0
   token_filter: 0
+  tool: 0
+  tool_belt: 0
+  tool_belt_content: 0
   toolbar: 0
   twig_tweak: 0
   user: 0

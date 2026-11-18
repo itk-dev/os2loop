@@ -19,6 +19,7 @@ dependencies:
     - entity_print
     - filter
     - flag
+    - mcp_server
     - media
     - node
     - search_api_autocomplete
@@ -33,6 +34,7 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access mcp server'
   - 'access user profiles'
   - 'create os2loop_media_file media'
   - 'create os2loop_media_image media'
