@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.3] - 2026-11-19
+
+- [PR-412](https://github.com/itk-dev/os2loop/pull/412)
+  - Fixed bug in toc
+
 ## [1.5.2] - 2026-11-18
 
 - [PR-410](https://github.com/itk-dev/os2loop/pull/410)

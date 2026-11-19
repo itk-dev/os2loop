@@ -6,6 +6,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
@@ -180,8 +181,14 @@ final class TocBlock extends BlockBase implements ContainerFactoryPluginInterfac
       $view_mode = 'full';
       $node_view = $this->entityTypeManager->getViewBuilder('node')->view($node, $view_mode);
 
-      // Get the completely render node HTML.
-      $node_html = (string) $this->renderer->render($node_view);
+      // Get the completely render node HTML. The node (and the paragraph
+      // holding this block) is already being rendered, so render it in a
+      // separate render context. This runs in its own Fiber, which keeps
+      // core's entity recursive render protection from aborting the render.
+      $context = new RenderContext();
+      $node_html = (string) $this->renderer->executeInRenderContext($context, function () use ($node_view) {
+        return $this->renderer->render($node_view);
+      });
 
       $toc = $this->helper->createToc($node_html);
 
@@ -191,7 +198,11 @@ final class TocBlock extends BlockBase implements ContainerFactoryPluginInterfac
         $build = [
           'toc' => $this->tocBuilder->buildToc($toc),
         ];
+      }
 
+      // Let the node's cacheability bubble to the block.
+      if (!$context->isEmpty()) {
+        $context->pop()->applyTo($build);
       }
 
     }
