@@ -12,6 +12,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 - [PR-412](https://github.com/itk-dev/os2loop/pull/412)
   - Fixed bug in toc
+- Fixed mail notifications not being sent to users whose last notification
+  time was stored by Drupal 10 (regression since 1.3.0)
 
 ## [1.5.2] - 2026-11-18
 

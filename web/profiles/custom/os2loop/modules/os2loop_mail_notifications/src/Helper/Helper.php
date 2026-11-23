@@ -153,7 +153,7 @@ class Helper {
       // loading until actually needed.
       $messages = NULL;
       foreach ($users as $user) {
-        if ($this->getUserLastNotifiedAt($user) > $startTime) {
+        if ($this->getUserLastNotifiedAt($user) > $startTime->getTimestamp()) {
           continue;
         }
         if (NULL === $messages) {
@@ -204,15 +204,26 @@ class Helper {
    * @param \Drupal\user\UserInterface $user
    *   The user.
    *
-   * @return \Drupal\Core\Datetime\DrupalDateTime
-   *   The last notification time.
+   * @return int
+   *   The last notification time as a Unix timestamp (0 if never notified).
    */
-  private function getUserLastNotifiedAt(UserInterface $user) {
+  private function getUserLastNotifiedAt(UserInterface $user): int {
     if (NULL === $this->userLastNotifiedAt) {
       $this->userLastNotifiedAt = $this->userData->get(static::MODULE, NULL, self::USER_LAST_NOTIFIED_AT);
     }
 
-    return $this->userLastNotifiedAt[$user->id()] ?? new DrupalDateTime('@0');
+    $value = $this->userLastNotifiedAt[$user->id()] ?? NULL;
+
+    // Older versions stored a serialized DrupalDateTime object. Comparing such
+    // objects with < or > compares their properties one by one (not the
+    // actual time), and objects serialized by an older Drupal core (with a
+    // different set of properties) always compare as "later", i.e. users were
+    // never notified again. Therefore, we always work on timestamps.
+    if ($value instanceof DrupalDateTime || $value instanceof \DateTimeInterface) {
+      return (int) $value->getTimestamp();
+    }
+
+    return is_numeric($value) ? (int) $value : 0;
   }
 
   /**
@@ -224,7 +235,8 @@ class Helper {
    *   The notification time.
    */
   private function setUserLastNotifiedAt(UserInterface $user, DrupalDateTime $notifiedAt) {
-    $this->userData->set(static::MODULE, $user->id(), self::USER_LAST_NOTIFIED_AT, $notifiedAt);
+    // Store a plain timestamp (cf. getUserLastNotifiedAt()).
+    $this->userData->set(static::MODULE, $user->id(), self::USER_LAST_NOTIFIED_AT, $notifiedAt->getTimestamp());
   }
 
   /**
